@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.properties
+*.lock
+.gradle/2.14.1/taskArtifacts/fileHashes.bin
+*.bin
+.idea/libraries/hamcrest_core_1_3.xml
+.idea/.name
+/.idea
+/.gradle
+/build
+*.iml
