@@ -34,7 +34,14 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
     }
-
+    buildTypes{
+        debug{
+            buildConfigField "String","BASE_URL","\"http://www.android10.org/\""
+        }
+        release{
+            buildConfigField "String","BASE_URL","\"http://www.android10.org/\""
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -65,6 +72,8 @@ dependencies {
     compile dataDependencies.androidAnnotations
     compile dataDependencies.okHttpUrl
     compile dataDependencies.retrofit
+    compile dataDependencies.retroGsonConverter
+    compile dataDependencies.retroRxAdapter
 
 
     testCompile testDependencies.junit

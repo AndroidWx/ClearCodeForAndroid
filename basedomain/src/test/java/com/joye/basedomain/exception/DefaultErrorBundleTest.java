@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
  * Created by W,x (JoyeWang)
  * on 2016/9/9.
  * 304622254@qq.com
- * Remeark:
+ * Remeark: 默认errorTest
  */
 
 public class DefaultErrorBundleTest {

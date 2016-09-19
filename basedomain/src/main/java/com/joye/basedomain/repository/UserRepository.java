@@ -1,7 +1,11 @@
 package com.joye.basedomain.repository;
 
 import com.joye.basedomain.IUser;
+import com.joye.basedomain.User;
 
+import java.util.List;
+
+import rx.Observable;
 import rx.Observer;
 
 /**
@@ -13,5 +17,15 @@ import rx.Observer;
  */
 
 public interface UserRepository {
-    Observer<IUser> user();
+    /**
+     * Get an {@link rx.Observable} which will emit a List of {@link User}.
+     */
+    Observable<List<User>> users();
+
+    /**
+     * Get an {@link rx.Observable} which will emit a {@link User}.
+     *
+     * @param userId The user id used to retrieve user data.
+     */
+    Observable<User> user(final int userId);
 }
