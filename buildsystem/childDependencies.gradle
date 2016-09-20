@@ -1,0 +1,44 @@
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+
+ext {
+/**
+ * Linked{ http://search.maven.org/#search}  最新版本
+ */
+  lang3='3.4'
+  guava='19.0'
+  //Libraries
+
+  /**
+   * 待使用
+  rxbinding='0.3.0'
+  rxbindin_support_v4='0.3.0'
+  rxbinding_appcompat_v7='0.3.0'
+  rxbinding_design='0.3.0'
+  rxbinding_recyclerview='0.3.0'
+  rxbinding_leanback='0.3.0'
+ */
+
+
+  childPresentationDependencies = [
+  ]
+
+  childPresentationTestDependencies = [
+  ]
+
+  childDomainDependencies = [
+  ]
+
+  childDomainTestDependencies = [
+  ]
+  childDataDependencies = [
+          lang3 :"org.apache.commons:commons-lang3:${lang3}",
+          guava :"com.google.guava:guava:${guava}"
+  ]
+
+  childDataTestDependencies = [
+  ]
+}
