@@ -1,6 +1,6 @@
 package com.joye.basedata.repository.datasource;
 
-import com.joye.basedata.cache.UserCache;
+import com.joye.basedata.cache.impl.UserCache;
 import com.joye.basedata.entity.UserEntity;
 
 import java.util.List;

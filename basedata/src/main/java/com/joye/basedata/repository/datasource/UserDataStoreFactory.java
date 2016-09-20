@@ -2,15 +2,13 @@ package com.joye.basedata.repository.datasource;
 
 import android.content.Context;
 
-import com.joye.basedata.cache.UserCache;
-import com.joye.basedata.net.RestApi;
-import com.joye.basedata.net.RestApiImpl;
-import com.joye.basedomain.IUser;
+import com.joye.basedata.cache.impl.UserCache;
+import com.joye.basedata.net.UserRestApi;
+import com.joye.basedata.net.BaseRestApiImpl;
+import com.joye.basedata.net.UserRestApiImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
-import rx.Observable;
 
 /**
  * Created by W,x (JoyeWang)
@@ -49,7 +47,7 @@ public class UserDataStoreFactory  {
      * Create {@link UserDataStore} to retrieve data from the Cloud.
      */
     public UserDataStore createCloudDataStore() {
-        RestApi restApi = new RestApiImpl(this.context);
-        return new CloudUserDataStore(restApi, this.userCache);
+        UserRestApi userRestApi = new UserRestApiImpl(this.context);
+        return new CloudUserDataStore(userRestApi, this.userCache);
     }
 }

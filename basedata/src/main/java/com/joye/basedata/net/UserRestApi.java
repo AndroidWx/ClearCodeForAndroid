@@ -16,7 +16,7 @@ import rx.Observable;
  * Remeark:
  */
 
-public interface RestApi {
+public interface UserRestApi {
 //    String API_BASE_URL = "http://www.android10.org/myapi/";
 
     String CONTENT_TYPE_JSON_HEADER = "Content-Type: application/json; charset=utf-8";
@@ -24,7 +24,7 @@ public interface RestApi {
     /**
      * Retrieves an {@link rx.Observable} which will emit a List of {@link UserEntity}.
      */
-//    @Headers(CONTENT_TYPE_JSON_HEADER)
+   @Headers(CONTENT_TYPE_JSON_HEADER)
     @GET("users.json")
     Observable<List<UserEntity>> userEntityList();
 
@@ -33,7 +33,7 @@ public interface RestApi {
      *
      * @param userId The user id used to get user data.
      */
-//    @Headers(CONTENT_TYPE_JSON_HEADER)
+    @Headers(CONTENT_TYPE_JSON_HEADER)
     @GET("user_{id}.json")
     Observable<UserEntity> userEntityById(@Path("id") final int userId);
 }

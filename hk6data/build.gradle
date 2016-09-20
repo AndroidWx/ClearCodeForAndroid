@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+//dagger2 okhttp
+apply plugin: 'com.neenbedankt.android-apt'
+//调试RxJava 插件
+apply plugin: 'com.fernandocejas.frodo'
+//java7支持java8插件
+apply plugin: 'me.tatarka.retrolambda'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+    }
+}
+android {
+    //获取整体配置
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField "String","API_URL","\"http://t.apiplus.cn/\""
+        }
+        release {
+            buildConfigField "String","API_URL","\"http://t.apiplus.cn/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'  // Some libraries have issues with this
+        disable 'OldTargetApi'    // Due to Robolectric that modifies the manifest when running tests
+    }
+}
+
+dependencies {
+    def childDataDependencies=rootProject.ext.childDataDependencies;
+    def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.dataTestDependencies
+    compile project(':basedata')
+    compile project(':hk6domain')
+    compile childDataDependencies.lang3
+    compile childDataDependencies.guava
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.assertj
+    testCompile testDependencies.mockito
+    testCompile testDependencies.robolectric
+}

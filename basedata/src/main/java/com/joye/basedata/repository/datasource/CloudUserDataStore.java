@@ -1,8 +1,8 @@
 package com.joye.basedata.repository.datasource;
 
-import com.joye.basedata.cache.UserCache;
+import com.joye.basedata.cache.impl.UserCache;
 import com.joye.basedata.entity.UserEntity;
-import com.joye.basedata.net.RestApi;
+import com.joye.basedata.net.UserRestApi;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import rx.functions.Action1;
  */
 
 public class CloudUserDataStore implements UserDataStore{
-    private final RestApi restApi;
+    private final UserRestApi userRestApi;
     private final UserCache userCache;
     private final Action1<UserEntity> saveToCacheAction = userEntity -> {
         if (userEntity != null) {
@@ -27,20 +27,20 @@ public class CloudUserDataStore implements UserDataStore{
     /**
      * Construct a {@link UserDataStore} based on connections to the api (Cloud).
      *
-     * @param restApi The {@link RestApi} implementation to use.
+     * @param userRestApi The {@link UserRestApi} implementation to use.
      * @param userCache A {@link UserCache} to cache data retrieved from the api.
      */
-    public CloudUserDataStore(RestApi restApi, UserCache userCache) {
-        this.restApi = restApi;
+    public CloudUserDataStore(UserRestApi userRestApi, UserCache userCache) {
+        this.userRestApi = userRestApi;
         this.userCache = userCache;
     }
 
     @Override public Observable<List<UserEntity>> userEntityList() {
-        return this.restApi.userEntityList();
+        return this.userRestApi.userEntityList();
     }
 
     @Override public Observable<UserEntity> userEntityDetails(final int userId) {
-        return this.restApi.userEntityById(userId).doOnNext(saveToCacheAction);
+        return this.userRestApi.userEntityById(userId).doOnNext(saveToCacheAction);
     }
 
 }

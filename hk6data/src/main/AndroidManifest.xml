@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.joye.basedata">
+    package="com.joye.hk6data">
 
     <uses-sdk tools:overrideLibrary="com.joye.basedata,rx.android,com.fernandocejas.frodo"/>
     <application android:allowBackup="true" >

@@ -1,4 +1,4 @@
-package com.joye.basedata.cache;
+package com.joye.basedata.cache.impl;
 
 import com.joye.basedata.entity.UserEntity;
 

@@ -11,7 +11,7 @@ import rx.Observable;
  * Created by W,x (JoyeWang)
  * on 2016/9/18.
  * 304622254@qq.com
- * Remeark:
+ * Remeark: 用户数据库的函数
  */
 
 public interface UserDataStore {
