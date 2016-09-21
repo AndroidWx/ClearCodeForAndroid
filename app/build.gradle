@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.fernandocejas.frodo'
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
@@ -70,10 +71,13 @@ dependencies {
     compile project(':hk6data')
     compile project(':hk6domain')
 
+    provided presentationDependencies.javaxAnnotation
+
     androidTestCompile presentationTestDependencies.mockito
     androidTestCompile presentationTestDependencies.dexmaker
     androidTestCompile presentationTestDependencies.dexmakerMockito
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.testingSupportLib
     compile 'com.android.support:support-v4:23.4.0'
+    compile 'javax.inject:javax.inject:1'
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.joye.myapplication">
+    package="com.joye.hk6">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.joye.hk6.MainActivity"
-            android:label="@string/title_activity_main">
+            android:name="com.joye.hk6.ScrollingActivity"
+            android:label="@string/title_activity_scrolling">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
