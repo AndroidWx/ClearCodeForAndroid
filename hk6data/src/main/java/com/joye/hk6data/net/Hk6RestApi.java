@@ -15,7 +15,7 @@ import rx.Observable;
  * Remeark:六合彩请求api
  */
 
-public interface Hk6RestApi extends BaseApi {
+public interface Hk6RestApi  {
     /**
      * @param token  令牌
      * @param code   代码
@@ -24,9 +24,9 @@ public interface Hk6RestApi extends BaseApi {
      * @return 六合彩列表数据
      */
     @GET("newly.do")
-    Observable<List<Hk6Entity>> getHk6ListData(@Query(TOKEN) String token,
-                                               @Query(CODE) String code,
-                                               @Query(DATE) String date,
-                                               @FORMAT_THEME
-                                               @Query(FORMAT) String format);
+    Observable<List<Hk6Entity>> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token,
+                                               @Query(BaseApiConstants.CODE) String code,
+                                               @Query(BaseApiConstants.DATE) String date,
+                                               @BaseApiConstants.FORMAT_THEME
+                                               @Query(BaseApiConstants.FORMAT) String format);
 }

@@ -57,6 +57,8 @@ dependencies {
     def childDataDependencies=rootProject.ext.childDataDependencies;
     def dataDependencies = rootProject.ext.dataDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
+    apt dataDependencies.daggerCompiler
+    provided dataDependencies.javaxAnnotation
     compile project(':basedata')
     compile project(':hk6domain')
     compile childDataDependencies.lang3

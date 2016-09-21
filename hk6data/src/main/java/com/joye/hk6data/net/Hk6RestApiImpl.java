@@ -29,8 +29,8 @@ public class Hk6RestApiImpl extends BaseRestApiImpl<Hk6RestApi>implements Hk6Res
     }
 
     @Override
-    public Observable<List<Hk6Entity>> getHk6ListData(@Query(TOKEN) String token, @Query(CODE) String code, @Query(DATE) String date, @FORMAT_THEME @Query(FORMAT) String format) {
-        return create().getHk6ListData(token,code,date,BaseApi.FORMAT_JSON);
+    public Observable<List<Hk6Entity>> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token, @Query(BaseApiConstants.CODE) String code, @Query(BaseApiConstants.DATE) String date, @BaseApiConstants.FORMAT_THEME @Query(BaseApiConstants.FORMAT) String format) {
+        return create().getHk6ListData(token,code,date, BaseApiConstants.FORMAT_JSON);
     }
 
     @Override
