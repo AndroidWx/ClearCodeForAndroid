@@ -66,18 +66,24 @@ android {
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
-
+    def childPresentationDependencies=rootProject.ext.childPresentationDependencies
     compile project(':basepresentation')
     compile project(':hk6data')
-    compile project(':hk6domain')
+//    compile project(':hk6domain')
+    apt presentationDependencies.daggerCompiler
 
     provided presentationDependencies.javaxAnnotation
+    compile childPresentationDependencies.javaxInject
+    compile childPresentationDependencies.statusbaruitl
+    debugCompile childPresentationDependencies.logutilsDebug
+    releaseCompile childPresentationDependencies.logutilsRelease
+    compile childPresentationDependencies.guava;
+
 
     androidTestCompile presentationTestDependencies.mockito
     androidTestCompile presentationTestDependencies.dexmaker
     androidTestCompile presentationTestDependencies.dexmakerMockito
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.testingSupportLib
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'javax.inject:javax.inject:1'
+
 }

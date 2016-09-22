@@ -1,5 +1,13 @@
 package com.joye.hk6data.entity;
 
+import com.google.common.collect.Lists;
+import com.joye.hk6data.utils.CollectionUtils;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/20.
@@ -22,7 +30,7 @@ public class Hk6Entity {
     //开奖时间
     private String opentime;
     //开奖时间戳
-    private int opentimestamp;
+    private long opentimestamp;
 
     /**
      *
@@ -64,11 +72,30 @@ public class Hk6Entity {
      *
      * @return 开奖时间戳
      */
-    public int getOpentimestamp() {
+    public long getOpentimestamp() {
         return opentimestamp;
     }
 
     public void setOpentimestamp(int opentimestamp) {
         this.opentimestamp = opentimestamp;
+    }
+
+    public DataTransformerEntity getDataTransformerEntity(){
+        String[] splitData = opencode.split(",");
+        String lastStr;
+        ArrayList <String>mEvictors=new ArrayList<String>();
+        String winnerNumber = "";
+        if(splitData.length!=0){
+             lastStr= splitData[splitData.length - 1];
+            for (int i=0;i<splitData.length-1;i++){
+                mEvictors.add(splitData[i]);
+            }
+            mEvictors.add(lastStr.split("/+")[0]);
+            winnerNumber=lastStr.split("/+")[1];
+        }else {
+            throw new IllegalArgumentException("openCode response 格式发生了变化");
+        }
+
+        return new DataTransformerEntity(mEvictors.toArray(new String[mEvictors.size()]),winnerNumber);
     }
 }

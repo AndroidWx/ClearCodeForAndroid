@@ -30,7 +30,7 @@ public class Hk6UiData {
     /**
      * 开奖时间戳
      */
-    private String opentimestamp;
+    private long opentimestamp;
 
     /**
      *
@@ -84,11 +84,12 @@ public class Hk6UiData {
      *
      * @return 开奖时间戳
      */
-    public String getOpentimestamp() {
+    public long getOpentimestamp() {
         return opentimestamp;
     }
 
-    public void setOpentimestamp(String opentimestamp) {
+    public void setOpentimestamp(long opentimestamp) {
         this.opentimestamp = opentimestamp;
     }
+
 }

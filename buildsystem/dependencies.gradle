@@ -7,7 +7,7 @@ allprojects {
 ext {
   //Android
   androidBuildToolsVersion = "24.0.2"
-  androidMinSdkVersion = 8
+  androidMinSdkVersion = 14
   androidTargetSdkVersion = 23
   androidCompileSdkVersion = 23
 /**
@@ -29,7 +29,9 @@ ext {
   androidAnnotationsVersion = '21.0.3'
   retroGsonConverterVersion='2.1.0'
   retroRxAdapterVersion='2.1.0'
-
+  javaxInject='1'
+  supportAannotation='23.4.0'
+  suportV4='23.4.0'
   /**
    * 待使用
   rxbinding='0.3.0'
@@ -57,6 +59,9 @@ ext {
       rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
       rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+      javaxInject:"javax.inject:javax.inject:${javaxInject}",
+      supportAannotation:"com.android.support:support-annotations:${supportAannotation}",
+      supportv4:"com.android.support:support-v4:${suportV4}"
   ]
 
   presentationTestDependencies = [

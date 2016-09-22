@@ -23,9 +23,12 @@ dependencies {
     compile project(':basedomain')
     compile project(':basedata')
     apt presentationDependencies.daggerCompiler
+    compile presentationDependencies.butterKnife
     compile presentationDependencies.dagger
     compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
     provided presentationDependencies.javaxAnnotation
-    compile 'javax.inject:javax.inject:1'
+    compile presentationDependencies.javaxInject
+    compile presentationDependencies.supportAannotation
+    compile presentationDependencies.supportv4
 }

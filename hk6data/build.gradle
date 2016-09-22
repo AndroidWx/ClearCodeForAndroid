@@ -62,7 +62,6 @@ dependencies {
     compile project(':basedata')
     compile project(':hk6domain')
     compile childDataDependencies.lang3
-    compile childDataDependencies.guava
 
     testCompile testDependencies.junit
     testCompile testDependencies.assertj

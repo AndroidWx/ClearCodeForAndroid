@@ -1,6 +1,7 @@
 package com.joye.hk6data.cache.impl;
 
 import android.content.Context;
+import android.content.pm.ProviderInfo;
 
 import com.google.common.collect.Collections2;
 import com.google.common.reflect.TypeToken;
@@ -17,6 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import rx.Observable;
@@ -32,15 +34,16 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     private static final String DEFAULT_FILE_NAME = "com.joye.hk6data.hk6cache";
     private static final String SETTINGS_KEY_LAST_CACHE_UPDATE = "last_cache_update";
     private static final long EXPIRATION_TIME = 60 * 10 * 1000;
-    public FileManager fileManager;
+    private final  FileManager fileManager;
     private final File cacheDir;
     private final Context context;
     private final ThreadExecutor threadExecutor;
     private static final  TypeToken<List<Hk6Entity>> typeToken=new TypeToken<List<Hk6Entity>>(){} ;
-
-    public Hk6FileCacheImpl(File cacheDir, Context context, ThreadExecutor threadExecutor) {
-        this.cacheDir = cacheDir;
+    @Inject
+    public Hk6FileCacheImpl(FileManager fileManager , Context context, ThreadExecutor threadExecutor) {
+        this.fileManager = fileManager;
         this.context = context;
+        this.cacheDir = this.context.getCacheDir();
         this.threadExecutor = threadExecutor;
     }
 

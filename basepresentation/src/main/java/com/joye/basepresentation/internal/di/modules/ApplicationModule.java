@@ -3,7 +3,9 @@ package com.joye.basepresentation.internal.di.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.joye.basedata.executor.JobExecutor;
 import com.joye.basedomain.executor.PostExecutionThread;
+import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.basepresentation.UiThread;
 
 import javax.inject.Singleton;
@@ -32,16 +34,15 @@ public class ApplicationModule {
         this.application = application;
     }
     @Provides @Singleton
-    Context provideApplicationContext(){
+    public Context provideApplicationContext(){
         return application;
     }
     @Provides @Singleton
-    PostExecutionThread providePostExecutionThread(UiThread uiThread){
+    public  PostExecutionThread providePostExecutionThread(UiThread uiThread){
         return uiThread;
     }
-
     @Provides @Singleton
-    ThreadExecutor provideThreadExecutor(ThreadExecutor executor){
+    public  ThreadExecutor provideThreadExecutor(JobExecutor executor){
         return executor;
     }
 

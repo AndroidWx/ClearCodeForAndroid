@@ -10,6 +10,10 @@ ext {
  */
   lang3='3.4'
   guava='19.0'
+  statusbaruitl='1.2.0'
+  logutilsDebug='1.4.2'
+  logutilsRelease='1.4.2.1'
+  javaxInject='1'
   //Libraries
 
   /**
@@ -24,6 +28,12 @@ ext {
 
 
   childPresentationDependencies = [
+          statusbaruitl:"com.jaeger.statusbaruitl:library:${statusbaruitl}",
+          javaxInject:"javax.inject:javax.inject:${javaxInject}",
+          logutilsDebug:"com.apkfuns.logutils:library:${logutilsDebug}",
+          logutilsRelease:"com.apkfuns.logutils:logutils-no-op:${logutilsRelease}",
+          guava :"com.google.guava:guava:${guava}"
+
   ]
 
   childPresentationTestDependencies = [
@@ -36,7 +46,7 @@ ext {
   ]
   childDataDependencies = [
           lang3 :"org.apache.commons:commons-lang3:${lang3}",
-          guava :"com.google.guava:guava:${guava}"
+
   ]
 
   childDataTestDependencies = [

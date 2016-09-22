@@ -6,6 +6,8 @@ package com.joye.basepresentation.internal.di.components;
 
 import android.content.Context;
 
+import com.joye.basedomain.executor.PostExecutionThread;
+import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.basepresentation.internal.di.modules.ApplicationModule;
 
 import javax.inject.Singleton;
