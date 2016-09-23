@@ -3,8 +3,7 @@ package com.joye.hk6data.cache.impl;
 import android.content.Context;
 import android.content.pm.ProviderInfo;
 
-import com.google.common.collect.Collections2;
-import com.google.common.reflect.TypeToken;
+import com.google.gson.reflect.TypeToken;
 import com.joye.basedata.cache.CacheEvictor;
 import com.joye.basedata.cache.CacheWriter;
 import com.joye.basedata.cache.FileManager;
@@ -33,12 +32,13 @@ import rx.Observable;
 public class Hk6FileCacheImpl implements Hk6Cache {
     private static final String DEFAULT_FILE_NAME = "com.joye.hk6data.hk6cache";
     private static final String SETTINGS_KEY_LAST_CACHE_UPDATE = "last_cache_update";
-    private static final long EXPIRATION_TIME = 60 * 10 * 1000;
+    //与上期开奖时期的opentimestamp间隔两天 10分钟就去拿开奖数去
+    private static final long EXPIRATION_TIME = 60 * 60 * 48-800;
     private final  FileManager fileManager;
     private final File cacheDir;
     private final Context context;
     private final ThreadExecutor threadExecutor;
-    private static final  TypeToken<List<Hk6Entity>> typeToken=new TypeToken<List<Hk6Entity>>(){} ;
+    private static final TypeToken<List<Hk6Entity>> typeToken=new TypeToken<List<Hk6Entity>>(){} ;
     @Inject
     public Hk6FileCacheImpl(FileManager fileManager , Context context, ThreadExecutor threadExecutor) {
         this.fileManager = fileManager;
@@ -72,7 +72,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         if(!isCached(date)){
             String jsonContent=GsonFactory.SingleTon.create().toJson(hk6EntityList,typeToken.getType());
             this.executeAsynchronously(new CacheWriter(fileManager,hk6EntityListFile,jsonContent));
-            setLastCacheUpdateTimeMillis();
+            setLastCacheUpdateTimeMillis( hk6EntityList.get(hk6EntityList.size()-1).getOpentimestamp());
         }
 
     }
@@ -109,6 +109,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
      * @return A valid file.
      */
     private File buildFile(String date) {
+        date=date.substring(0,4);
         StringBuilder fileNameBuilder = new StringBuilder();
         fileNameBuilder.append(this.cacheDir.getPath());
         fileNameBuilder.append(File.separator);
@@ -127,9 +128,9 @@ public class Hk6FileCacheImpl implements Hk6Cache {
 
     /**
      * Set in millis, the last time the cache was accessed.
+     * @param currentMillis
      */
-    private void setLastCacheUpdateTimeMillis() {
-        long currentMillis = System.currentTimeMillis();
+    private void setLastCacheUpdateTimeMillis(long currentMillis) {
         this.fileManager.writeToPreferences(this.context, DEFAULT_FILE_NAME,
                 SETTINGS_KEY_LAST_CACHE_UPDATE, currentMillis);
     }

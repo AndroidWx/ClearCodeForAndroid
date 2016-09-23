@@ -4,12 +4,16 @@ import android.content.Context;
 
 import com.joye.basedata.net.BaseRestApiImpl;
 import com.joye.hk6data.BuildConfig;
+import com.joye.hk6data.entity.Hk6DataSourceBean;
 import com.joye.hk6data.entity.Hk6Entity;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import retrofit2.http.Query;
 import rx.Observable;
+import rx.functions.Func1;
 
 /**
  * Created by W,x (JoyeWang)
@@ -29,7 +33,7 @@ public class Hk6RestApiImpl extends BaseRestApiImpl<Hk6RestApi>implements Hk6Res
     }
 
     @Override
-    public Observable<List<Hk6Entity>> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token, @Query(BaseApiConstants.CODE) String code, @Query(BaseApiConstants.DATE) String date, @BaseApiConstants.FORMAT_THEME @Query(BaseApiConstants.FORMAT) String format) {
+    public Observable<Hk6DataSourceBean> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token, @Query(BaseApiConstants.CODE) String code, @Query(BaseApiConstants.DATE) String date, @BaseApiConstants.FORMAT_THEME @Query(BaseApiConstants.FORMAT) String format) {
         return create().getHk6ListData(token,code,date, BaseApiConstants.FORMAT_JSON);
     }
 

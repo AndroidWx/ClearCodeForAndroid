@@ -4,6 +4,7 @@ apply from: 'buildsystem/childDependencies.gradle'
 buildscript {
     repositories {
         jcenter()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0-rc1'
@@ -21,6 +22,11 @@ allprojects {
         androidVersionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         testApplicationId = 'com.joye.hk6.test'
+    }
+    repositories{
+        jcenter()
+        maven { url "https://jitpack.io" }
+
     }
 }
 

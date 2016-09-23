@@ -1,12 +1,6 @@
 package com.joye.hk6data.entity;
 
-import com.google.common.collect.Lists;
-import com.joye.hk6data.utils.CollectionUtils;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by W,x (JoyeWang)
@@ -76,7 +70,7 @@ public class Hk6Entity {
         return opentimestamp;
     }
 
-    public void setOpentimestamp(int opentimestamp) {
+    public void setOpentimestamp(long opentimestamp) {
         this.opentimestamp = opentimestamp;
     }
 
@@ -90,12 +84,20 @@ public class Hk6Entity {
             for (int i=0;i<splitData.length-1;i++){
                 mEvictors.add(splitData[i]);
             }
-            mEvictors.add(lastStr.split("/+")[0]);
-            winnerNumber=lastStr.split("/+")[1];
+            mEvictors.add(lastStr.split("\\+")[0]);
+            winnerNumber=lastStr.split("\\+")[1];
         }else {
             throw new IllegalArgumentException("openCode response 格式发生了变化");
         }
 
         return new DataTransformerEntity(mEvictors.toArray(new String[mEvictors.size()]),winnerNumber);
     }
+
+    public void setValueFormSource(Hk6DataSourceBean.DataBean dataBean){
+        this.setOpentime(dataBean.getOpentime());
+        this.setExpect(dataBean.getExpect());
+        this.setOpencode(dataBean.getOpencode());
+        this.setOpentimestamp(dataBean.getOpentimestamp());
+    }
+
 }

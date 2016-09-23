@@ -40,8 +40,10 @@ public class Hk6DataRepository  implements Hk6Repository {
             public Observable<List<Hk6UiData>> call(List<Hk6Entity> hk6EntityList) {
                 List<Hk6UiData> retListData=new ArrayList<Hk6UiData>(hk6EntityList.size());
                 Hk6UiData uiData;
+                Hk6Entity hk6Entity;
                 DataTransformerEntity dataTransformerEntity;
-                for (Hk6Entity hk6Entity:hk6EntityList) {
+                for (int i=0;i<hk6EntityList.size();i++){
+                    hk6Entity=hk6EntityList.get(i);
                     uiData=new Hk6UiData();
                     dataTransformerEntity=hk6Entity.getDataTransformerEntity();
                     uiData.setExpect(hk6Entity.getExpect().substring(4,7)+"期");

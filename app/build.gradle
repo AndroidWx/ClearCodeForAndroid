@@ -66,7 +66,7 @@ android {
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
-    def childPresentationDependencies=rootProject.ext.childPresentationDependencies
+    def childPresentationDependencies = rootProject.ext.childPresentationDependencies
     compile project(':basepresentation')
     compile project(':hk6data')
 //    compile project(':hk6domain')
@@ -77,8 +77,8 @@ dependencies {
     compile childPresentationDependencies.statusbaruitl
     debugCompile childPresentationDependencies.logutilsDebug
     releaseCompile childPresentationDependencies.logutilsRelease
-    compile childPresentationDependencies.guava;
-
+    compile childPresentationDependencies.guava
+    compile childPresentationDependencies.progressActivity
 
     androidTestCompile presentationTestDependencies.mockito
     androidTestCompile presentationTestDependencies.dexmaker
@@ -86,4 +86,5 @@ dependencies {
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.testingSupportLib
 
+    compile 'com.android.support:support-v13:23.4.0'
 }

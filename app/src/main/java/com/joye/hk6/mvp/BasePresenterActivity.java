@@ -54,8 +54,16 @@ public abstract class BasePresenterActivity<  V extends Vu> extends BaseActivity
         vu = null;
         super.onDestroy();
     }
+
+    /**
+     * inject
+     */
+    protected  void initializeInjector(){
+
+    }
+    @CallSuper
     protected void onBindVu() {
-        //do nothing
+        initializeInjector();
     };
 
     protected void onDestroyVu() {
@@ -65,4 +73,6 @@ public abstract class BasePresenterActivity<  V extends Vu> extends BaseActivity
     protected StatusbarActivityModule getStatusBarActivityModule(){
         return new StatusbarActivityModule(this);
     }
+
+
 }

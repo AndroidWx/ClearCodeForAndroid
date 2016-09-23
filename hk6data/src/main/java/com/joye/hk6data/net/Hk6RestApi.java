@@ -1,5 +1,6 @@
 package com.joye.hk6data.net;
 
+import com.joye.hk6data.entity.Hk6DataSourceBean;
 import com.joye.hk6data.entity.Hk6Entity;
 
 import java.util.List;
@@ -23,10 +24,10 @@ public interface Hk6RestApi  {
      * @param format 转换格式
      * @return 六合彩列表数据
      */
-    @GET("newly.do")
-    Observable<List<Hk6Entity>> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token,
-                                               @Query(BaseApiConstants.CODE) String code,
-                                               @Query(BaseApiConstants.DATE) String date,
-                                               @BaseApiConstants.FORMAT_THEME
+    @GET("daily.do")
+    Observable<Hk6DataSourceBean> getHk6ListData(@Query(BaseApiConstants.TOKEN) String token,
+                                                 @Query(BaseApiConstants.CODE) String code,
+                                                 @Query(BaseApiConstants.DATE) String date,
+                                                 @BaseApiConstants.FORMAT_THEME
                                                @Query(BaseApiConstants.FORMAT) String format);
 }

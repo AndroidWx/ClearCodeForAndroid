@@ -1,7 +1,7 @@
 package com.joye.hk6.frg;
 
 import com.joye.hk6.mvp.BasePresenterFragment;
-import com.joye.hk6.view.ChineseZodiacProbilityFragmentVu;
+import com.joye.hk6.vu.ChineseZodiacProbilityFragmentVu;
 
 /**
  * Created by W,x (JoyeWang)

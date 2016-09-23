@@ -7,8 +7,9 @@ package com.joye.hk6.mvp;
  * Remeark:
  */
 
-public interface Presenter {
+public interface Presenter<V extends Vu> {
 
+    void setView(V v);
     /**
      * Method that control the lifecycle of the view. It should be called in the view's
      * (Activity or Fragment) onResume() method.
