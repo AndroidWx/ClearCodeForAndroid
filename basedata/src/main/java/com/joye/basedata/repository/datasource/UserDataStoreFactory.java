@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.joye.basedata.cache.impl.UserCache;
 import com.joye.basedata.net.UserRestApi;
-import com.joye.basedata.net.BaseRestApiImpl;
 import com.joye.basedata.net.UserRestApiImpl;
 
 import javax.inject.Inject;

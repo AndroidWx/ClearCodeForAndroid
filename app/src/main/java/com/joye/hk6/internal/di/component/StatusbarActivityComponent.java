@@ -1,15 +1,11 @@
 package com.joye.hk6.internal.di.component;
 
-import android.app.Activity;
-
 import com.joye.basepresentation.internal.di.PerActivity;
-import com.joye.basepresentation.internal.di.components.ActivityComponent;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 
 
 import dagger.Component;
-import dagger.Module;
 
 /**
  * Created by W,x (JoyeWang)

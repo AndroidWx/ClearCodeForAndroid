@@ -1,17 +1,9 @@
 package com.joye.hk6data.net;
 
-import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
-
-import com.joye.hk6data.entity.Hk6Entity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.List;
-
-import retrofit2.http.GET;
-import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by W,x (JoyeWang)

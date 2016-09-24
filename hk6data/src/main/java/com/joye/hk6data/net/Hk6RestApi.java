@@ -1,9 +1,6 @@
 package com.joye.hk6data.net;
 
 import com.joye.hk6data.entity.Hk6DataSourceBean;
-import com.joye.hk6data.entity.Hk6Entity;
-
-import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,7 +1,5 @@
 package com.joye.basedomain.exception;
 
-import java.util.Objects;
-
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/8.

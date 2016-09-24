@@ -6,12 +6,9 @@ import com.joye.hk6data.ApplicationTestCase;
 import com.joye.hk6data.BuildConfig;
 import com.joye.hk6data.MyRunner;
 import com.joye.hk6data.cache.impl.Hk6Cache;
-import com.joye.hk6data.entity.Hk6Entity;
-import com.joye.hk6data.net.BaseApiConstants;
 import com.joye.hk6data.net.Hk6RestApi;
 import com.joye.hk6data.net.Hk6RestApiImpl;
 import com.joye.hk6data.repository.datasource.CloudHk6DataStore;
-import com.joye.hk6data.repository.datasource.Hk6DataStore;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,19 +17,8 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.util.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import rx.Observable;
-import rx.functions.Action1;
-import rx.functions.Func1;
-
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 /**

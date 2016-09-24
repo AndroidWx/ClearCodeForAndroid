@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.hk6.widget.ReportSyncHorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ReportSyncHorizontalScrollViewVisibility"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <com.joye.layouts.BorderLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/scroll_top_tv_item1"
+            style="@style/TextViewStyleRight"
+            android:text="1" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item2"
+            style="@style/TextViewStyleRight"
+            android:text="2" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item3"
+            style="@style/TextViewStyleRight"
+            android:text="3" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item4"
+            style="@style/TextViewStyleRight"
+            android:text="4" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item5"
+            style="@style/TextViewStyleRight"
+            android:text="5" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item6"
+            style="@style/TextViewStyleRight"
+            android:text="6" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item7"
+            style="@style/TextViewStyleRight"
+            android:text="7" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item8"
+            style="@style/TextViewStyleRight"
+            android:text="8" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item9"
+            style="@style/TextViewStyleRight"
+            android:text="9" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item10"
+            style="@style/TextViewStyleRight"
+            android:text="10" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item11"
+            style="@style/TextViewStyleRight"
+            android:text="11" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item12"
+            style="@style/TextViewStyleRight"
+            android:text="12" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item13"
+            style="@style/TextViewStyleRight"
+            android:text="13" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item14"
+            style="@style/TextViewStyleRight"
+            android:text="14" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item15"
+            style="@style/TextViewStyleRight"
+            android:text="15" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item16"
+            style="@style/TextViewStyleRight"
+            android:text="16" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item17"
+            style="@style/TextViewStyleRight"
+            android:text="17" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item18"
+            style="@style/TextViewStyleRight"
+            android:text="18" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item19"
+            style="@style/TextViewStyleRight"
+            android:text="19" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item20"
+            style="@style/TextViewStyleRight"
+            android:text="20" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item21"
+            style="@style/TextViewStyleRight"
+            android:text="21" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item22"
+            style="@style/TextViewStyleRight"
+            android:text="22" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item23"
+            style="@style/TextViewStyleRight"
+            android:text="23" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item24"
+            style="@style/TextViewStyleRight"
+            android:text="24" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item25"
+            style="@style/TextViewStyleRight"
+            android:text="25" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item26"
+            style="@style/TextViewStyleRight"
+            android:text="26" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item27"
+            style="@style/TextViewStyleRight"
+            android:text="27" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item28"
+            style="@style/TextViewStyleRight"
+            android:text="28" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item29"
+            style="@style/TextViewStyleRight"
+            android:text="29" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item30"
+            style="@style/TextViewStyleRight"
+            android:text="30" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item31"
+            style="@style/TextViewStyleRight"
+            android:text="31" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item32"
+            style="@style/TextViewStyleRight"
+            android:text="32" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item33"
+            style="@style/TextViewStyleRight"
+            android:text="33" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item34"
+            style="@style/TextViewStyleRight"
+            android:text="34" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item35"
+            style="@style/TextViewStyleRight"
+            android:text="35" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item36"
+            style="@style/TextViewStyleRight"
+            android:text="36" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item37"
+            style="@style/TextViewStyleRight"
+            android:text="37" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item38"
+            style="@style/TextViewStyleRight"
+            android:text="38" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item39"
+            style="@style/TextViewStyleRight"
+            android:text="39" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item40"
+            style="@style/TextViewStyleRight"
+            android:text="40" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item41"
+            style="@style/TextViewStyleRight"
+            android:text="41" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item42"
+            style="@style/TextViewStyleRight"
+            android:text="42" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item43"
+            style="@style/TextViewStyleRight"
+            android:text="43" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item44"
+            style="@style/TextViewStyleRight"
+            android:text="44" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item45"
+            style="@style/TextViewStyleRight"
+            android:text="45" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item46"
+            style="@style/TextViewStyleRight"
+            android:text="46" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item47"
+            style="@style/TextViewStyleRight"
+            android:text="47" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item48"
+            style="@style/TextViewStyleRight"
+            android:text="48" />
+        <TextView
+            android:id="@+id/scroll_top_tv_item49"
+            style="@style/TextViewStyleRight"
+            android:text="49" />
+
+    </com.joye.layouts.BorderLinearLayout>
+</com.joye.hk6.widget.ReportSyncHorizontalScrollView>

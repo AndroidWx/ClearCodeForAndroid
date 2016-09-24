@@ -6,4 +6,6 @@ targetCompatibility = 1.7
 
 dependencies {
     compile project(':basedomain')
+    def childDataDependencies=rootProject.ext.childDataDependencies;
+    compile childDataDependencies.lang3
 }

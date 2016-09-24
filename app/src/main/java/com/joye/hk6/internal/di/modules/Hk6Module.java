@@ -4,10 +4,11 @@ import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
+import com.joye.hk6domain.interactor.GetChineseZodiacUseCase;
 import com.joye.hk6domain.interactor.GetHk6Data;
 import com.joye.hk6domain.repository.Hk6Repository;
 
-import org.apache.commons.lang3.time.DateUtils;
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -26,9 +27,23 @@ public class Hk6Module {
         this.date = date;
     }
 
-    @Provides @PerActivity
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Provides @PerActivity @Named("GetHk6Data")
     UseCase provideGetHk6DataUseCase(ThreadExecutor threadExecutor,
                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
-        return new GetHk6Data(threadExecutor,postExecutionThread,hk6Repository,date);
+        return new
+                GetHk6Data(threadExecutor,postExecutionThread,hk6Repository,date);
     }
+    @Provides @PerActivity @Named("GetChineseZodiacUseCase")
+    UseCase provideGetChineseZodiacUseCase(ThreadExecutor threadExecutor,
+                                     PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetChineseZodiacUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+
+
 }

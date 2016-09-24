@@ -7,7 +7,7 @@ package com.joye.hk6domain.entity;
  * Remeark:
  */
 
-public class Hk6UiData {
+public class Hk6UiData  implements ReportI{
     /**
      * 期数
      */
@@ -20,7 +20,7 @@ public class Hk6UiData {
     /**
      * 中奖号码
      */
-    private String  winningNumber;
+    private int openCode;
 
     /**
      * 开奖时间
@@ -39,6 +39,7 @@ public class Hk6UiData {
     public String getExpect() {
         return expect;
     }
+
 
     public void setExpect(String expect) {
         this.expect = expect;
@@ -60,12 +61,13 @@ public class Hk6UiData {
      *
      * @return 中奖号码
      */
-    public String getWinningNumber() {
-        return winningNumber;
+    @Override
+    public int getOpenCode() {
+        return openCode;
     }
 
-    public void setWinningNumber(String winningNumber) {
-        this.winningNumber = winningNumber;
+    public void setOpenCode(int openCode) {
+        this.openCode = openCode;
     }
 
     /**

@@ -22,7 +22,7 @@ public class FormulaTest {
 
     @Test
     public void testFormula() throws Exception {
-       System.out.println( mFormula.lottery(0.99,Probalility.PrimeComposite.One));
+       System.out.println( mFormula.lottery(0.9999,Probalility.ChineseZodiac.Default));
        System.out.println((double)(4/49));
     }
 }

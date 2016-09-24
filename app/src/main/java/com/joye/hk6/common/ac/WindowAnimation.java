@@ -2,11 +2,8 @@ package com.joye.hk6.common.ac;
 
 import android.os.Build;
 
-import com.fernandocejas.frodo.core.strings.Strings;
 import com.joye.hk6.R;
 import com.joye.hk6.common.JoyeEnvironment;
-
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by W,x (JoyeWang)

@@ -5,15 +5,9 @@ import android.content.Context;
 import com.joye.basedata.net.BaseRestApiImpl;
 import com.joye.hk6data.BuildConfig;
 import com.joye.hk6data.entity.Hk6DataSourceBean;
-import com.joye.hk6data.entity.Hk6Entity;
-
-import java.util.List;
-
-import javax.sql.DataSource;
 
 import retrofit2.http.Query;
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * Created by W,x (JoyeWang)

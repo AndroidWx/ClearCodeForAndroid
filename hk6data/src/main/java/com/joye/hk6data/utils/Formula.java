@@ -1,6 +1,5 @@
 package com.joye.hk6data.utils;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 import javax.inject.Singleton;

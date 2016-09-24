@@ -1,59 +1,81 @@
 package com.joye.hk6.vu;
 
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.Toast;
+import android.view.ViewStub;
 
-import com.apkfuns.logutils.LogUtils;
 import com.joye.hk6.R;
+import com.joye.hk6.adapter.ChineseZodiacProbilityAdapter;
+import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.ProgressVu;
-import com.joye.hk6.mvp.Vu;
-import com.joye.hk6domain.entity.Hk6UiData;
+import com.joye.hk6domain.vo.ChineseZodiacVo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by W,x (JoyeWang)
- * on 2016/9/22.
+ * on 2016/9/24.
  * 304622254@qq.com
- * Remeark:生肖概率的视图
+ * Remeark:
  */
-public class ChineseZodiacProbilityFragmentVu implements ProgressVu<List<Hk6UiData>>{
-    private View view;
-    @Override
-    public void init(LayoutInflater layoutInflater, ViewGroup container) {
-        view=layoutInflater.inflate(R.layout.activity_scrolling,container);
+
+public class ChineseZodiacProbilityFragmentVu extends SwipeRefreshRecyclerViewVu implements ProgressVu<List<ChineseZodiacVo>> {
+
+
+    private View.OnClickListener listener;
+
+    public void setErrorRetryListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
-    public View getView() {
-        return view;
-    }
-    @Override
     public void showLoading() {
-        LogUtils.d("showLoading");
+        iProgressListener.showLoading();
     }
 
     @Override
     public void showEmpty() {
-        LogUtils.d("showEmpty");
+        Drawable emptyDrawable=getView().getResources().getDrawable(R.drawable.default_progress_empty);
+        String emptyTextTile=getView().getResources().getString(R.string.default_progress_empty);
+        String emptyTextContent=getView().getResources().getString(R.string.default_progress_emptyContent);
+        List<Integer> skipIds=new ArrayList<>();
+        iProgressListener.showEmpty(emptyDrawable,emptyTextTile,emptyTextContent,skipIds);
     }
 
     @Override
     public void showError(Throwable e) {
-        LogUtils.d(e);
+        Drawable emptyDrawable=getView().getResources().getDrawable(R.drawable.default_progress_empty);
+        String emptyTextTile=getView().getResources().getString(R.string.default_progress_empty);
+        String emptyTextContent=getView().getResources().getString(R.string.default_progress_emptyContent);
+        String errorButtonText=getView().getResources().getString(R.string.default_progress_emptyContent);
+        iProgressListener.showError(emptyDrawable,emptyTextTile,emptyTextContent,errorButtonText,listener);
     }
 
     @Override
     public void showContent() {
-        LogUtils.d("showContent");
+        iProgressListener.showContent();
     }
 
     @Override
-    public void onNext(List<Hk6UiData> hk6UiDatas) {
-        LogUtils.i(hk6UiDatas);
+    public void onNext(List<ChineseZodiacVo> chineseZodiacVos) {
+        if(mAdapter.getDatas().isEmpty()&&chineseZodiacVos.isEmpty()){
+            showEmpty();
+            return;
+        }
+        mAdapter.updateItems(chineseZodiacVos,true);
+        showContent();
+    }
+
+    @Override
+    public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
+        return new ChineseZodiacProbilityAdapter(context);
+    }
+
+    @Override
+    protected void onCreateContentView(ViewStub contentStub) {
+        super.onCreateContentView(contentStub);
+
     }
 }

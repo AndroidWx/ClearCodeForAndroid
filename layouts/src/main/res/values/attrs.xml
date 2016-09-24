@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="floworientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="debugDraw" format="boolean" />
+        <attr name="divider_size" format="dimension" />
+        <attr name="divider_color" format="color" />
+        <attr name="android:gravity" />
+        <attr name="maxCountInRow" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean" />
+        <attr name="layout_horizontalSpacing" format="dimension" />
+        <attr name="layout_verticalSpacing" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="BorderableViews">
+        <attr name="borders">
+            <flag name="left" value="0x01" />
+            <flag name="right" value="0x02" />
+            <flag name="top" value="0x04" />
+            <flag name="bottom" value="0x08" />
+        </attr>
+        <attr name="borderInsidePadding" format="boolean" />
+        <attr name="borderWidth__" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderRight" format="reference" />
+        <attr name="borderRightColor" format="color" />
+        <attr name="borderRightSize" format="dimension" />
+        <attr name="borderBottom" format="reference" />
+        <attr name="borderBottomColor" format="color" />
+        <attr name="borderBottomSize" format="dimension" />
+        <attr name="borderTopPaddingLeft" format="dimension" />
+        <attr name="borderTopPaddingRight" format="dimension" />
+        <attr name="borderBottomPaddingLeft" format="dimension" />
+        <attr name="borderBottomPaddingRight" format="dimension" />
+        <attr name="borderRightPaddingTop" format="dimension" />
+        <attr name="borderRightPaddingBottom" format="dimension" />
+        <attr name="borderLeftPaddingTop" format="dimension" />
+        <attr name="borderLeftPaddingBottom" format="dimension" />
+        <attr name="borderLeft" format="reference" />
+        <attr name="borderLeftColor" format="color" />
+        <attr name="borderLeftSize" format="dimension" />
+        <attr name="borderTop" format="reference" />
+        <attr name="borderTopColor" format="color" />
+        <attr name="borderTopSize" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RadioBadgeView">
+        <attr name="badgebackground" format="reference" />
+        <attr name="badgemargin" format="dimension" />
+        <attr name="badgetextsize" format="dimension" />
+        <attr name="badgetextcolor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="PageIndicator">
+        <attr name="itemspace" format="dimension" />
+        <attr name="itemradius" format="dimension" />
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="AlphabetNavigator">
+        <attr name="alphalist" format="reference" />
+        <attr name="alphaspace" format="dimension" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="alphabet" format="reference" />
+        <attr name="alphadialog" format="reference" />
+        <attr name="alphatoptextlinelen" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="Badge">
+        <attr name="badgePosition">
+            <flag name="topleft" value="0x01" />
+            <flag name="topright" value="0x02" />
+            <flag name="bottomleft" value="0x04" />
+            <flag name="bottomright" value="0x08" />
+        </attr>
+        <attr name="badgeResource" format="reference" />
+        <attr name="badgeMargin" format="dimension" />
+        <attr name="badgePadding" format="dimension" />
+        <attr name="badgeRadius" format="dimension" />
+        <attr name="badgeColor" format="color" />
+        <attr name="badgePaddingTopAdd" format="dimension" />
+        <attr name="badgePaddingTopSub" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="Hint">
+        <attr name="hintPosition">
+            <flag name="topleft" value="0x01" />
+            <flag name="topright" value="0x02" />
+            <flag name="bottomleft" value="0x04" />
+            <flag name="bottomright" value="0x08" />
+            <flag name="center" value="0x16" />
+        </attr>
+        <attr name="hintResource" format="reference" />
+        <attr name="hintMargin" format="dimension" />
+        <attr name="hintPadding" format="dimension" />
+        <attr name="hintMargin2" format="dimension" />
+        <attr name="hintPadding2" format="dimension" />
+        <attr name="hintRadius" format="dimension" />
+        <attr name="hintColor" format="color" />
+        <attr name="hintText" format="string" />
+        <attr name="hintText2" format="string" />
+        <attr name="hintTextSize" format="dimension" />
+        <attr name="hintWidth" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="mutate_background" format="boolean" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="border__width" format="dimension" />
+        <attr name="border__color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="Wheelview">
+        <attr name="background_value" format="reference" />
+        <attr name="background_wheel" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="Passwordcell">
+        <attr name="passwordBorderColor" format="color" />
+        <attr name="passwordBorderWidth" format="dimension" />
+        <attr name="passwordBorderRadius" format="dimension" />
+        <attr name="passwordResource" format="reference" />
+        <attr name="passwordChar" format="reference" />
+        <attr name="passwordWidth" format="dimension" />
+        <attr name="passwordHeight" format="dimension" />
+        <attr name="android:maxLength" />
+        <attr name="passwordSeperatorWidth" format="dimension" />
+        <attr name="passwordSeperatorColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="HoloCircularProgressBar">
+        <attr name="stroke_width" format="dimension" />
+        <attr name="progress" format="float" />
+        <attr name="marker_progress" format="float" />
+        <attr name="progress_color" format="color" />
+        <attr name="progress_background_color" format="color" />
+        <attr name="thumb_visible" format="boolean" />
+        <attr name="marker_visible" format="boolean" />
+        <attr name="android:gravity" />
+    </declare-styleable>
+
+    <attr name="circularProgressBarStyle" format="reference" />
+    <attr name="hlv_listViewStyle" format="reference" />
+    <attr name="hlv_absHListViewStyle" format="reference" />
+    <attr name="hlv_listPreferredItemWidth" format="dimension" />
+    <attr name="hlv_expandableListViewStyle" format="reference" />
+
+    <declare-styleable name="HListView">
+        <attr name="android:entries" />
+        <attr name="android:divider" />
+        <attr name="hlv_dividerWidth" format="dimension" />
+        <attr name="hlv_headerDividersEnabled" format="boolean" />
+        <attr name="hlv_footerDividersEnabled" format="boolean" />
+        <attr name="hlv_overScrollHeader" format="reference|color" />
+        <attr name="hlv_overScrollFooter" format="reference|color" />
+
+        <!--
+		When "wrap_content" is used as value of the layout_height property.
+		Pass the position, inside the adapter, of the view being used to measure the view
+		or '-1' to use the default behavior ( default is -1 )
+        -->
+        <attr name="hlv_measureWithChild" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="AbsHListView">
+        <attr name="android:listSelector" />
+        <attr name="android:smoothScrollbar" />
+        <attr name="android:drawSelectorOnTop" />
+        <attr name="android:cacheColorHint" />
+        <attr name="android:scrollingCache" />
+        <attr name="android:choiceMode" />
+        <attr name="hlv_stackFromRight" format="boolean" />
+        <attr name="hlv_transcriptMode">
+            <enum name="disabled" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="alwaysScroll" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ExpandableHListView">
+        <attr name="hlv_indicatorGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="fill_vertical" value="0x70" />
+            <flag name="center_horizontal" value="0x01" />
+            <flag name="fill_horizontal" value="0x07" />
+            <flag name="center" value="0x11" />
+            <flag name="fill" value="0x77" />
+            <flag name="clip_vertical" value="0x80" />
+            <flag name="clip_horizontal" value="0x08" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="hlv_childIndicatorGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="fill_vertical" value="0x70" />
+            <flag name="center_horizontal" value="0x01" />
+            <flag name="fill_horizontal" value="0x07" />
+            <flag name="center" value="0x11" />
+            <flag name="fill" value="0x77" />
+            <flag name="clip_vertical" value="0x80" />
+            <flag name="clip_horizontal" value="0x08" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="hlv_childDivider" format="reference|color" />
+        <attr name="hlv_groupIndicator" format="reference" />
+        <attr name="hlv_childIndicator" format="reference" />
+
+        <!-- after gravity for the indicator has been set -->
+        <!-- a custom padding can be set -->
+        <attr name="hlv_indicatorPaddingLeft" format="dimension" />
+        <attr name="hlv_indicatorPaddingTop" format="dimension" />
+
+        <!-- after gravity for the child indicator has been set -->
+        <!-- a custom padding can be set -->
+        <attr name="hlv_childIndicatorPaddingLeft" format="dimension" />
+        <attr name="hlv_childIndicatorPaddingTop" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="TwoWayView">
+
+        <!-- Imported from View -->
+        <attr name="android:id" />
+        <attr name="android:tag" />
+        <attr name="android:scrollX" />
+        <attr name="android:scrollY" />
+        <attr name="android:background" />
+        <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingBottom" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:focusable" />
+        <attr name="android:focusableInTouchMode" />
+        <attr name="android:visibility" />
+        <attr name="android:fitsSystemWindows" />
+        <attr name="android:scrollbars" />
+        <attr name="android:scrollbarStyle" />
+        <attr name="android:isScrollContainer" />
+        <attr name="android:fadeScrollbars" />
+        <attr name="android:scrollbarFadeDuration" />
+        <attr name="android:scrollbarDefaultDelayBeforeFade" />
+        <attr name="android:scrollbarSize" />
+        <attr name="android:scrollbarThumbHorizontal" />
+        <attr name="android:scrollbarThumbVertical" />
+        <attr name="android:scrollbarTrackHorizontal" />
+        <attr name="android:scrollbarTrackVertical" />
+        <attr name="android:scrollbarAlwaysDrawHorizontalTrack" />
+        <attr name="android:scrollbarAlwaysDrawVerticalTrack" />
+        <attr name="android:fadingEdge" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+        <attr name="android:nextFocusLeft" />
+        <attr name="android:nextFocusRight" />
+        <attr name="android:nextFocusUp" />
+        <attr name="android:nextFocusDown" />
+        <attr name="android:nextFocusForward" />
+        <attr name="android:clickable" />
+        <attr name="android:longClickable" />
+        <attr name="android:saveEnabled" />
+        <attr name="android:filterTouchesWhenObscured" />
+        <attr name="android:drawingCacheQuality" />
+        <attr name="android:keepScreenOn" />
+        <attr name="android:duplicateParentState" />
+        <attr name="android:minHeight" />
+        <attr name="android:minWidth" />
+        <attr name="android:soundEffectsEnabled" />
+        <attr name="android:hapticFeedbackEnabled" />
+        <attr name="android:contentDescription" />
+        <attr name="android:onClick" />
+        <attr name="android:overScrollMode" />
+        <attr name="android:alpha" />
+        <attr name="android:translationX" />
+        <attr name="android:translationY" />
+        <attr name="android:transformPivotX" />
+        <attr name="android:transformPivotY" />
+        <attr name="android:rotation" />
+        <attr name="android:rotationX" />
+        <attr name="android:rotationY" />
+        <attr name="android:scaleX" />
+        <attr name="android:scaleY" />
+        <attr name="android:verticalScrollbarPosition" />
+        <attr name="android:layerType" />
+        <attr name="android:layoutDirection" />
+        <attr name="android:textDirection" />
+        <attr name="android:textAlignment" />
+
+        <!-- Imported from Android -->
+        <attr name="android:orientation" />
+
+        <!-- Imported from AbsListView -->
+        <attr name="android:choiceMode" />
+        <attr name="android:drawSelectorOnTop" />
+        <attr name="android:listSelector" />
+    </declare-styleable>
+    <!-- 交错的GridView -->
+    <declare-styleable name="StaggeredGridView">
+        <attr name="drawSelectorOnTop" format="boolean" />
+        <attr name="numColumns" format="integer" />
+        <attr name="itemMargin" format="dimension" />
+    </declare-styleable>
+
+    <!-- Give ourselves access to MarginLayout's styleables -->
+    <declare-styleable name="ViewGroup_MarginLayout">
+        <attr name="android:layout_margin" />
+        <attr name="android:layout_marginLeft" />
+        <attr name="android:layout_marginTop" />
+        <attr name="android:layout_marginRight" />
+        <attr name="android:layout_marginBottom" />
+    </declare-styleable>
+    <declare-styleable name="GridLayout_Layout">
+
+        <!--
+        The row boundary delimiting the top of the group of cells
+        occupied by this view.
+        -->
+        <attr name="layout_row" format="integer" />
+        <!--
+        The row span: the difference between the bottom and top
+        boundaries delimiting the group of cells occupied by this view.
+        The default is one.
+        See {@link android.widget.GridLayout.Spec}.
+        -->
+        <attr name="layout_rowSpan" format="integer" min="1" />
+        <!--
+        The column boundary delimiting the left of the group of cells
+        occupied by this view.
+        -->
+        <attr name="android:layout_column" />
+        <!--
+        The column span: the difference between the right and left
+        boundaries delimiting the group of cells occupied by this view.
+        The default is one.
+        See {@link android.widget.GridLayout.Spec}.
+        -->
+        <attr name="layout_columnSpan" format="integer" min="1" />
+        <!--
+        Gravity specifies how a component should be placed in its group of cells.
+        The default is LEFT | BASELINE.
+        See {@link android.widget.GridLayout.LayoutParams#setGravity(int)}.
+        -->
+        <attr name="android:layout_gravity" />
+    </declare-styleable>
+    <declare-styleable name="GridLayout">
+
+        <!--
+        The orientation property is not used during layout. It is only used to
+        allocate row and column parameters when they are not specified by its children's
+        layout paramters. GridLayout works like LinearLayout in this case;
+        putting all the components either in a single row or in a single column -
+        depending on the value of this flag. In the horizontal case, a columnCount
+        property may be additionally supplied to force new rows to be created when a
+        row is full. The rowCount attribute may be used similarly in the vertical case.
+        The default is horizontal.
+        -->
+        <attr name="android:orientation" />
+        <!-- The maxmimum number of rows to create when automatically positioning children. -->
+        <attr name="rowCount" format="integer" />
+        <!-- The maxmimum number of columns to create when automatically positioning children. -->
+        <attr name="columnCount" format="integer" />
+        <!--
+        When set to true, tells GridLayout to use default margins when none are specified
+        in a view's layout parameters.
+        The default value is false.
+        See {@link android.widget.GridLayout#setUseDefaultMargins(boolean)}.
+        -->
+        <attr name="useDefaultMargins" format="boolean" />
+        <!--
+        When set to alignMargins, causes alignment to take place between the outer
+        boundary of a view, as defined by its margins. When set to alignBounds,
+        causes alignment to take place between the edges of the view.
+        The default is alignMargins.
+        See {@link android.widget.GridLayout#setAlignmentMode(int)}.
+        -->
+        <attr name="alignmentMode" />
+        <!--
+        When set to true, forces row boundaries to appear in the same order
+        as row indices.
+        The default is true.
+        See {@link android.widget.GridLayout#setRowOrderPreserved(boolean)}.
+        -->
+        <attr name="rowOrderPreserved" format="boolean" />
+        <!--
+        When set to true, forces column boundaries to appear in the same order
+        as column indices.
+        The default is true.
+        See {@link android.widget.GridLayout#setColumnOrderPreserved(boolean)}.
+        -->
+        <attr name="columnOrderPreserved" format="boolean" />
+    </declare-styleable>
+
+    <!-- 默认的TileAdapterView的样式. -->
+    <attr name="tileAdapterViewStyle" format="reference" />
+
+    <!-- Alignment constants. -->
+    <attr name="alignmentMode">
+
+        <!--
+        Align the bounds of the children.
+        See {@link android.widget.GridLayout#ALIGN_BOUNDS}.
+        -->
+        <enum name="alignBounds" value="0" />
+        <!--
+        Align the margins of the children.
+        See {@link android.widget.GridLayout#ALIGN_MARGINS}.
+        -->
+        <enum name="alignMargins" value="1" />
+    </attr>
+
+    <declare-styleable name="TileListView">
+
+        <!-- 引用一个资源数组 array resource作为平铺子项内容装配在TileAdapterView中 -->
+        <attr name="entries" format="reference" />
+
+        <!-- 引用一个布局对象,作为平铺子项数据模型对象的渲染模板 -->
+        <attr name="tileItem" format="reference" />
+
+        <!-- 平铺子项渲染时的缩放方式 -->
+        <attr name="scaleType">
+            <enum name="matrix" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerCrop" value="6" />
+            <enum name="centerInside" value="7" />
+        </attr>
+
+        <!-- 在每个平铺子项之间的 填充占空位置的Drawable 或者 color -->
+        <!-- <attr name="divider" format="reference|color" /> -->
+
+
+        <!-- 占空空间的大小,如果没指定,就会使用内部的值 -->
+        <attr name="decileGap" format="dimension" />
+
+        <!-- 是否启用在平铺方案划分矩阵时动画的缓冲机制 -->
+        <attr name="decileAnimationCacheEnabled" format="boolean" />
+
+        <!-- 分隔的方向 -->
+        <attr name="decileOrientation">
+            <enum name="landscape" value="2" />
+            <enum name="portrait" value="1" />
+            <enum name="land" value="2" />
+            <enum name="port" value="1" />
+        </attr>
+
+        <!-- 平铺子容器是否使用转场动画 -->
+        <attr name="enableAnimation" format="boolean" />
+        <!-- 转场的动画的时长 -->
+        <attr name="animatedTransitionDuration" format="integer" />
+        <!-- 入场特效动画 -->
+        <attr name="tileInAnimation" format="reference" />
+        <!-- 退场特效动画 -->
+        <attr name="tileOutAnimation" format="reference" />
+
+        <!-- 平铺的列数 -->
+        <attr name="col" format="integer" />
+        <!-- 平铺的行数 -->
+        <attr name="row" format="integer" />
+        <!-- 从第n个一级子容器开始，包括该子容器，对每个子容器再进行划分 n >= 1 -->
+        <attr name="clipPosition" format="integer" />
+        <!-- 二级列数 -->
+        <attr name="clipCol" format="integer" />
+        <!-- 二级行数 -->
+        <attr name="clipRow" format="integer" />
+        <!-- 进行二级划分的一级子容器的个数 -->
+        <attr name="clipCount" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="SVGImageView">
+
+        <!-- Location of the SVG document. -->
+        <attr name="svg" format="reference|string" />
+    </declare-styleable>
+    <declare-styleable name="JazzyViewPager">
+        <attr name="style">
+            <enum name="standard" value="0" />
+            <enum name="tablet" value="1" />
+            <enum name="cubein" value="2" />
+            <enum name="cubeout" value="3" />
+            <enum name="flipvertical" value="4" />
+            <enum name="fliphorizontal" value="5" />
+            <enum name="stack" value="6" />
+            <enum name="zoomin" value="7" />
+            <enum name="zoomout" value="8" />
+            <enum name="rotateup" value="9" />
+            <enum name="rotatedown" value="10" />
+            <enum name="accordion" value="11" />
+        </attr>
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="outlineEnabled" format="boolean" />
+        <attr name="outlineColor" format="color|reference" />
+    </declare-styleable>
+    
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLines" format="integer" />
+        <attr name="animDuration" format="integer" />
+        <attr name="animAlphaStart" format="float" />
+        <attr name="expandDrawable" format="reference" />
+        <attr name="collapseDrawable" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="BorderRippleViewRelativeLayout">
+        <attr name="rv_alpha" format="integer" />
+        <attr name="rv_framerate" format="integer"/>
+        <attr name="rv_rippleDuration" format="integer"/>
+        <attr name="rv_zoomDuration" format="integer" />
+        <attr name="rv_color" format="color" />
+        <attr name="rv_centered" format="boolean" />
+        <attr name="rv_type" format="enum">
+            <enum name="simpleRipple" value="0"/>
+            <enum name="doubleRipple" value="1"/>
+            <enum name="rectangle" value="2" />
+        </attr>
+        <attr name="rv_ripplePadding" format="dimension" />
+        <attr name="rv_zoom" format="boolean" />
+        <attr name="rv_zoomScale" format="float" />
+
+    </declare-styleable>
+    <declare-styleable name="RippleView">
+        <attr name="mRippleColor" format="color" />
+        <attr name="mAlphaFactor" format="float" />
+        <attr name="mHover" format="boolean" />
+    </declare-styleable>
+</resources>

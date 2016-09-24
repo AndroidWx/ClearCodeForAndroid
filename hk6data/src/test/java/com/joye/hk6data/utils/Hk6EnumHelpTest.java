@@ -2,12 +2,9 @@ package com.joye.hk6data.utils;
 
 import com.joye.hk6data.constants.Hk6Color;
 import com.joye.hk6data.constants.PrimeCompositeNumber;
-import com.joye.hk6data.utils.Hk6EnumHelp;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,9 +28,13 @@ public class Hk6EnumHelpTest {
         assertEquals(PrimeCompositeNumber.Prime, hk6EnumHelp.getPrimeCompositeNumber(5));
     }
 
+
+
     @Test
     public void testColor() throws Exception {
         assertEquals(Hk6Color.Red, hk6EnumHelp.getHk6Color(5));
-
+        for (int i=1; i<50;i++ ) {
+             System.out.println("<item name=\"tv_item\""+i+"\"type\"=\"id\"/>");
+        }
     }
 }

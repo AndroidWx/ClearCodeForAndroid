@@ -7,30 +7,29 @@ import com.joye.hk6.internal.di.component.Hk6Component;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.mvp.BasePresenterActivity;
 import com.joye.hk6.presenter.ChineseZodiacProbilityPresenter;
-import com.joye.hk6.vu.ChineseZodiacProbilityFragmentVu;
-import com.joye.hk6.vu.ScrollingActivityVu;
+import com.joye.hk6.vu.ScrollVu;
 
 import javax.inject.Inject;
 
 
-public class ScrollingActivity extends BasePresenterActivity<ChineseZodiacProbilityFragmentVu> {
+public class ScrollingActivity extends BasePresenterActivity<ScrollVu> {
     @Inject
     StatusBarHelp barHelp;
-    @Inject
-    ChineseZodiacProbilityPresenter chineseZodiacProbilityPresenter;
+//    @Inject
+//    ChineseZodiacProbilityPresenter chineseZodiacProbilityPresenter;
     Hk6Component hk6Component;
     String date;
     @Override
     protected void onBindVu() {
         super.onBindVu();
         barHelp.setStatusBarTintEnable(true, R.color.colorAccent);
-        chineseZodiacProbilityPresenter.setView(vu);
-        chineseZodiacProbilityPresenter.initalize();
+//        chineseZodiacProbilityPresenter.setView(vu);
+//         chineseZodiacProbilityPresenter.initalize();
     }
 
     @Override
-    public Class<ChineseZodiacProbilityFragmentVu> getVuClass() {
-        return ChineseZodiacProbilityFragmentVu.class;
+    public Class<ScrollVu> getVuClass() {
+        return ScrollVu.class;
     }
 
     @Override
@@ -40,6 +39,6 @@ public class ScrollingActivity extends BasePresenterActivity<ChineseZodiacProbil
                 .hk6ApplicationComponent(getApplicationComponent())
                 .statusbarActivityModule(getActivityModule())
                 .hk6Module(new Hk6Module(date)).build();
-        hk6Component.inject(this);
+//        hk6Component.inject(this);
     }
 }

@@ -21,8 +21,6 @@ import android.widget.FrameLayout.LayoutParams;
 
 import java.lang.reflect.Method;
 
-import javax.inject.Singleton;
-
 /**
  * Created by Rison on 2015/12/17.
  * 状态栏工具类

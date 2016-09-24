@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import com.joye.hk6.util.JoyeStatusBarUtil;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  * Created by W,x (JoyeWang)

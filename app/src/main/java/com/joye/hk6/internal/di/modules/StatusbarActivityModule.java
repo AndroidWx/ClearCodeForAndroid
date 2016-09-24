@@ -6,8 +6,6 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.basepresentation.internal.di.modules.ActivityModule;
 import com.joye.hk6.StatusBarHelp;
 
-import javax.inject.Inject;
-
 import dagger.Module;
 import dagger.Provides;
 

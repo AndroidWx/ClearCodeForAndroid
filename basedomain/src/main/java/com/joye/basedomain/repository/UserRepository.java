@@ -1,12 +1,10 @@
 package com.joye.basedomain.repository;
 
-import com.joye.basedomain.IUser;
 import com.joye.basedomain.User;
 
 import java.util.List;
 
 import rx.Observable;
-import rx.Observer;
 
 /**
  * Created by W,x (JoyeWang)

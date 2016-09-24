@@ -1,7 +1,6 @@
 package com.joye.hk6data.cache.impl;
 
 import android.content.Context;
-import android.content.pm.ProviderInfo;
 
 import com.google.gson.reflect.TypeToken;
 import com.joye.basedata.cache.CacheEvictor;
@@ -13,8 +12,6 @@ import com.joye.hk6data.utils.CollectionUtils;
 import com.joye.hk6data.utils.GsonFactory;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -72,7 +69,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         if(!isCached(date)){
             String jsonContent=GsonFactory.SingleTon.create().toJson(hk6EntityList,typeToken.getType());
             this.executeAsynchronously(new CacheWriter(fileManager,hk6EntityListFile,jsonContent));
-            setLastCacheUpdateTimeMillis( hk6EntityList.get(hk6EntityList.size()-1).getOpentimestamp());
+            setLastCacheUpdateTimeMillis( hk6EntityList.get(0).getOpentimestamp());
         }
 
     }
@@ -85,7 +82,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
 
     @Override
     public boolean isExpired() {
-        long currentTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis()/1000;
         long lastUpdateTime = this.getLastCacheUpdateTimeMillis();
 
         boolean expired = ((currentTime - lastUpdateTime) > EXPIRATION_TIME);

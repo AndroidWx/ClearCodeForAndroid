@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.joye.basepresentation.internal.di.HasComponent;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/22.
@@ -26,7 +28,7 @@ public abstract class BasePresenterFragment<V extends Vu> extends Fragment {
         try {
             vu = getVuClass().newInstance();
             onVuCreate();
-            vu.init(inflater, container);
+             vu.init(inflater, container);
             view = vu.getView();
             onBindVu();
 
@@ -56,7 +58,10 @@ public abstract class BasePresenterFragment<V extends Vu> extends Fragment {
     protected void onBindVu() {
     }
 
-    ;
+    ;  @SuppressWarnings("unchecked")
+    protected <C> C getComponent(Class<C> componentType) {
+        return componentType.cast(((HasComponent<C>)getActivity()).getComponent());
+    }
 
     protected abstract Class<V> getVuClass();
 

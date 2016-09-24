@@ -1,1 +1,1 @@
-include ':app', ':basedata', ':basedomain', ':hk6data', ':hk6domain', ':basepresentation'
+include ':app', ':basedata', ':basedomain', ':hk6data', ':hk6domain', ':basepresentation', ':layouts'

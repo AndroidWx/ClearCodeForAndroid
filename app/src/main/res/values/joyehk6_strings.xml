@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="report_left_expect">期数</string>
+    <string name="report_left_opencode">开奖号码</string>
+    <string name="default_progress_empty">开奖号码</string>
+    <string name="default_progress_error">开奖号码</string>
+    <string name="default_progress_emptyContent">开奖号码</string>
+    <string name="default_progress_errorContent">开奖号码</string>
+    <string name="default_progress_errorbuttonText">开奖号码</string>
+</resources>

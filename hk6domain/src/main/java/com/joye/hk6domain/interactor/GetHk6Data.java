@@ -8,6 +8,7 @@ import com.joye.hk6domain.repository.Hk6Repository;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.functions.Func1;
 
 /**
  * Created by W,x (JoyeWang)
@@ -17,8 +18,8 @@ import rx.Observable;
  */
 
 public class GetHk6Data extends UseCase {
-    private final Hk6Repository hk6Repository;
-    private final String date;
+    protected final Hk6Repository hk6Repository;
+    protected final String date;
     @Inject
     public GetHk6Data(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
         super(threadExecutor, postExecutionThread);

@@ -1,7 +1,5 @@
 package com.joye.hk6data.repository;
 
-import android.content.Context;
-
 import com.joye.hk6data.entity.DataTransformerEntity;
 import com.joye.hk6data.entity.Hk6Entity;
 import com.joye.hk6data.repository.datasource.Hk6DataStore;
@@ -50,7 +48,7 @@ public class Hk6DataRepository  implements Hk6Repository {
                     uiData.setEvictors(dataTransformerEntity.getmEvictors());
                     uiData.setOpentime(hk6Entity.getOpentime());
                     uiData.setOpentimestamp(hk6Entity.getOpentimestamp());
-                    uiData.setWinningNumber(dataTransformerEntity.getWinningNumber());
+                    uiData.setOpenCode(Integer.parseInt(dataTransformerEntity.getWinningNumber()));
                     retListData.add(uiData);
                 }
                 return Observable.just(retListData);

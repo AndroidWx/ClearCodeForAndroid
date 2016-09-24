@@ -1,7 +1,6 @@
 package com.joye.basedata.repository.datasource;
 
 import com.joye.basedata.entity.UserEntity;
-import com.joye.basedomain.IUser;
 
 import java.util.List;
 

@@ -5,8 +5,6 @@ import com.joye.hk6data.constants.Hk6Size;
 import com.joye.hk6data.constants.Parity;
 import com.joye.hk6data.constants.PrimeCompositeNumber;
 
-import java.util.Arrays;
-
 import javax.inject.Singleton;
 
 /**

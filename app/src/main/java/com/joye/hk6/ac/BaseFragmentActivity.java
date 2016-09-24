@@ -1,9 +1,9 @@
 package com.joye.hk6.ac;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.joye.hk6.Hk6AndroidApplication;
@@ -29,7 +29,8 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
    * @param fragment The fragment to be added.
    */
   protected void addFragment(int containerViewId, Fragment fragment) {
-    FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
+    FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+            .beginTransaction();
     fragmentTransaction.add(containerViewId, fragment);
     fragmentTransaction.commit();
   }

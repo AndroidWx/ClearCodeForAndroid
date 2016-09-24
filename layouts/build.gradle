@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    //获取整体配置
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+    }
+}
+
+dependencies {
+    compile 'com.android.support:percent:24.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+
+}
