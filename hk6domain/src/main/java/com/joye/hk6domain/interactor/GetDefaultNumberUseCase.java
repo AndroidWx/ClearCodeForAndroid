@@ -21,10 +21,10 @@ import rx.functions.Func1;
  * Remeark:
  */
 
-public class GetChineseZodiacUseCase extends GetHk6Data {
+public class GetDefaultNumberUseCase extends GetHk6Data {
 
 
-    public GetChineseZodiacUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
+    public GetDefaultNumberUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
         super(threadExecutor, postExecutionThread, hk6Repository, date);
     }
 

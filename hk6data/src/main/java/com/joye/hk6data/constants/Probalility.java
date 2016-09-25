@@ -8,6 +8,11 @@ package com.joye.hk6data.constants;
  */
 
 public class Probalility {
+
+    public static class  Region{
+        public static final double Default=0.14285714285714;
+    }
+
     //生肖的理论概率
     public static class ChineseZodiac{
         /**
