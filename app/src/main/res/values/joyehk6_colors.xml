@@ -4,5 +4,11 @@
     <color name="com_border">#FFCCCCCC</color>
     <color name="tab_bg_color">#F6F6F6</color>
     <color name="gray">#FFf3f3f3</color>
+    <color name="probalility_0.95">#dc910505</color>
+    <color name="probalility_0.96">#dcba0707</color>
+    <color name="probalility_0.97">#dcca0808</color>
+    <color name="probalility_0.98">#dccf0909</color>
+    <color name="probalility_0.99">#dce20707</color>
+    <color name="probalility_0.999">#dcf90404</color>
 </resources>
 

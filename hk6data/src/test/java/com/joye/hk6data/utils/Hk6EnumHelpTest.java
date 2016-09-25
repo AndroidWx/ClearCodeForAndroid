@@ -1,7 +1,8 @@
 package com.joye.hk6data.utils;
 
-import com.joye.hk6data.constants.Hk6Color;
-import com.joye.hk6data.constants.PrimeCompositeNumber;
+import com.joye.hk6domain.constants.Hk6Color;
+import com.joye.hk6domain.constants.Hk6EnumHelp;
+import com.joye.hk6domain.constants.PrimeCompositeNumber;
 
 import org.junit.Before;
 import org.junit.Test;

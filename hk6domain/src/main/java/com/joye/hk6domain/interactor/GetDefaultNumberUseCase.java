@@ -2,6 +2,7 @@ package com.joye.hk6domain.interactor;
 
 import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
+import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.entity.Hk6UiData;
 import com.joye.hk6domain.repository.Hk6Repository;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
@@ -37,19 +38,25 @@ public class GetDefaultNumberUseCase extends GetHk6Data {
                 List<ChineseZodiacVo> list = new ArrayList<ChineseZodiacVo>(hk6UiDatas.size());
                 Map<String,Integer> map=null;
                 Collections.reverse(hk6UiDatas);
-                //ä¾¿åˆ©æ‰€æœ‰çš„æ•°æ®
+                //±ãÀûËùÓĞµÄÊı¾İ
                 for (Hk6UiData itemVo:hk6UiDatas){
                     ChineseZodiacVo vo = new ChineseZodiacVo(itemVo);
                     if(map==null){
                         map=vo.getMap();
                     }
-                    //ä¾¿åˆ©49ä¸ªæ•°å­—
+                    for (NumberProperty number:NumberProperty.values()){
+                        //Èç¹ûÕâÒ»ÆÚ¿ª½±½á¹û²»µÈÓÚ  Õâ¸öÊı×Ö
+                        //ÒÅÂ©Êı¾İ+1;
+                        int value=map.get("item"+number.getValue());
+                        map.put("item"+number.getValue(),vo.getOpenCode()!=number.getValue()?value+1:0);
+                    }
+                   /* //±ãÀû49¸öÊı×Ö
                     for (int i = 1; i < 50; i++) {
-                        //å¦‚æœè¿™ä¸€æœŸå¼€å¥–ç»“æœä¸ç­‰äº  è¿™ä¸ªæ•°å­—
-                        //é—æ¼æ•°æ®+1;
+                        //Èç¹ûÕâÒ»ÆÚ¿ª½±½á¹û²»µÈÓÚ  Õâ¸öÊı×Ö
+                        //ÒÅÂ©Êı¾İ+1;
                         int value=map.get("item"+i);
                         map.put("item"+i,vo.getOpenCode()!=i?value+1:0);
-                    }
+                    }*/
                     vo.setMap(map);
                     list.add(vo);
                 }

@@ -6,10 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.hk6.internal.di.component.Hk6Component;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
-import com.joye.hk6.mvp.BasePresenterFragment;
 import com.joye.hk6.presenter.ChineseZodiacProbilityPresenter;
 import com.joye.hk6.vu.ChineseZodiacProbilityFragmentVu;
-import com.joye.hk6.vu.SwipeRefreshRecyclerViewVu;
 
 import javax.inject.Inject;
 

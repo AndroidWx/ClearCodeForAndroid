@@ -21,11 +21,7 @@
 
         </activity>
         <activity
-            android:name=".view.Main2Activity"
-            android:label="@string/title_activity_main2" />
-        <activity
             android:name=".view.ChineseZodiacProbilityActivity"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_chinese_zodiac_probility">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -16,8 +16,8 @@ import rx.Observable;
 public interface Hk6Repository {
     /**
      *
-     * @param date æˆªæ­¢æ—¶é—´
-     * @return è·å–å…­åˆå½©æ•°æ®
+     * @param date ½ØÖ¹Ê±¼ä
+     * @return »ñÈ¡ÁùºÏ²ÊÊı¾İ
      */
     Observable<List<Hk6UiData>> getHk6Data(String date);
 }

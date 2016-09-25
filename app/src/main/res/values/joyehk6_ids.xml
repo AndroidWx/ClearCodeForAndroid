@@ -10,4 +10,6 @@
     <item name="fpo_content" type="id"/>
     <item name="ctb_btn_back" type="id"/>
     <item name="ctb_title_label" type="id"/>
+    <item name="report_left_Big" type="id"/>
+    <item name="report_left_Small" type="id"/>
 </resources>

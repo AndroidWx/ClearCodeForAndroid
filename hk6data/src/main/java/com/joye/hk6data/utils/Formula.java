@@ -21,8 +21,17 @@ public class Formula {
      * @param p  理论中奖概率
      * @return 间隔期数，遗漏值
      */
-    public String lottery(double dc, double p) {
+    public static String lottery(double dc, double p) {
         return df.format(Math.log(1 - dc) / Math.log(1 - p));
     }
-
+    /**
+     * 世界上最流行的博彩公式
+     *
+     * @param dc 发生的可能性
+     * @param p  理论中奖概率
+     * @return 间隔期数，遗漏值
+     */
+    public static double lotteryDobule(double dc, double p) {
+        return  Math.log(1 - dc) / Math.log(1 - p) ;
+    }
 }

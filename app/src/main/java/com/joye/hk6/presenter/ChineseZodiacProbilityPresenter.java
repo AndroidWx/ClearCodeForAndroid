@@ -7,7 +7,6 @@ import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.mvp.Presenter;
 import com.joye.hk6.vu.ChineseZodiacProbilityFragmentVu;
-import com.joye.hk6.vu.SwipeRefreshRecyclerViewVu;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class ChineseZodiacProbilityPresenter implements Presenter<ChineseZodiacP
 
 
     @Inject
-    public ChineseZodiacProbilityPresenter(  @Named("GetChineseZodiacUseCase")UseCase getHk6DataUseCase) {
+    public ChineseZodiacProbilityPresenter(  @Named("GetSizeUseCase")UseCase getHk6DataUseCase) {
         this.mHk6DataUseCase = getHk6DataUseCase;
     }
 

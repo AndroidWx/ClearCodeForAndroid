@@ -1,6 +1,7 @@
 package com.joye.hk6domain.vo;
 
 
+import com.joye.hk6domain.constants.ChineseZodiac;
 import com.joye.hk6domain.entity.Hk6UiData;
 
 import java.util.HashMap;
@@ -31,9 +32,9 @@ public class ChineseZodiacVo extends Hk6UiData implements ReportRightI {
         setExpect(sup.getExpect());
         setOpenCode(sup.getOpenCode());
         map=new HashMap<>();
-        for(int i=1;i<50;i++){
-            map.put("item"+i,0);
-        }
+       for (ChineseZodiac chineseZodiac:ChineseZodiac.values()){
+           map.put(chineseZodiac.toString(),0);
+       }
     }
 
 

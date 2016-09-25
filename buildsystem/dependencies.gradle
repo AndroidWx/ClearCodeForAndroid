@@ -30,8 +30,8 @@ ext {
   retroGsonConverterVersion='2.1.0'
   retroRxAdapterVersion='2.1.0'
   javaxInject='1'
-  supportAannotation='23.4.0'
-  suportV4='23.4.0'
+  supportAannotation='23.1.0'
+  suportV4='23.1.0'
   /**
    * 待使用
   rxbinding='0.3.0'

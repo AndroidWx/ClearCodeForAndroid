@@ -2,11 +2,13 @@ package com.joye.hk6domain.interactor;
 
 import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
+import com.joye.hk6domain.constants.ChineseZodiac;
 import com.joye.hk6domain.entity.Hk6UiData;
 import com.joye.hk6domain.repository.Hk6Repository;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -37,19 +39,20 @@ public class GetChineseZodiacUseCase extends GetHk6Data {
                 List<ChineseZodiacVo> list = new ArrayList<ChineseZodiacVo>(hk6UiDatas.size());
                 Map<String,Integer> map=null;
                 Collections.reverse(hk6UiDatas);
-                //便利所有的数据
+                //�������е�����
                 for (Hk6UiData itemVo:hk6UiDatas){
                     ChineseZodiacVo vo = new ChineseZodiacVo(itemVo);
                     if(map==null){
                         map=vo.getMap();
                     }
-                    //便利49个数字
-                    for (int i = 1; i < 50; i++) {
-                        //如果这一期开奖结果不等于  这个数字
-                        //遗漏数据+1;
-                        int value=map.get("item"+i);
-                        map.put("item"+i,vo.getOpenCode()!=i?value+1:0);
+                    for (ChineseZodiac chineseZodiac:ChineseZodiac.values()){
+                        int value=map.get(chineseZodiac.name());
+                         map.put(chineseZodiac.name(),  !Arrays.asList(chineseZodiac.getNumbers()).contains(vo.getOpenCode())?value+1:0);
                     }
+//                    for (NumberProperty property:NumberProperty.values()){
+//                        int value=map.get(property.getChineseZodiac().name());
+//                        map.put(property.getChineseZodiac().name(), !Arrays.asList(property.getChineseZodiac().getNumbers()).contains(vo.getOpenCode())?value+1:0);
+//                    }
                     vo.setMap(map);
                     list.add(vo);
                 }

@@ -9,32 +9,32 @@ package com.joye.hk6domain.entity;
 
 public class Hk6UiData  implements ReportI{
     /**
-     * æœŸæ•°
+     * ÆÚÊı
      */
     private String expect;
     /**
-     * å¹³ç 
+     * Æ½Âë
      */
     private String[]evictors;
 
     /**
-     * ä¸­å¥–å·ç 
+     * ÖĞ½±ºÅÂë
      */
     private int openCode;
 
     /**
-     * å¼€å¥–æ—¶é—´
+     * ¿ª½±Ê±¼ä
      */
     private String opentime;
 
     /**
-     * å¼€å¥–æ—¶é—´æˆ³
+     * ¿ª½±Ê±¼ä´Á
      */
     private long opentimestamp;
 
     /**
      *
-     * @return å¼€å¥–æœŸæ•°
+     * @return ¿ª½±ÆÚÊı
      */
     public String getExpect() {
         return expect;
@@ -47,7 +47,7 @@ public class Hk6UiData  implements ReportI{
 
     /**
      *
-     * @return å¹³ç s
+     * @return Æ½Âës
      */
     public String[] getEvictors() {
         return evictors;
@@ -59,7 +59,7 @@ public class Hk6UiData  implements ReportI{
 
     /**
      *
-     * @return ä¸­å¥–å·ç 
+     * @return ÖĞ½±ºÅÂë
      */
     @Override
     public int getOpenCode() {
@@ -72,7 +72,7 @@ public class Hk6UiData  implements ReportI{
 
     /**
      *
-     * @return å¼€å¥–æ—¶é—´
+     * @return ¿ª½±Ê±¼ä
      */
     public String getOpentime() {
         return opentime;
@@ -84,7 +84,7 @@ public class Hk6UiData  implements ReportI{
 
     /**
      *
-     * @return å¼€å¥–æ—¶é—´æˆ³
+     * @return ¿ª½±Ê±¼ä´Á
      */
     public long getOpentimestamp() {
         return opentimestamp;

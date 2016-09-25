@@ -1,20 +1,18 @@
 package com.joye.hk6domain.entity;
 
-import java.math.BigDecimal;
-
 /**
  * Created by xiang on 16/5/16.
  */
 public interface ReportI {
 
     /**
-     * å¼€å¥–æœŸæ•°
+     * ¿ª½±ÆÚÊı
      * @return
      */
     String getExpect();
 
     /**
-     * å¼€å¥–å·ç 
+     * ¿ª½±ºÅÂë
      * @return
      */
     int getOpenCode();

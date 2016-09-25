@@ -1,6 +1,7 @@
 package com.joye.hk6domain.vo;
 
 
+import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.entity.Hk6UiData;
 
 import java.util.HashMap;
@@ -31,8 +32,8 @@ public class DefaultNumberVo extends Hk6UiData implements ReportRightI {
         setExpect(sup.getExpect());
         setOpenCode(sup.getOpenCode());
         map=new HashMap<>();
-        for(int i=1;i<50;i++){
-            map.put("item"+i,0);
+        for (NumberProperty numberProperty:NumberProperty.values()){
+            map.put(numberProperty.toString(),0);
         }
     }
 

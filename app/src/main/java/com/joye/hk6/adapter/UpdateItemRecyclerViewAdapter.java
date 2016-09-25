@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 public abstract class UpdateItemRecyclerViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> implements  IUpdateItem<T>{
     protected Context context;
     protected List<T> datas;
-    protected UpdateItemRecyclerViewAdapter(){
+     private UpdateItemRecyclerViewAdapter(){
     }
 
     //nothing ;
