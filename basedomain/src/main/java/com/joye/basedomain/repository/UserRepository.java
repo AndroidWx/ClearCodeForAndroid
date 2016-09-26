@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by W,x (JoyeWang)
  * on 2016/9/8.
  * 304622254@qq.com
- * Remeark: 用户存储库规范
+ * Remeark: �û��洢��淶
  *
  */
 

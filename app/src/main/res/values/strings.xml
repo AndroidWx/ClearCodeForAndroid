@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">HK6走势预警</string>
     <string name="title_activity_main">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -105,4 +105,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_chinese_zodiac_probility">ChineseZodiacProbilityActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

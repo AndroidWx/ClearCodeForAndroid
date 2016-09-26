@@ -4,7 +4,7 @@ package com.joye.basedomain.exception;
  * Created by W,x (JoyeWang)
  * on 2016/9/8.
  * 304622254@qq.com
- * Remeark:ç”¨äºç®¡ç†é»˜è®¤é”™è¯¯åŒ…è£…å¼‚å¸¸ã€‚
+ * Remeark:ÓÃÓÚ¹ÜÀíÄ¬ÈÏ´íÎó°ü×°Òì³£¡£
  */
 
 public class DefaultErrorBundle implements ErrorBundle {

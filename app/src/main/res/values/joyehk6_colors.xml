@@ -4,6 +4,7 @@
     <color name="com_border">#FFCCCCCC</color>
     <color name="tab_bg_color">#F6F6F6</color>
     <color name="gray">#FFf3f3f3</color>
+    <color name="window_background">#FFF5F5F5</color>
     <color name="lightPrimaryColor">#dcf90404</color>
     <color name="probalility_0.95">#dc910505</color>
     <color name="probalility_0.96">#dcba0707</color>

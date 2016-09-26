@@ -6,6 +6,7 @@ package com.joye.hk6.internal.di.component;
 
 import com.joye.basepresentation.internal.di.components.ApplicationComponent;
 import com.joye.hk6.ac.BaseActivity;
+import com.joye.hk6.ac.BaseAppCompatActivity;
 import com.joye.hk6.ac.BaseFragmentActivity;
 import com.joye.hk6.internal.di.modules.Hk6ApplicationModule;
 import com.joye.hk6domain.repository.Hk6Repository;
@@ -26,6 +27,7 @@ import dagger.Component;
 public interface Hk6ApplicationComponent extends ApplicationComponent {
       void inject(BaseActivity activity);
       void inject(BaseFragmentActivity activity);
+      void inject(BaseAppCompatActivity appCompatActivity);
       Hk6Repository hk6DataRepository();
 
 }
