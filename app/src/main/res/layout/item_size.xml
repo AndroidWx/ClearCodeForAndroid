@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    auto:borders="bottom"
+    auto:borderWidth__="@dimen/borderWidth"
+    auto:borderColor="@color/com_border"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_expect" />
+    <TextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_opencode" />
+    <TextView
+        android:id="@id/report_left_Big"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_opencode" />
+    <TextView
+        android:id="@id/report_left_Small"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_opencode" />
+</com.joye.layouts.BorderLinearLayout>
