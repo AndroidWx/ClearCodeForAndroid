@@ -16,7 +16,7 @@
         android:background="@null"
         auto:rv_color="@color/white"
         auto:rv_centered="true"
-        android:drawableLeft="@android:drawable/ic_menu_delete"
+        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
         android:drawablePadding="4dp"
         android:gravity="center"
         android:padding="10dp"

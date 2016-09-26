@@ -7,4 +7,147 @@
     <string name="default_progress_emptyContent">开奖号码</string>
     <string name="default_progress_errorContent">开奖号码</string>
     <string name="default_progress_errorbuttonText">开奖号码</string>
+    <string name="region">段位</string>
+    <string name="region_1">第一段</string>
+    <string name="region_2">第二段</string>
+    <string name="region_3">第三段</string>
+    <string name="region_4">第四段</string>
+    <string name="region_5">第五段</string>
+    <string name="region_6">第六段</string>
+    <string name="region_7">第七段</string>
+    <string name="size">大小</string>
+    <string name="big">大</string>
+    <string name="small">小</string>
+    <!--半波（固定不变)-->
+    <string name="colorTows">半波</string>
+    <string name="redEven">红双</string>
+    <string name="redOdd">红单</string>
+    <string name="blueEven">蓝双</string>
+    <string name="blueOdd">蓝单</string>
+    <string name="greenEven">绿双</string>
+    <string name="greenOdd">绿单</string>
+
+    <string name="composite">合数</string>
+    <string name="composite_1">1合</string>
+    <string name="composite_2">2合</string>
+    <string name="composite_3">3合</string>
+    <string name="composite_4">4合</string>
+    <string name="composite_5">5合</string>
+    <string name="composite_6">6合</string>
+    <string name="composite_7">7合</string>
+    <string name="composite_8">8合</string>
+    <string name="composite_9">9合</string>
+    <string name="composite_10">10合</string>
+    <string name="composite_11">11合</string>
+    <string name="composite_12">12合</string>
+    <string name="composite_13">13合</string>
+
+    <string name="headage">头数</string>
+    <string name="headage0">头数0</string>
+    <string name="headage1">头数1</string>
+    <string name="headage2">头数2</string>
+    <string name="headage3">头数3</string>
+    <string name="headage4">头数4</string>
+
+    <string name="gateCount">门数</string>
+    <string name="gateCount1">门数1</string>
+    <string name="gateCount2">门数2</string>
+    <string name="gateCount3">门数3</string>
+    <string name="gateCount4">门数4</string>
+    <string name="gateCount5">门数5</string>
+
+
+    <string name="mantissa">尾数</string>
+    <string name="mantissa0">尾数0</string>
+    <string name="mantissa1">尾数1</string>
+    <string name="mantissa2">尾数2</string>
+    <string name="mantissa3">尾数3</string>
+    <string name="mantissa4">尾数4</string>
+    <string name="mantissa5">尾数5</string>
+    <string name="mantissa6">尾数6</string>
+    <string name="mantissa7">尾数7</string>
+    <string name="mantissa8">尾数8</string>
+    <string name="mantissa9">尾数9</string>
+
+
+    <string name="compositeSize">合大合小</string>
+    <string name="compositeBig">合大</string>
+    <string name="compositeSmall">合小</string>
+
+    <string name="mantissaSize">尾大尾小</string>
+    <string name="mantissaBig">尾大</string>
+    <string name="mantissaSmall">尾小</string>
+
+    <string name="sizeTwos">半单双</string>
+    <string name="smallEven">小单</string>
+    <string name="smallOdd">小双</string>
+    <string name="bigEven">大单</string>
+    <string name="bigOdd">大双</string>
+
+    <string name="compositeMantissa">合尾</string>
+    <string name="compositeMantissa0">0合尾数</string>
+    <string name="compositeMantissa1">1合尾数</string>
+    <string name="compositeMantissa2">2合尾数</string>
+    <string name="compositeMantissa3">3合尾数</string>
+    <string name="compositeMantissa4">4合尾数</string>
+    <string name="compositeMantissa5">5合尾数</string>
+    <string name="compositeMantissa6">6合尾数</string>
+    <string name="compositeMantissa7">7合尾数</string>
+    <string name="compositeMantissa8">8合尾数</string>
+    <string name="compositeMantissa9">9合尾数</string>
+
+    <string name="headTwos">头数单与双</string>
+    <string name="headEven0">0头双</string>
+    <string name="headEven1">1头双</string>
+    <string name="headEven2">2头双</string>
+    <string name="headEven3">3头双</string>
+    <string name="headEven4">4头双</string>
+    <string name="headOdd0">0头单</string>
+    <string name="headOdd1">1头单</string>
+    <string name="headOdd2">2头单</string>
+    <string name="headOdd3">3头单</string>
+    <string name="headOdd4">4头单</string>
+
+    <string name="modular3">模三数</string>
+    <string name="modular_3_0">3余0</string>
+    <string name="modular_3_1">3余1</string>
+    <string name="modular_3_2">3余2</string>
+
+    <string name="modular4">模四数</string>
+    <string name="modular4_0">4余0</string>
+    <string name="modular4_1">4余1</string>
+    <string name="modular4_2">4余2</string>
+    <string name="modular4_3">4余3</string>
+
+
+    <string name="modular5">模5数</string>
+    <string name="modular5_0">5余0</string>
+    <string name="modular5_1">5余1</string>
+    <string name="modular5_2">5余2</string>
+    <string name="modular5_3">5余3</string>
+    <string name="modular5_4">5余4</string>
+
+    <string name="modular6">模6数</string>
+    <string name="modular6_0">6余0</string>
+    <string name="modular6_1">6余1</string>
+    <string name="modular6_2">6余2</string>
+    <string name="modular6_3">6余3</string>
+    <string name="modular6_4">6余4</string>
+    <string name="modular6_5">6余5</string>
+
+    <string name="modular7">模7数</string>
+    <string name="modular7_0">7余0</string>
+    <string name="modular7_1">7余1</string>
+    <string name="modular7_2">7余2</string>
+    <string name="modular7_3">7余3</string>
+    <string name="modular7_4">7余4</string>
+    <string name="modular7_5">7余5</string>
+    <string name="modular7_6">7余6</string>
+
+    <string name="about_me_details">关于研发这个应用程序，初衷是应人之托，
+        帮忙写一个可持续开发的框架。关于做走势图分析,纯属以前对博彩公式有所研究。
+        作者对六合彩票毫无兴趣，不要咨询作者买什么号码，作者不看所谓的玄机，只相信知识。
+        关于人性这一块，贪婪恐惧禅心，任何东西都有个系统性的知识。博彩也有，希望彩民，
+        切勿沉迷于其中。
+    </string>
 </resources>

@@ -17,9 +17,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.ScrollingActivity"
-            android:label="@string/title_activity_scrolling">
-
-        </activity>
+            android:label="@string/title_activity_scrolling"></activity>
         <activity
             android:name=".view.ChineseZodiacProbilityActivity"
             android:label="@string/title_activity_chinese_zodiac_probility">
