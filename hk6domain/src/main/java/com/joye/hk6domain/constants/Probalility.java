@@ -73,4 +73,32 @@ public class Probalility {
         public static final double One=0.0204081632653061;
     }
 
+    public static class ColorTwos{
+        /**
+         * ºìË«
+         */
+        public static final double RedEven=0.1836734693877551;
+        /**
+         * ºìµ¥
+         */
+        public static final double RedOdd = 0.163265306122449;
+        /**
+         * À¶µ¥
+         */
+        public static final double BlueOdd = 0.163265306122449;
+        /**
+         * À¶Ë«
+         */
+        public static final double BlueEven = 0.163265306122449;
+        /**
+         * À¶Ë«
+         */
+        public static final double GreenEven = 0.1428571428571429;
+
+        /**
+         * À¶µ¥
+         */
+        public static final double GreenOdd = 0.1836734693877551;
+    }
+
 }

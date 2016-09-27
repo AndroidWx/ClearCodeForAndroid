@@ -34,14 +34,6 @@ public abstract class BasePresenterActivity<  V extends Vu> extends BaseActivity
             e.printStackTrace();
         }
     }
-    /**
-     * Get the Main Application component for dependency injection.
-     *
-     * @return {@link Hk6ApplicationComponent}
-     */
-    protected Hk6ApplicationComponent getApplicationComponent() {
-        return ((Hk6AndroidApplication)getApplication()).getApplicationComponent();
-    }
     protected void onVuInit() {
         //do nothing
     }
@@ -69,10 +61,6 @@ public abstract class BasePresenterActivity<  V extends Vu> extends BaseActivity
     protected void onDestroyVu() {
         //do nothing
     };
-
-    protected StatusbarActivityModule getStatusBarActivityModule(){
-        return new StatusbarActivityModule(this);
-    }
 
 
 }

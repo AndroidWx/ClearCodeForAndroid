@@ -30,6 +30,8 @@
             android:name=".view.ChineseZodiacProbilityActivity"
             android:label="@string/title_activity_chinese_zodiac_probility">
         </activity>
+        <activity android:name=".ac.EmptyActivity"/>
+        <activity android:name=".view.SizeActivity"/>
     </application>
 
 </manifest>

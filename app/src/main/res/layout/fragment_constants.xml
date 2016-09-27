@@ -2,10 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.joye.hk6.frg.ConstantsFragment">
-    <TextView
+    <com.joye.layouts.BorderPercentRelativeLayout
         android:layout_width="match_parent"
-        android:text="@string/large_text"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            android:id="@+id/region"
+            app:layout_widthPercent="50%"
+            android:layout_width="0dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_height="100dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="正常使用效果"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_margin="10dp"/>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            app:layout_widthPercent="50%"
+            android:layout_toRightOf="@id/region"
+            android:layout_width="0dp"
+            android:layout_height="100dp">
+        </android.support.v7.widget.CardView>
+
+
+
+    </com.joye.layouts.BorderPercentRelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

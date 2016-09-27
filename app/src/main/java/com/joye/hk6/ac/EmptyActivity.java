@@ -31,8 +31,6 @@ import javax.inject.Inject;
 
 public class EmptyActivity extends BaseFragmentActivity implements
         IActivityResultDelegateAware {
-    @Inject
-    StatusBarHelp statusBarHelp;
 
     private IActivityResultDelegate activityResultDelegate;
 
@@ -59,7 +57,6 @@ public class EmptyActivity extends BaseFragmentActivity implements
         }
         Intent intent = getIntent();
         setContentView(R.layout.f_emptycontent);
-        super.onCreate(savedInstanceState);
 
         if (intent != null && intent.hasExtra(EXTRA_CLASSNAME)) {
 
@@ -75,7 +72,6 @@ public class EmptyActivity extends BaseFragmentActivity implements
             }
             tran.commit();
         }
-        statusBarHelp.setStatusBarTintEnable(true,getResources().getDrawable(R.drawable.statusbar_bg));
     }
 
     @Override

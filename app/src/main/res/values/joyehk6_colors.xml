@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white_fff">@color/white</color>
+    <color name="textColor">#969191</color>
     <color name="com_border">#FFCCCCCC</color>
+    <color name="cardViewBackground">#e3edec</color>
     <color name="tab_bg_color">#F6F6F6</color>
     <color name="gray">#FFf3f3f3</color>
     <color name="window_background">#FFF5F5F5</color>

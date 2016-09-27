@@ -3,6 +3,7 @@ package com.joye.hk6;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
+import com.jaeger.library.StatusBarUtil;
 import com.joye.hk6.util.JoyeStatusBarUtil;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ public class StatusBarHelp {
         joyeStatusBarUtil=new JoyeStatusBarUtil(activity);
     }
 
+
     public JoyeStatusBarUtil getJoyeStatusBarUtil() {
         return joyeStatusBarUtil;
     }
@@ -34,6 +36,7 @@ public class StatusBarHelp {
             mTintManager = new JoyeStatusBarUtil(activity);
         }
         mTintManager.setStatusBarTintEnabled(on);
+        mTintManager.setNavigationBarTintEnabled(true);
         //使用颜色资源
         mTintManager.setStatusBarTintResource(colorResourceID);
     }

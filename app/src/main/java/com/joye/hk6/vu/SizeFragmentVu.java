@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.joye.hk6.adapter.SizeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.SizeVo;
 
 /**

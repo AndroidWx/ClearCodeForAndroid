@@ -3,4 +3,5 @@
     <dimen name="viewStub_fpo_titlebar_height">48dp</dimen>
     <dimen name="ctb_title_lable_text_size">17sp</dimen>
     <dimen name="ctb_btn_back_text_size">15sp</dimen>
+    <dimen name="cardview_item_text_size">15sp</dimen>
 </resources>

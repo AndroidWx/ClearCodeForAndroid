@@ -6,7 +6,7 @@
     <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
     <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
     <item name="statusbar_bg" type="drawable">@android:drawable/screen_background_dark</item>
-    <item name="error_network" type="drawable">@android:drawable/screen_background_light</item>
+    <item name="error_network" type="drawable">@drawable/ic_signal_cellular_off_light_blue_50_48dp</item>
     <item name="banner_bar_bg" type="drawable">@android:drawable/screen_background_dark</item>
     <item name="default_progress_empty" type="drawable">@android:drawable/screen_background_dark</item>
     <item name="default_progress_error" type="drawable">@android:drawable/screen_background_dark</item>

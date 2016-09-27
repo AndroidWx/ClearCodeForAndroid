@@ -79,10 +79,10 @@
     <string name="mantissaSmall">尾小</string>
 
     <string name="sizeTwos">半单双</string>
-    <string name="smallEven">小单</string>
-    <string name="smallOdd">小双</string>
-    <string name="bigEven">大单</string>
-    <string name="bigOdd">大双</string>
+    <string name="smallOdd">小单</string>
+    <string name="smallEvem">小双</string>
+    <string name="bigOdd">大单</string>
+    <string name="bigEven">大双</string>
 
     <string name="compositeMantissa">合尾</string>
     <string name="compositeMantissa0">0合尾数</string>
@@ -108,12 +108,12 @@
     <string name="headOdd3">3头单</string>
     <string name="headOdd4">4头单</string>
 
-    <string name="modular3">模三数</string>
+    <string name="modular3">模3数</string>
     <string name="modular_3_0">3余0</string>
     <string name="modular_3_1">3余1</string>
     <string name="modular_3_2">3余2</string>
 
-    <string name="modular4">模四数</string>
+    <string name="modular4">模4数</string>
     <string name="modular4_0">4余0</string>
     <string name="modular4_1">4余1</string>
     <string name="modular4_2">4余2</string>

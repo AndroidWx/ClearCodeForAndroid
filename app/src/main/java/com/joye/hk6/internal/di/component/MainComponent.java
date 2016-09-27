@@ -1,7 +1,7 @@
 package com.joye.hk6.internal.di.component;
 
 import com.joye.basepresentation.internal.di.PerActivity;
-import com.joye.hk6.internal.di.modules.MainModule;
+import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.view.MainActivity;
 
 import dagger.Component;
@@ -12,7 +12,7 @@ import dagger.Component;
  * remark:
  */
 @PerActivity
-@Component(dependencies = Hk6ApplicationComponent.class,modules = MainModule.class)
+@Component(dependencies = Hk6ApplicationComponent.class,modules = StatusbarActivityModule.class)
 public interface MainComponent {
     void inject(MainActivity mainActivity);
 }

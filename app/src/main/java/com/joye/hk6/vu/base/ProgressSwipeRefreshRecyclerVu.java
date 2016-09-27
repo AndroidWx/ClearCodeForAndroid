@@ -1,4 +1,4 @@
-package com.joye.hk6.vu;
+package com.joye.hk6.vu.base;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

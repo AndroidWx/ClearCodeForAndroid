@@ -41,6 +41,7 @@ public class MainActivityVu extends BaseVuImp {
     @Override
     protected void initView() {
         ButterKnife.bind(this, view);
+        toolbar.setTitleTextColor(view.getResources().getColor(R.color.white));
     }
 
     @Override

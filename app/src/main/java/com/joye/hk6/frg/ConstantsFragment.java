@@ -1,38 +1,44 @@
 package com.joye.hk6.frg;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 
-import com.joye.hk6.mvp.BasePresenterFragment;
+import com.joye.hk6.R;
+import com.joye.hk6.adapter.ConstantsAdapter;
+import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.mvp.BaseBannerOnePageFragment;
+import com.joye.hk6.view.SizeActivity;
 import com.joye.hk6.vu.ConstantsFragmentVu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.joye.hk6.adapter.ConstantsAdapter.ConstantsItem;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ConstantsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link ConstantsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ConstantsFragment extends BasePresenterFragment<ConstantsFragmentVu> {
+public class ConstantsFragment extends BaseBannerOnePageFragment<ConstantsFragmentVu> {
 
-    private OnFragmentInteractionListener mListener;
 
     public ConstantsFragment() {
+
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment ConstantsFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static ConstantsFragment newInstance( ) {
+    public static ConstantsFragment newInstance() {
         ConstantsFragment fragment = new ConstantsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -40,44 +46,61 @@ public class ConstantsFragment extends BasePresenterFragment<ConstantsFragmentVu
     }
 
 
-
     @Override
     protected Class<ConstantsFragmentVu> getVuClass() {
         return ConstantsFragmentVu.class;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-        }
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        List<ConstantsItem> list = new ArrayList<>();
+        ConstantsItem item = new ConstantsItem(R.string.colorTows, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.size, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.colorTows, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.composite, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.headage, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.gateCount, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.mantissa, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.compositeSize, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.mantissaSize, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.sizeTwos, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.compositeMantissa, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.headTwos, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.modular3, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.modular4, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.modular5, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.modular6, SizeActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.modular7, SizeActivity.class);
+        list.add(item);
+
+        vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        vu.mAdapter.updateItems(list, true);
+        vu.mAdapter.setmRecyclerViewItemListener(new UpdateItemRecyclerViewAdapter.RecyclerViewItemListener<ConstantsItem>() {
+
+            @Override
+            public void onRecyclerViewItemClick(ConstantsItem constantsItem) {
+                Intent intent=new Intent(getContext(), constantsItem.className);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
 }

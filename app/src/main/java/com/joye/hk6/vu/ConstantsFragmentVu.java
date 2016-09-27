@@ -1,20 +1,23 @@
 package com.joye.hk6.vu;
 
-import com.joye.hk6.R;
-import com.joye.hk6.mvp.BaseVuImp;
+import android.content.Context;
+
+import com.joye.hk6.adapter.ConstantsAdapter;
+import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 
 /**
  * Created by Wx on 2016/9/26.
  * QQ:304622254;
  * remark:
  */
-public class ConstantsFragmentVu extends BaseVuImp{
-    @Override
-    protected void initView() {
+public class ConstantsFragmentVu extends ProgressSwipeRefreshRecyclerVu<ConstantsAdapter.ConstantsItem> {
+    public ConstantsFragmentVu() {
+        bannerStubInflate=false;
     }
 
     @Override
-    public int getResouceId() {
-        return R.layout.fragment_constants;
+    public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
+        return new ConstantsAdapter(context);
     }
 }

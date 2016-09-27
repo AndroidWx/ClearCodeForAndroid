@@ -15,13 +15,23 @@ import java.util.List;
 public abstract class UpdateItemRecyclerViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> implements  IUpdateItem<T>{
     protected Context context;
     protected List<T> datas;
+    protected RecyclerViewItemListener mRecyclerViewItemListener;
+
      private UpdateItemRecyclerViewAdapter(){
+    }
+
+    public void setmRecyclerViewItemListener(RecyclerViewItemListener mRecyclerViewItemListener) {
+        this.mRecyclerViewItemListener = mRecyclerViewItemListener;
     }
 
     //nothing ;
     protected UpdateItemRecyclerViewAdapter(Context ctx){
         this.context=ctx;
         datas=new ArrayList<T>();
+    }
+
+    public   interface RecyclerViewItemListener<T>{
+        void onRecyclerViewItemClick(T t);
     }
 
     public List<T> getDatas(){

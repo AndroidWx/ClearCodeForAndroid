@@ -1,5 +1,6 @@
 package com.joye.hk6.vu;
 
+import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
 /**

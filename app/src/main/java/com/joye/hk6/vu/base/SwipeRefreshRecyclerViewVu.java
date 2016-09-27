@@ -1,4 +1,4 @@
-package com.joye.hk6.vu;
+package com.joye.hk6.vu.base;
 
 import android.content.Context;
 import android.support.annotation.CallSuper;
@@ -56,12 +56,16 @@ public abstract   class SwipeRefreshRecyclerViewVu  extends BannerOnePageVu  {
     public  abstract UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context);
     @Override
     protected void onCreateBannerView(ViewStub bannerStub) {
-        bannerStub.setLayoutResource(bannberLayout());
-        bannerStub.inflate();
+        if(bannerStubInflate) {
+            bannerStub.setLayoutResource(bannberLayout());
+            bannerStub.inflate();
+        }
     }
     protected int bannberLayout(){
         return R.layout.c_titlebar_l_tv;
     }
+
+    protected  boolean bannerStubInflate=true;
 
 
 }
