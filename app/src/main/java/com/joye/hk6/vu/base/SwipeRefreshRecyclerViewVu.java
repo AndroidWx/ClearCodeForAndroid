@@ -10,12 +10,15 @@ import android.view.ViewStub;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.BannerOnePageVu;
+import com.joye.hk6.mvp.IBannerOnePageVu;
 import com.joye.hk6.mvp.ProgressVu;
 import com.joye.hk6.util.IProgressListener;
 import com.vlonjatg.progressactivity.ProgressActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.joye.hk6.R.id.contentLayout;
 
 /**
  * Created by W,x (JoyeWang)
@@ -35,10 +38,15 @@ public abstract   class SwipeRefreshRecyclerViewVu  extends BannerOnePageVu  {
 
     public UpdateItemRecyclerViewAdapter mAdapter;
 
+
+    public int contentLayout(){
+        return R.layout.fragment_common_list;
+    }
+
     @CallSuper
     @Override
     protected void onCreateContentView(ViewStub contentStub) {
-        contentStub.setLayoutResource(R.layout.fragment_common_list);
+        contentStub.setLayoutResource(contentLayout());
         contentStub.inflate();
         ButterKnife.bind(this, view);
         iProgressListener=new IProgressListener(progressActivity);

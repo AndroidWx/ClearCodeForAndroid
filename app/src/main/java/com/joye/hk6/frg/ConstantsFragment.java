@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.ConstantsAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.view.SizeActivity;
@@ -59,8 +58,6 @@ public class ConstantsFragment extends BaseBannerOnePageFragment<ConstantsFragme
         list.add(item);
         item = new ConstantsItem(R.string.size, SizeActivity.class);
         list.add(item);
-        item = new ConstantsItem(R.string.colorTows, SizeActivity.class);
-        list.add(item);
         item = new ConstantsItem(R.string.composite, SizeActivity.class);
         list.add(item);
         item = new ConstantsItem(R.string.headage, SizeActivity.class);
@@ -90,7 +87,7 @@ public class ConstantsFragment extends BaseBannerOnePageFragment<ConstantsFragme
         item = new ConstantsItem(R.string.modular7, SizeActivity.class);
         list.add(item);
 
-        vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         vu.mAdapter.updateItems(list, true);
         vu.mAdapter.setmRecyclerViewItemListener(new UpdateItemRecyclerViewAdapter.RecyclerViewItemListener<ConstantsItem>() {
 

@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.joye.hk6.internal.di.component.Hk6Component;
-import com.joye.hk6.internal.di.component.SizeComponent;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.presenter.SizePresenter;
+import com.joye.hk6.view.SizeActivity;
 import com.joye.hk6.vu.SizeFragmentVu;
+import com.joye.layouts.BorderRippleViewTextView;
 
 import javax.inject.Inject;
 
@@ -31,7 +31,7 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getComponent(SizeComponent.class).inject(this);
+        SizeActivity.class.cast(getActivity()).getComponent().inject(this);
     }
 
     @Override
@@ -46,6 +46,12 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
         vu.commonRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         SizePresenter.setView(vu);
         SizePresenter.initalize();
-
+        vu.BannerOnePageImpl.setOnRippleCompleteListener(new BorderRippleViewTextView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(BorderRippleViewTextView rippleView) {
+                getActivity().finish();
+            }
+        });
+        vu.BannerOnePageImpl.setTitleLable("大小走势");
     }
 }

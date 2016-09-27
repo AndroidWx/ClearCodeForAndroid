@@ -3,11 +3,9 @@ package com.joye.hk6.internal.di.component;
 import android.app.Activity;
 
 import com.joye.basepresentation.internal.di.PerActivity;
-import com.joye.basepresentation.internal.di.components.ApplicationComponent;
 import com.joye.hk6.frg.SizeFragment;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
-import com.joye.hk6.view.SizeActivity;
 
 import dagger.Component;
 
@@ -18,9 +16,10 @@ import dagger.Component;
  * Remeark:
  */
 @PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = {Hk6Module.class, StatusbarActivityModule.class})
-public interface SizeComponent {
+@Component(dependencies = Hk6ApplicationComponent.class, modules = {Hk6Module.class, StatusbarActivityModule.class})
+public interface SizeComponent  extends StatusbarActivityComponent{
 
     void inject(Activity sizeActivity);
+    void inject(SizeFragment sizeFragment);
 
 }

@@ -5,15 +5,11 @@ import android.os.Bundle;
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.ac.BaseFragmentActivity;
-import com.joye.hk6.ac.EmptyActivity;
 import com.joye.hk6.frg.SizeFragment;
-import com.joye.hk6.internal.di.component.DaggerMainComponent;
 import com.joye.hk6.internal.di.component.DaggerSizeComponent;
 import com.joye.hk6.internal.di.component.SizeComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
-import com.joye.hk6.mvp.BasePresenterActivity;
-import com.joye.hk6.vu.base.EmptyVu;
 
 /**
  * Created by W,x (JoyeWang)
@@ -25,16 +21,18 @@ import com.joye.hk6.vu.base.EmptyVu;
 public class SizeActivity extends BaseFragmentActivity implements HasComponent<SizeComponent>{
     private SizeComponent sizeComponent;
 
+    private SizeFragment sizeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeInjector();
         setContentView(R.layout.f_emptycontent);
-        addFragment(R.id.emptyContent,new SizeFragment());
+        sizeFragment=new SizeFragment();
+        addFragment(R.id.emptyContent,sizeFragment);
     }
 
     public void initializeInjector(){
-        sizeComponent=DaggerSizeComponent.builder().applicationComponent(getApplicationComponent()).hk6Module(new Hk6Module("2016-12-31"))
+        sizeComponent=DaggerSizeComponent.builder().hk6ApplicationComponent(getApplicationComponent()).hk6Module(new Hk6Module("2016-12-31"))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         sizeComponent.inject(this);
     }

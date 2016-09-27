@@ -57,6 +57,7 @@ public class GetSizeUseCase extends GetHk6Data {
                     }
                     list.add(vo);
                 }
+                Collections.reverse(list);
                 return list;
             }
         });

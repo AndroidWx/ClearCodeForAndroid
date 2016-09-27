@@ -8,6 +8,9 @@
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
+        <!--<item name="borders">bottom|top|right|left</item>-->
+        <!--<item name="boderWidth__">1dp</item>-->
+        <!--<item name="boderColor">@color/com_border</item>-->
     </style>
 
     <style name="TextViewStyleRight">
