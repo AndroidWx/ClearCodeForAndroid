@@ -27,6 +27,7 @@ public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
         super(context);
     }
 
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new SizeItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_size, parent, false));

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.hk6.internal.di.component.Hk6Component;
+import com.joye.hk6.internal.di.component.SizeComponent;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.presenter.SizePresenter;
 import com.joye.hk6.vu.SizeFragmentVu;
@@ -30,7 +31,7 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getComponent(Hk6Component.class).inject(this);
+        getComponent(SizeComponent.class).inject(this);
     }
 
     @Override

@@ -23,5 +23,4 @@ public interface SizeComponent {
 
     void inject(Activity sizeActivity);
 
-
 }

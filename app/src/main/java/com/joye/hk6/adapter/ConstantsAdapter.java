@@ -34,9 +34,21 @@ public class ConstantsAdapter extends AnimalUpdateItemRecyclerViewAdapter<Consta
         super(ctx);
     }
 
+    private View.OnClickListener onClickListener=new View.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+            Integer integer= (Integer) v.getTag();
+            if(mRecyclerViewItemListener!=null){
+                mRecyclerViewItemListener.onRecyclerViewItemClick(getDatas().get(integer));
+            }
+        }
+    };
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_constants, parent, false));
+        ViewHolder holder= new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_constants, parent, false));
+        holder.itemView.setOnClickListener(onClickListener);
+        return holder;
     }
 
     @Override
@@ -44,6 +56,7 @@ public class ConstantsAdapter extends AnimalUpdateItemRecyclerViewAdapter<Consta
         runEnterAnimation(holder.itemView, position);
         ViewHolder holder1 = (ViewHolder) holder;
         holder1.setEntity(getDatas().get(position));
+        holder1.itemView.setTag(position);
     }
 
 
@@ -61,14 +74,6 @@ public class ConstantsAdapter extends AnimalUpdateItemRecyclerViewAdapter<Consta
 
         public void setEntity(final ConstantsItem constantsItem) {
             name.setText(constantsItem.getName());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(mRecyclerViewItemListener!=null){
-                        mRecyclerViewItemListener.onRecyclerViewItemClick(constantsItem);
-                    }
-                }
-            });
         }
     }
 
