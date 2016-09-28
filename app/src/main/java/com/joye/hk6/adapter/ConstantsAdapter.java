@@ -45,10 +45,18 @@ public class ConstantsAdapter extends AnimalUpdateItemRecyclerViewAdapter<Consta
     };
     @Override
     public  ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder= new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_constants, parent, false));
+        ViewHolder holder= new ViewHolder(LayoutInflater.from(context).inflate(viewType==0?R.layout.item_constants:R.layout.item_constants_top, parent, false));
         holder.cardView.setOnClickListener(onClickListener);
         holder.name.setOnClickListener(onClickListener);
         return holder;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position<=1){
+            return 1;
+        }
+        return super.getItemViewType(position);
     }
 
     @Override

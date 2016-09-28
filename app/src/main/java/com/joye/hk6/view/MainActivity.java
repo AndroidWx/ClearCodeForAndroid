@@ -46,7 +46,9 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
         setupDrawerContent(vu.navView);
         setupViewPager();
         vu.tabs.setupWithViewPager(vu.viewpager);
-        StatusBarUtil.setColorNoTranslucentForDrawerLayout(this,vu.drawerLayout,R.color.colorPrimary);
+            help.setStatusBarTintEnable(true,R.color.colorPrimary);
+        //  StatusBarUtil.setColorNoTranslucent(this,R.color.colorPrimary);
+        //StatusBarUtil.setTransparentForDrawerLayout(this,vu.drawerLayout );
         vu.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

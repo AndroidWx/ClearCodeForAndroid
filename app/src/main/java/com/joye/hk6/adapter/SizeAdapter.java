@@ -1,6 +1,7 @@
 package com.joye.hk6.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.joye.hk6.R;
+import com.joye.hk6.util.VigilantDrawable;
 import com.joye.hk6domain.vo.SizeVo;
 
 import java.util.List;
@@ -63,7 +65,20 @@ public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
             reportLeftExpect.setText(vo.getExpect());
             reportLeftOpencode.setText(vo.getOpenCode() + "");
             reportLeftBig.setText(vo.Big==0?"大":vo.Big+"");
+            if(vo.Big==0){
+                reportLeftBig.setBackgroundColor(android.R.color.holo_red_dark);
+            }else if(vo.Small==0){
+                reportLeftSmall.setBackgroundColor(android.R.color.holo_red_dark);
+            }
             reportLeftSmall.setText(vo.Small==0?"小":vo.Small+"");
+            Drawable bigDrawable = reportLeftBig.getResources().getDrawable(VigilantDrawable.getDrawable(vo.bigVigilant()));
+            bigDrawable.setBounds(0, 0, bigDrawable.getMinimumWidth(), bigDrawable.getMinimumHeight());
+            reportLeftBig.setCompoundDrawables(bigDrawable, null, null, null)  ;;
+
+            Drawable smallDrawable = reportLeftBig.getResources().getDrawable(VigilantDrawable.getDrawable(vo.smallVigilant()));
+            smallDrawable.setBounds(0, 0, smallDrawable.getMinimumWidth(), smallDrawable.getMinimumHeight());
+            reportLeftSmall.setCompoundDrawables(smallDrawable, null, null, null);
+
         }
     }
 

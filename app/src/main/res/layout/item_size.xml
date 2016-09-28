@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.joye.layouts.BorderLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="match_parent"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
-    auto:borders="bottom"
-    auto:borderWidth__="@dimen/borderWidth"
-    auto:borderColor="@color/com_border"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
     <com.joye.layouts.BorderTextView
-        auto:borders="bottom|top|right|left"
-        auto:borderWidth__="1dp"
-        auto:borderColor="@color/com_border"
         android:id="@id/report_left_expect"
         style="@style/TextViewStyleLeft"
-        android:text="@string/report_left_expect" />
-    <com.joye.layouts.BorderTextView
-        auto:borders="bottom|top|right|left"
+        android:text="@string/report_left_expect"
+        auto:borderColor="@android:color/black"
         auto:borderWidth__="1dp"
-        auto:borderColor="@color/com_border"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
         android:id="@id/report_left_opencode"
         style="@style/TextViewStyleLeft"
-        android:text="@string/report_left_opencode" />
-    <com.joye.layouts.BorderTextView
-        auto:borders="bottom|top|right|left"
+        android:text="@string/report_left_opencode"
+        auto:borderColor="@android:color/black"
         auto:borderWidth__="1dp"
-        auto:borderColor="@color/com_border"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
         android:id="@id/report_left_Big"
         style="@style/TextViewStyleLeft"
-        android:text="@string/big" />
-    <com.joye.layouts.BorderTextView
-        auto:borders="bottom|top|right|left"
+        android:text="@string/big"
+        auto:borderColor="@android:color/black"
         auto:borderWidth__="1dp"
-        auto:borderColor="@color/com_border"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
         android:id="@id/report_left_Small"
         style="@style/TextViewStyleLeft"
-        android:text="@string/small" />
+        android:text="@string/small"
+        auto:borderColor="@android:color/black"
+        auto:borderWidth__="1dp"
+        auto:borders="bottom|top|right|left" />
 </com.joye.layouts.BorderLinearLayout>

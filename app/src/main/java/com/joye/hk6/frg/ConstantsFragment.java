@@ -87,7 +87,7 @@ public class ConstantsFragment extends BaseBannerOnePageFragment<ConstantsFragme
         item = new ConstantsItem(R.string.modular7, SizeActivity.class);
         list.add(item);
 
-        vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         vu.mAdapter.updateItems(list, true);
         vu.mAdapter.setmRecyclerViewItemListener(new UpdateItemRecyclerViewAdapter.RecyclerViewItemListener<ConstantsItem>() {
 

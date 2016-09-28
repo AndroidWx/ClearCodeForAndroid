@@ -37,19 +37,14 @@ public class GetSizeUseCase extends GetHk6Data {
                 Map<String,Integer> map=null;
                 Collections.reverse(hk6UiDatas);
                 int Big = 0,Small=0;
-                //???????§Ö?????
                 for (Hk6UiData itemVo:hk6UiDatas){
                     SizeVo vo = new SizeVo(itemVo);
-                    //????????
                     if(Hk6EnumHelp.getHk6Size(vo.getOpenCode()).equals(Hk6Size.Big)){
-                        //§³??++
                         Small++;
-                        //???????=0;
                         Big=0;
                         vo.Big=0;
                         vo.Small=Small;
                     }else{
-                        //?????§³??
                         Big++;
                         Small=0;
                         vo.Small=0;

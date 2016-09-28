@@ -1,37 +1,38 @@
-package com.joye.hk6domain.vo;
-
+package com.joye.hk6data;
 
 import com.joye.hk6domain.constants.Formula;
-import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.IDcValue;
 import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
-import com.joye.hk6domain.entity.Hk6UiData;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by W,x (JoyeWang)
- * on 2016/9/23.
+ * on 2016/9/28.
  * 304622254@qq.com
- * Remeark: 生肖走势图的vo
+ * Remeark:
  */
 
-public class SizeVo extends Hk6UiData implements ReportRightI {
+public class BigTest {
+    double Big,Small;
 
-    public SizeVo(Hk6UiData sup) {
-        setOpentime(sup.getOpentime());
-        setOpentimestamp(sup.getOpentimestamp());
-        setEvictors(sup.getEvictors());
-        setExpect(sup.getExpect());
-        setOpenCode(sup.getOpenCode());
+    @Before
+    public void setUp() throws Exception {
+        Big=4.2;
+
+
     }
 
-    public int Big, Small;
+    @Test
+    public void testBigVigilant() throws Exception {
+        System.out.print(bigVigilant().name());
 
+    }
 
     public Vigilant bigVigilant() {
         Vigilant[] values = Vigilant.values();
@@ -48,6 +49,12 @@ public class SizeVo extends Hk6UiData implements ReportRightI {
         return Vigilant.Default;
     }
 
+    @Test
+    public void testsmallVigilant() throws Exception {
+        Small=3;
+        System.out.print(smallVigilant().name());
+
+    }
     public Vigilant smallVigilant() {
         Vigilant[] values = Vigilant.values();
         List<Vigilant> datas = new ArrayList<>();
@@ -63,6 +70,5 @@ public class SizeVo extends Hk6UiData implements ReportRightI {
         }
         return Vigilant.Default;
     }
-
 
 }

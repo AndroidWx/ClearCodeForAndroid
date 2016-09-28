@@ -10,7 +10,7 @@ ext {
  */
   lang3='3.4'
   guava='19.0'
-  statusbaruitl='1.2.0'
+  statusbaruitl='1.2.5'
   logutilsDebug='1.4.2'
   logutilsRelease='1.4.2.1'
   javaxInject='1'
