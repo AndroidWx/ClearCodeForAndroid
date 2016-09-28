@@ -13,6 +13,7 @@ import com.joye.layouts.BorderRippleViewTextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.joye.hk6domain.constants.*;
 
 import javax.inject.Inject;
 /**
@@ -56,7 +57,18 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
             }
         });
         String format=getResources().getString(R.string.vigilant);
-        List<Object>list=new ArrayList<>();
+        String sFinal=String.format(format,"大小",
+                Formula.lottery(Vigilant.Base.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Blue.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Blue_1.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Yellow.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Yellow_1.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Orange.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Orange_1.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Red.getDcValue(),Probalility.Size.Big),
+                Formula.lottery(Vigilant.Red_1.getDcValue(),Probalility.Size.Big) );
+        sFinal=sFinal.replaceAll("ppp","%");
+        vu.vigilant.setText(sFinal);
         vu.BannerOnePageImpl.setTitleLable("大小走势");
     }
 }
