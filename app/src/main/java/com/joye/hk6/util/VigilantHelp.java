@@ -13,7 +13,7 @@ import com.joye.hk6domain.constants.Vigilant;
  * Remeark:
  */
 
-public class VigilantDrawable {
+public class VigilantHelp {
     public static int getDrawable(Vigilant vigilant){
         switch (vigilant){
             case Base:

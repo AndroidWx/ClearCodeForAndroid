@@ -6,8 +6,9 @@ import com.joye.basedomain.interactor.DefaultSubscriber;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.mvp.Presenter;
+import com.joye.hk6.vu.RegionFragmentVu;
 import com.joye.hk6.vu.SizeFragmentVu;
-import com.joye.hk6domain.vo.SizeVo;
+import com.joye.hk6domain.vo.RegionVo;
 
 import java.util.List;
 
@@ -21,22 +22,22 @@ import javax.inject.Named;
  * Remeark:大小概率
  */
 @PerActivity
-public class SizePresenter implements Presenter<SizeFragmentVu> {
+public class RegionPresenter implements Presenter<RegionFragmentVu> {
 
 
     private final UseCase mHk6DataUseCase;
 
-    private SizeFragmentVu vu;
+    private RegionFragmentVu vu;
 
 
     @Inject
-    public SizePresenter(@Named("GetSizeUseCase")UseCase getHk6DataUseCase) {
+    public RegionPresenter(@Named("GetRegionUseCase")UseCase getHk6DataUseCase) {
         this.mHk6DataUseCase = getHk6DataUseCase;
     }
 
 
     @Override
-    public void setView(SizeFragmentVu chineseZodiacProbilityFragmentVu) {
+    public void setView(RegionFragmentVu chineseZodiacProbilityFragmentVu) {
         this.vu=chineseZodiacProbilityFragmentVu;
     }
 
@@ -61,10 +62,10 @@ public class SizePresenter implements Presenter<SizeFragmentVu> {
 
     }
 
-    public final class Hk6ListDataSubscriber extends DefaultSubscriber<List<SizeVo>>{
+    public final class Hk6ListDataSubscriber extends DefaultSubscriber<List<RegionVo>>{
         @Override
         public void onCompleted() {
-            SizePresenter.this.vu.showContent();
+            RegionPresenter.this.vu.showContent();
         }
 
         @Override
@@ -73,7 +74,7 @@ public class SizePresenter implements Presenter<SizeFragmentVu> {
         }
 
         @Override
-        public void onNext(List<SizeVo> hk6UiDatas) {
+        public void onNext(List<RegionVo> hk6UiDatas) {
             vu.onNext(hk6UiDatas);
         }
     }

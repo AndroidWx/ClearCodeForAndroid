@@ -8,7 +8,6 @@ import com.joye.hk6domain.repository.Hk6Repository;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * Created by W,x (JoyeWang)
@@ -29,6 +28,10 @@ public class GetHk6Data extends UseCase {
 
     @Override
     protected Observable buildUseCaseObservable() {
+        return hk6Repository.getHk6Data(date);
+    }
+
+    public Observable buildUseCaseObservable(String date){
         return hk6Repository.getHk6Data(date);
     }
 }

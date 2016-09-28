@@ -7,6 +7,13 @@
     <string name="default_progress_emptyContent">开奖号码</string>
     <string name="default_progress_errorContent">开奖号码</string>
     <string name="default_progress_errorbuttonText">开奖号码</string>
+    <string name="space">&#160;&#160;&#160;&#160;</string>
+    <string name="vigilant" formatted="false">"&#160;&#160;&#160;&#160;%1$s遗漏分析:\n"
+        "&#160;&#160;&#160;&#160;90%出现的概率遗漏(共%2$d)期,95%出现的概率遗漏(共%3$d)期,96%出现的概率遗漏(共%3$d)期,蓝色预警\n"
+    "&#160;&#160;&#160;&#160; 97%出现的概率遗漏(共%4$d)期,97.5%出现的概率遗漏(共%5$d)期,黄色预警\n"
+        "&#160;&#160;&#160;&#160;98%出现的概率遗漏(共%6$d)期,98.5%出现的概率遗漏(共%7$d)期,橙色预警\n"
+        "&#160;&#160;&#160;&#160;99%出现的概率遗漏(共%8$d)期,99.9%出现的概率遗漏(共%9$d)期,红色预警"
+    </string>
     <string name="region">段位</string>
     <string name="region_1">第一段</string>
     <string name="region_2">第二段</string>

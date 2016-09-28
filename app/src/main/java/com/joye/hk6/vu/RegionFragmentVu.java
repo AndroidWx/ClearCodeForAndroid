@@ -4,11 +4,12 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.joye.hk6.R;
+import com.joye.hk6.adapter.RegionAdapter;
 import com.joye.hk6.adapter.SizeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.IBannerOnePageListener;
 import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
-import com.joye.hk6domain.vo.SizeVo;
+import com.joye.hk6domain.vo.RegionVo;
 import com.joye.layouts.BorderRippleViewTextView;
 
 import butterknife.BindView;
@@ -19,7 +20,7 @@ import butterknife.BindView;
  * remark:
  */
 
-public class SizeFragmentVu extends ProgressSwipeRefreshRecyclerVu<SizeVo> {
+public class RegionFragmentVu extends ProgressSwipeRefreshRecyclerVu<RegionVo> {
     public IBannerOnePageListener.IBannerOnePageImpl BannerOnePageImpl = new IBannerOnePageListener.IBannerOnePageImpl() {
         @Override
         public void setTitleLable(String textStr) {
@@ -36,7 +37,7 @@ public class SizeFragmentVu extends ProgressSwipeRefreshRecyclerVu<SizeVo> {
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
-        return new SizeAdapter(context);
+        return new RegionAdapter(context);
     }
 
     @Override

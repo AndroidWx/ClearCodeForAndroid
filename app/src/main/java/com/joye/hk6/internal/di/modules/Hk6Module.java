@@ -7,6 +7,7 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6domain.interactor.GetChineseZodiacUseCase;
 import com.joye.hk6domain.interactor.GetHk6Data;
 import com.joye.hk6domain.interactor.GetSizeUseCase;
+import com.joye.hk6domain.interactor.GetRegionUseCase;
 import com.joye.hk6domain.repository.Hk6Repository;
 
 import javax.inject.Named;
@@ -50,6 +51,13 @@ public class Hk6Module {
                                            PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetSizeUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetRegionUseCase")
+    UseCase provideGetRegionUseCase(ThreadExecutor threadExecutor,
+                                  PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetRegionUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }

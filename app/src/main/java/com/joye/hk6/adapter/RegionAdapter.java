@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.joye.hk6.R;
 import com.joye.hk6.util.VigilantHelp;
-import com.joye.hk6domain.vo.SizeVo;
+import com.joye.hk6domain.vo.RegionVo;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ import butterknife.ButterKnife;
  * QQ:304622254;
  * remark:
  */
-public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
+public class RegionAdapter extends UpdateItemRecyclerViewAdapter<RegionVo> {
 
 
-    public SizeAdapter(Context context) {
+    public RegionAdapter(Context context) {
         super(context);
     }
 
@@ -41,7 +41,7 @@ public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
     }
 
     @Override
-    public void updateItems(List<SizeVo> source, boolean animated) {
+    public void updateItems(List<RegionVo> source, boolean animated) {
         datas.clear();
         datas.addAll(source);
         notifyDataSetChanged();
@@ -61,7 +61,7 @@ public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
             ButterKnife.bind(this, itemView);
         }
 
-        public void setViewValue(SizeVo vo) {
+        public void setViewValue(RegionVo vo) {
             reportLeftExpect.setText(vo.getExpect());
             reportLeftOpencode.setText(vo.getOpenCode() + "");
             reportLeftBig.setText(vo.Big==0?"大":vo.Big+"");

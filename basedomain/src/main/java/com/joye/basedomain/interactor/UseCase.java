@@ -50,7 +50,6 @@ public abstract class UseCase {
    * Builds an {@link rx.Observable} which will be used when executing the current {@link UseCase}.
    */
   protected abstract Observable buildUseCaseObservable();
-
   /**
    * Executes the current use case.
    *

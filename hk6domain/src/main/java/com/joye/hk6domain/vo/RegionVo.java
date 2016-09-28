@@ -17,9 +17,9 @@ import java.util.List;
  * Remeark: 生肖走势图的vo
  */
 
-public class SizeVo extends Hk6UiData implements ReportRightI {
+public class RegionVo extends Hk6UiData implements ReportRightI {
 
-    public SizeVo(Hk6UiData sup) {
+    public RegionVo(Hk6UiData sup) {
         setOpentime(sup.getOpentime());
         setOpentimestamp(sup.getOpentimestamp());
         setEvictors(sup.getEvictors());

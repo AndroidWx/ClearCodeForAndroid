@@ -15,7 +15,6 @@ import java.util.Map;
 
 import rx.Observable;
 import rx.functions.Func1;
-import rx.functions.Func2;
 
 /**
  * Created by Wx on 2016/9/25.
@@ -23,23 +22,14 @@ import rx.functions.Func2;
  * remark:
  */
 
-public class GetSizeUseCase extends GetHk6Data {
-    public GetSizeUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
+public class GetRegionUseCase extends GetHk6Data {
+    public GetRegionUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
         super(threadExecutor, postExecutionThread, hk6Repository, date);
     }
 
     @Override
     protected Observable buildUseCaseObservable() {
-        Observable observable=Observable.zip(super.buildUseCaseObservable("2015-12-31"), super.buildUseCaseObservable(), new Func2<List<Hk6UiData>,List<Hk6UiData>,List<Hk6UiData>>() {
-            @Override
-            public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2) {
-                List<Hk6UiData> datas=new ArrayList<Hk6UiData>();
-                datas.addAll(o2);
-                datas.addAll(o);
-                return datas;
-            }
-        });
-        return  observable.map(new Func1<List<Hk6UiData>, List<SizeVo>>() {
+        return super.buildUseCaseObservable().map(new Func1<List<Hk6UiData>, List<SizeVo>>() {
 
             @Override
             public List<SizeVo> call(List<Hk6UiData> hk6UiDatas) {

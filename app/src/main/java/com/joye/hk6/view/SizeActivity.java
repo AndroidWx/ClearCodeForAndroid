@@ -2,7 +2,6 @@ package com.joye.hk6.view;
 
 import android.os.Bundle;
 
-import com.jaeger.library.StatusBarUtil;
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
@@ -40,8 +39,8 @@ public class SizeActivity extends BaseFragmentActivity implements HasComponent<S
 
     public void initializeInjector(){
         sizeComponent=DaggerSizeComponent.builder()
-                 .hk6ApplicationComponent(getApplicationComponent())
-                 .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6ApplicationComponent(getApplicationComponent())
+                .hk6Module(new Hk6Module("2016-12-31"))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         sizeComponent.inject(this);
     }
