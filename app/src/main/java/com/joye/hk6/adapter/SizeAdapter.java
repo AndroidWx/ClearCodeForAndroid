@@ -3,6 +3,7 @@ package com.joye.hk6.adapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class SizeAdapter extends UpdateItemRecyclerViewAdapter<SizeVo> {
 
         public void setViewValue(SizeVo vo) {
             reportLeftExpect.setText(vo.getExpect());
-            reportLeftOpencode.setText(vo.getOpenCode() + "");
+            reportLeftOpencode.setText(Html.fromHtml("<font color='red'>"+vo.getOpenCode()+"</font>"));
             reportLeftBig.setText(vo.Big==0?"大":vo.Big+"");
             if(vo.Big==0){
                 reportLeftBig.setBackgroundColor(android.R.color.holo_red_dark);

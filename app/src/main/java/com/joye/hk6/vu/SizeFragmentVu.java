@@ -8,7 +8,7 @@ import com.joye.hk6.R;
 import com.joye.hk6.adapter.SizeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.IBannerOnePageListener;
-import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
+import com.joye.hk6.vu.base.BannberOnePageProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.SizeVo;
 import com.joye.layouts.BorderRippleViewTextView;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -21,7 +21,7 @@ import butterknife.BindView;
  * remark:
  */
 
-public class SizeFragmentVu extends ProgressSwipeRefreshRecyclerVu<SizeVo> {
+public class SizeFragmentVu extends BannberOnePageProgressSwipeRefreshRecyclerVu<SizeVo> {
     public IBannerOnePageListener.IBannerOnePageImpl BannerOnePageImpl = new IBannerOnePageListener.IBannerOnePageImpl() {
         @Override
         public void setTitleLable(String textStr) {

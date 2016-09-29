@@ -79,7 +79,7 @@ public class RegionAdapter extends UpdateItemRecyclerViewAdapter<RegionVo> {
 
         public void setViewValue(RegionVo vo) {
             reportLeftExpect.setText(vo.getExpect());
-            reportLeftOpencode.setText(vo.getOpenCode() + "");
+            reportLeftOpencode.setText(Html.fromHtml("<font color='red'>"+vo.getOpenCode()+"</font>"));
             Drawable bigDrawable ;
             if(vo.One==0){
                 bigDrawable = reportLeftRegion1.getResources().getDrawable(R.drawable.ic_favorite_red_a700_18dp);

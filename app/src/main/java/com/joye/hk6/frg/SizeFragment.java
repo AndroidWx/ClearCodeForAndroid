@@ -77,7 +77,7 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
                 Formula.lottery(Vigilant.Orange_1.getDcValue(),Probalility.Size.Small),
                 Formula.lottery(Vigilant.Red.getDcValue(),Probalility.Size.Small),
                 Formula.lottery(Vigilant.Red_1.getDcValue(),Probalility.Size.Small) );
-        String numbers="小数:1-24；大数：25-49";
+        String numbers="小数:1-24；大数：25-49；"+"建议遗漏达到95%";
 
         sFinalSmall=sFinalBig+sFinalSmall+numbers;
         sFinalSmall=sFinalSmall.replaceAll("ppp","%");

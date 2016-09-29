@@ -1,6 +1,6 @@
 package com.joye.hk6.vu;
 
-import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
+import com.joye.hk6.vu.base.BannberOnePageProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
 /**
@@ -9,6 +9,6 @@ import com.joye.hk6domain.vo.ChineseZodiacVo;
  * remark:
  */
 
-public class ChineseZodiacProbilityFragmentVu extends ProgressSwipeRefreshRecyclerVu<ChineseZodiacVo> {
+public class ChineseZodiacProbilityFragmentVu extends BannberOnePageProgressSwipeRefreshRecyclerVu<ChineseZodiacVo> {
 
 }

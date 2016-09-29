@@ -18,7 +18,7 @@ buildscript {
 allprojects {
     ext{
         androidApplicationId = 'com.joye.hk6'
-        androidVersionCode = 1
+        androidVersionCode = 2
         androidVersionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         testApplicationId = 'com.joye.hk6.test'

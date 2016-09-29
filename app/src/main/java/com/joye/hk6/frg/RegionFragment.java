@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.hk6.R;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
-import com.joye.hk6.presenter.RegionPresenter;
+import com.joye.hk6.presenter.RegionFragmentPresenter;
 import com.joye.hk6.view.RegionActivity;
 import com.joye.hk6.vu.RegionFragmentVu;
 import com.joye.hk6domain.constants.Formula;
@@ -14,8 +14,6 @@ import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
 import com.joye.layouts.BorderRippleViewTextView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,7 +26,7 @@ import javax.inject.Inject;
 
 public class RegionFragment extends BaseBannerOnePageFragment<RegionFragmentVu> {
     @Inject
-    RegionPresenter mRegionPresenter;
+    RegionFragmentPresenter mRegionPresenter;
 
     @Override
     protected Class<RegionFragmentVu> getVuClass() {

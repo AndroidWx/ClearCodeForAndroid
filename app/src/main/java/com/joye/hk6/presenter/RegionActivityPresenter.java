@@ -1,13 +1,15 @@
 package com.joye.hk6.presenter;
 
+import android.support.v7.app.ActionBar;
 import android.view.View;
 
 import com.joye.basedomain.interactor.DefaultSubscriber;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
+import com.joye.hk6.R;
 import com.joye.hk6.mvp.Presenter;
-import com.joye.hk6.vu.RegionFragmentVu;
-import com.joye.hk6.vu.SizeFragmentVu;
+import com.joye.hk6.view.RegionActivity;
+import com.joye.hk6.vu.RegionActivityVu;
 import com.joye.hk6domain.vo.RegionVo;
 
 import java.util.List;
@@ -22,27 +24,39 @@ import javax.inject.Named;
  * Remeark:大小概率
  */
 @PerActivity
-public class RegionPresenter implements Presenter<RegionFragmentVu> {
+public class RegionActivityPresenter implements Presenter<RegionActivityVu> {
 
 
     private final UseCase mHk6DataUseCase;
 
-    private RegionFragmentVu vu;
+    private RegionActivityVu vu;
 
+    private RegionActivity regionActivity;
 
     @Inject
-    public RegionPresenter(@Named("GetRegionUseCase")UseCase getHk6DataUseCase) {
+    public RegionActivityPresenter(@Named("GetRegionUseCase")UseCase getHk6DataUseCase) {
         this.mHk6DataUseCase = getHk6DataUseCase;
     }
 
 
     @Override
-    public void setView(RegionFragmentVu chineseZodiacProbilityFragmentVu) {
+    public void setView(RegionActivityVu chineseZodiacProbilityFragmentVu) {
         this.vu=chineseZodiacProbilityFragmentVu;
     }
 
-    public void initalize( ){
+    public void initalize( RegionActivity regionActivity){
+        this.regionActivity=regionActivity;
+        regionActivity.setSupportActionBar(vu.toolbar);
+        final ActionBar ab = regionActivity.getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+        ab.setDisplayHomeAsUpEnabled(true);
         loadHk6Data();
+        vu.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegionActivityPresenter.this.regionActivity.finish();
+            }
+        });
     }
     private void getHk6ListData(){
             mHk6DataUseCase.execute(new Hk6ListDataSubscriber());
@@ -65,7 +79,7 @@ public class RegionPresenter implements Presenter<RegionFragmentVu> {
     public final class Hk6ListDataSubscriber extends DefaultSubscriber<List<RegionVo>>{
         @Override
         public void onCompleted() {
-            RegionPresenter.this.vu.showContent();
+            RegionActivityPresenter.this.vu.showContent();
         }
 
         @Override

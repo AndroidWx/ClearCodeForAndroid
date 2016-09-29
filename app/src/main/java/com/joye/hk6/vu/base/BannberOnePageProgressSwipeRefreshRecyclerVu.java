@@ -20,7 +20,7 @@ import java.util.List;
  * Remeark:
  */
 
-public abstract  class ProgressSwipeRefreshRecyclerVu<T> extends SwipeRefreshRecyclerViewVu implements ProgressVu<List<T>> {
+public class BannberOnePageProgressSwipeRefreshRecyclerVu<T> extends BannerOpnePageSwipeRefreshRecyclerViewVu implements ProgressVu<List<T>> {
 
 
     private View.OnClickListener listener;
@@ -87,4 +87,9 @@ public abstract  class ProgressSwipeRefreshRecyclerVu<T> extends SwipeRefreshRec
         return new ChineseZodiacProbilityAdapter(context);
     }
 
+    @Override
+    protected void onCreateContentView(ViewStub contentStub) {
+        super.onCreateContentView(contentStub);
+
+    }
 }

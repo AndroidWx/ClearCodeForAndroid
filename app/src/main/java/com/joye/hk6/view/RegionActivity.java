@@ -1,33 +1,42 @@
 package com.joye.hk6.view;
 
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
-import com.joye.hk6.ac.BaseFragmentActivity;
-import com.joye.hk6.frg.RegionFragment;
+import com.joye.hk6.ac.BasePresenterAppCompatActivity;
 import com.joye.hk6.internal.di.component.DaggerRegionComponent;
 import com.joye.hk6.internal.di.component.RegionComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
+import com.joye.hk6.presenter.RegionActivityPresenter;
+import com.joye.hk6.vu.RegionActivityVu;
 
 import javax.inject.Inject;
 
-public class RegionActivity extends BaseFragmentActivity implements HasComponent<RegionComponent> {
+public class RegionActivity extends BasePresenterAppCompatActivity<RegionActivityVu> implements HasComponent<RegionComponent> {
     RegionComponent mRegionComponent;
+    @Inject
+    RegionActivityPresenter mRegionPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onBindVu() {
+        super.onBindVu();
         initializeInjector();
         statusBarHelp.setStatusBarTintEnable(true, R.drawable.banner_bar_bg);
-        setContentView(R.layout.f_emptycontent);
-        sizeFragment = new RegionFragment();
-        addFragment(R.id.emptyContent, sizeFragment);
+        vu.setErrorRetryListener(mRegionPresenter.getErrorRetryListener());
+        vu.commonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRegionPresenter.setView(vu);
+        mRegionPresenter.initalize(this);
     }
 
-    private RegionFragment sizeFragment;
+
+    @Override
+    public Class<RegionActivityVu> getVuClass() {
+        return RegionActivityVu.class;
+    }
+
     @Inject
     StatusBarHelp statusBarHelp;
 
