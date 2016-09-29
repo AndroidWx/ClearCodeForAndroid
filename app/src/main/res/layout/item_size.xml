@@ -3,6 +3,9 @@
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    auto:borderColor="@color/com_border"
+    auto:borderWidth="1dp"
+    auto:borders="bottom"
     android:orientation="horizontal">
 
     <com.joye.layouts.BorderTextView

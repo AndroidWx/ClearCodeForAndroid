@@ -12,6 +12,7 @@ import com.joye.hk6.R;
 import com.joye.hk6.adapter.SizeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
+import com.joye.layouts.BorderLinearLayout;
 
 import butterknife.BindView;
 
