@@ -57,7 +57,7 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
             }
         });
         String format=getResources().getString(R.string.vigilant);
-        String sFinal=String.format(format,"大小",
+        String sFinalBig=String.format(format,"大",
                 Formula.lottery(Vigilant.Base.getDcValue(),Probalility.Size.Big),
                 Formula.lottery(Vigilant.Blue.getDcValue(),Probalility.Size.Big),
                 Formula.lottery(Vigilant.Blue_1.getDcValue(),Probalility.Size.Big),
@@ -67,8 +67,19 @@ public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
                 Formula.lottery(Vigilant.Orange_1.getDcValue(),Probalility.Size.Big),
                 Formula.lottery(Vigilant.Red.getDcValue(),Probalility.Size.Big),
                 Formula.lottery(Vigilant.Red_1.getDcValue(),Probalility.Size.Big) );
-        sFinal=sFinal.replaceAll("ppp","%");
-        vu.vigilant.setText(sFinal);
+        String sFinalSmall=String.format(format,"小",
+                Formula.lottery(Vigilant.Base.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Blue.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Blue_1.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Yellow.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Yellow_1.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Orange.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Orange_1.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Red.getDcValue(),Probalility.Size.Small),
+                Formula.lottery(Vigilant.Red_1.getDcValue(),Probalility.Size.Small) );
+        sFinalSmall=sFinalBig+sFinalSmall;
+        sFinalSmall=sFinalSmall.replaceAll("ppp","%");
+        vu.expandTextView.setText(sFinalSmall);
         vu.BannerOnePageImpl.setTitleLable("大小走势");
     }
 }

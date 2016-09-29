@@ -1,6 +1,7 @@
 package com.joye.hk6.vu;
 
 import android.content.Context;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.joye.hk6.R;
@@ -10,6 +11,7 @@ import com.joye.hk6.vu.base.IBannerOnePageListener;
 import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.SizeVo;
 import com.joye.layouts.BorderRippleViewTextView;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import butterknife.BindView;
 
@@ -31,8 +33,14 @@ public class SizeFragmentVu extends ProgressSwipeRefreshRecyclerVu<SizeVo> {
             ((BorderRippleViewTextView) view.findViewById(R.id.ctb_btn_back)).setOnRippleCompleteListener(listener);
         }
     };
-    @BindView(R.id.vigilant)
-    public TextView vigilant;
+//    @BindView(R.id.vigilant)
+//    public TextView vigilant;
+    @BindView(R.id.expandable_text)
+    public TextView expandableText;
+    @BindView(R.id.expand_collapse)
+    public  ImageButton expandCollapse;
+    @BindView(R.id.expand_text_view)
+    public  ExpandableTextView expandTextView;
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {

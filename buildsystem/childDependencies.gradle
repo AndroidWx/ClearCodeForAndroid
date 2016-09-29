@@ -15,6 +15,7 @@ ext {
   logutilsRelease='1.4.2.1'
   javaxInject='1'
   progressActivity='v1.0.3'
+  expandableTextView='0.1.4'
   //Libraries
 
   /**
@@ -34,7 +35,8 @@ ext {
           logutilsDebug:"com.apkfuns.logutils:library:${logutilsDebug}",
           logutilsRelease:"com.apkfuns.logutils:logutils-no-op:${logutilsRelease}",
           guava :"com.google.guava:guava:${guava}",
-          progressActivity:"com.github.vlonjatg:progress-activity:${progressActivity}"
+          progressActivity:"com.github.vlonjatg:progress-activity:${progressActivity}",
+          expandableTextView:"com.ms-square:expandableTextView:${expandableTextView}"
   ]
 
   childPresentationTestDependencies = [

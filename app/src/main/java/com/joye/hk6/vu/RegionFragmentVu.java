@@ -32,8 +32,6 @@ public class RegionFragmentVu extends ProgressSwipeRefreshRecyclerVu<RegionVo> {
             ((BorderRippleViewTextView) view.findViewById(R.id.ctb_btn_back)).setOnRippleCompleteListener(listener);
         }
     };
-    @BindView(R.id.vigilant)
-    public TextView vigilant;
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
