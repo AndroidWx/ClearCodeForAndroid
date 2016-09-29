@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/report_left_expect"
+      />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/report_left_opencode"
+        android:layout_toRightOf="@id/report_left_expect"
+       />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_redEven"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/redEven"
+        android:layout_toRightOf="@id/report_left_opencode"
+     />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_redOdd"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/redOdd"
+        android:layout_toRightOf="@id/report_left_redEven"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_blueEven"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/blueEven"
+        android:layout_toRightOf="@id/report_left_redOdd"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_blueOdd"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/blueOdd"
+        android:layout_toRightOf="@id/report_left_blueEven"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_greenEven"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/greenEven"
+        android:layout_toRightOf="@id/report_left_blueOdd"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_greenOdd"
+        style="@style/TextViewStyleColorTwos"
+        android:text="@string/greenOdd"
+        android:layout_toRightOf="@id/report_left_greenEven"
+        />
+</com.joye.layouts.BorderPercentRelativeLayout>

@@ -18,6 +18,10 @@
         <item name="layout_widthPercent">11.11%</item>
         <item name="android:layout_width">0dip</item>
     </style>
+    <style name="TextViewStyleColorTwos" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">12.5%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
 
     <style name="TextViewStyleRight">
         <item name="android:layout_width">100dip</item>

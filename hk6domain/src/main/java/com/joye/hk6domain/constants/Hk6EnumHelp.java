@@ -1,7 +1,5 @@
 package com.joye.hk6domain.constants;
 
-import java.util.Arrays;
-
 import javax.inject.Singleton;
 
 /**
@@ -48,6 +46,18 @@ public class Hk6EnumHelp {
            return Region.values()[Double.valueOf(n/7.001).intValue()];
 //        return Region.Seven;
     };
+
+    public static ColorTwos getColorTwos(int n){
+        for(ColorTwos colorTwos:ColorTwos.values()){
+         for(int item:colorTwos.getNumbers()){
+             if(item==n){
+                 return colorTwos;
+             }
+         }
+        }
+        return ColorTwos.BlueEven;
+    }
+
 
     public static Hk6Size getHk6Size(int n){
         if(n>=1&&n<=24){
