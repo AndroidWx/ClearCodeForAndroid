@@ -9,6 +9,9 @@ import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.presenter.RegionPresenter;
 import com.joye.hk6.view.RegionActivity;
 import com.joye.hk6.vu.RegionFragmentVu;
+import com.joye.hk6domain.constants.Formula;
+import com.joye.hk6domain.constants.Probalility;
+import com.joye.hk6domain.constants.Vigilant;
 import com.joye.layouts.BorderRippleViewTextView;
 
 import java.util.ArrayList;
@@ -57,7 +60,20 @@ public class RegionFragment extends BaseBannerOnePageFragment<RegionFragmentVu> 
             }
         });
         String format=getResources().getString(R.string.vigilant);
-        List<Object>list=new ArrayList<>();
-        vu.BannerOnePageImpl.setTitleLable("大小走势");
+        String sFinalBig=String.format(format,"每段",
+                Formula.lottery(Vigilant.Base.getDcValue(), Probalility.Region.Default),
+                Formula.lottery(Vigilant.Blue.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Blue_1.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Yellow.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Yellow_1.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Orange.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Orange_1.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Red.getDcValue(),Probalility.Region.Default),
+                Formula.lottery(Vigilant.Red_1.getDcValue(),Probalility.Region.Default) );
+        String numbers="    一段：1-7；二段：8-14；三段：15-21；四段：22-28；五段29-35；六段36-42；七段43-49；建议"+ Formula.lottery(Vigilant.Orange.getDcValue(),Probalility.Region.Default)+"期关注";
+        sFinalBig=sFinalBig+numbers;
+        sFinalBig=sFinalBig.replaceAll("ppp","%");
+        vu.expandTextView.setText(sFinalBig);
+        vu.BannerOnePageImpl.setTitleLable("段位走势");
     }
 }

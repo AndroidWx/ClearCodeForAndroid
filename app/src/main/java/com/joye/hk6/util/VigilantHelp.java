@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.widget.Switch;
 
 import com.joye.hk6.R;
+import com.joye.hk6domain.constants.Region;
 import com.joye.hk6domain.constants.Vigilant;
 
 /**
@@ -15,9 +16,17 @@ import com.joye.hk6domain.constants.Vigilant;
 
 public class VigilantHelp {
     public static int getDrawable(Vigilant vigilant){
+        return getDrawable(vigilant,true);
+    }
+
+    public static int getDrawable(Vigilant vigilant,boolean vigilantBaseIsShow){
         switch (vigilant){
             case Base:
+                if(vigilantBaseIsShow)
                 return R.drawable.ic_warning_blue_200_18dp;
+                else {
+                    return android.R.drawable.screen_background_light_transparent;
+                }
             case Blue:
                 return R.drawable.ic_warning_light_blue_500_18dp;
             case Blue_1:

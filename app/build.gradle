@@ -21,6 +21,7 @@ android {
         versionName globalConfiguration.getAt("androidVersionName")
         testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
         testApplicationId globalConfiguration.getAt("testApplicationId")
+        manifestPlaceholders=[PGYER_APPID:"005cef4ebe6a9b20aba3d1bacdf779e3"]
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -56,6 +57,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            manifestPlaceholders=[PGYER_APPID:"005cef4ebe6a9b20aba3d1bacdf779e3"]
         }
         release {
 
@@ -76,7 +78,7 @@ dependencies {
     provided presentationDependencies.javaxAnnotation
     compile childPresentationDependencies.javaxInject
     compile childPresentationDependencies.statusbaruitl
-    debugCompile childPresentationDependencies.logutilsDebug
+        debugCompile childPresentationDependencies.logutilsDebug
     releaseCompile childPresentationDependencies.logutilsRelease
     compile childPresentationDependencies.guava
     compile childPresentationDependencies.progressActivity
@@ -95,5 +97,6 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+    compile 'com.pgyersdk:sdk:2.4.0'
     compile childPresentationDependencies.expandableTextView
 }

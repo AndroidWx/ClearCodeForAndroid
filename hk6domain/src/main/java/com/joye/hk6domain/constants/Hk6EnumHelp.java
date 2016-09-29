@@ -1,5 +1,7 @@
 package com.joye.hk6domain.constants;
 
+import java.util.Arrays;
+
 import javax.inject.Singleton;
 
 /**
@@ -11,15 +13,15 @@ import javax.inject.Singleton;
 @Singleton
 public class Hk6EnumHelp {
     /**
-     * ºì²¨Çò
+     * ï¿½ì²¨ï¿½ï¿½
      */
     public static final int RedColorNumber[]=   {1,2,7,8,12,13,18,19,23,24,29,30,34,35,40,45,46};
     /**
-     * À¶²¨
+     * ï¿½ï¿½ï¿½ï¿½
      */
     public static final int BlueColorNumber[]=  {3,4,9,10,14,15,20,25,26,31,36,37,41,42,47,48};
     /**
-     * ÂÌ²¨
+     * ï¿½Ì²ï¿½
      */
     public static final int GreenColorNumber[]= {5,6,11,16,17,21,22,27,28,32,33,38,39,43,44,49};
 
@@ -38,9 +40,14 @@ public class Hk6EnumHelp {
         if(n>=1&&n<=49) {
             return (n & 1) == 0 ? Parity.Odd : Parity.Even;
         }else{
-            throw new IllegalArgumentException("²ÎÊý´«ÈëÓÐÎÊÌâ");
+            throw new IllegalArgumentException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
     }
+
+    public static Region getRegion(int n){
+           return Region.values()[Double.valueOf(n/7.001).intValue()];
+//        return Region.Seven;
+    };
 
     public static Hk6Size getHk6Size(int n){
         if(n>=1&&n<=24){
@@ -48,7 +55,7 @@ public class Hk6EnumHelp {
         }else if(n>=25 &&n<=49){
             return Hk6Size.Big;
         }else{
-            throw new IllegalArgumentException("²ÎÊý´«ÈëÓÐÎÊÌâ");
+            throw new IllegalArgumentException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
     }
 

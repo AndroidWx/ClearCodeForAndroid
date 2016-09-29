@@ -4,8 +4,10 @@ import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.Hk6Size;
+import com.joye.hk6domain.constants.Region;
 import com.joye.hk6domain.entity.Hk6UiData;
 import com.joye.hk6domain.repository.Hk6Repository;
+import com.joye.hk6domain.vo.RegionVo;
 import com.joye.hk6domain.vo.SizeVo;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 import rx.Observable;
 import rx.functions.Func1;
+import rx.functions.Func3;
 
 /**
  * Created by Wx on 2016/9/25.
@@ -29,26 +32,132 @@ public class GetRegionUseCase extends GetHk6Data {
 
     @Override
     protected Observable buildUseCaseObservable() {
-        return super.buildUseCaseObservable().map(new Func1<List<Hk6UiData>, List<SizeVo>>() {
+        Observable observable=Observable.zip(super.buildUseCaseObservable("2014-12-31"),super.buildUseCaseObservable("2015-12-31"), super.buildUseCaseObservable(), new Func3<List<Hk6UiData>,List<Hk6UiData>,List<Hk6UiData>,List<Hk6UiData>>() {
+
 
             @Override
-            public List<SizeVo> call(List<Hk6UiData> hk6UiDatas) {
-                List<SizeVo> list = new ArrayList<SizeVo>(hk6UiDatas.size());
-                Map<String,Integer> map=null;
+            public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2, List<Hk6UiData> o3) {
+                List<Hk6UiData> datas=new ArrayList<Hk6UiData>();
+                datas.addAll(o3);
+                datas.addAll(o2);
+                datas.addAll(o);
+                return datas;
+            }
+        });
+        return observable.map(new Func1<List<Hk6UiData>, List<RegionVo>>() {
+
+            @Override
+            public List<RegionVo> call(List<Hk6UiData> hk6UiDatas) {
+                List<RegionVo> list = new ArrayList<RegionVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
-                int Big = 0,Small=0;
+                int One = 0,Two=0,Three=0,Four=0,Five=0,Sex=0,Seven=0;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    SizeVo vo = new SizeVo(itemVo);
-                    if(Hk6EnumHelp.getHk6Size(vo.getOpenCode()).equals(Hk6Size.Big)){
-                        Small++;
-                        Big=0;
-                        vo.Big=0;
-                        vo.Small=Small;
-                    }else{
-                        Big++;
-                        Small=0;
-                        vo.Small=0;
-                        vo.Big=Big;
+                    RegionVo vo = new RegionVo(itemVo);
+                    if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.One)){
+                        One=0;
+                        Two++;
+                        Three++;
+                        Four++;
+                        Five++;
+                        Sex++;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Two)){
+                        One++;
+                        Two=0;
+                        Three++;
+                        Four++;
+                        Five++;
+                        Sex++;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Three)){
+                        One++;
+                        Two++;
+                        Three=0;
+                        Four++;
+                        Five++;
+                        Sex++;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Four)){
+                        One++;
+                        Two++;
+                        Three++;
+                        Four=0;
+                        Five++;
+                        Sex++;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Five)){
+                        One++;
+                        Two++;
+                        Three++;
+                        Four++;
+                        Five=0;
+                        Sex++;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Six)){
+                        One++;
+                        Two++;
+                        Three++;
+                        Four++;
+                        Five++;
+                        Sex=0;
+                        Seven++;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
+                    }else if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.Seven)){
+                        One++;
+                        Two++;
+                        Three++;
+                        Four++;
+                        Five++;
+                        Sex++;
+                        Seven=0;
+                        vo.One=One;
+                        vo.Two=Two;
+                        vo.Three=Three;
+                        vo.Four=Four;
+                        vo.Five=Five;
+                        vo.Sex=Sex;
+                        vo.Seven=Seven;
                     }
                     list.add(vo);
                 }

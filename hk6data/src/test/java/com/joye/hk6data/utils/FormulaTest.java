@@ -1,6 +1,9 @@
 package com.joye.hk6data.utils;
 
 
+import com.joye.hk6domain.constants.Formula;
+import com.joye.hk6domain.constants.Hk6EnumHelp;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +25,9 @@ public class FormulaTest {
     @Test
     public void testFormula() throws Exception {
 //       System.out.println( mFormula.lottery(0.999, Probalility.Region.Default));
-       System.out.println((double)(4/49));
+     for(int i=1;i<=49;i++){
+         System.out.println(i+" = "+ Hk6EnumHelp.getRegion(i));
+     }
     }
+
 }

@@ -17,6 +17,7 @@ public class Hk6AndroidApplication extends Application {
         super.onCreate();
         JoyeEnvironment.Instance.onCreate(this);
         initializeInjector();
+
     }
 
     private void initializeInjector(){

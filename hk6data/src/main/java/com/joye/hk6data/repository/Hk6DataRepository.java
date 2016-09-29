@@ -44,7 +44,7 @@ public class Hk6DataRepository  implements Hk6Repository {
                     hk6Entity=hk6EntityList.get(i);
                     uiData=new Hk6UiData();
                     dataTransformerEntity=hk6Entity.getDataTransformerEntity();
-                    uiData.setExpect(hk6Entity.getExpect().substring(4,7)+"期");
+                    uiData.setExpect(hk6Entity.getExpect().substring(2,7)+"期");
                     uiData.setEvictors(dataTransformerEntity.getmEvictors());
                     uiData.setOpentime(hk6Entity.getOpentime());
                     uiData.setOpentimestamp(hk6Entity.getOpentimestamp());

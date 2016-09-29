@@ -1,6 +1,7 @@
 package com.joye.hk6.vu;
 
 import android.content.Context;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.joye.hk6.R;
@@ -11,6 +12,7 @@ import com.joye.hk6.vu.base.IBannerOnePageListener;
 import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 import com.joye.hk6domain.vo.RegionVo;
 import com.joye.layouts.BorderRippleViewTextView;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import butterknife.BindView;
 
@@ -37,9 +39,14 @@ public class RegionFragmentVu extends ProgressSwipeRefreshRecyclerVu<RegionVo> {
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
         return new RegionAdapter(context);
     }
-
+    @BindView(R.id.expandable_text)
+    public TextView expandableText;
+    @BindView(R.id.expand_collapse)
+    public ImageButton expandCollapse;
+    @BindView(R.id.expand_text_view)
+    public ExpandableTextView expandTextView;
     @Override
     public int contentLayout() {
-        return R.layout.fragment_size_common_list;
+        return R.layout.fragment_region_common_list;
     }
 }

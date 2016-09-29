@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="TextViewStyleLeft">
+    <style name="baseTextViewStyle">
         <item name="android:layout_width">70dip</item>
         <item name="android:background">@color/white_fff</item>
         <item name="android:layout_height">48dip</item>
@@ -8,9 +8,15 @@
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
-        <!--<item name="borders">bottom|top|right|left</item>-->
-        <!--<item name="boderWidth__">1dp</item>-->
-        <!--<item name="boderColor">@color/com_border</item>-->
+    </style>
+
+    <style name="TextViewStyleLeft" parent="@style/baseTextViewStyle">
+        <item name="android:layout_width">70dip</item>
+    </style>
+
+    <style name="TextViewStyleRegion" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">11.11%</item>
+        <item name="android:layout_width">0dip</item>
     </style>
 
     <style name="TextViewStyleRight">

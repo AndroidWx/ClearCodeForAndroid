@@ -5,8 +5,12 @@
 
     <uses-sdk tools:overrideLibrary="com.jaeger.library,butterknife,com.joye.layouts,com.vlonjatg.progressactivity" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  <!-- 获取设备信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取MAC地址-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写sdcard，storage等等 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
 
     <application
         android:name=".Hk6AndroidApplication"
@@ -30,7 +34,13 @@
             android:label="@string/title_activity_chinese_zodiac_probility"></activity>
         <activity android:name=".ac.EmptyActivity" />
         <activity android:name=".view.SizeActivity" />
-        <activity android:name=".view.RegionActivity"></activity>
+        <activity android:name=".view.RegionActivity" android:screenOrientation="landscape"
+            ></activity>
+        <activity android:name="com.pgyersdk.activity.FeedbackActivity"/>
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="${PGYER_APPID}" >
+        </meta-data>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ package com.joye.hk6domain.vo;
 import com.joye.hk6domain.constants.Formula;
 import com.joye.hk6domain.constants.IDcValue;
 import com.joye.hk6domain.constants.Probalility;
+import com.joye.hk6domain.constants.Region;
 import com.joye.hk6domain.constants.Vigilant;
 import com.joye.hk6domain.entity.Hk6UiData;
 
@@ -27,15 +28,46 @@ public class RegionVo extends Hk6UiData implements ReportRightI {
         setOpenCode(sup.getOpenCode());
     }
 
-    public int Big, Small;
+    public int One, Two, Three, Four, Five, Sex, Seven;
 
 
-    public Vigilant bigVigilant() {
+
+
+
+    public Vigilant regionVigilant(Region region){
+        int regionNum=0;
+        switch (region){
+            case One:
+                regionNum= One;
+                break;
+            case Two:
+                regionNum= Two;
+                break;
+            case Three:
+                regionNum= Three;
+                break;
+            case Four:
+                regionNum= Four;
+                break;
+            case Five:
+                regionNum= Five;
+                break;
+            case Six:
+                regionNum= Sex;
+                break;
+            default:
+                regionNum= Seven;
+                break;
+        }
+        return regionVigilant(regionNum);
+    }
+
+    public Vigilant regionVigilant(int num) {
         Vigilant[] values = Vigilant.values();
         List<Vigilant> datas = new ArrayList<>();
         for (Vigilant vigilant : values) {
-            if ( Big>= Formula.lotteryDobule(vigilant.getDcValue(), Probalility.Size.Big)
-                    &&Big>Formula.lotteryDobule(IDcValue.DefaultValue, Probalility.Size.Big)) {
+            if ( num>= Formula.lotteryDobule(vigilant.getDcValue(), Probalility.Region.Default)
+                    &&num>Formula.lotteryDobule(IDcValue.DefaultValue, Probalility.Region.Default)) {
                 datas.add(vigilant);
             }
         }
@@ -44,22 +76,5 @@ public class RegionVo extends Hk6UiData implements ReportRightI {
         }
         return Vigilant.Default;
     }
-
-    public Vigilant smallVigilant() {
-        Vigilant[] values = Vigilant.values();
-        List<Vigilant> datas = new ArrayList<>();
-//        Collections.reverse(datas);
-        for (Vigilant vigilant : values) {
-            if ( Small >=Formula.lotteryDobule(vigilant.getDcValue(), Probalility.Size.Small)  &&
-                    Small>Formula.lotteryDobule(IDcValue.DefaultValue, Probalility.Size.Small)) {
-                datas.add(vigilant);
-            }
-        }
-        if (datas.size() > 1) {
-            return datas.get(datas.size() - 1);
-        }
-        return Vigilant.Default;
-    }
-
 
 }

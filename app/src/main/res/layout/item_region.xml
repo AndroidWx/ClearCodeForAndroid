@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/report_left_expect"
+      />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/report_left_opencode"
+        android:layout_toRightOf="@id/report_left_expect"
+       />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region1"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_1"
+        android:layout_toRightOf="@id/report_left_opencode"
+     />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region2"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_2"
+        android:layout_toRightOf="@id/report_left_Region1"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region3"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_3"
+        android:layout_toRightOf="@id/report_left_Region2"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region4"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_4"
+        android:layout_toRightOf="@id/report_left_Region3"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region5"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_5"
+        android:layout_toRightOf="@id/report_left_Region4"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region6"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_6"
+        android:layout_toRightOf="@id/report_left_Region5"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_Region7"
+        style="@style/TextViewStyleRegion"
+        android:text="@string/region_7"
+        android:layout_toRightOf="@id/report_left_Region6"
+        />
+</com.joye.layouts.BorderPercentRelativeLayout>
