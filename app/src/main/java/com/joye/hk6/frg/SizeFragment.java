@@ -6,13 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.hk6.R;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
-import com.joye.hk6.presenter.SizePresenter;
+import com.joye.hk6.presenter.SizeFrgmentPresenter;
 import com.joye.hk6.view.SizeActivity;
 import com.joye.hk6.vu.SizeFragmentVu;
 import com.joye.layouts.BorderRippleViewTextView;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.joye.hk6domain.constants.*;
 
 import javax.inject.Inject;
@@ -25,7 +23,7 @@ import javax.inject.Inject;
 
 public class SizeFragment extends BaseBannerOnePageFragment<SizeFragmentVu> {
     @Inject
-    SizePresenter SizePresenter;
+    SizeFrgmentPresenter SizePresenter;
 
     @Override
     protected Class<SizeFragmentVu> getVuClass() {

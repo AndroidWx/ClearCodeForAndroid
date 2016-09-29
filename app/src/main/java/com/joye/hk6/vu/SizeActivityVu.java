@@ -9,7 +9,7 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.RegionAdapter;
+import com.joye.hk6.adapter.SizeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.ProgressSwipeRefreshRecyclerVu;
 
@@ -21,7 +21,7 @@ import butterknife.BindView;
  * 304622254@qq.com
  * Remeark:
  */
-public class RegionActivityVu extends ProgressSwipeRefreshRecyclerVu {
+public class SizeActivityVu extends ProgressSwipeRefreshRecyclerVu {
 
     @BindView(R.id.backdrop)
     public ImageView backdrop;
@@ -39,10 +39,10 @@ public class RegionActivityVu extends ProgressSwipeRefreshRecyclerVu {
     @Override
     protected void initView() {
         super.initView();
-        toolbar.setTitle("段位走势预警");
-        lableViewStub.setLayoutResource(R.layout.item_region);
+        toolbar.setTitle("大小走势预警");
+        backdrop.setImageResource(R.drawable.size);
+        lableViewStub.setLayoutResource( R.layout.item_size);
         lableViewStub.inflate();
-
     }
 
     @Override
@@ -52,6 +52,6 @@ public class RegionActivityVu extends ProgressSwipeRefreshRecyclerVu {
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
-        return new RegionAdapter(context);
+        return new SizeAdapter(context);
     }
 }

@@ -60,7 +60,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <include layout="@layout/item_region" />
+
+                <ViewStub
+                    android:id="@+id/lableViewStub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@id/common_recycler_view"

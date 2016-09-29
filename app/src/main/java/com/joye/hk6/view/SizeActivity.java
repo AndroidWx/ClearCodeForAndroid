@@ -1,16 +1,17 @@
 package com.joye.hk6.view;
 
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
-import com.joye.hk6.ac.BaseFragmentActivity;
-import com.joye.hk6.frg.SizeFragment;
+import com.joye.hk6.ac.BasePresenterAppCompatActivity;
 import com.joye.hk6.internal.di.component.DaggerSizeComponent;
 import com.joye.hk6.internal.di.component.SizeComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
+import com.joye.hk6.presenter.SizeActivityPresenter;
+import com.joye.hk6.vu.SizeActivityVu;
 
 import javax.inject.Inject;
 
@@ -21,20 +22,27 @@ import javax.inject.Inject;
  * Remeark:
  */
 
-public class SizeActivity extends BaseFragmentActivity implements HasComponent<SizeComponent>{
+public class SizeActivity extends BasePresenterAppCompatActivity<SizeActivityVu> implements HasComponent<SizeComponent>{
     private SizeComponent sizeComponent;
 
-    private SizeFragment sizeFragment;
     @Inject
     StatusBarHelp statusBarHelp;
+    @Inject
+    SizeActivityPresenter mSizeActivityPresenter;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected Class<SizeActivityVu> getVuClass() {
+        return SizeActivityVu.class;
+    }
+
+    @Override
+    protected void onBindVu() {
+        super.onBindVu();
         initializeInjector();
-        statusBarHelp.setStatusBarTintEnable(true,R.drawable.banner_bar_bg);
-        setContentView(R.layout.f_emptycontent);
-        sizeFragment=new SizeFragment();
-        addFragment(R.id.emptyContent,sizeFragment);
+        statusBarHelp.setStatusBarTintEnable(true, R.drawable.banner_bar_bg);
+        vu.setErrorRetryListener(mSizeActivityPresenter.getErrorRetryListener());
+        vu.commonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mSizeActivityPresenter.setView(vu);
+        mSizeActivityPresenter.initalize(this);
     }
 
     public void initializeInjector(){

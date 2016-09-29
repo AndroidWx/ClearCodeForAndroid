@@ -1,11 +1,15 @@
 package com.joye.hk6.presenter;
 
+import android.support.v7.app.ActionBar;
 import android.view.View;
 
 import com.joye.basedomain.interactor.DefaultSubscriber;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
+import com.joye.hk6.R;
 import com.joye.hk6.mvp.Presenter;
+import com.joye.hk6.view.SizeActivity;
+import com.joye.hk6.vu.SizeActivityVu;
 import com.joye.hk6.vu.SizeFragmentVu;
 import com.joye.hk6domain.vo.SizeVo;
 
@@ -21,27 +25,40 @@ import javax.inject.Named;
  * Remeark:大小概率
  */
 @PerActivity
-public class SizePresenter implements Presenter<SizeFragmentVu> {
+public class SizeActivityPresenter implements Presenter<SizeActivityVu> {
 
 
     private final UseCase mHk6DataUseCase;
 
-    private SizeFragmentVu vu;
+    private SizeActivityVu vu;
 
+    private SizeActivity sizeActivity;
 
     @Inject
-    public SizePresenter(@Named("GetSizeUseCase")UseCase getHk6DataUseCase) {
+    public SizeActivityPresenter(@Named("GetSizeUseCase")UseCase getHk6DataUseCase) {
         this.mHk6DataUseCase = getHk6DataUseCase;
     }
 
 
     @Override
-    public void setView(SizeFragmentVu chineseZodiacProbilityFragmentVu) {
+    public void setView(SizeActivityVu chineseZodiacProbilityFragmentVu) {
         this.vu=chineseZodiacProbilityFragmentVu;
     }
 
-    public void initalize( ){
+    public void initalize(SizeActivity sizeActivity ){
         loadHk6Data();
+        this.sizeActivity=sizeActivity;
+        sizeActivity.setSupportActionBar(vu.toolbar);
+        final ActionBar ab = sizeActivity.getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+        ab.setDisplayHomeAsUpEnabled(true);
+        loadHk6Data();
+        vu.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SizeActivityPresenter.this.sizeActivity.finish();
+            }
+        });
     }
     private void getHk6ListData(){
             mHk6DataUseCase.execute(new Hk6ListDataSubscriber());
@@ -64,7 +81,7 @@ public class SizePresenter implements Presenter<SizeFragmentVu> {
     public final class Hk6ListDataSubscriber extends DefaultSubscriber<List<SizeVo>>{
         @Override
         public void onCompleted() {
-            SizePresenter.this.vu.showContent();
+            SizeActivityPresenter.this.vu.showContent();
         }
 
         @Override
