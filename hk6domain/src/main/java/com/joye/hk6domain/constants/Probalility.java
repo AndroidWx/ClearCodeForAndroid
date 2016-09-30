@@ -101,4 +101,35 @@ public class Probalility {
         public static final double GreenOdd = 0.1836734693877551;
     }
 
+    public static class HeadAge{
+        public static final double H_0=0.18367346938776;
+        public static final double Default=0.20408163265306;
+    }
+
+    public static class Composite{
+        public static final double C_1=0.04081632653061;
+        public static final double C_2=0.06122448979592;
+        public static final double C_3=0.08163265306122;
+        public static final double C_4=0.10204081632653;
+        public static final double C_5=C_4;
+        public static final double C_6=C_4;
+        public static final double C_7=C_4;
+        public static final double C_8=C_4;
+        public static final double C_9=C_4;
+        public static final double C_10=C_3;
+        public static final double C_11=C_2;
+        public static final double C_12=C_1;
+        public static final double C_13=0.02040816326531;
+    }
+
+    public static class GateCount{
+        public static final double GateCount_1=0.18367346938776;
+        public static final double GateCount_2=GateCount_1;
+        public static final double GateCount_3=GateCount_1;
+        public static final double GateCount_4=0.20408163265306;
+        public static final double GateCount_5=0.24489795918367;
+
+    }
+
+
 }

@@ -23,6 +23,15 @@
         <item name="android:layout_width">0dip</item>
     </style>
 
+    <style name="TextViewStyleHeadAge" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">14.28%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
+    <style name="TextViewStyleComposite" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">6.66%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
+
     <style name="TextViewStyleRight">
         <item name="android:layout_width">100dip</item>
         <item name="android:layout_height">48dip</item>

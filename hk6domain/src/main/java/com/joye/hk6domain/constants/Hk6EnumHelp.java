@@ -58,6 +58,44 @@ public class Hk6EnumHelp {
         return ColorTwos.BlueEven;
     }
 
+    public static  Composite getComposite(int n){
+        for (Composite composite:Composite.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return Composite.C1;
+    }
+
+
+    public static HeadAge getHeadAge(int n){
+        int value=n/10;
+        if(value==0){
+            return HeadAge.Headage0;
+        }else if(value==1){
+            return HeadAge.Headage1;
+        }else if(value==2){
+            return HeadAge.Headage2;
+        }else if(value==3){
+            return HeadAge.Headage3;
+        }else {
+            return HeadAge.Headage4;
+        }
+
+    }
+
+    public static GateCount getGateCount(int n){
+        for (GateCount composite:GateCount.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return GateCount.GateCount1;
+    }
 
     public static Hk6Size getHk6Size(int n){
         if(n>=1&&n<=24){

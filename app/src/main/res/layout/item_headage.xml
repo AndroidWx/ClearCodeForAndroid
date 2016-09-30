@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/report_left_expect"
+      />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/report_left_opencode"
+        android:layout_toRightOf="@id/report_left_expect"
+       />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_headage0"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/headage0"
+        android:layout_toRightOf="@id/report_left_opencode"
+     />
+
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_headage1"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/headage1"
+        android:layout_toRightOf="@id/report_left_headage0"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_headage2"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/headage2"
+        android:layout_toRightOf="@id/report_left_headage1"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_headage3"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/headage3"
+        android:layout_toRightOf="@id/report_left_headage2"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_headage4"
+        style="@style/TextViewStyleHeadAge"
+        android:text="@string/headage4"
+        android:layout_toRightOf="@id/report_left_headage3"
+        />
+</com.joye.layouts.BorderPercentRelativeLayout>

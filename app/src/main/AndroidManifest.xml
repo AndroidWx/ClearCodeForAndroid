@@ -36,6 +36,9 @@
         <activity android:name=".view.SizeActivity" />
         <activity android:name=".view.RegionActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.ColorTwosActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.HeadAgeActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.CompositeActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.GateCountActivity" android:screenOrientation="landscape"/>
         <activity android:name="com.pgyersdk.activity.FeedbackActivity"/>
         <meta-data
             android:name="PGYER_APPID"

@@ -6,6 +6,9 @@ import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6domain.interactor.GetChineseZodiacUseCase;
 import com.joye.hk6domain.interactor.GetColorTwosUseCase;
+import com.joye.hk6domain.interactor.GetCompositeCase;
+import com.joye.hk6domain.interactor.GetGateCountUseCase;
+import com.joye.hk6domain.interactor.GetHeadAgeUseCase;
 import com.joye.hk6domain.interactor.GetHk6Data;
 import com.joye.hk6domain.interactor.GetRegionUseCase;
 import com.joye.hk6domain.interactor.GetSizeUseCase;
@@ -67,6 +70,25 @@ public class Hk6Module {
         return new
                 GetColorTwosUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
+    @Provides @PerActivity @Named("GetHeadAgeUseCase")
+    UseCase provideGetHeadAgeUseCase(ThreadExecutor threadExecutor,
+                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetHeadAgeUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
 
+    @Provides @PerActivity @Named("GetCompositeCase")
+    UseCase provideGetCompositeCase(ThreadExecutor threadExecutor,
+                                     PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetCompositeCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetGateCountUseCase")
+    UseCase provideGetGateCountUseCase(ThreadExecutor threadExecutor,
+                                    PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetGateCountUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
 
 }
