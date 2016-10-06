@@ -7,10 +7,15 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6domain.interactor.GetChineseZodiacUseCase;
 import com.joye.hk6domain.interactor.GetColorTwosUseCase;
 import com.joye.hk6domain.interactor.GetCompositeCase;
+import com.joye.hk6domain.interactor.GetCompositeMantissaUseCase;
+import com.joye.hk6domain.interactor.GetCompositeSizeUseCase;
 import com.joye.hk6domain.interactor.GetGateCountUseCase;
 import com.joye.hk6domain.interactor.GetHeadAgeUseCase;
 import com.joye.hk6domain.interactor.GetHk6Data;
+import com.joye.hk6domain.interactor.GetMantissaSizeUseCase;
+import com.joye.hk6domain.interactor.GetMantissaUseCase;
 import com.joye.hk6domain.interactor.GetRegionUseCase;
+import com.joye.hk6domain.interactor.GetSizeTwosUseCase;
 import com.joye.hk6domain.interactor.GetSizeUseCase;
 import com.joye.hk6domain.repository.Hk6Repository;
 
@@ -27,7 +32,7 @@ import dagger.Provides;
  */
 @Module
 public class Hk6Module {
-    private String date="2016-09-23";
+    private String date="";
 
     public Hk6Module(String date) {
         this.date = date;
@@ -86,9 +91,44 @@ public class Hk6Module {
 
     @Provides @PerActivity @Named("GetGateCountUseCase")
     UseCase provideGetGateCountUseCase(ThreadExecutor threadExecutor,
-                                    PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetGateCountUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+
+    @Provides @PerActivity @Named("GetMantissaUseCase")
+    UseCase provideGetMantissaUseCase(ThreadExecutor threadExecutor,
+                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetMantissaUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetCompositeSizeUseCase")
+    UseCase provideGetCompositeSizeUseCase(ThreadExecutor threadExecutor,
+                                           PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetCompositeSizeUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetMantissaSizeUseCase")
+    UseCase provideGetMantissaSizeUseCase(ThreadExecutor threadExecutor,
+                                           PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetMantissaSizeUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetSizeTwosUseCase")
+    UseCase provideGetSizeTwosUseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetSizeTwosUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetCompositeMantissaUseCase")
+    UseCase provideGetCompositeMantissaUseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetCompositeMantissaUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }

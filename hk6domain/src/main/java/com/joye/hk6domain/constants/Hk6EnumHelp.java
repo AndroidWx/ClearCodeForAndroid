@@ -69,6 +69,62 @@ public class Hk6EnumHelp {
         return Composite.C1;
     }
 
+    public static Mantissa getMantissa(int n){
+        for (Mantissa composite:Mantissa.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return Mantissa.Mantissa0;
+    }
+
+    public static MantissaSize getMantissaSize(int n){
+        for (MantissaSize composite:MantissaSize.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return MantissaSize.MantissaBig;
+    }
+
+    public static SizeTwos getSizeTwos(int n){
+        for (SizeTwos composite:SizeTwos.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return SizeTwos.BigEven;
+    }
+
+
+    public static CompositeMantissa getCompositeMantissa(int n){
+        for (CompositeMantissa compositeMantissa:CompositeMantissa.values()){
+            for (int item:compositeMantissa.getNumbers()){
+                if(item==n){
+                    return compositeMantissa;
+                }
+            }
+        }
+        return CompositeMantissa.CM0;
+    }
+
+    public static CompositeSize getCompositeSize(int n){
+        for (CompositeSize composite:CompositeSize.values()){
+            for (int item:composite.getNumbers()){
+                if(item==n){
+                    return composite;
+                }
+            }
+        }
+        return CompositeSize.Big;
+    }
+
 
     public static HeadAge getHeadAge(int n){
         int value=n/10;

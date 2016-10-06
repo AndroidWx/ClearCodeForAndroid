@@ -23,12 +23,26 @@
         <item name="android:layout_width">0dip</item>
     </style>
 
+    <style name="TextViewStyleMantissa" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">9.09%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
+
     <style name="TextViewStyleHeadAge" parent="@style/baseTextViewStyle">
         <item name="layout_widthPercent">14.28%</item>
         <item name="android:layout_width">0dip</item>
     </style>
     <style name="TextViewStyleComposite" parent="@style/baseTextViewStyle">
         <item name="layout_widthPercent">6.66%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
+    <style name="TextViewStyleCompositeMantissa" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">8.33%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
+
+    <style name="TextViewStyleSizeTwos" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">16.6%</item>
         <item name="android:layout_width">0dip</item>
     </style>
 

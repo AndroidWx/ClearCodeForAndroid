@@ -1,7 +1,7 @@
 package com.joye.hk6data.utils;
 
+import com.joye.hk6domain.constants.CompositeMantissa;
 import com.joye.hk6domain.constants.Formula;
-import com.joye.hk6domain.constants.GateCount;
 import com.joye.hk6domain.constants.Hk6Color;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.PrimeCompositeNumber;
@@ -43,7 +43,7 @@ public class Hk6EnumHelpTest {
     }
     @Test
     public void testColorTwos()throws Exception {
-        for (GateCount colorTwos : GateCount.values()) {
+        for (CompositeMantissa colorTwos : CompositeMantissa.values()) {
             for (Vigilant vigilant:Vigilant.values()) {
                 if(vigilant.equals(Vigilant.Default)){
                     continue;

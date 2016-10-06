@@ -101,11 +101,17 @@ public class Probalility {
         public static final double GreenOdd = 0.1836734693877551;
     }
 
+    /**
+     * 头数
+     */
     public static class HeadAge{
         public static final double H_0=0.18367346938776;
         public static final double Default=0.20408163265306;
     }
 
+    /**
+     * 合数
+     */
     public static class Composite{
         public static final double C_1=0.04081632653061;
         public static final double C_2=0.06122448979592;
@@ -122,14 +128,68 @@ public class Probalility {
         public static final double C_13=0.02040816326531;
     }
 
+    /**
+     * 合尾数
+     */
+    public static class CompositeMantissa{
+        //0尾
+        public static final double Mantissa0=0.08163265306122;
+        //默认
+        public static final double Default=0.10204081632653;
+
+    }
+
+    /**
+     * 门数
+     */
     public static class GateCount{
         public static final double GateCount_1=0.18367346938776;
         public static final double GateCount_2=GateCount_1;
         public static final double GateCount_3=GateCount_1;
         public static final double GateCount_4=0.20408163265306;
         public static final double GateCount_5=0.24489795918367;
+    }
 
+    public static class Mantissa{
+        //0尾
+        public static final double Mantissa0=0.08163265306122;
+        //默认
+        public static final double Default=0.10204081632653;
     }
 
 
+    //合数大小的理论概率
+    public static class CompositeSize{
+        /**
+         * Big
+         */
+        public static final double Big = 0.5102040816326531;
+        /**
+         * Small
+         */
+        public static final double Small = 0.4897959183673469;
+    }
+
+    //尾数数大小的理论概率
+    public static class MantissaSize{
+        /**
+         * Big
+         */
+        public static final double Big = 0.5102040816326531;
+        /**
+         * Small
+         */
+        public static final double Small = 0.4897959183673469;
+    }
+
+    public static class SizeTwos{
+        //小单
+        public static final double SmallOdd=0.24489795918367;
+        //小双
+        public static final double SmallEven=SmallOdd;
+        //大单
+        public static final double BigOdd=0.26530612244898;
+        //大双
+        public static final double BigEven=SmallOdd;
+    }
 }

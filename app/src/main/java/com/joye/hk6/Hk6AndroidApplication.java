@@ -15,7 +15,13 @@ public class Hk6AndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        JoyeEnvironment.Instance.onCreate(this);
+        new Thread(){
+            @Override
+            public void run() {
+                JoyeEnvironment.Instance.onCreate(Hk6AndroidApplication.this);
+            }
+        }.start();
+
         initializeInjector();
 
     }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/report_left_expect"
+      />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/report_left_opencode"
+        android:layout_toRightOf="@id/report_left_expect"
+       />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa0"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa0"
+        android:layout_toRightOf="@id/report_left_opencode"
+     />
+
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa1"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa1"
+        android:layout_toRightOf="@id/report_left_mantissa0"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa2"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa2"
+        android:layout_toRightOf="@id/report_left_mantissa1"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa3"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa3"
+        android:layout_toRightOf="@id/report_left_mantissa1"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa4"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa4"
+        android:layout_toRightOf="@id/report_left_mantissa3"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa5"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa5"
+        android:layout_toRightOf="@id/report_left_mantissa4"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa6"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa6"
+        android:layout_toRightOf="@id/report_left_mantissa5"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa7"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa7"
+        android:layout_toRightOf="@id/report_left_mantissa6"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa8"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa8"
+        android:layout_toRightOf="@id/report_left_mantissa7"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_mantissa9"
+        style="@style/TextViewStyleMantissa"
+        android:text="@string/mantissa9"
+        android:layout_toRightOf="@id/report_left_mantissa8"
+        />
+</com.joye.layouts.BorderPercentRelativeLayout>

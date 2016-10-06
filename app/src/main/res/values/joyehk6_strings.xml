@@ -94,16 +94,16 @@
     <string name="bigEven">大双</string>
 
     <string name="compositeMantissa">合尾</string>
-    <string name="compositeMantissa0">0合尾数</string>
-    <string name="compositeMantissa1">1合尾数</string>
-    <string name="compositeMantissa2">2合尾数</string>
-    <string name="compositeMantissa3">3合尾数</string>
-    <string name="compositeMantissa4">4合尾数</string>
-    <string name="compositeMantissa5">5合尾数</string>
-    <string name="compositeMantissa6">6合尾数</string>
-    <string name="compositeMantissa7">7合尾数</string>
-    <string name="compositeMantissa8">8合尾数</string>
-    <string name="compositeMantissa9">9合尾数</string>
+    <string name="compositeMantissa0">0合</string>
+    <string name="compositeMantissa1">1合</string>
+    <string name="compositeMantissa2">2合</string>
+    <string name="compositeMantissa3">3合</string>
+    <string name="compositeMantissa4">4合</string>
+    <string name="compositeMantissa5">5合</string>
+    <string name="compositeMantissa6">6合</string>
+    <string name="compositeMantissa7">7合</string>
+    <string name="compositeMantissa8">8合</string>
+    <string name="compositeMantissa9">9合</string>
 
     <string name="headTwos">头数单与双</string>
     <string name="headEven0">0头双</string>
