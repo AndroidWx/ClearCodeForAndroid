@@ -16,6 +16,8 @@ import com.joye.hk6domain.constants.Vigilant;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -63,9 +65,13 @@ public class Hk6EnumHelpTest {
 
     @Test
     public void testHeadAge() throws Exception {
-        for(int i=20;i<30;i++){
-            System.out.print("N_"+i+",");
-        }
+//       double b=7;double p=10/19;double q=1-10/19;
+        BigDecimal b=new BigDecimal(7.00);
+        BigDecimal p=new BigDecimal((double)11/19*0.99);
+        BigDecimal q=new BigDecimal(1-(double)11/19*0.99);
+        BigDecimal f=(b.multiply(p).subtract(q)).divide(b,2);
+        System.out.println((2000-547-484-380-266-301));
+
 
     }
 }
