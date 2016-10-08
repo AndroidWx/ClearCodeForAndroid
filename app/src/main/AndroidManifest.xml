@@ -37,6 +37,12 @@
         <activity android:name=".view.SizeTwosActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.MantissaSizeActivity" />
         <activity android:name=".view.CompositeSizeActivity" />
+        <activity android:name=".view.Modular3Activity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.Modular4Activity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.Modular5Activity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.Modular6Activity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.Modular7Activity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.HeadTwosActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.RegionActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.ColorTwosActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.HeadAgeActivity" android:screenOrientation="landscape"/>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleModular3"
+        android:text="@string/report_left_expect"
+      />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleModular3"
+        android:text="@string/report_left_opencode"
+        android:layout_toRightOf="@id/report_left_expect"
+       />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_modular_3_0"
+        style="@style/TextViewStyleModular3"
+        android:text="@string/modular_3_0"
+        android:layout_toRightOf="@id/report_left_opencode"
+     />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_modular_3_1"
+        style="@style/TextViewStyleModular3"
+        android:text="@string/modular_3_0"
+        android:layout_toRightOf="@id/report_left_modular_3_0"
+        />
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/report_left_modular_3_2"
+        style="@style/TextViewStyleModular3"
+        android:text="@string/modular_3_2"
+        android:layout_toRightOf="@id/report_left_modular_3_1"
+        />
+
+</com.joye.layouts.BorderPercentRelativeLayout>

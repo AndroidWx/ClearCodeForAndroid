@@ -11,9 +11,15 @@ import com.joye.hk6domain.interactor.GetCompositeMantissaUseCase;
 import com.joye.hk6domain.interactor.GetCompositeSizeUseCase;
 import com.joye.hk6domain.interactor.GetGateCountUseCase;
 import com.joye.hk6domain.interactor.GetHeadAgeUseCase;
+import com.joye.hk6domain.interactor.GetHeadTwosUseCase;
 import com.joye.hk6domain.interactor.GetHk6Data;
 import com.joye.hk6domain.interactor.GetMantissaSizeUseCase;
 import com.joye.hk6domain.interactor.GetMantissaUseCase;
+import com.joye.hk6domain.interactor.GetModular3UseCase;
+import com.joye.hk6domain.interactor.GetModular4UseCase;
+import com.joye.hk6domain.interactor.GetModular5UseCase;
+import com.joye.hk6domain.interactor.GetModular6UseCase;
+import com.joye.hk6domain.interactor.GetModular7UseCase;
 import com.joye.hk6domain.interactor.GetRegionUseCase;
 import com.joye.hk6domain.interactor.GetSizeTwosUseCase;
 import com.joye.hk6domain.interactor.GetSizeUseCase;
@@ -129,6 +135,45 @@ public class Hk6Module {
                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetCompositeMantissaUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetHeadTwosUseCase")
+    UseCase provideGetHeadTwosUseCase(ThreadExecutor threadExecutor,
+                                               PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetHeadTwosUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetModular3UseCase")
+    UseCase provideGetModular3UseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetModular3UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetModular4UseCase")
+    UseCase provideGetModular4UseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetModular4UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetModular5UseCase")
+    UseCase provideGetModular5UseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetModular5UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetModular6UseCase")
+    UseCase provideGetModular6UseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetModular6UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetModular7UseCase")
+    UseCase provideGetModular7UseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetModular7UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }

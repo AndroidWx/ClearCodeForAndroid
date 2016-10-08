@@ -123,35 +123,35 @@
     <string name="modular_3_2">3余2</string>
 
     <string name="modular4">模4数</string>
-    <string name="modular4_0">4余0</string>
-    <string name="modular4_1">4余1</string>
-    <string name="modular4_2">4余2</string>
-    <string name="modular4_3">4余3</string>
+    <string name="modular_4_0">4余0</string>
+    <string name="modular_4_1">4余1</string>
+    <string name="modular_4_2">4余2</string>
+    <string name="modular_4_3">4余3</string>
 
 
     <string name="modular5">模5数</string>
-    <string name="modular5_0">5余0</string>
-    <string name="modular5_1">5余1</string>
-    <string name="modular5_2">5余2</string>
-    <string name="modular5_3">5余3</string>
-    <string name="modular5_4">5余4</string>
+    <string name="modular_5_0">5余0</string>
+    <string name="modular_5_1">5余1</string>
+    <string name="modular_5_2">5余2</string>
+    <string name="modular_5_3">5余3</string>
+    <string name="modular_5_4">5余4</string>
 
     <string name="modular6">模6数</string>
-    <string name="modular6_0">6余0</string>
-    <string name="modular6_1">6余1</string>
-    <string name="modular6_2">6余2</string>
-    <string name="modular6_3">6余3</string>
-    <string name="modular6_4">6余4</string>
-    <string name="modular6_5">6余5</string>
+    <string name="modular_6_0">6余0</string>
+    <string name="modular_6_1">6余1</string>
+    <string name="modular_6_2">6余2</string>
+    <string name="modular_6_3">6余3</string>
+    <string name="modular_6_4">6余4</string>
+    <string name="modular_6_5">6余5</string>
 
     <string name="modular7">模7数</string>
-    <string name="modular7_0">7余0</string>
-    <string name="modular7_1">7余1</string>
-    <string name="modular7_2">7余2</string>
-    <string name="modular7_3">7余3</string>
-    <string name="modular7_4">7余4</string>
-    <string name="modular7_5">7余5</string>
-    <string name="modular7_6">7余6</string>
+    <string name="modular_7_0">7余0</string>
+    <string name="modular_7_1">7余1</string>
+    <string name="modular_7_2">7余2</string>
+    <string name="modular_7_3">7余3</string>
+    <string name="modular_7_4">7余4</string>
+    <string name="modular_7_5">7余5</string>
+    <string name="modular_7_6">7余6</string>
 
     <string name="about_me_details">关于研发这个应用程序，初衷是应人之托，
         帮忙写一个可持续开发的框架。关于做走势图分析,纯属以前对博彩公式有所研究。
