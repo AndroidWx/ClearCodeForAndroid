@@ -58,9 +58,14 @@ android {
         debug {
             signingConfig signingConfigs.debug
             manifestPlaceholders=[PGYER_APPID:"005cef4ebe6a9b20aba3d1bacdf779e3"]
+//            manifestPlaceholders=[UMENG_APPKEY: "57ee53c6e0f55ac2260039a4"]
+//            manifestPlaceholders=[UMENG_CHANNEL:"debug"]
         }
         release {
-
+            signingConfig signingConfigs.debug
+            manifestPlaceholders=[PGYER_APPID:"005cef4ebe6a9b20aba3d1bacdf779e3"]
+//            manifestPlaceholders=[UMENG_APPKEY: "57ee53c6e0f55ac2260039a4"]
+//            manifestPlaceholders=[UMENG_CHANNEL:"debug"]
         }
     }
 }
@@ -98,5 +103,6 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
     compile 'com.pgyersdk:sdk:2.4.0'
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     compile childPresentationDependencies.expandableTextView
 }

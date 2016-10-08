@@ -128,6 +128,13 @@ public class Probalility {
         public static final double C_13=0.02040816326531;
     }
 
+    public static class HeadTows{
+        //0头双
+        public static final double HeadEven0=0.08163265306122;
+        //默认
+        public static final double Default=0.10204081632653;
+    }
+
     /**
      * 合尾数
      */
@@ -136,7 +143,6 @@ public class Probalility {
         public static final double Mantissa0=0.08163265306122;
         //默认
         public static final double Default=0.10204081632653;
-
     }
 
     /**
@@ -191,5 +197,45 @@ public class Probalility {
         public static final double BigOdd=0.26530612244898;
         //大双
         public static final double BigEven=SmallOdd;
+    }
+
+    public static class Modular3{
+        public static final double M0=0.326530612244898;
+        public static final double M1=0.3469387755102041;
+        public static final double M2=0.326530612244898;
+    }
+
+    public static class Modular4{
+        public static final double M0=0.2448979591836735;
+        public static final double M1=0.2653061224489796;
+        public static final double M2=0.2448979591836735;
+        public static final double M3=0.2448979591836735;
+    }
+
+    public static class Modular5{
+        public static final double M0=0.1836734693877551;
+        public static final double M1=0.2040816326530612;
+        public static final double M2=0.2040816326530612;
+        public static final double M3=0.2040816326530612;
+        public static final double M4=0.2040816326530612;
+    }
+
+    public static class Modular6{
+        public static final double M0=0.163265306122449;
+        public static final double M1=0.1836734693877551;
+        public static final double M2=0.163265306122449;
+        public static final double M3=0.163265306122449;
+        public static final double M4=0.163265306122449;
+        public static final double M5=0.163265306122449;
+    }
+
+    public static class Modular7{
+        public static final double M0=0.1428571428571429;
+        public static final double M1=0.1428571428571429;
+        public static final double M2=0.1428571428571429;
+        public static final double M3=0.1428571428571429;
+        public static final double M4=0.1428571428571429;
+        public static final double M5=0.1428571428571429;
+        public static final double M6=0.1428571428571429;
     }
 }

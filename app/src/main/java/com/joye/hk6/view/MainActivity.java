@@ -71,10 +71,20 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        LogUtils.v(item);
         switch (item.getItemId()) {
             case android.R.id.home:
                 vu.drawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            case R.id.nav_home:
+
+                return true;
+            case R.id.about_me:
+                return true;
+            case R.id.nav_share:
+                return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }

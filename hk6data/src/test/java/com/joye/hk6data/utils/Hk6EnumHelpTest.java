@@ -2,8 +2,14 @@ package com.joye.hk6data.utils;
 
 import com.joye.hk6domain.constants.CompositeMantissa;
 import com.joye.hk6domain.constants.Formula;
+import com.joye.hk6domain.constants.HeadTwos;
 import com.joye.hk6domain.constants.Hk6Color;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
+import com.joye.hk6domain.constants.Modular3;
+import com.joye.hk6domain.constants.Modular4;
+import com.joye.hk6domain.constants.Modular5;
+import com.joye.hk6domain.constants.Modular6;
+import com.joye.hk6domain.constants.Modular7;
 import com.joye.hk6domain.constants.PrimeCompositeNumber;
 import com.joye.hk6domain.constants.Vigilant;
 
@@ -43,7 +49,7 @@ public class Hk6EnumHelpTest {
     }
     @Test
     public void testColorTwos()throws Exception {
-        for (CompositeMantissa colorTwos : CompositeMantissa.values()) {
+        for (Modular7 colorTwos : Modular7.values()) {
             for (Vigilant vigilant:Vigilant.values()) {
                 if(vigilant.equals(Vigilant.Default)){
                     continue;

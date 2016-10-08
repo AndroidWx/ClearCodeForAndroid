@@ -101,7 +101,67 @@ public class Hk6EnumHelp {
         }
         return SizeTwos.BigEven;
     }
+    public static Modular7 getModular7(int n){
+        for (Modular7 mModular7:Modular7.values()){
+            for (int item:mModular7.getNumbers()){
+                if(item==n){
+                    return mModular7;
+                }
+            }
+        }
+        return Modular7.M0;
+    }
+    public static Modular6 getModular6(int n){
+        for (Modular6 mModular6:Modular6.values()){
+            for (int item:mModular6.getNumbers()){
+                if(item==n){
+                    return mModular6;
+                }
+            }
+        }
+        return Modular6.M0;
+    }
+    public static Modular5 getModular5(int n){
+        for (Modular5 mModular5:Modular5.values()){
+            for (int item:mModular5.getNumbers()){
+                if(item==n){
+                    return mModular5;
+                }
+            }
+        }
+        return Modular5.M0;
+    }
+    public static Modular4 getModular4(int n){
+        for (Modular4 mModular4:Modular4.values()){
+            for (int item:mModular4.getNumbers()){
+                if(item==n){
+                    return mModular4;
+                }
+            }
+        }
+        return Modular4.M0;
+    }
+    public static Modular3 getModular3(int n){
+        for (Modular3 mModular3:Modular3.values()){
+            for (int item:mModular3.getNumbers()){
+                if(item==n){
+                    return mModular3;
+                }
+            }
+        }
+        return Modular3.M0;
+    }
 
+    public static HeadTwos getHeadTwos(int n){
+        for (HeadTwos compositeMantissa:HeadTwos.values()){
+            for (int item:compositeMantissa.getNumbers()){
+                if(item==n){
+                    return compositeMantissa;
+                }
+            }
+        }
+        return HeadTwos.HeadEven0;
+    }
 
     public static CompositeMantissa getCompositeMantissa(int n){
         for (CompositeMantissa compositeMantissa:CompositeMantissa.values()){
