@@ -42,7 +42,7 @@
         android:id="@+id/report_left_mantissa3"
         style="@style/TextViewStyleMantissa"
         android:text="@string/mantissa3"
-        android:layout_toRightOf="@id/report_left_mantissa1"
+        android:layout_toRightOf="@id/report_left_mantissa2"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_mantissa4"
