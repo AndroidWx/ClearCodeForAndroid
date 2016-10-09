@@ -2,11 +2,11 @@
 <resources>
     <string name="report_left_expect">期数</string>
     <string name="report_left_opencode">特码</string>
-    <string name="default_progress_empty">开奖号码</string>
-    <string name="default_progress_error">开奖号码</string>
-    <string name="default_progress_emptyContent">开奖号码</string>
-    <string name="default_progress_errorContent">开奖号码</string>
-    <string name="default_progress_errorbuttonText">开奖号码</string>
+    <string name="default_progress_empty">空</string>
+    <string name="default_progress_error">发生错误</string>
+    <string name="default_progress_emptyContent">数据为空</string>
+    <string name="default_progress_errorContent">发生错误</string>
+    <string name="default_progress_errorbuttonText">错误重试</string>
     <string name="space">&#160;&#160;&#160;&#160;</string>
     <string name="vigilant" formatted="false">
         "&#160;&#160;&#160;&#160;%1$s遗漏分析:\n"
@@ -35,6 +35,11 @@
     <string name="blueOdd">蓝单</string>
     <string name="greenEven">绿双</string>
     <string name="greenOdd">绿单</string>
+
+    <string name="color">波色</string>
+    <string name="blue">蓝波</string>
+    <string name="green">绿波</string>
+    <string name="red">红波</string>
 
     <string name="composite">合数</string>
     <string name="composite_1">1合</string>
@@ -152,6 +157,21 @@
     <string name="modular_7_4">7余4</string>
     <string name="modular_7_5">7余5</string>
     <string name="modular_7_6">7余6</string>
+    
+    
+    <string name="chieseZodiac">生肖</string>
+    <string name="Mouse">鼠</string>
+    <string name="Cow">牛</string>
+    <string name="Tiger">虎</string>
+    <string name="Rabbit">兔</string>
+    <string name="Dragon">龙</string>
+    <string name="Snake">蛇</string>
+    <string name="Horse">马</string>
+    <string name="Sheep">羊</string>
+    <string name="Monkey">猴</string>
+    <string name="Chook">鸡</string>
+    <string name="Dog">狗</string>
+    <string name="Pig">猪</string>
 
     <string name="details">"概率计算\n"
     "博彩公式即指世界上最流行的博彩公式，它能计算出某一个随机事件出现的可能性与实验次数的关系，其计算公式是：N=log(1-DC)/log(1-P)。其中，N为间隔期数，DC为发生的可能性，P代表该指标的理论中奖概率。 \n"

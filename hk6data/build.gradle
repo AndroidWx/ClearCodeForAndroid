@@ -34,10 +34,10 @@ android {
 
     buildTypes {
         debug{
-            buildConfigField "String","API_URL","\"http://t.apiplus.cn/\""
+            buildConfigField "String","API_URL","\"http://c.apiplus.cn/\""
         }
         release {
-            buildConfigField "String","API_URL","\"http://t.apiplus.cn/\""
+            buildConfigField "String","API_URL","\"http://c.apiplus.cn/\""
         }
     }
     compileOptions {

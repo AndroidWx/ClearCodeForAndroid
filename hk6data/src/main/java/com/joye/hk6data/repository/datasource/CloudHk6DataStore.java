@@ -32,7 +32,7 @@ public class CloudHk6DataStore implements Hk6DataStore {
 
     @Override
     public Observable<List<Hk6Entity>> getHk6ListData(String date) {
-        return hk6RestApi.getHk6ListData("demo","hk6",date, BaseApiConstants.FORMAT_JSON).map(hk6DataSourceBean -> {
+        return hk6RestApi.getHk6ListData("AA048D6B58015BA5","hk6",date, BaseApiConstants.FORMAT_JSON).map(hk6DataSourceBean -> {
             List<Hk6Entity> retHk6Entitys=new ArrayList<Hk6Entity>();
             Hk6Entity item=new Hk6Entity();
             for (Hk6DataSourceBean.DataBean dataBean:hk6DataSourceBean.getData()){

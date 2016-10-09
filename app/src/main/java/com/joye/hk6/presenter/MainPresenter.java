@@ -13,6 +13,7 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.MainFragmentPagerAdapter;
 import com.joye.hk6.frg.ConstantsFragment;
+import com.joye.hk6.frg.VariationFragment;
 import com.joye.hk6.mvp.Presenter;
 import com.joye.hk6.view.MainActivity;
 import com.joye.hk6.vu.MainActivityVu;
@@ -103,7 +104,7 @@ public class MainPresenter implements Presenter<MainActivityVu> {
         setupDrawerContent(vu.navView);
         mPagerAdapter = new MainFragmentPagerAdapter(mainActivity.getSupportFragmentManager());
         mPagerAdapter.addFragment(ConstantsFragment.newInstance(), "永久属性");
-        mPagerAdapter.addFragment(ConstantsFragment.newInstance(), "生肖波色等");
+        mPagerAdapter.addFragment(VariationFragment.newInstance(), "生肖波色");
         vu.viewpager.setAdapter(mPagerAdapter);
     }
     private void setupDrawerContent(NavigationView navigationView) {

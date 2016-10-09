@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewStub;
 
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.ChineseZodiacProbilityAdapter;
+import com.joye.hk6.adapter.ChineseZodiacAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.ProgressVu;
 
@@ -84,7 +84,7 @@ public class BannberOnePageProgressSwipeRefreshRecyclerVu<T> extends BannerOpneP
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
-        return new ChineseZodiacProbilityAdapter(context);
+        return new ChineseZodiacAdapter(context);
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.joye.basedomain.interactor.DefaultSubscriber;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.mvp.Presenter;
-import com.joye.hk6.vu.ChineseZodiacProbilityFragmentVu;
+import com.joye.hk6.vu.ChineseZodiacActivityVu;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
 import java.util.List;
@@ -21,12 +21,12 @@ import javax.inject.Named;
  * Remeark:生肖概率
  */
 @PerActivity
-public class ChineseZodiacProbilityPresenter implements Presenter<ChineseZodiacProbilityFragmentVu> {
+public class ChineseZodiacProbilityPresenter implements Presenter<ChineseZodiacActivityVu> {
 
 
     private final UseCase mHk6DataUseCase;
 
-    private ChineseZodiacProbilityFragmentVu vu;
+    private ChineseZodiacActivityVu vu;
 
 
     @Inject
@@ -36,7 +36,7 @@ public class ChineseZodiacProbilityPresenter implements Presenter<ChineseZodiacP
 
 
     @Override
-    public void setView(ChineseZodiacProbilityFragmentVu chineseZodiacProbilityFragmentVu) {
+    public void setView(ChineseZodiacActivityVu chineseZodiacProbilityFragmentVu) {
         this.vu=chineseZodiacProbilityFragmentVu;
     }
 

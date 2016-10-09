@@ -47,6 +47,17 @@ public class Hk6EnumHelp {
 //        return Region.Seven;
     };
 
+    public static Hk6Color getColor(int n){
+        for(Hk6Color colorTwos:Hk6Color.values()){
+            for(int item:colorTwos.getNumbers()){
+                if(item==n){
+                    return colorTwos;
+                }
+            }
+        }
+        return Hk6Color.Blue;
+    }
+
     public static ColorTwos getColorTwos(int n){
         for(ColorTwos colorTwos:ColorTwos.values()){
          for(int item:colorTwos.getNumbers()){
@@ -162,7 +173,18 @@ public class Hk6EnumHelp {
         }
         return HeadTwos.HeadEven0;
     }
-
+    
+    public static  ChineseZodiac getChineseZodiac(int n ,long time){
+        for (ChineseZodiac mChineseZodiac:ChineseZodiac.values()){
+            for (int item:mChineseZodiac.getNumbers(time)){
+                if(item==n){
+                    return mChineseZodiac;
+                }
+            }
+        }
+        return ChineseZodiac.Mouse;
+    }
+    
     public static CompositeMantissa getCompositeMantissa(int n){
         for (CompositeMantissa compositeMantissa:CompositeMantissa.values()){
             for (int item:compositeMantissa.getNumbers()){

@@ -40,15 +40,13 @@ public class GetDefaultNumberUseCase extends GetHk6Data {
                 Collections.reverse(hk6UiDatas);
                 //便利所有的数据
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    ChineseZodiacVo vo = new ChineseZodiacVo(itemVo);
                     if(map==null){
-                        map=vo.getMap();
                     }
                     for (NumberProperty number:NumberProperty.values()){
                         //如果这一期开奖结果不等于  这个数字
                         //遗漏数据+1;
                         int value=map.get("item"+number.getValue());
-                        map.put("item"+number.getValue(),vo.getOpenCode()!=number.getValue()?value+1:0);
+//                        map.put("item"+number.getValue(),vo.getOpenCode()!=number.getValue()?value+1:0);
                     }
                    /* //便利49个数字
                     for (int i = 1; i < 50; i++) {
@@ -57,8 +55,6 @@ public class GetDefaultNumberUseCase extends GetHk6Data {
                         int value=map.get("item"+i);
                         map.put("item"+i,vo.getOpenCode()!=i?value+1:0);
                     }*/
-                    vo.setMap(map);
-                    list.add(vo);
                 }
                 return list;
             }

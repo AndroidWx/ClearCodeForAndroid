@@ -1,5 +1,6 @@
 package com.joye.hk6data.utils;
 
+import com.joye.hk6domain.constants.ChineseZodiac;
 import com.joye.hk6domain.constants.CompositeMantissa;
 import com.joye.hk6domain.constants.Formula;
 import com.joye.hk6domain.constants.HeadTwos;
@@ -51,7 +52,7 @@ public class Hk6EnumHelpTest {
     }
     @Test
     public void testColorTwos()throws Exception {
-        for (Modular7 colorTwos : Modular7.values()) {
+        for (Hk6Color colorTwos : Hk6Color.values()) {
             for (Vigilant vigilant:Vigilant.values()) {
                 if(vigilant.equals(Vigilant.Default)){
                     continue;
@@ -59,8 +60,17 @@ public class Hk6EnumHelpTest {
                 System.out.println(vigilant.getDcValue()+"--"+colorTwos.name()+"--"+ Formula.lottery(vigilant.getDcValue(), colorTwos.getTheoryProbability()));
             }
 
+//            System.out.println(colorTwos.getNumbers());
             System.out.println("\n\n");
         }
+    }
+
+    @Test
+    public void testChineseZodiac() throws Exception {
+        for (ChineseZodiac colorTwos : ChineseZodiac.values()) {
+            System.out.println("<string name=\""+colorTwos.name()+"\">"+"</string>");
+        }
+
     }
 
     @Test

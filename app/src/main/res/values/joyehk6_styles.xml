@@ -22,7 +22,10 @@
         <item name="layout_widthPercent">12.5%</item>
         <item name="android:layout_width">0dip</item>
     </style>
-
+    <style name="TextViewStyleChineseZodiac" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">7.14%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
     <style name="TextViewStyleMantissa" parent="@style/baseTextViewStyle">
         <item name="layout_widthPercent">9.09%</item>
         <item name="android:layout_width">0dip</item>

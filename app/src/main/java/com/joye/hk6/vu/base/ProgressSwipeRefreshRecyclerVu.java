@@ -3,10 +3,9 @@ package com.joye.hk6.vu.base;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewStub;
 
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.ChineseZodiacProbilityAdapter;
+import com.joye.hk6.adapter.ChineseZodiacAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.ProgressVu;
 
@@ -84,7 +83,7 @@ public abstract  class ProgressSwipeRefreshRecyclerVu<T> extends SwipeRefreshRec
 
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
-        return new ChineseZodiacProbilityAdapter(context);
+        return new ChineseZodiacAdapter(context);
     }
 
 }

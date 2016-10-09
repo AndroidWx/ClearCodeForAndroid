@@ -54,21 +54,37 @@ import static com.joye.hk6domain.constants.Number.N_9;
  * Created by W,x (JoyeWang)
  * on 2016/9/21.
  * 304622254@qq.com
- * Remeark:ÉúÐ¤
+ * Remeark:ï¿½ï¿½Ð¤
  */
 
-public enum ChineseZodiac implements IProbability,INumbers{
+public enum ChineseZodiac implements IProbability, INumbersTime, INumbers {
+
     /**
-     * ÀÏÊó
+     * ï¿½ï¿½ï¿½ï¿½
      */
     Mouse {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if (time >= Time_2016) {
+                return getNumbers();
+            } else if (time >= Time_2015) {
+                return new int[]{N_8,N_20,N_32,N_44};
+            } else if (time >= Time_2014) {
+                return new int[]{N_7,N_19,N_31,N_43};
+            }else{
+                return new int[]{N_6,N_18,N_30,N_42};
+            }
+//            return getNumbers();
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_9,N_21,N_33,N_45};
+            return new int[]{N_9, N_21, N_33, N_45};
         }
     },
     /**
@@ -79,91 +95,194 @@ public enum ChineseZodiac implements IProbability,INumbers{
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_7,N_19,N_31,N_43};
+            }else if(time>=Time_2014){
+                return new int[]{N_6,N_18,N_30,N_42};
+            }else {
+                return new int[]{N_5,N_17,N_29,N_41};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_8,N_20,N_32,N_44};
+            return new int[]{N_8,N_20,N_32,N_44};
         }
     },
     /**
-     * »¢
+     * ï¿½ï¿½
      */
     Tiger {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_6,N_18,N_30,N_42};
+            }else if(time>=Time_2014){
+                return new int[]{N_5,N_17,N_29,N_41};
+            }else {
+                return new int[]{N_4,N_16,N_28,N_40};
+            }
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_7,N_19,N_31,N_43};
+            return new int[]{N_7, N_19, N_31, N_43};
         }
     },
     /**
-     * ÍÃ
+     * ï¿½ï¿½
      */
     Rabbit {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_5,N_17,N_29,N_41};
+            }else if(time>=Time_2014){
+                return new int[]{N_4,N_16,N_28,N_40};
+            }else{
+                return new int[]{N_3,N_15,N_27,N_39};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_6,N_18,N_30,N_42};
+            return new int[]{N_6, N_18, N_30, N_42};
         }
     },
     /**
-     * Áú
+     * ï¿½ï¿½
      */
     Dragon {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_4,N_16,N_28,N_40};
+            }else if(time>=Time_2014){
+                return new int[]{N_3,N_15,N_27,N_39};
+            }else{
+                return new int[]{N_2,N_14,N_26,N_38};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_5,N_17,N_29,N_41};
+            return new int[]{N_5, N_17, N_29, N_41};
         }
     },
     /**
-     * Éß
+     * ï¿½ï¿½
      */
     Snake {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_3,N_15,N_27,N_39};
+            }else if(time>=Time_2014){
+                return new int[]{N_2,N_14,N_26,N_38};
+            }else{
+                return new int[]{N_1,N_13,N_25,N_37,N_49};
+            }
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_4,N_16,N_28,N_40};
+            return new int[]{N_4, N_16, N_28, N_40};
         }
     },
     /**
-     * Âí
+     * ï¿½ï¿½
      */
     Horse {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_2,N_14,N_26,N_38};
+            }else if(time>=Time_2014){
+                return new int[]{N_1,N_13,N_25,N_37,N_49};
+            }else{
+                return new int[]{N_12,N_24,N_36,N_48};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_3,N_15,N_27,N_39};
+            return new int[]{N_3, N_15, N_27, N_39};
         }
     },
     /**
-     * Ñò
+     * ï¿½ï¿½
      */
     Sheep {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_1,N_13,N_25,N_37,N_49};
+            }else if(time>=Time_2014){
+                return new int[]{N_12,N_24,N_36,N_48};
+            }else{
+                return new int[]{N_11,N_23,N_35,N_47};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_2,N_14,N_26,N_38};
+            return new int[]{N_2, N_14, N_26, N_38};
         }
     },
     /**
-     * ºï
+     * ï¿½ï¿½
      */
     Monkey {
         @Override
@@ -172,48 +291,110 @@ public enum ChineseZodiac implements IProbability,INumbers{
         }
 
         @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_12,N_24,N_36,N_48};
+            }else if(time>=Time_2014){
+                return new int[]{N_11,N_23,N_35,N_47};
+            }else{
+                return new int[]{N_10,N_22,N_34,N_46};
+            }
+        }
+
+        @Override
         public int[] getNumbers() {
-            return new int[]{N_1,N_13,N_25,N_37,N_49};
+            return new int[]{N_1, N_13, N_25, N_37, N_49};
         }
     },
     /**
-     * ¼¦
+     * ï¿½ï¿½
      */
     Chook {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_11,N_23,N_35,N_47};
+            }else if(time>=Time_2014){
+                return new int[]{N_10,N_22,N_34,N_46};
+            }else{
+                return new int[]{N_9,N_21,N_33,N_45};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_12,N_24,N_36,N_48};
+            return new int[]{N_12, N_24, N_36, N_48};
         }
     },
     /**
-     * ¹·
+     * ï¿½ï¿½
      */
     Dog {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_10,N_22,N_34,N_46};
+            }else if(time>=Time_2014){
+                return new int[]{N_9,N_21,N_33,N_45};
+            }else{
+                return new int[]{N_8,N_20,N_32,N_44};
+            }
+
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_11,N_23,N_35,N_47};
+            return new int[]{N_11, N_23, N_35, N_47};
         }
     },
     /**
-     * Öí
+     * ï¿½ï¿½
      */
     Pig {
         @Override
         public double getTheoryProbability() {
             return Probalility.ChineseZodiac.Default;
         }
+
+        @Override
+        public int[] getNumbers(long time) {
+            if(time >=Time_2016){
+                return getNumbers();
+            }else if(time>=Time_2015){
+                return new int[]{N_9,N_21,N_33,N_45};
+            }else if(time>=Time_2014){
+                return new int[]{N_8,N_20,N_32,N_44};
+            }else {
+                return new int []{N_7,N_19,N_31,N_43};
+            }
+        }
+
         @Override
         public int[] getNumbers() {
-            return new int[]{ N_10,N_22,N_34,N_46};
+            return new int[]{N_10, N_22, N_34, N_46};
         }
-    }
-
+    };
+    /**
+     *
+     */
+    public static final long Time_2016 = 1455197697;
+    public static final long Time_2015 = 1425762709;
+    public static final long Time_2014 = 1391520610;
 }

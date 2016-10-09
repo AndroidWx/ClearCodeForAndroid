@@ -29,10 +29,11 @@
             android:name=".view.ScrollingActivity"
             android:label="@string/title_activity_scrolling" />
         <activity
-            android:name=".view.ChineseZodiacProbilityActivity"
-            android:label="@string/title_activity_chinese_zodiac_probility"></activity>
+            android:name=".view.ChineseZodiacActivity"
+            android:label="@string/title_activity_chinese_zodiac_probility" android:screenOrientation="landscape"/>
         <activity android:name=".ac.EmptyActivity" />
         <activity android:name=".view.SizeActivity" />
+        <activity android:name=".view.ColorActivity" />
         <activity android:name=".view.SizeTwosActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.MantissaSizeActivity" />
         <activity android:name=".view.CompositeSizeActivity" />

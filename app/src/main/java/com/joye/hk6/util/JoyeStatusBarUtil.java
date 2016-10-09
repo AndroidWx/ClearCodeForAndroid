@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
  * 状态栏工具类
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
+
 public class JoyeStatusBarUtil {
 
     static {
@@ -67,6 +68,7 @@ public class JoyeStatusBarUtil {
      *
      * @param activity The host activity.
      */
+    @SuppressWarnings("ResourceType")
     @TargetApi(19)
     public JoyeStatusBarUtil(Activity activity) {
 

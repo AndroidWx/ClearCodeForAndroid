@@ -6,6 +6,7 @@ import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6domain.interactor.GetChineseZodiacUseCase;
 import com.joye.hk6domain.interactor.GetColorTwosUseCase;
+import com.joye.hk6domain.interactor.GetColorUseCase;
 import com.joye.hk6domain.interactor.GetCompositeCase;
 import com.joye.hk6domain.interactor.GetCompositeMantissaUseCase;
 import com.joye.hk6domain.interactor.GetCompositeSizeUseCase;
@@ -174,6 +175,13 @@ public class Hk6Module {
                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetModular7UseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+
+    @Provides @PerActivity @Named("GetColorUseCase")
+    UseCase provideGetColorUseCase(ThreadExecutor threadExecutor,
+                                      PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetColorUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }
