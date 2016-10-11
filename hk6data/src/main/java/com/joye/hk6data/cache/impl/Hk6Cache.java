@@ -38,7 +38,7 @@ public interface Hk6Cache {
      *
      * @return true, the cache is expired, otherwise false.
      */
-    boolean isExpired();
+    boolean isExpired(String date);
 
     /**
      * Evict all elements of the cache.

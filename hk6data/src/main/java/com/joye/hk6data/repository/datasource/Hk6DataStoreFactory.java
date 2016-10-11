@@ -30,7 +30,7 @@ public class Hk6DataStoreFactory {
     public Hk6DataStore create(String date){
         Hk6DataStore hk6DataStore;
         //如果缓存了，并且没有过期
-        if(hk6Cache.isCached(date)&&!hk6Cache.isExpired()){
+        if(hk6Cache.isCached(date)&&!hk6Cache.isExpired(date)){
             hk6DataStore=new DiskHk6DataStore(hk6Cache);
         }else{
             hk6DataStore=createCloutDataStore();

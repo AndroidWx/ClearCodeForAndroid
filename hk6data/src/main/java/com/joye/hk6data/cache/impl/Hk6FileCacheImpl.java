@@ -81,14 +81,17 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     }
 
     @Override
-    public boolean isExpired() {
+    public boolean isExpired(String date) {
         long currentTime = System.currentTimeMillis()/1000;
         long lastUpdateTime = this.getLastCacheUpdateTimeMillis();
 
         boolean expired = ((currentTime - lastUpdateTime) > EXPIRATION_TIME);
-
+        //并却要大于2015年最后一天
         if (expired) {
             this.evictAll();
+        }
+        if(date.compareTo("2015-12-31")<0){
+            return false;
         }
 
         return expired;
