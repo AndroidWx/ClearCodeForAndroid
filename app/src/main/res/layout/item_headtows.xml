@@ -7,20 +7,20 @@
 
     <com.joye.layouts.BorderTextView
         android:id="@id/report_left_expect"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/report_left_expect"
       />
 
     <com.joye.layouts.BorderTextView
         android:id="@id/report_left_opencode"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/report_left_opencode"
         android:layout_toRightOf="@id/report_left_expect"
        />
 
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd0"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd0"
         android:layout_toRightOf="@id/report_left_opencode"
      />
@@ -28,55 +28,55 @@
 
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd1"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd1"
         android:layout_toRightOf="@id/report_left_headOdd0"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd2"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd2"
         android:layout_toRightOf="@id/report_left_headOdd1"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd3"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd3"
         android:layout_toRightOf="@id/report_left_headOdd1"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd4"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd4"
         android:layout_toRightOf="@id/report_left_headOdd3"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headEven0"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headEven0"
         android:layout_toRightOf="@id/report_left_headOdd4"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headEven1"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headEven1"
         android:layout_toRightOf="@id/report_left_headEven0"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headEven2"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headEven2"
         android:layout_toRightOf="@id/report_left_headEven1"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headEven3"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headEven3"
         android:layout_toRightOf="@id/report_left_headEven2"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headEven4"
-        style="@style/TextViewStyleMantissa"
+        style="@style/TextViewStyleHeadTwos"
         android:text="@string/headEven4"
         android:layout_toRightOf="@id/report_left_headEven3"
         />
