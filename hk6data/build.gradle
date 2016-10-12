@@ -67,4 +67,5 @@ dependencies {
     testCompile testDependencies.assertj
     testCompile testDependencies.mockito
     testCompile testDependencies.robolectric
+
 }
