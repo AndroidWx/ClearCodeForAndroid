@@ -17,71 +17,71 @@
         "&#160;&#160;&#160;&#160;99ppp出现的概率遗漏(共%9$s)期,99.9ppp出现的概率遗漏(共%10$s)期,红色预警\n"
     </string>
     <string name="region">段位</string>
-    <string name="region_1">第一段</string>
-    <string name="region_2">第二段</string>
-    <string name="region_3">第三段</string>
-    <string name="region_4">第四段</string>
-    <string name="region_5">第五段</string>
-    <string name="region_6">第六段</string>
-    <string name="region_7">第七段</string>
+    <string name="region_1" formatted="false">第一段%1$d</string>
+    <string name="region_2" formatted="false">第二段%1$d</string>
+    <string name="region_3" formatted="false">第三段%1$d</string>
+    <string name="region_4" formatted="false">第四段%1$d</string>
+    <string name="region_5" formatted="false">第五段%1$d</string>
+    <string name="region_6" formatted="false">第六段%1$d</string>
+    <string name="region_7" formatted="false">第七段%1$d</string>
     <string name="size">大小</string>
     <string name="big">大</string>
     <string name="small">小</string>
     <!--半波（固定不变)-->
     <string name="colorTows">半波</string>
-    <string name="redEven">红双</string>
-    <string name="redOdd">红单</string>
-    <string name="blueEven">蓝双</string>
-    <string name="blueOdd">蓝单</string>
-    <string name="greenEven">绿双</string>
-    <string name="greenOdd">绿单</string>
+    <string name="redEven" formatted="false">红双-%1$d次</string>
+    <string name="redOdd" formatted="false">红单-%1$d次</string>
+    <string name="blueEven" formatted="false">蓝双-%1$d次</string>
+    <string name="blueOdd" formatted="false">蓝单-%1$d次</string>
+    <string name="greenEven" formatted="false">绿双-%1$d次</string>
+    <string name="greenOdd" formatted="false">绿单-%1$d次</string>
 
     <string name="color">波色</string>
-    <string name="blue">蓝波</string>
-    <string name="green">绿波</string>
-    <string name="red">红波</string>
+    <string name="blue" formatted="false">蓝波-%1$d次</string>
+    <string name="green" formatted="false">绿波-%1$d次</string>
+    <string name="red" formatted="false">红波-%1$d次</string>
 
-    <string name="composite">合数</string>
-    <string name="composite_1">1合</string>
-    <string name="composite_2">2合</string>
-    <string name="composite_3">3合</string>
-    <string name="composite_4">4合</string>
-    <string name="composite_5">5合</string>
-    <string name="composite_6">6合</string>
-    <string name="composite_7">7合</string>
-    <string name="composite_8">8合</string>
-    <string name="composite_9">9合</string>
-    <string name="composite_10">10合</string>
-    <string name="composite_11">11合</string>
-    <string name="composite_12">12合</string>
-    <string name="composite_13">13合</string>
+    <string name="composite" >合数</string>
+    <string name="composite_1" formatted="false">1合%1$d</string>
+    <string name="composite_2" formatted="false">2合%1$d</string>
+    <string name="composite_3" formatted="false">3合%1$d</string>
+    <string name="composite_4" formatted="false">4合%1$d</string>
+    <string name="composite_5" formatted="false">5合%1$d</string>
+    <string name="composite_6" formatted="false">6合%1$d</string>
+    <string name="composite_7" formatted="false">7合%1$d</string>
+    <string name="composite_8" formatted="false">8合%1$d</string>
+    <string name="composite_9" formatted="false">9合%1$d</string>
+    <string name="composite_10" formatted="false">10合%1$d</string>
+    <string name="composite_11" formatted="false">11合%1$d</string>
+    <string name="composite_12" formatted="false">12合%1$d</string>
+    <string name="composite_13" formatted="false">13合%1$d</string>
 
     <string name="headage">头数</string>
-    <string name="headage0">头数0</string>
-    <string name="headage1">头数1</string>
-    <string name="headage2">头数2</string>
-    <string name="headage3">头数3</string>
-    <string name="headage4">头数4</string>
+    <string name="headage0" formatted="false">头数0-%1$d次</string>
+    <string name="headage1" formatted="false">头数1-%1$d次</string>
+    <string name="headage2" formatted="false">头数2-%1$d次</string>
+    <string name="headage3" formatted="false">头数3-%1$d次</string>
+    <string name="headage4" formatted="false">头数4-%1$d次</string>
 
     <string name="gateCount">门数</string>
-    <string name="gateCount1">门数1</string>
-    <string name="gateCount2">门数2</string>
-    <string name="gateCount3">门数3</string>
-    <string name="gateCount4">门数4</string>
-    <string name="gateCount5">门数5</string>
+    <string name="gateCount1" formatted="false">门数1-%1$d次</string>
+    <string name="gateCount2" formatted="false">门数2-%1$d次</string>
+    <string name="gateCount3" formatted="false">门数3-%1$d次</string>
+    <string name="gateCount4" formatted="false">门数4-%1$d次</string>
+    <string name="gateCount5" formatted="false">门数5-%1$d次</string>
 
 
     <string name="mantissa">尾数</string>
-    <string name="mantissa0">尾数0</string>
-    <string name="mantissa1">尾数1</string>
-    <string name="mantissa2">尾数2</string>
-    <string name="mantissa3">尾数3</string>
-    <string name="mantissa4">尾数4</string>
-    <string name="mantissa5">尾数5</string>
-    <string name="mantissa6">尾数6</string>
-    <string name="mantissa7">尾数7</string>
-    <string name="mantissa8">尾数8</string>
-    <string name="mantissa9">尾数9</string>
+    <string name="mantissa0" formatted="false">尾0-%1$d次</string>
+    <string name="mantissa1" formatted="false">尾1-%1$d次</string>
+    <string name="mantissa2" formatted="false">尾2-%1$d次</string>
+    <string name="mantissa3" formatted="false">尾3-%1$d次</string>
+    <string name="mantissa4" formatted="false">尾4-%1$d次</string>
+    <string name="mantissa5" formatted="false">尾5-%1$d次</string>
+    <string name="mantissa6" formatted="false">尾6-%1$d次</string>
+    <string name="mantissa7" formatted="false">尾7-%1$d次</string>
+    <string name="mantissa8" formatted="false">尾8-%1$d次</string>
+    <string name="mantissa9" formatted="false">尾9-%1$d次</string>
 
 
     <string name="compositeSize">合大合小</string>
@@ -93,85 +93,85 @@
     <string name="mantissaSmall">尾小</string>
 
     <string name="sizeTwos">半单双</string>
-    <string name="smallOdd">小单</string>
-    <string name="smallEvem">小双</string>
-    <string name="bigOdd">大单</string>
-    <string name="bigEven">大双</string>
+    <string name="SmallOdd" formatted="false">小单%1$d</string>
+    <string name="SmallEven" formatted="false">小双%1$d</string>
+    <string name="BigOdd" formatted="false">大单%1$d</string>
+    <string name="BigEven" formatted="false">大双%1$d</string>
 
     <string name="compositeMantissa">合尾</string>
-    <string name="compositeMantissa0">0合</string>
-    <string name="compositeMantissa1">1合</string>
-    <string name="compositeMantissa2">2合</string>
-    <string name="compositeMantissa3">3合</string>
-    <string name="compositeMantissa4">4合</string>
-    <string name="compositeMantissa5">5合</string>
-    <string name="compositeMantissa6">6合</string>
-    <string name="compositeMantissa7">7合</string>
-    <string name="compositeMantissa8">8合</string>
-    <string name="compositeMantissa9">9合</string>
+    <string name="compositeMantissa0" formatted="false">0合%1$d</string>
+    <string name="compositeMantissa1" formatted="false">1合%1$d</string>
+    <string name="compositeMantissa2" formatted="false">2合%1$d</string>
+    <string name="compositeMantissa3" formatted="false">3合%1$d</string>
+    <string name="compositeMantissa4" formatted="false">4合%1$d</string>
+    <string name="compositeMantissa5" formatted="false">5合%1$d</string>
+    <string name="compositeMantissa6" formatted="false">6合%1$d</string>
+    <string name="compositeMantissa7" formatted="false">7合%1$d</string>
+    <string name="compositeMantissa8" formatted="false">8合%1$d</string>
+    <string name="compositeMantissa9" formatted="false">9合%1$d</string>
 
-    <string name="headTwos">头数单与双</string>
-    <string name="headEven0">0头双</string>
-    <string name="headEven1">1头双</string>
-    <string name="headEven2">2头双</string>
-    <string name="headEven3">3头双</string>
-    <string name="headEven4">4头双</string>
-    <string name="headOdd0">0头单</string>
-    <string name="headOdd1">1头单</string>
-    <string name="headOdd2">2头单</string>
-    <string name="headOdd3">3头单</string>
-    <string name="headOdd4">4头单</string>
+    <string name="headTwos" >头数单与双</string>
+    <string name="headEven0" formatted="false">0头双%1$d</string>
+    <string name="headEven1" formatted="false">1头双%1$d</string>
+    <string name="headEven2" formatted="false">2头双%1$d</string>
+    <string name="headEven3" formatted="false">3头双%1$d</string>
+    <string name="headEven4" formatted="false">4头双%1$d</string>
+    <string name="headOdd0" formatted="false">0头单%1$d</string>
+    <string name="headOdd1" formatted="false">1头单%1$d</string>
+    <string name="headOdd2" formatted="false">2头单%1$d</string>
+    <string name="headOdd3" formatted="false">3头单%1$d</string>
+    <string name="headOdd4" formatted="false">4头单%1$d</string>
 
     <string name="modular3">模3数</string>
-    <string name="modular_3_0">3余0</string>
-    <string name="modular_3_1">3余1</string>
-    <string name="modular_3_2">3余2</string>
+    <string name="modular_3_0" formatted="false">3余0-%1$d次</string>
+    <string name="modular_3_1" formatted="false">3余1-%1$d次</string>
+    <string name="modular_3_2" formatted="false">3余2-%1$d次</string>
 
     <string name="modular4">模4数</string>
-    <string name="modular_4_0">4余0</string>
-    <string name="modular_4_1">4余1</string>
-    <string name="modular_4_2">4余2</string>
-    <string name="modular_4_3">4余3</string>
+    <string name="modular_4_0" formatted="false">4余0-%1$d次</string>
+    <string name="modular_4_1" formatted="false">4余1-%1$d次</string>
+    <string name="modular_4_2" formatted="false">4余2-%1$d次</string>
+    <string name="modular_4_3" formatted="false">4余3-%1$d次</string>
 
 
     <string name="modular5">模5数</string>
-    <string name="modular_5_0">5余0</string>
-    <string name="modular_5_1">5余1</string>
-    <string name="modular_5_2">5余2</string>
-    <string name="modular_5_3">5余3</string>
-    <string name="modular_5_4">5余4</string>
+    <string name="modular_5_0" formatted="false">5余0-%1$d次</string>
+    <string name="modular_5_1" formatted="false">5余1-%1$d次</string>
+    <string name="modular_5_2" formatted="false">5余2-%1$d次</string>
+    <string name="modular_5_3" formatted="false">5余3-%1$d次</string>
+    <string name="modular_5_4" formatted="false">5余4-%1$d次</string>
 
     <string name="modular6">模6数</string>
-    <string name="modular_6_0">6余0</string>
-    <string name="modular_6_1">6余1</string>
-    <string name="modular_6_2">6余2</string>
-    <string name="modular_6_3">6余3</string>
-    <string name="modular_6_4">6余4</string>
-    <string name="modular_6_5">6余5</string>
+    <string name="modular_6_0" formatted="false">6余0-%1$d次</string>
+    <string name="modular_6_1" formatted="false">6余1-%1$d次</string>
+    <string name="modular_6_2" formatted="false">6余2-%1$d次</string>
+    <string name="modular_6_3" formatted="false">6余3-%1$d次</string>
+    <string name="modular_6_4" formatted="false">6余4-%1$d次</string>
+    <string name="modular_6_5" formatted="false">6余5-%1$d次</string>
 
     <string name="modular7">模7数</string>
-    <string name="modular_7_0">7余0</string>
-    <string name="modular_7_1">7余1</string>
-    <string name="modular_7_2">7余2</string>
-    <string name="modular_7_3">7余3</string>
-    <string name="modular_7_4">7余4</string>
-    <string name="modular_7_5">7余5</string>
-    <string name="modular_7_6">7余6</string>
+    <string name="modular_7_0" formatted="false">7余0-%1$d次</string>
+    <string name="modular_7_1" formatted="false">7余1-%1$d次</string>
+    <string name="modular_7_2" formatted="false">7余2-%1$d次</string>
+    <string name="modular_7_3" formatted="false">7余3-%1$d次</string>
+    <string name="modular_7_4" formatted="false">7余4-%1$d次</string>
+    <string name="modular_7_5" formatted="false">7余5-%1$d次</string>
+    <string name="modular_7_6" formatted="false">7余6-%1$d次</string>
 
 
-    <string name="chieseZodiac">生肖</string>
-    <string name="Mouse">鼠</string>
-    <string name="Cow">牛</string>
-    <string name="Tiger">虎</string>
-    <string name="Rabbit">兔</string>
-    <string name="Dragon">龙</string>
-    <string name="Snake">蛇</string>
-    <string name="Horse">马</string>
-    <string name="Sheep">羊</string>
-    <string name="Monkey">猴</string>
-    <string name="Chook">鸡</string>
-    <string name="Dog">狗</string>
-    <string name="Pig">猪</string>
+    <string name="chieseZodiac" formatted="false">生肖</string>
+    <string name="Mouse" formatted="false">鼠%1$d</string>
+    <string name="Cow" formatted="false">牛%1$d</string>
+    <string name="Tiger" formatted="false">虎%1$d</string>
+    <string name="Rabbit" formatted="false">兔%1$d</string>
+    <string name="Dragon" formatted="false">龙%1$d</string>
+    <string name="Snake" formatted="false">蛇%1$d</string>
+    <string name="Horse" formatted="false">马%1$d</string>
+    <string name="Sheep" formatted="false">羊%1$d</string>
+    <string name="Monkey" formatted="false">猴%1$d</string>
+    <string name="Chook" formatted="false">鸡%1$d</string>
+    <string name="Dog" formatted="false">狗%1$d</string>
+    <string name="Pig" formatted="false">猪%1$d</string>
 
     <string name="details">"概率计算\n"
     "博彩公式即指世界上最流行的博彩公式，它能计算出某一个随机事件出现的可能性与实验次数的关系，其计算公式是：N=log(1-DC)/log(1-P)。其中，N为间隔期数，DC为发生的可能性，P代表该指标的理论中奖概率。 \n"

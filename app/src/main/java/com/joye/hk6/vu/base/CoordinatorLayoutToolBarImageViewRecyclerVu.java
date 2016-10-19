@@ -20,7 +20,7 @@ import butterknife.BindView;
  * 304622254@qq.com
  * Remeark:
  */
-public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu extends ProgressSwipeRefreshRecyclerVu {
+public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends ProgressSwipeRefreshRecyclerVu<T> {
 
     @BindView(R.id.backdrop)
     public ImageView backdrop;

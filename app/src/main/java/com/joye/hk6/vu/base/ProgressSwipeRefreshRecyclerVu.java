@@ -2,6 +2,7 @@ package com.joye.hk6.vu.base;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.CallSuper;
 import android.view.View;
 
 import com.joye.hk6.R;
@@ -70,7 +71,7 @@ public abstract  class ProgressSwipeRefreshRecyclerVu<T> extends SwipeRefreshRec
     public void showContent() {
         iProgressListener.showContent();
     }
-
+    @CallSuper
     @Override
     public void onNext(List<T> chineseZodiacVos) {
         if(mAdapter.getDatas().isEmpty()&&chineseZodiacVos.isEmpty()){

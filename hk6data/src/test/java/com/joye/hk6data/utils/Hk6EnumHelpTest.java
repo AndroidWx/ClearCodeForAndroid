@@ -1,5 +1,7 @@
 package com.joye.hk6data.utils;
 
+import com.joye.hk6domain.constants.ChineseZodiac;
+import com.joye.hk6domain.constants.ColorTwos;
 import com.joye.hk6domain.constants.Formula;
 import com.joye.hk6domain.constants.Hk6Color;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
@@ -58,6 +60,22 @@ public class Hk6EnumHelpTest {
 
             System.out.println("\n\n");
         }
+    }
+
+
+    @Test
+    public void testChineseZodiac() throws Exception {
+        for (ChineseZodiac chi:ChineseZodiac.values()){
+            System.out.println("   TextView.class.cast(view.findViewById(R.id."+chi.name()+")).setText(view.getResources().getString(R.string."+chi.name()+","+chi.name()+"));");
+        }
+    }
+
+    @Test
+    public void testColorTwos1() throws Exception {
+        for (ColorTwos chi:ColorTwos.values()){
+            System.out.println("   TextView.class.cast(view.findViewById(R.id.report_left_"+chi.name()+")).setText(view.getResources().getString(R.string."+chi.name()+","+chi.name()+"));");
+        }
+
     }
 
     @Test

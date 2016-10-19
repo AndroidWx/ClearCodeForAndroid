@@ -10,6 +10,10 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class Hk6EnumHelp {
+
+    public static long Default2016=1451741706;
+
+
     /**
      * �첨��
      */
