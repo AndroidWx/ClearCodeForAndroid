@@ -31,7 +31,7 @@ public class GetSizeUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -74,8 +74,9 @@ public class GetSizeUseCase extends GetHk6Data {
                 Map<String,Integer> map=null;
                 Collections.reverse(hk6UiDatas);
                 int Big = 0,Small=0;
+                SizeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    SizeVo vo = new SizeVo(itemVo);
+                      vo = new SizeVo(itemVo);
                     if(Hk6EnumHelp.getHk6Size(vo.getOpenCode()).equals(Hk6Size.Big)){
                         Small++;
                         Big=0;

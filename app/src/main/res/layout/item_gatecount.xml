@@ -42,7 +42,7 @@
         android:id="@+id/report_left_gateCount4"
         style="@style/TextViewStyleHeadAge"
         android:text="@string/gateCount4"
-        android:layout_toRightOf="@id/report_left_gateCount2"
+        android:layout_toRightOf="@id/report_left_gateCount3"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_gateCount5"

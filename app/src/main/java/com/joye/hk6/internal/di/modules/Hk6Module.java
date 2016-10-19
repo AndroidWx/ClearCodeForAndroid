@@ -10,6 +10,7 @@ import com.joye.hk6domain.interactor.GetColorUseCase;
 import com.joye.hk6domain.interactor.GetCompositeCase;
 import com.joye.hk6domain.interactor.GetCompositeMantissaUseCase;
 import com.joye.hk6domain.interactor.GetCompositeSizeUseCase;
+import com.joye.hk6domain.interactor.GetDefaultNumberUseCase;
 import com.joye.hk6domain.interactor.GetGateCountUseCase;
 import com.joye.hk6domain.interactor.GetHeadAgeUseCase;
 import com.joye.hk6domain.interactor.GetHeadTwosUseCase;
@@ -182,6 +183,12 @@ public class Hk6Module {
                                       PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetColorUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetDefaultNumberUseCase")
+    UseCase provideGetDefaultNumberUseCase(ThreadExecutor threadExecutor,
+                                   PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new
+                GetDefaultNumberUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }

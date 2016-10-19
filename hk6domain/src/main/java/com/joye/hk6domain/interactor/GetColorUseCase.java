@@ -30,7 +30,7 @@ public class GetColorUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -73,8 +73,9 @@ public class GetColorUseCase extends GetHk6Data {
                 List<ColorVo> list = new ArrayList<ColorVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int Red=0,Blue=0,Green=0;
+                ColorVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    ColorVo vo = new ColorVo(itemVo);
+                      vo = new ColorVo(itemVo);
                     if(Hk6EnumHelp.getColor(vo.getOpenCode()).equals(Hk6Color.Red)){
                         Red++;
                         Blue++;

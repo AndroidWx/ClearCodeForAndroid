@@ -157,8 +157,8 @@
     <string name="modular_7_4">7余4</string>
     <string name="modular_7_5">7余5</string>
     <string name="modular_7_6">7余6</string>
-    
-    
+
+
     <string name="chieseZodiac">生肖</string>
     <string name="Mouse">鼠</string>
     <string name="Cow">牛</string>
@@ -185,4 +185,56 @@
         关于人性这一块，贪婪恐惧禅心，任何东西都有个系统性的知识。博彩也有，希望彩民，
         切勿沉迷于其中。
     </string>
+
+    <string name="number">数字</string>
+    <string name="N1">1</string>
+    <string name="N2">2</string>
+    <string name="N3">3</string>
+    <string name="N4">4</string>
+    <string name="N5">5</string>
+    <string name="N6">6</string>
+    <string name="N7">7</string>
+    <string name="N8">8</string>
+    <string name="N9">9</string>
+    <string name="N10">10</string>
+    <string name="N11">11</string>
+    <string name="N12">12</string>
+    <string name="N13">13</string>
+    <string name="N14">14</string>
+    <string name="N15">15</string>
+    <string name="N16">16</string>
+    <string name="N17">17</string>
+    <string name="N18">18</string>
+    <string name="N19">19</string>
+    <string name="N20">20</string>
+    <string name="N21">21</string>
+    <string name="N22">22</string>
+    <string name="N23">23</string>
+    <string name="N24">24</string>
+    <string name="N25">25</string>
+    <string name="N26">26</string>
+    <string name="N27">27</string>
+    <string name="N28">28</string>
+    <string name="N29">29</string>
+    <string name="N30">30</string>
+    <string name="N31">31</string>
+    <string name="N32">32</string>
+    <string name="N33">33</string>
+    <string name="N34">34</string>
+    <string name="N35">35</string>
+    <string name="N36">36</string>
+    <string name="N37">37</string>
+    <string name="N38">38</string>
+    <string name="N39">39</string>
+    <string name="N40">40</string>
+    <string name="N41">41</string>
+    <string name="N42">42</string>
+    <string name="N43">43</string>
+    <string name="N44">44</string>
+    <string name="N45">45</string>
+    <string name="N46">46</string>
+    <string name="N47">47</string>
+    <string name="N48">48</string>
+    <string name="N49">49</string>
+
 </resources>

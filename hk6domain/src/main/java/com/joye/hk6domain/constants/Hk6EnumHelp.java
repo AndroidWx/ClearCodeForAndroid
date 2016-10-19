@@ -58,6 +58,14 @@ public class Hk6EnumHelp {
         return Hk6Color.Blue;
     }
 
+    public static NumberProperty getNumberProperty(int n){
+        for(NumberProperty mNumberProperty:NumberProperty.values()){
+                if(mNumberProperty.getValue()==n){
+                    return mNumberProperty;
+                }
+        }
+        return NumberProperty.N1;
+    };
     public static ColorTwos getColorTwos(int n){
         for(ColorTwos colorTwos:ColorTwos.values()){
          for(int item:colorTwos.getNumbers()){

@@ -30,7 +30,7 @@ public class GetRegionUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -72,8 +72,9 @@ public class GetRegionUseCase extends GetHk6Data {
                 List<RegionVo> list = new ArrayList<RegionVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int One = 0,Two=0,Three=0,Four=0,Five=0,Sex=0,Seven=0;
+                RegionVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    RegionVo vo = new RegionVo(itemVo);
+                      vo = new RegionVo(itemVo);
                     if(Hk6EnumHelp.getRegion(vo.getOpenCode()).equals(Region.One)){
                         One=0;
                         Two++;

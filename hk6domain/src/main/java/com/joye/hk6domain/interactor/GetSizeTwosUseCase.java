@@ -30,7 +30,7 @@ public class GetSizeTwosUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -73,8 +73,9 @@ public class GetSizeTwosUseCase extends GetHk6Data {
                 List<SizeTwosVo> list = new ArrayList<SizeTwosVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int SmallOdd = 0,SmallEven=0,BigOdd=0,BigEven=0;
+                SizeTwosVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    SizeTwosVo vo = new SizeTwosVo(itemVo);
+                      vo = new SizeTwosVo(itemVo);
                     if(Hk6EnumHelp.getSizeTwos(vo.getOpenCode()).equals(SizeTwos.SmallOdd)){
                         SmallOdd=0;
                         SmallEven++;

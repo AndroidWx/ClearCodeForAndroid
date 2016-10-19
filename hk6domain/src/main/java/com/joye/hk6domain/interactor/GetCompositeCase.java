@@ -19,7 +19,7 @@ import rx.functions.Func9;
 /**
  * Created by Wx on 2016/9/25.
  * QQ:304622254;
- * remark: Í·Êý
+ * remark: Í·ï¿½ï¿½
  */
 
 public class GetCompositeCase extends GetHk6Data {
@@ -30,7 +30,7 @@ public class GetCompositeCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -73,9 +73,9 @@ public class GetCompositeCase extends GetHk6Data {
                 List<CompositeVo> list = new ArrayList<CompositeVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int composite1 = 0,composite2=0,composite3=0,composite4=0,composite5=0,composite6=0,composite7=0,composite8=0,composite9=0,composite10=0,composite11=0,composite12=0,composite13=0;
-
+                CompositeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    CompositeVo vo = new CompositeVo(itemVo);
+                      vo = new CompositeVo(itemVo);
                     if(Hk6EnumHelp.getComposite(vo.getOpenCode()).equals(Composite.C1)){
                         composite1=0;
                         composite2++;

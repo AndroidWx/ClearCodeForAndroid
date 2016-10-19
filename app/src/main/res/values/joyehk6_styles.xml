@@ -55,7 +55,10 @@
         <item name="layout_widthPercent">20%</item>
         <item name="android:layout_width">0dip</item>
     </style>
-
+    <style name="TextViewStyleDefaultNumber" parent="@style/baseTextViewStyle">
+        <item name="layout_widthPercent">1.96%</item>
+        <item name="android:layout_width">0dip</item>
+    </style>
     <style name="TextViewStyleHeadAge" parent="@style/baseTextViewStyle">
         <item name="layout_widthPercent">14.28%</item>
         <item name="android:layout_width">0dip</item>

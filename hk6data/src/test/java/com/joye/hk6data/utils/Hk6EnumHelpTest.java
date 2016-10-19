@@ -4,9 +4,12 @@ import com.joye.hk6domain.constants.Formula;
 import com.joye.hk6domain.constants.Hk6Color;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.Modular7;
+import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.constants.PrimeCompositeNumber;
+import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
 
+import org.assertj.core.internal.cglib.core.DefaultNamingPolicy;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,12 +48,12 @@ public class Hk6EnumHelpTest {
     }
     @Test
     public void testColorTwos()throws Exception {
-        for (Modular7 colorTwos : Modular7.values()) {
+        for (NumberProperty colorTwos : NumberProperty.values()) {
             for (Vigilant vigilant:Vigilant.values()) {
                 if(vigilant.equals(Vigilant.Default)){
                     continue;
                 }
-                System.out.println(vigilant.getDcValue()+"--"+colorTwos.name()+"--"+ Formula.lottery(vigilant.getDcValue(), colorTwos.getTheoryProbability()));
+                System.out.println(vigilant.getDcValue()+"--"+colorTwos.name()+"--"+ Formula.lottery(vigilant.getDcValue(), Probalility.DefaultNumber.Defult));
             }
 
             System.out.println("\n\n");

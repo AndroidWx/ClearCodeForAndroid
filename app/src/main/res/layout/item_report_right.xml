@@ -1,213 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white_fff"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_item1"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item2"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item3"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item4"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item5"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item6"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item7"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item8"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item9"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item10"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item11"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item12"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item13"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item14"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item15"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item16"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item17"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item18"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item19"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item20"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item21"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item22"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item23"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item24"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item25"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item26"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item27"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item28"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item29"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item30"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item31"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item32"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item33"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item34"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item35"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item36"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item37"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item38"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item39"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item40"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item41"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item42"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item43"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item44"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item45"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item46"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item47"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item48"
-            style="@style/TextViewStyleRight"
-            />
-        <TextView
-            android:id="@+id/tv_item49"
-            style="@style/TextViewStyleRight"
-            />
+    android:orientation="horizontal">
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/com_border"
-        />
-</LinearLayout>
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N1"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/report_left_opencode"
+        android:text="@string/N1" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N2"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N1"
+        android:text="@string/N2" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N3"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N2"
+        android:text="@string/N3" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N4"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N3"
+        android:text="@string/N4" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N5"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N4"
+        android:text="@string/N5" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N6"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N5"
+        android:text="@string/N6" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N7"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N6"
+        android:text="@string/N7" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N8"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N7"
+        android:text="@string/N8" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N9"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N8"
+        android:text="@string/N9" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N10"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N9"
+        android:text="@string/N10" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N11"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N10"
+        android:text="@string/N11" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N12"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N11"
+        android:text="@string/N12" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N13"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N12"
+        android:text="@string/N13" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N14"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N13"
+        android:text="@string/N14" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N15"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N14"
+        android:text="@string/N15" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N16"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N15"
+        android:text="@string/N16" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N17"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N16"
+        android:text="@string/N17" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N18"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N17"
+        android:text="@string/N18" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N19"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N18"
+        android:text="@string/N19" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N20"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N19"
+        android:text="@string/N20" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N21"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N20"
+        android:text="@string/N21" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N22"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N21"
+        android:text="@string/N22" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N23"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N22"
+        android:text="@string/N23" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N24"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N23"
+        android:text="@string/N24" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N25"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N24"
+        android:text="@string/N25" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N26"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N25"
+        android:text="@string/N26" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N27"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N26"
+        android:text="@string/N27" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N28"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N27"
+        android:text="@string/N28" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N29"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N28"
+        android:text="@string/N29" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N30"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N29"
+        android:text="@string/N30" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N31"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N30"
+        android:text="@string/N31" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N32"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N31"
+        android:text="@string/N32" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N33"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N32"
+        android:text="@string/N33" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N34"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N33"
+        android:text="@string/N34" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N35"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N34"
+        android:text="@string/N35" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N36"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N35"
+        android:text="@string/N36" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N37"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N36"
+        android:text="@string/N37" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N38"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N37"
+        android:text="@string/N38" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N39"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N38"
+        android:text="@string/N39" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N40"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N39"
+        android:text="@string/N40" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N41"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N40"
+        android:text="@string/N41" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N42"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N41"
+        android:text="@string/N42" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N43"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N42"
+        android:text="@string/N43" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N44"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N43"
+        android:text="@string/N44" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N45"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N44"
+        android:text="@string/N45" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N46"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N45"
+        android:text="@string/N46" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N47"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N46"
+        android:text="@string/N47" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N48"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N47"
+        android:text="@string/N48" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@+id/N49"
+        style="@style/baseTextViewStyle"
+        android:layout_toRightOf="@id/N48"
+        android:text="@string/N49" />
+
+</com.joye.layouts.BorderPercentRelativeLayout>

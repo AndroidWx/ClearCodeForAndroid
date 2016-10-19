@@ -34,21 +34,6 @@ public class ReportLeftAdapter<T extends ReportI> extends ReportBaseAdapter<T> {
     }
 
 
-    private class MyViewClick implements View.OnClickListener {
-        private int position;
-
-        public void setPosition(int position) {
-            this.position = position;
-        }
-
-        public MyViewClick(int position) {
-            this.position = position;
-        }
-
-        @Override
-        public void onClick(View v) {
-        }
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -61,11 +46,10 @@ public class ReportLeftAdapter<T extends ReportI> extends ReportBaseAdapter<T> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         try {
-            convertView.setOnClickListener(new MyViewClick(position));
             viewHolder.expect.
                     setText(getItem(position).getExpect());
             viewHolder.opencode.
-                    setText(getItem(position).getOpenCode());
+                    setText(getItem(position).getOpenCode()+"");
         } catch (Exception e) {
             viewHolder.expect.
                     setText("error");

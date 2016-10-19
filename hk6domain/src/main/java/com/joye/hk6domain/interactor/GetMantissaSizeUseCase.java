@@ -30,7 +30,7 @@ public class GetMantissaSizeUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -72,8 +72,9 @@ public class GetMantissaSizeUseCase extends GetHk6Data {
                 List<MantissaSizeVo> list = new ArrayList<MantissaSizeVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int MantissaSmall = 0,MantissaBig=0;
+                MantissaSizeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    MantissaSizeVo vo = new MantissaSizeVo(itemVo);
+                      vo = new MantissaSizeVo(itemVo);
                     if(Hk6EnumHelp.getMantissaSize(vo.getOpenCode()).equals(MantissaSize.MantissaBig)){
                         MantissaBig=0;
                         MantissaSmall++;

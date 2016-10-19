@@ -30,7 +30,7 @@ public class GetHeadTwosUseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -73,8 +73,9 @@ public class GetHeadTwosUseCase extends GetHk6Data {
                 Collections.reverse(hk6UiDatas);
                 int HeadEven0=0,HeadEven1=0, HeadEven2=0,
                         HeadEven3=0, HeadEven4=0, HeadOdd0=0,HeadOdd1=0, HeadOdd2=0, HeadOdd3=0, HeadOdd4=0;
+                HeadTwosVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    HeadTwosVo vo = new HeadTwosVo(itemVo);
+                      vo = new HeadTwosVo(itemVo);
                     if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven0)){
                         HeadEven0=0;
                         HeadEven1++;

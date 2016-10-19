@@ -30,7 +30,7 @@ public class GetModular7UseCase extends GetHk6Data {
     @Override
     protected Observable buildUseCaseObservable() {
         Observable observable=Observable.zip(
-                super.buildUseCaseObservable("20008-12-31"),
+                super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
                 super.buildUseCaseObservable("2011-12-31"),
@@ -72,8 +72,9 @@ public class GetModular7UseCase extends GetHk6Data {
                 List<Modular7Vo> list = new ArrayList<Modular7Vo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int M0 = 0, M1 = 0, M2 = 0, M3 = 0, M4 = 0, M5 = 0, M6 = 0;
+                Modular7Vo vo;
                 for (Hk6UiData itemVo : hk6UiDatas) {
-                    Modular7Vo vo = new Modular7Vo(itemVo);
+                      vo = new Modular7Vo(itemVo);
                     if (Hk6EnumHelp.getModular7(vo.getOpenCode()).equals(Modular7.M0)) {
                         M0 = 0;
                         M1++;

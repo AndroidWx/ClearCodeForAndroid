@@ -238,4 +238,8 @@ public class Probalility {
         public static final double M5=0.1428571428571429;
         public static final double M6=0.1428571428571429;
     }
+
+    public static class DefaultNumber{
+        public static final double Defult=0.0204081632653061;
+    }
 }

@@ -26,9 +26,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ScrollingActivity"
-            android:label="@string/title_activity_scrolling" />
-        <activity
             android:name=".view.ChineseZodiacActivity"
             android:label="@string/title_activity_chinese_zodiac_probility" android:screenOrientation="landscape"/>
         <activity android:name=".ac.EmptyActivity" />
@@ -37,6 +34,7 @@
         <activity android:name=".view.SizeTwosActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.MantissaSizeActivity" />
         <activity android:name=".view.CompositeSizeActivity" />
+        <activity android:name=".view.DefaultNumberActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.Modular3Activity" android:screenOrientation="landscape"/>
         <activity android:name=".view.Modular4Activity" android:screenOrientation="landscape"/>
         <activity android:name=".view.Modular5Activity" android:screenOrientation="landscape"/>
