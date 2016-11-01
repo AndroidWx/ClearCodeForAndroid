@@ -69,7 +69,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         if(!isCached(date)){
             String jsonContent=GsonFactory.SingleTon.create().toJson(hk6EntityList,typeToken.getType());
             this.executeAsynchronously(new CacheWriter(fileManager,hk6EntityListFile,jsonContent));
-            setLastCacheUpdateTimeMillis( hk6EntityList.get(0).getOpentimestamp());
+            setLastCacheUpdateTimeMillis( date,hk6EntityList.get(0).getOpentimestamp());
         }
 
     }
@@ -83,14 +83,14 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     @Override
     public boolean isExpired(String date) {
         long currentTime = System.currentTimeMillis()/1000;
-        long lastUpdateTime = this.getLastCacheUpdateTimeMillis();
+        long lastUpdateTime = this.getLastCacheUpdateTimeMillis(date);
 
         boolean expired = ((currentTime - lastUpdateTime) > EXPIRATION_TIME);
         //并却要大于2015年最后一天
-        if (expired) {
+        if (expired&&date.compareTo("2015-12-31")>0) {
             this.evictAll();
         }
-        if(date.compareTo("2015-12-31")<0){
+        if(date.compareTo("2016-01-01")<0){
             return false;
         }
 
@@ -121,18 +121,18 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     /**
      * Get in millis, the last time the cache was accessed.
      */
-    private long getLastCacheUpdateTimeMillis() {
+    private long getLastCacheUpdateTimeMillis(String date) {
         return this.fileManager.getFromPreferences(this.context, DEFAULT_FILE_NAME,
-                SETTINGS_KEY_LAST_CACHE_UPDATE);
+                SETTINGS_KEY_LAST_CACHE_UPDATE+date.substring(0,4));
     }
 
     /**
      * Set in millis, the last time the cache was accessed.
      * @param currentMillis
      */
-    private void setLastCacheUpdateTimeMillis(long currentMillis) {
+    private void setLastCacheUpdateTimeMillis(String date,long currentMillis) {
         this.fileManager.writeToPreferences(this.context, DEFAULT_FILE_NAME,
-                SETTINGS_KEY_LAST_CACHE_UPDATE, currentMillis);
+                SETTINGS_KEY_LAST_CACHE_UPDATE+date.substring(0,4), currentMillis);
     }
 
     /**
