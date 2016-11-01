@@ -76,8 +76,9 @@ public class GetChineseZodiacUseCase extends GetHk6Data {
                 List<ChineseZodiacVo> list = new ArrayList<ChineseZodiacVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int Mouse = 0, Cow = 0, Tiger = 0, Rabbit = 0, Dragon = 0, Snake = 0, Horse = 0, Sheep = 0, Monkey = 0, Chook = 0, Dog = 0, Pig = 0;
+                ChineseZodiacVo vo;
                 for (Hk6UiData itemVo : hk6UiDatas) {
-                    ChineseZodiacVo vo = new ChineseZodiacVo(itemVo);
+                  vo= new ChineseZodiacVo(itemVo);
                     if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Mouse)) {
                         Mouse = 0;
                         Cow++;

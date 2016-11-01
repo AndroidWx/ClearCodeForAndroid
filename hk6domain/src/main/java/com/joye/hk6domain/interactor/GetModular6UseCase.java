@@ -72,8 +72,9 @@ public class GetModular6UseCase extends GetHk6Data {
                 List<Modular6Vo> list = new ArrayList<Modular6Vo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int M0 = 0, M1 = 0, M2 = 0, M3 = 0, M4 = 0, M5 = 0;
+                Modular6Vo vo;
                 for (Hk6UiData itemVo : hk6UiDatas) {
-                    Modular6Vo vo = new Modular6Vo(itemVo);
+                      vo = new Modular6Vo(itemVo);
                     if (Hk6EnumHelp.getModular6(vo.getOpenCode()).equals(Modular6.M0)) {
                         M0 = 0;
                         M1++;

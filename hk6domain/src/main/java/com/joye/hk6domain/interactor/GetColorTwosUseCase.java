@@ -73,8 +73,9 @@ public class GetColorTwosUseCase extends GetHk6Data {
                 List<ColorTwosVo> list = new ArrayList<ColorTwosVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int redEven = 0,redOdd=0,blueEven=0,blueOdd=0,greenEven=0,greenOdd=0;
+                ColorTwosVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    ColorTwosVo vo = new ColorTwosVo(itemVo);
+                      vo = new ColorTwosVo(itemVo);
                     if(Hk6EnumHelp.getColorTwos(vo.getOpenCode()).equals(ColorTwos.RedEven)){
                         redEven=0;
                         redOdd++;

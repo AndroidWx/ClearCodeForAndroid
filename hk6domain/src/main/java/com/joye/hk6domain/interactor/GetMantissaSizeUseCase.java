@@ -72,8 +72,9 @@ public class GetMantissaSizeUseCase extends GetHk6Data {
                 List<MantissaSizeVo> list = new ArrayList<MantissaSizeVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int MantissaSmall = 0,MantissaBig=0;
+                MantissaSizeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    MantissaSizeVo vo = new MantissaSizeVo(itemVo);
+                      vo = new MantissaSizeVo(itemVo);
                     if(Hk6EnumHelp.getMantissaSize(vo.getOpenCode()).equals(MantissaSize.MantissaBig)){
                         MantissaBig=0;
                         MantissaSmall++;

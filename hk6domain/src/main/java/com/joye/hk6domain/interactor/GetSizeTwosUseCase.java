@@ -73,8 +73,9 @@ public class GetSizeTwosUseCase extends GetHk6Data {
                 List<SizeTwosVo> list = new ArrayList<SizeTwosVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int SmallOdd = 0,SmallEven=0,BigOdd=0,BigEven=0;
+                SizeTwosVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    SizeTwosVo vo = new SizeTwosVo(itemVo);
+                      vo = new SizeTwosVo(itemVo);
                     if(Hk6EnumHelp.getSizeTwos(vo.getOpenCode()).equals(SizeTwos.SmallOdd)){
                         SmallOdd=0;
                         SmallEven++;

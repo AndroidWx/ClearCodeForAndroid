@@ -73,8 +73,9 @@ public class GetCompositeSizeUseCase extends GetHk6Data {
                 List<CompositeSizeVo> list = new ArrayList<CompositeSizeVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int Big = 0,Small=0;
+                CompositeSizeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    CompositeSizeVo vo = new CompositeSizeVo(itemVo);
+                      vo = new CompositeSizeVo(itemVo);
                     if(Hk6EnumHelp.getCompositeSize(vo.getOpenCode()).equals(CompositeSize.Big)){
                         Big=0;
                         Small++;

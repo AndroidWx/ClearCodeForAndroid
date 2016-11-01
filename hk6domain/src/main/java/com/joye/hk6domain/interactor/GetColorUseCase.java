@@ -73,8 +73,9 @@ public class GetColorUseCase extends GetHk6Data {
                 List<ColorVo> list = new ArrayList<ColorVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int Red=0,Blue=0,Green=0;
+                ColorVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    ColorVo vo = new ColorVo(itemVo);
+                      vo = new ColorVo(itemVo);
                     if(Hk6EnumHelp.getColor(vo.getOpenCode()).equals(Hk6Color.Red)){
                         Red++;
                         Blue++;

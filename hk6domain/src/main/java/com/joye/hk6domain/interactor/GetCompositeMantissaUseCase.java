@@ -74,8 +74,9 @@ public class GetCompositeMantissaUseCase extends GetHk6Data {
                 Collections.reverse(hk6UiDatas);
                 int composite0=0,composite1=0, composite2=0,
                         composite3=0, composite4=0, composite5=0,composite6=0, composite7=0, composite8=0, composite9=0;
+                CompositeMantissaVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    CompositeMantissaVo vo = new CompositeMantissaVo(itemVo);
+                      vo = new CompositeMantissaVo(itemVo);
                     if(Hk6EnumHelp.getCompositeMantissa(vo.getOpenCode()).equals(CompositeMantissa.CM0)){
                         composite0=0;
                         composite1++;

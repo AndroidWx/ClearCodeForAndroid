@@ -23,22 +23,22 @@
     <com.joye.layouts.BorderTextView
         android:id="@+id/SmallOdd"
         style="@style/TextViewStyleLeft"
-        android:text="@string/smallOdd"
+        android:text="@string/SmallOdd"
          />
 
     <com.joye.layouts.BorderTextView
         android:id="@+id/SmallEven"
         style="@style/TextViewStyleLeft"
-        android:text="@string/smallEvem"
+        android:text="@string/SmallEven"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/BigOdd"
         style="@style/TextViewStyleLeft"
-        android:text="@string/bigOdd"
+        android:text="@string/BigOdd"
           />
     <com.joye.layouts.BorderTextView
         android:id="@+id/BigEven"
         style="@style/TextViewStyleLeft"
-        android:text="@string/bigEven"
+        android:text="@string/BigEven"
         />
 </com.joye.layouts.BorderLinearLayout>

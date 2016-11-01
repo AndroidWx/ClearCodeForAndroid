@@ -20,20 +20,20 @@ import butterknife.BindView;
  * 304622254@qq.com
  * Remeark:
  */
-public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends ProgressSwipeRefreshRecyclerVu<T> {
+public abstract class CoordinatorLayoutToolBarImageViewReportVu<T> extends ReportBaseVu<T> {
 
-    @BindView(R.id.backdrop)
-    public ImageView backdrop;
+//    @BindView(R.id.backdrop)
+//    public ImageView backdrop;
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
-    @BindView(R.id.collapsing_toolbar)
-    public CollapsingToolbarLayout collapsingToolbar;
+//    @BindView(R.id.collapsing_toolbar)
+//    public CollapsingToolbarLayout collapsingToolbar;
     @BindView(R.id.appbar)
     public AppBarLayout appbar;
-    @BindView(R.id.main_content)
-    public CoordinatorLayout mainContent;
-    @BindView(R.id.lableViewStub)
-    public ViewStub lableViewStub;
+//    @BindView(R.id.main_content)
+//    public CoordinatorLayout mainContent;
+//    @BindView(R.id.lableViewStub)
+//    public ViewStub lableViewStub;
 
     @Override
     protected void initView() {
@@ -45,11 +45,8 @@ public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends Pro
 
     @Override
     public int getResouceId() {
-        return R.layout.activity_region;
+        return R.layout.activity_report;
     }
 
-    @Override
-    public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
-        return new RegionAdapter(context);
-    }
+
 }

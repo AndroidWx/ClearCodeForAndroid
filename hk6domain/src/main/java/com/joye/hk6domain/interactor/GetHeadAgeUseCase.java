@@ -19,7 +19,7 @@ import rx.functions.Func9;
 /**
  * Created by Wx on 2016/9/25.
  * QQ:304622254;
- * remark: Í·Êý
+ * remark: Í·ï¿½ï¿½
  */
 
 public class GetHeadAgeUseCase extends GetHk6Data {
@@ -72,8 +72,9 @@ public class GetHeadAgeUseCase extends GetHk6Data {
                 List<HeadAgeVo> list = new ArrayList<HeadAgeVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int h0 = 0,h1=0,h2=0,h3=0,h4=0;
+                HeadAgeVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    HeadAgeVo vo = new HeadAgeVo(itemVo);
+                      vo = new HeadAgeVo(itemVo);
                     if(Hk6EnumHelp.getHeadAge(vo.getOpenCode()).equals(HeadAge.Headage0)){
                         h0=0;
                         h1++;

@@ -15,6 +15,7 @@ import com.joye.hk6.view.ColorTwosActivity;
 import com.joye.hk6.view.CompositeActivity;
 import com.joye.hk6.view.CompositeMantissaActivity;
 import com.joye.hk6.view.CompositeSizeActivity;
+import com.joye.hk6.view.DefaultNumberActivity;
 import com.joye.hk6.view.GateCountActivity;
 import com.joye.hk6.view.HeadAgeActivity;
 import com.joye.hk6.view.HeadTwosActivity;
@@ -75,6 +76,8 @@ public class VariationFragment extends BaseBannerOnePageFragment<ConstantsFragme
         ConstantsItem item = new ConstantsItem(R.string.chieseZodiac, ChineseZodiacActivity.class);
         list.add(item);
         item = new ConstantsItem(R.string.color, ColorActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.number, DefaultNumberActivity.class);
         list.add(item);
 
         vu.commonRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));

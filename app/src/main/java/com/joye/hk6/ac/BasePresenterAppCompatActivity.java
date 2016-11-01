@@ -25,6 +25,7 @@ public abstract class BasePresenterAppCompatActivity<V extends Vu> extends BaseA
         super.onCreate(savedInstanceState);
         try {
             vu = getVuClass().newInstance();
+            onVuInit();
             vu.init(getLayoutInflater(), null);
             setContentView(vu.getView());
             onBindVu();
@@ -35,6 +36,8 @@ public abstract class BasePresenterAppCompatActivity<V extends Vu> extends BaseA
         }
     }
 
+    protected void onVuInit() {
+    };
     protected void onBindVu() {
     };
 

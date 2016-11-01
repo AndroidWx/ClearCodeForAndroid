@@ -19,7 +19,7 @@ import rx.functions.Func9;
 /**
  * Created by Wx on 2016/9/25.
  * QQ:304622254;
- * remark: Í·Êý
+ * remark: Í·ï¿½ï¿½
  */
 
 public class GetGateCountUseCase extends GetHk6Data {
@@ -73,8 +73,9 @@ public class GetGateCountUseCase extends GetHk6Data {
                 List<GateCountVo> list = new ArrayList<GateCountVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
                 int h0 = 0,h1=0,h2=0,h3=0,h4=0;
+                GateCountVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                    GateCountVo vo = new GateCountVo(itemVo);
+                      vo = new GateCountVo(itemVo);
                     if(Hk6EnumHelp.getGateCount(vo.getOpenCode()).equals(GateCount.GateCount1)){
                         h0=0;
                         h1++;

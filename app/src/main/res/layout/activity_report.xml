@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            auto:contentScrim="?attr/colorPrimary"
+            auto:expandedTitleMarginEnd="20dp"
+            auto:expandedTitleMarginStart="48dp"
+            auto:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/region"
+                auto:layout_collapseMode="parallax" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                auto:layout_collapseMode="pin"
+                auto:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.vlonjatg.progressactivity.ProgressActivity
+        android:id="@id/progressActivity"
+        style="@style/progress_activity_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        auto:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.joye.hk6.widget.ReportScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <include layout="@layout/report_title_right_v" />
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/contentLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/white"
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="horizontal">
+
+                    <com.joye.hk6.widget.ReportMeasureWidthListView
+                        android:id="@+id/contentListViewLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:divider="@null" />
+
+                    <com.joye.hk6.widget.ReportSyncHorizontalScrollView
+                        android:id="@+id/rightContentHorscrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="140dp"
+                        android:scrollbars="none">
+
+                        <com.joye.hk6.widget.ReportMeasureHeightListView
+                            android:id="@+id/contentListViewRight"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@null"
+                            android:dividerHeight="0dip">
+
+                        </com.joye.hk6.widget.ReportMeasureHeightListView>
+                    </com.joye.hk6.widget.ReportSyncHorizontalScrollView>
+                </android.support.percent.PercentRelativeLayout>
+            </LinearLayout>
+        </com.joye.hk6.widget.ReportScrollView>
+    </com.vlonjatg.progressactivity.ProgressActivity>
+</android.support.design.widget.CoordinatorLayout>

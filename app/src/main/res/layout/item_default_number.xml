@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.joye.hk6.widget.ReportSyncHorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:auto="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rightTitleHorscrollView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="none">
+
     <com.joye.layouts.BorderPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:auto="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <com.joye.layouts.BorderTextView
             android:id="@id/report_left_expect"
             style="@style/baseTextViewStyle"
@@ -19,11 +16,13 @@
             style="@style/baseTextViewStyle"
             android:layout_toRightOf="@id/report_left_expect"
             android:text="@string/report_left_opencode" />
+
         <com.joye.layouts.BorderTextView
             android:id="@+id/N1"
             style="@style/baseTextViewStyle"
             android:layout_toRightOf="@id/report_left_opencode"
             android:text="@string/N1" />
+
         <com.joye.layouts.BorderTextView
             android:id="@+id/N2"
             style="@style/baseTextViewStyle"
@@ -313,4 +312,3 @@
             android:text="@string/N49" />
 
     </com.joye.layouts.BorderPercentRelativeLayout>
-</com.joye.hk6.widget.ReportSyncHorizontalScrollView>

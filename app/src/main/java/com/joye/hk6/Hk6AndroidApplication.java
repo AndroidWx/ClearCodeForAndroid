@@ -12,6 +12,7 @@ import com.joye.hk6.internal.di.modules.Hk6ApplicationModule;
  */
 public class Hk6AndroidApplication extends Application {
     private Hk6ApplicationComponent applicationModule;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -19,11 +20,9 @@ public class Hk6AndroidApplication extends Application {
             @Override
             public void run() {
                 JoyeEnvironment.Instance.onCreate(Hk6AndroidApplication.this);
+                initializeInjector();
             }
         }.start();
-
-        initializeInjector();
-
     }
 
     private void initializeInjector(){
