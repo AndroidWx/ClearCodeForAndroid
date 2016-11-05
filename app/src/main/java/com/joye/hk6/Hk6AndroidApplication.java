@@ -7,6 +7,8 @@ import com.joye.hk6.internal.di.component.DaggerHk6ApplicationComponent;
 import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;
 import com.joye.hk6.internal.di.modules.Hk6ApplicationModule;
 
+import net.nashlegend.anypref.AnyPref;
+
 /**
  * Created by xiang on 16/9/21.
  */
@@ -20,6 +22,7 @@ public class Hk6AndroidApplication extends Application {
             @Override
             public void run() {
                 JoyeEnvironment.Instance.onCreate(Hk6AndroidApplication.this);
+                AnyPref.init(Hk6AndroidApplication.this);
             }
         }.start();
         initializeInjector();

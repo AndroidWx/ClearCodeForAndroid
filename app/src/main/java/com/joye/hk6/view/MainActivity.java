@@ -4,14 +4,29 @@ import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
 import com.apkfuns.logutils.LogUtils;
+import com.google.common.reflect.TypeToken;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.ac.BasePresenterAppCompatActivity;
 import com.joye.hk6.internal.di.component.DaggerMainComponent;
 import com.joye.hk6.internal.di.component.MainComponent;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
+import com.joye.hk6.internal.di.modules.WriteDataToFileCacheModule;
 import com.joye.hk6.presenter.MainPresenter;
+import com.joye.hk6.util.Helper;
+import com.joye.hk6.util.SharedPreferenceHelp;
+import com.joye.hk6.util.WriteDataToFileCacheDelegate;
 import com.joye.hk6.vu.MainActivityVu;
+import com.joye.hk6data.cache.impl.Hk6Cache;
+import com.joye.hk6data.entity.Hk6DataSourceBean;
+import com.joye.hk6data.entity.Hk6Entity;
+import com.joye.hk6data.utils.GsonFactory;
+
+import net.nashlegend.anypref.AnyPref;
+import net.nashlegend.anypref.SharedPrefs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,14 +42,19 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
     @Inject
     StatusBarHelp help;
     private MainComponent mainModule;
-
     @Inject
     MainPresenter mainPresenter;
+
+    @Inject
+    WriteDataToFileCacheDelegate writeDataToFileCacheDelegate;
+
+
 
     @Override
     protected void onBindVu() {
         super.onBindVu();
         initializer();
+        writeDataToFileCacheDelegate.wirteData();
         mainPresenter.onBindVu(this);
         mainPresenter.setView(vu);
         mainPresenter.setupViewPager();
@@ -48,8 +68,10 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
 
     private void initializer() {
         mainModule= DaggerMainComponent.builder()
+                .hk6ApplicationComponent(getApplicationComponent())
                 .statusbarActivityModule(new StatusbarActivityModule(this))
-                .hk6ApplicationComponent(getApplicationComponent()).build();
+                .writeDataToFileCacheModule(new WriteDataToFileCacheModule())
+                .build();
         mainModule.inject(this);
     }
 

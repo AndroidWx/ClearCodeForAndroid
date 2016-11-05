@@ -30,5 +30,5 @@ public interface Hk6ApplicationComponent extends ApplicationComponent {
       void inject(BaseFragmentActivity activity);
       void inject(BaseAppCompatActivity appCompatActivity);
       Hk6Repository hk6DataRepository();
-      Hk6Cache hk6Cache();
+      Hk6Cache hk6Cacle();
 }

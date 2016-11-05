@@ -106,4 +106,6 @@ dependencies {
 //    compile 'com.umeng.analytics:analytics:latest.integration'
 
     compile childPresentationDependencies.expandableTextView
+
+    compile childPresentationDependencies.AnyPref
 }

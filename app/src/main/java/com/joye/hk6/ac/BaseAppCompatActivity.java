@@ -46,7 +46,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
   /**
    * Get an Activity module for dependency injection.
    */
-  protected StatusbarActivityModule getActivityModule() {
+/*  protected StatusbarActivityModule getActivityModule() {
     return new StatusbarActivityModule(this);
-  }
+  }*/
 }

@@ -16,6 +16,7 @@ ext {
   javaxInject='1'
   progressActivity='v1.0.3'
   expandableTextView='0.1.4'
+  AnyPref='1.2.6'
   //Libraries
 
   /**
@@ -36,7 +37,9 @@ ext {
           logutilsRelease:"com.apkfuns.logutils:logutils-no-op:${logutilsRelease}",
           guava :"com.google.guava:guava:${guava}",
           progressActivity:"com.github.vlonjatg:progress-activity:${progressActivity}",
-          expandableTextView:"com.ms-square:expandableTextView:${expandableTextView}"
+          expandableTextView:"com.ms-square:expandableTextView:${expandableTextView}",
+          AnyPref:"com.github.NashLegend:AnyPref:${AnyPref}"
+
   ]
 
   childPresentationTestDependencies = [
