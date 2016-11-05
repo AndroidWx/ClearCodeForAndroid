@@ -38,7 +38,7 @@ public class GetSizeTwosUseCase extends GetHk6Data {
                 super.buildUseCaseObservable("2013-12-31"),
                 super.buildUseCaseObservable("2014-12-31"),
                 super.buildUseCaseObservable("2015-12-31"),
-                super.buildUseCaseObservable(),
+                super.buildUseCaseObservable("2015-12-31"),
                 new Func9<List<Hk6UiData>,
                         List<Hk6UiData>,
                         List<Hk6UiData>,

@@ -9,6 +9,7 @@ import com.joye.hk6.ac.BaseActivity;
 import com.joye.hk6.ac.BaseAppCompatActivity;
 import com.joye.hk6.ac.BaseFragmentActivity;
 import com.joye.hk6.internal.di.modules.Hk6ApplicationModule;
+import com.joye.hk6data.cache.impl.Hk6Cache;
 import com.joye.hk6domain.repository.Hk6Repository;
 
 import javax.inject.Singleton;
@@ -29,5 +30,5 @@ public interface Hk6ApplicationComponent extends ApplicationComponent {
       void inject(BaseFragmentActivity activity);
       void inject(BaseAppCompatActivity appCompatActivity);
       Hk6Repository hk6DataRepository();
-
+      Hk6Cache hk6Cache();
 }

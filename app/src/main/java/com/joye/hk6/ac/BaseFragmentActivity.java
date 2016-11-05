@@ -2,9 +2,9 @@ package com.joye.hk6.ac;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 
 import com.joye.hk6.Hk6AndroidApplication;
 import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;

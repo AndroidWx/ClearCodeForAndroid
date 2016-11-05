@@ -16,11 +16,8 @@ import android.view.Menu;
 import com.apkfuns.logutils.LogUtils;
 import com.joye.hk6.BuildConfig;
 import com.joye.hk6.R;
-import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.common.ac.MethodInvoke;
 import com.joye.hk6.common.ac.WindowAnimation;
-
-import javax.inject.Inject;
 
 /**
  * Created by W,x (JoyeWang)

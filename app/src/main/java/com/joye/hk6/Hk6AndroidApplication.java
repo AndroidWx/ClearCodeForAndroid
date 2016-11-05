@@ -20,9 +20,9 @@ public class Hk6AndroidApplication extends Application {
             @Override
             public void run() {
                 JoyeEnvironment.Instance.onCreate(Hk6AndroidApplication.this);
-                initializeInjector();
             }
         }.start();
+        initializeInjector();
     }
 
     private void initializeInjector(){

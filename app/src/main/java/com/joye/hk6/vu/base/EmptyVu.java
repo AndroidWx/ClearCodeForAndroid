@@ -1,12 +1,7 @@
 package com.joye.hk6.vu.base;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.joye.hk6.R;
 import com.joye.hk6.mvp.BaseVuImp;
-import com.joye.hk6.mvp.Vu;
 
 /**
  * Created by W,x (JoyeWang)

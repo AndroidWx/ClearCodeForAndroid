@@ -1,12 +1,5 @@
 package com.joye.hk6.vu;
 
-import android.content.Context;
-
-import com.joye.hk6.R;
-import com.joye.hk6.adapter.ColorAdapter;
-import com.joye.hk6.adapter.DefaultNumberdapter;
-import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
-import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewReportVu;
 import com.joye.hk6domain.vo.DefaultNumberVo;
 

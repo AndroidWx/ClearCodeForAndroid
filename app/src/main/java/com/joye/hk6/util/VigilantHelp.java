@@ -1,10 +1,6 @@
 package com.joye.hk6.util;
 
-import android.graphics.drawable.Drawable;
-import android.widget.Switch;
-
 import com.joye.hk6.R;
-import com.joye.hk6domain.constants.Region;
 import com.joye.hk6domain.constants.Vigilant;
 
 /**

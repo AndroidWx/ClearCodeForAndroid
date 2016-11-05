@@ -1,7 +1,5 @@
 package com.joye.hk6.internal.di.component;
 
-import android.app.Activity;
-
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.frg.SizeFragment;
 import com.joye.hk6.internal.di.modules.Hk6Module;

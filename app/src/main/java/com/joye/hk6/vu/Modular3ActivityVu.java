@@ -5,13 +5,10 @@ import android.widget.TextView;
 
 import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.HeadTwosAdapter;
 import com.joye.hk6.adapter.Modular3Adapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
-import com.joye.hk6domain.constants.Modular3;
-import com.joye.hk6domain.vo.Modular3Vo;
 import com.joye.hk6domain.vo.Modular3Vo;
 
 import java.util.List;

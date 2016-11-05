@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import com.joye.basepresentation.internal.di.HasComponent;
 
-import butterknife.ButterKnife;
-
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/22.

@@ -5,13 +5,11 @@ import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.joye.hk6.R;
 import com.joye.hk6.util.VigilantHelp;
 import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.vo.DefaultNumberVo;
-import com.joye.hk6domain.vo.ReportRightI;
 import com.joye.layouts.BorderTextView;
 
 import java.util.List;

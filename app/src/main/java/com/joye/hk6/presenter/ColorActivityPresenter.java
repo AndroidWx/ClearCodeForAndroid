@@ -3,9 +3,6 @@ package com.joye.hk6.presenter;
 import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.vu.ColorActivityVu;
-import com.joye.hk6.vu.ColorTwosActivityVu;
-import com.joye.hk6domain.interactor.GetColorUseCase;
-import com.joye.hk6domain.vo.ColorTwosVo;
 import com.joye.hk6domain.vo.ColorVo;
 
 import javax.inject.Inject;

@@ -5,13 +5,10 @@ import android.support.annotation.CallSuper;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewStub;
 
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
-import com.joye.hk6.mvp.BannerOnePageVu;
 import com.joye.hk6.mvp.BaseVuImp;
-import com.joye.hk6.mvp.Vu;
 import com.joye.hk6.util.IProgressListener;
 import com.vlonjatg.progressactivity.ProgressActivity;
 

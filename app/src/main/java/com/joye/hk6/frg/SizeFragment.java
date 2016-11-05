@@ -9,9 +9,10 @@ import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.presenter.SizeFrgmentPresenter;
 import com.joye.hk6.view.SizeActivity;
 import com.joye.hk6.vu.SizeFragmentVu;
+import com.joye.hk6domain.constants.Formula;
+import com.joye.hk6domain.constants.Probalility;
+import com.joye.hk6domain.constants.Vigilant;
 import com.joye.layouts.BorderRippleViewTextView;
-
-import com.joye.hk6domain.constants.*;
 
 import javax.inject.Inject;
 /**

@@ -1,13 +1,11 @@
 package com.joye.hk6.view;
 
-import android.support.v7.widget.LinearLayoutManager;
-
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.ac.BasePresenterAppCompatActivity;
-import com.joye.hk6.internal.di.component.DefaultNumberComponent;
 import com.joye.hk6.internal.di.component.DaggerDefaultNumberComponent;
+import com.joye.hk6.internal.di.component.DefaultNumberComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.DefaultNumberActivityPresenter;

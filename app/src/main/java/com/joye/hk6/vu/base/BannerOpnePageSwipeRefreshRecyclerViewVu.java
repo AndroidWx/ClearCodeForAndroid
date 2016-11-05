@@ -10,15 +10,11 @@ import android.view.ViewStub;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.BannerOnePageVu;
-import com.joye.hk6.mvp.IBannerOnePageVu;
-import com.joye.hk6.mvp.ProgressVu;
 import com.joye.hk6.util.IProgressListener;
 import com.vlonjatg.progressactivity.ProgressActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.joye.hk6.R.id.contentLayout;
 
 /**
  * Created by W,x (JoyeWang)

@@ -3,10 +3,7 @@ package com.joye.hk6.mvp;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 
-import com.joye.hk6.Hk6AndroidApplication;
 import com.joye.hk6.ac.BaseActivity;
-import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;
-import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 
 /**
  * Created by W,x (JoyeWang)

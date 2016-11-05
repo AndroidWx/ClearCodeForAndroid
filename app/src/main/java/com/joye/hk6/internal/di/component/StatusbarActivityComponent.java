@@ -4,7 +4,6 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 
-
 import dagger.Component;
 
 /**

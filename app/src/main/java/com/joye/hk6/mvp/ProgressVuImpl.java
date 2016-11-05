@@ -1,11 +1,5 @@
 package com.joye.hk6.mvp;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.joye.hk6.R;
-
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/23.

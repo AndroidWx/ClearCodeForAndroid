@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
 import com.joye.basepresentation.internal.di.PerActivity;

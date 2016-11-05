@@ -14,7 +14,6 @@ import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
 import com.joye.layouts.BorderRippleViewTextView;
 
-
 import javax.inject.Inject;
 
 /**

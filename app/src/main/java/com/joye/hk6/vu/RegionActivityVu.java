@@ -6,7 +6,6 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
-import com.joye.hk6domain.vo.CompositeVo;
 import com.joye.hk6domain.vo.RegionVo;
 
 import java.util.List;

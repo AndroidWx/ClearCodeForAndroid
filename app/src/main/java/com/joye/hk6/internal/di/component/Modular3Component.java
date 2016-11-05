@@ -1,10 +1,8 @@
 package com.joye.hk6.internal.di.component;
 
 import com.joye.basepresentation.internal.di.PerActivity;
-import com.joye.hk6.ac.BasePresenterAppCompatActivity;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
-import com.joye.hk6.view.HeadTwosActivity;
 import com.joye.hk6.view.Modular3Activity;
 
 import dagger.Component;

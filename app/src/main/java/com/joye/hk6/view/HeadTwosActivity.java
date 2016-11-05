@@ -6,7 +6,6 @@ import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.ac.BasePresenterAppCompatActivity;
-import com.joye.hk6.internal.di.component.DaggerHeadAgeComponent;
 import com.joye.hk6.internal.di.component.DaggerHeadTwosComponent;
 import com.joye.hk6.internal.di.component.HeadTwosComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;

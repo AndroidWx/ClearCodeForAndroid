@@ -14,8 +14,9 @@ import dagger.Component;
  * Remeark:
  */
 @PerActivity
-@Component(dependencies = Hk6ApplicationComponent.class, modules = {Hk6Module.class, StatusbarActivityModule.class})
+@Component(dependencies = Hk6ApplicationComponent.class, modules = {Hk6Module.class, StatusbarActivityModule.class })
 public interface SizeTwosComponent extends StatusbarActivityComponent{
+
 
     void inject(SizeTwosActivity sizeActivity);
 

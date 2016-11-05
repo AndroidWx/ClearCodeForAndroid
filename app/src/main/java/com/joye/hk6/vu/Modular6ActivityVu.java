@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.Modular5Adapter;
 import com.joye.hk6.adapter.Modular6Adapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;

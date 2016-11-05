@@ -3,29 +3,19 @@ package com.joye.hk6.vu;
 import android.content.Context;
 import android.widget.TextView;
 
-import com.joye.basedata.executor.JobExecutor;
 import com.joye.basedata.executor.JobExecutor_Factory;
-import com.joye.hk6.Hk6AndroidApplication;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.CompositeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
-import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.CompositeVo;
-import com.joye.layouts.BorderTextView;
 
 import java.util.List;
-import java.util.concurrent.ThreadFactory;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
 import rx.Observable;
 import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
-import rx.internal.schedulers.NewThreadScheduler;
 import rx.schedulers.Schedulers;
 
 /**

@@ -9,10 +9,7 @@ import com.joye.basedomain.interactor.UseCase;
 import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.R;
 import com.joye.hk6.mvp.Presenter;
-import com.joye.hk6.vu.ChineseZodiacActivityVu;
 import com.joye.hk6.vu.DefaultNumberActivityVu;
-import com.joye.hk6domain.interactor.GetDefaultNumberUseCase;
-import com.joye.hk6domain.vo.ChineseZodiacVo;
 import com.joye.hk6domain.vo.DefaultNumberVo;
 
 import java.util.List;

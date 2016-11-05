@@ -3,7 +3,6 @@ package com.joye.hk6;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
-import com.jaeger.library.StatusBarUtil;
 import com.joye.hk6.util.JoyeStatusBarUtil;
 
 import javax.inject.Inject;

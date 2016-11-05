@@ -9,13 +9,10 @@ import com.joye.hk6.adapter.ColorAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
-import com.joye.hk6domain.vo.ChineseZodiacVo;
 import com.joye.hk6domain.vo.ColorVo;
-import com.joye.layouts.BorderTextView;
 
 import java.util.List;
 
-import butterknife.BindView;
 import rx.Observable;
 import rx.Observer;
 import rx.functions.Func1;

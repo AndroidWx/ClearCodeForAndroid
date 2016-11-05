@@ -1,34 +1,17 @@
 package com.joye.hk6.view;
 
-import android.content.Intent;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
-import com.google.common.reflect.TypeToken;
-import com.jaeger.library.StatusBarUtil;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.ac.BasePresenterAppCompatActivity;
-import com.joye.hk6.ac.EmptyActivity;
-import com.joye.hk6.adapter.MainFragmentPagerAdapter;
-import com.joye.hk6.frg.ConstantsFragment;
-import com.joye.hk6.frg.SizeFragment;
 import com.joye.hk6.internal.di.component.DaggerMainComponent;
 import com.joye.hk6.internal.di.component.MainComponent;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.MainPresenter;
-import com.joye.hk6.util.Helper;
 import com.joye.hk6.vu.MainActivityVu;
-import com.joye.hk6data.cache.impl.Hk6FileCacheImpl;
-import com.joye.hk6data.entity.Hk6Entity;
-import com.joye.hk6data.utils.GsonFactory;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

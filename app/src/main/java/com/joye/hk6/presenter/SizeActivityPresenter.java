@@ -10,7 +10,6 @@ import com.joye.hk6.R;
 import com.joye.hk6.mvp.Presenter;
 import com.joye.hk6.view.SizeActivity;
 import com.joye.hk6.vu.SizeActivityVu;
-import com.joye.hk6.vu.SizeFragmentVu;
 import com.joye.hk6domain.vo.SizeVo;
 
 import java.util.List;

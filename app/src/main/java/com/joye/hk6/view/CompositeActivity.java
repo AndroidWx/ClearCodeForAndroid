@@ -2,7 +2,6 @@ package com.joye.hk6.view;
 
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;

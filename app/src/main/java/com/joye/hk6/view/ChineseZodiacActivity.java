@@ -8,11 +8,9 @@ import com.joye.hk6.StatusBarHelp;
 import com.joye.hk6.ac.BasePresenterAppCompatActivity;
 import com.joye.hk6.internal.di.component.ChineseZodiacComponent;
 import com.joye.hk6.internal.di.component.DaggerChineseZodiacComponent;
-import com.joye.hk6.internal.di.component.DaggerColorTwosComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.ChineseZodiacActivityPresenter;
-import com.joye.hk6.presenter.ColorTwosActivityPresenter;
 import com.joye.hk6.vu.ChineseZodiacActivityVu;
 
 import javax.inject.Inject;

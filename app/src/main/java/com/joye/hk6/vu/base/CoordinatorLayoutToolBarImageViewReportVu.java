@@ -1,16 +1,9 @@
 package com.joye.hk6.vu.base;
 
-import android.content.Context;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
-import android.view.ViewStub;
-import android.widget.ImageView;
 
 import com.joye.hk6.R;
-import com.joye.hk6.adapter.RegionAdapter;
-import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 
 import butterknife.BindView;
 

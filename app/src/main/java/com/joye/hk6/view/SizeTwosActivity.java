@@ -14,10 +14,13 @@ import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.SizeTowsPresenter;
 import com.joye.hk6.util.Helper;
 import com.joye.hk6.vu.SizeTwosActivityVu;
-import com.joye.hk6data.cache.impl.Hk6FileCacheImpl;
+import com.joye.hk6data.cache.impl.Hk6Cache;
+import com.joye.hk6data.entity.Hk6DataSourceBean;
 import com.joye.hk6data.entity.Hk6Entity;
 import com.joye.hk6data.utils.GsonFactory;
+import com.joye.hk6domain.constants.Hk6EnumHelp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,29 +36,38 @@ public class SizeTwosActivity extends BasePresenterAppCompatActivity<SizeTwosAct
     @Inject
     StatusBarHelp statusBarHelp;
     @Inject
-    Hk6FileCacheImpl mHk6FileCacheImpl;
+    Hk6Cache hk6Cache;
+    private static TypeToken<Hk6DataSourceBean> typeToken=new TypeToken<Hk6DataSourceBean>() {
+    };
     public void a() {
         for (int i = 1990; i < 2016; i++) {
-            mHk6FileCacheImpl.put(
-                    (List<Hk6Entity>) GsonFactory.SingleTon.create().fromJson(Helper.readAssertResource(this, i + ".json"), new TypeToken<List<Hk6Entity>>() {
-                    }.getType()), 1990 + "");
+            String josn=Helper.readAssertResource(this, i + ".json");
+            List<Hk6Entity> retHk6Entitys=new ArrayList<Hk6Entity>();
+            Hk6Entity item;
+            for (Hk6DataSourceBean.DataBean dataBean:Hk6DataSourceBean.class.cast(GsonFactory.SingleTon.create().fromJson(josn,typeToken.getType())).getData()){
+                item=new Hk6Entity();
+                item.setValueFormSource(dataBean);
+                retHk6Entitys.add(item);
+            }
+            hk6Cache.put(retHk6Entitys, i + "");
         }
     }
     @Override
     protected void onBindVu() {
         super.onBindVu();
         initializeInjector();
-        statusBarHelp.setStatusBarTintEnable(true, R.drawable.banner_bar_bg);
-        vu.setErrorRetryListener(mSizeTowsPresenter.getErrorRetryListener());
-        vu.commonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mSizeTowsPresenter.setView(vu);
-        mSizeTowsPresenter.initalize(this);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 a();
             }
         }).start();
+        statusBarHelp.setStatusBarTintEnable(true, R.drawable.banner_bar_bg);
+        vu.setErrorRetryListener(mSizeTowsPresenter.getErrorRetryListener());
+        vu.commonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mSizeTowsPresenter.setView(vu);
+        mSizeTowsPresenter.initalize(this);
+
     }
     public void initializeInjector() {
         mSizeTwosComponent = DaggerSizeTwosComponent.builder()

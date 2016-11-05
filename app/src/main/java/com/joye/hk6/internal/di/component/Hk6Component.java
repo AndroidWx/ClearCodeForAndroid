@@ -4,7 +4,6 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.frg.SizeFragment;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
-import com.joye.hk6.view.ChineseZodiacActivity;
 import com.joye.hk6.view.SizeActivity;
 
 import dagger.Component;

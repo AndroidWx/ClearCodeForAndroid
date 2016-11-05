@@ -3,7 +3,6 @@ package com.joye.hk6.common.ac;
 import android.app.Activity;
 import android.content.Context;
 
-
 import com.apkfuns.logutils.LogUtils;
 import com.joye.hk6.R;
 
