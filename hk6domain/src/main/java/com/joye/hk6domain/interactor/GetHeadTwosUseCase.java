@@ -29,7 +29,7 @@ public class GetHeadTwosUseCase extends GetHk6Data {
 
     @Override
     protected Observable buildUseCaseObservable() {
-        Observable observable=Observable.zip(
+        Observable observable = Observable.zip(
                 super.buildUseCaseObservable("2008-12-31"),
                 super.buildUseCaseObservable("2009-12-31"),
                 super.buildUseCaseObservable("2010-12-31"),
@@ -49,11 +49,9 @@ public class GetHeadTwosUseCase extends GetHk6Data {
                         List<Hk6UiData>,
                         List<Hk6UiData>,
                         List<Hk6UiData>>() {
-
-
                     @Override
-                    public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2, List<Hk6UiData> o3,List<Hk6UiData> o4,List<Hk6UiData> o5, List<Hk6UiData> o6,List<Hk6UiData> o7,List<Hk6UiData> o8,List<Hk6UiData>o9) {
-                        List<Hk6UiData> datas=new ArrayList<Hk6UiData>();
+                    public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2, List<Hk6UiData> o3, List<Hk6UiData> o4, List<Hk6UiData> o5, List<Hk6UiData> o6, List<Hk6UiData> o7, List<Hk6UiData> o8, List<Hk6UiData> o9) {
+                        List<Hk6UiData> datas = new ArrayList<Hk6UiData>();
                         datas.addAll(o9);
                         datas.addAll(o8);
                         datas.addAll(o7);
@@ -65,232 +63,90 @@ public class GetHeadTwosUseCase extends GetHk6Data {
                         datas.addAll(o);
                         return datas;
                     }
-                });        return observable.map(new Func1<List<Hk6UiData>, List<HeadTwosVo>>() {
+                });
+        return observable.map(new Func1<List<Hk6UiData>, List<HeadTwosVo>>() {
+            int HeadEven0 = 0, HeadEven1 = 0, HeadEven2 = 0,
+                    HeadEven3 = 0, HeadEven4 = 0, HeadOdd0 = 0, HeadOdd1 = 0, HeadOdd2 = 0, HeadOdd3 = 0, HeadOdd4 = 0;
 
             @Override
             public List<HeadTwosVo> call(List<Hk6UiData> hk6UiDatas) {
+
                 List<HeadTwosVo> list = new ArrayList<HeadTwosVo>(hk6UiDatas.size());
                 Collections.reverse(hk6UiDatas);
-                int HeadEven0=0,HeadEven1=0, HeadEven2=0,
-                        HeadEven3=0, HeadEven4=0, HeadOdd0=0,HeadOdd1=0, HeadOdd2=0, HeadOdd3=0, HeadOdd4=0;
-                HeadTwosVo vo;
-                for (Hk6UiData itemVo:hk6UiDatas){
-                      vo = new HeadTwosVo(itemVo);
-                    if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven0)){
-                        HeadEven0=0;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven1)){
-                        HeadEven0++;
-                        HeadEven1=0;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven2)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2=0;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven3)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3=0;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven4)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4=0;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd0)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0=0;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd1)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1=0;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd2)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2=0;
-                        HeadOdd3++;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd3)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3=0;
-                        HeadOdd4++;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
-                    }else if(Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd4)){
-                        HeadEven0++;
-                        HeadEven1++;
-                        HeadEven2++;
-                        HeadEven3++;
-                        HeadEven4++;
-                        HeadOdd0++;
-                        HeadOdd1++;
-                        HeadOdd2++;
-                        HeadOdd3++;
-                        HeadOdd4=0;
-                        vo.HeadEven0=HeadEven0;
-                        vo.HeadEven1=HeadEven1;
-                        vo.HeadEven2=HeadEven2;
-                        vo.HeadEven3=HeadEven3;
-                        vo.HeadEven4=HeadEven4;
-                        vo.HeadOdd0=HeadOdd0;
-                        vo.HeadOdd1=HeadOdd1;
-                        vo.HeadOdd2=HeadOdd2;
-                        vo.HeadOdd3=HeadOdd3;
-                        vo.HeadOdd4=HeadOdd4;
+
+                for (Hk6UiData itemVo : hk6UiDatas) {
+                    HeadTwosVo vo = new HeadTwosVo(itemVo);
+                    if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven0)) {
+                        addData();
+                        HeadEven0 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven1)) {
+                        addData();
+                        HeadEven1 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven2)) {
+                        addData();
+                        HeadEven2 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven3)) {
+                        addData();
+                        HeadEven3 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadEven4)) {
+                        addData();
+                        HeadEven4 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd0)) {
+                        addData();
+                        HeadOdd0 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd1)) {
+                        addData();
+                        HeadOdd1 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd2)) {
+                        addData();
+                        HeadOdd2 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd3)) {
+                        addData();
+                        HeadOdd3 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
+                    } else if (Hk6EnumHelp.getHeadTwos(vo.getOpenCode()).equals(HeadTwos.HeadOdd4)) {
+                        addData();
+                        HeadOdd4 = 0;
+                        initvalue(HeadEven0, HeadEven1, HeadEven2, HeadEven3, HeadEven4, HeadOdd0, HeadOdd1, HeadOdd2, HeadOdd3, HeadOdd4, vo);
                     }
                     list.add(vo);
                 }
                 Collections.reverse(list);
                 return list;
+            }
+
+            private void addData() {
+                HeadEven0++;
+                HeadEven1++;
+                HeadEven2++;
+                HeadEven3++;
+                HeadEven4++;
+                HeadOdd0++;
+                HeadOdd1++;
+                HeadOdd2++;
+                HeadOdd3++;
+                HeadOdd4++;
+            }
+
+            private void initvalue(int headEven0, int headEven1, int headEven2, int headEven3, int headEven4, int headOdd0, int headOdd1, int headOdd2, int headOdd3, int headOdd4, HeadTwosVo vo) {
+                vo.HeadEven0 = headEven0;
+                vo.HeadEven1 = headEven1;
+                vo.HeadEven2 = headEven2;
+                vo.HeadEven3 = headEven3;
+                vo.HeadEven4 = headEven4;
+                vo.HeadOdd0 = headOdd0;
+                vo.HeadOdd1 = headOdd1;
+                vo.HeadOdd2 = headOdd2;
+                vo.HeadOdd3 = headOdd3;
+                vo.HeadOdd4 = headOdd4;
             }
         });
     }
