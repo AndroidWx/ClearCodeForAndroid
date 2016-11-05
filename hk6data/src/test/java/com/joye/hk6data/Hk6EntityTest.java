@@ -5,8 +5,6 @@ import com.joye.hk6data.entity.Hk6Entity;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.verify;
-
 /**
  * Created by W,x (JoyeWang)
  * on 2016/9/23.

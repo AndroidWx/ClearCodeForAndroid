@@ -5,13 +5,11 @@ import com.joye.hk6domain.constants.ColorTwos;
 import com.joye.hk6domain.constants.Formula;
 import com.joye.hk6domain.constants.Hk6Color;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
-import com.joye.hk6domain.constants.Modular7;
 import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.constants.PrimeCompositeNumber;
 import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
 
-import org.assertj.core.internal.cglib.core.DefaultNamingPolicy;
 import org.junit.Before;
 import org.junit.Test;
 

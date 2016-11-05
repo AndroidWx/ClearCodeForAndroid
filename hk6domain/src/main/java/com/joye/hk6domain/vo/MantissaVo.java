@@ -2,8 +2,8 @@ package com.joye.hk6domain.vo;
 
 
 import com.joye.hk6domain.constants.Formula;
-import com.joye.hk6domain.constants.Mantissa;
 import com.joye.hk6domain.constants.IDcValue;
+import com.joye.hk6domain.constants.Mantissa;
 import com.joye.hk6domain.constants.Probalility;
 import com.joye.hk6domain.constants.Vigilant;
 import com.joye.hk6domain.entity.Hk6UiData;

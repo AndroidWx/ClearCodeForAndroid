@@ -1,17 +1,11 @@
 package com.joye.hk6.internal.di.modules;
 
-import android.app.Activity;
 import android.content.Context;
 
-import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.basepresentation.internal.di.PerActivity;
-import com.joye.hk6.ac.BaseAppCompatActivity;
 import com.joye.hk6.util.WriteDataToFileCacheDelegate;
 import com.joye.hk6data.cache.impl.Hk6Cache;
-import com.joye.hk6domain.repository.Hk6Repository;
-
-import javax.inject.Inject;
 
 import dagger.Module;
 import dagger.Provides;

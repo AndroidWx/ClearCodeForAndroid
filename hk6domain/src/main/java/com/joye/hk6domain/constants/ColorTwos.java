@@ -1,13 +1,6 @@
 package com.joye.hk6domain.constants;
+
 import static com.joye.hk6domain.constants.Number.N_1;
-import static com.joye.hk6domain.constants.Number.N_2;
-import static com.joye.hk6domain.constants.Number.N_3;
-import static com.joye.hk6domain.constants.Number.N_4;
-import static com.joye.hk6domain.constants.Number.N_5;
-import static com.joye.hk6domain.constants.Number.N_6;
-import static com.joye.hk6domain.constants.Number.N_7;
-import static com.joye.hk6domain.constants.Number.N_8;
-import static com.joye.hk6domain.constants.Number.N_9;
 import static com.joye.hk6domain.constants.Number.N_10;
 import static com.joye.hk6domain.constants.Number.N_11;
 import static com.joye.hk6domain.constants.Number.N_12;
@@ -18,6 +11,7 @@ import static com.joye.hk6domain.constants.Number.N_16;
 import static com.joye.hk6domain.constants.Number.N_17;
 import static com.joye.hk6domain.constants.Number.N_18;
 import static com.joye.hk6domain.constants.Number.N_19;
+import static com.joye.hk6domain.constants.Number.N_2;
 import static com.joye.hk6domain.constants.Number.N_20;
 import static com.joye.hk6domain.constants.Number.N_21;
 import static com.joye.hk6domain.constants.Number.N_22;
@@ -28,6 +22,7 @@ import static com.joye.hk6domain.constants.Number.N_26;
 import static com.joye.hk6domain.constants.Number.N_27;
 import static com.joye.hk6domain.constants.Number.N_28;
 import static com.joye.hk6domain.constants.Number.N_29;
+import static com.joye.hk6domain.constants.Number.N_3;
 import static com.joye.hk6domain.constants.Number.N_30;
 import static com.joye.hk6domain.constants.Number.N_31;
 import static com.joye.hk6domain.constants.Number.N_32;
@@ -38,6 +33,7 @@ import static com.joye.hk6domain.constants.Number.N_36;
 import static com.joye.hk6domain.constants.Number.N_37;
 import static com.joye.hk6domain.constants.Number.N_38;
 import static com.joye.hk6domain.constants.Number.N_39;
+import static com.joye.hk6domain.constants.Number.N_4;
 import static com.joye.hk6domain.constants.Number.N_40;
 import static com.joye.hk6domain.constants.Number.N_41;
 import static com.joye.hk6domain.constants.Number.N_42;
@@ -48,6 +44,11 @@ import static com.joye.hk6domain.constants.Number.N_46;
 import static com.joye.hk6domain.constants.Number.N_47;
 import static com.joye.hk6domain.constants.Number.N_48;
 import static com.joye.hk6domain.constants.Number.N_49;
+import static com.joye.hk6domain.constants.Number.N_5;
+import static com.joye.hk6domain.constants.Number.N_6;
+import static com.joye.hk6domain.constants.Number.N_7;
+import static com.joye.hk6domain.constants.Number.N_8;
+import static com.joye.hk6domain.constants.Number.N_9;
 
 /**
  * Created by W,x (JoyeWang)

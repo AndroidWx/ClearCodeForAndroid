@@ -1,6 +1,5 @@
 package com.joye.basedata.repository;
 
-import com.joye.basedata.entity.UserEntity;
 import com.joye.basedata.entity.mapper.UserEntityDataMapper;
 import com.joye.basedata.repository.datasource.UserDataStore;
 import com.joye.basedata.repository.datasource.UserDataStoreFactory;
@@ -10,7 +9,6 @@ import com.joye.basedomain.repository.UserRepository;
 import java.util.List;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * Created by W,x (JoyeWang)

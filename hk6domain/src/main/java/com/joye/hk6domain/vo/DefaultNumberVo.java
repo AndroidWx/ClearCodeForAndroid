@@ -9,9 +9,7 @@ import com.joye.hk6domain.constants.Vigilant;
 import com.joye.hk6domain.entity.Hk6UiData;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by W,x (JoyeWang)

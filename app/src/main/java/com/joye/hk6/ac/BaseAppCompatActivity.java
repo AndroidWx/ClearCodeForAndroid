@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.joye.hk6.Hk6AndroidApplication;
 import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;
-import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 
 /**
  * Base {@link Activity} class for every Activity in this application.

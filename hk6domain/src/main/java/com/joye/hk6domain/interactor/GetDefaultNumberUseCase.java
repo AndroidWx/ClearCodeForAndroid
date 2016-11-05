@@ -2,26 +2,19 @@ package com.joye.hk6domain.interactor;
 
 import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
-import com.joye.hk6domain.constants.ColorTwos;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.NumberProperty;
 import com.joye.hk6domain.entity.Hk6UiData;
 import com.joye.hk6domain.repository.Hk6Repository;
-import com.joye.hk6domain.vo.ChineseZodiacVo;
-import com.joye.hk6domain.vo.ColorTwosVo;
 import com.joye.hk6domain.vo.DefaultNumberVo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import rx.Observable;
 import rx.functions.Func1;
 import rx.functions.Func2;
-import rx.functions.Func3;
-import rx.functions.Func4;
-import rx.functions.Func9;
 
 /**
  * Created by W,x (JoyeWang)

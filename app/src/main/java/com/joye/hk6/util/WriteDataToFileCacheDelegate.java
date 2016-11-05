@@ -1,12 +1,9 @@
 package com.joye.hk6.util;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.apkfuns.logutils.LogUtils;
 import com.google.common.reflect.TypeToken;
-import com.joye.basedata.executor.JobExecutor;
-import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.hk6data.cache.impl.Hk6Cache;
 import com.joye.hk6data.entity.Hk6DataSourceBean;
@@ -24,7 +21,6 @@ import javax.inject.Singleton;
 
 import rx.Observable;
 import rx.Observer;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**

@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
-import rx.Observer;
 import rx.functions.Func1;
 import rx.functions.Func9;
 
