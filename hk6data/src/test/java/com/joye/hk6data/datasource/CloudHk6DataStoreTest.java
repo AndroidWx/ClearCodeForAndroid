@@ -6,9 +6,11 @@ import com.joye.hk6data.ApplicationTestCase;
 import com.joye.hk6data.BuildConfig;
 import com.joye.hk6data.MyRunner;
 import com.joye.hk6data.cache.impl.Hk6Cache;
+import com.joye.hk6data.entity.Hk6Entity;
 import com.joye.hk6data.net.Hk6RestApi;
 import com.joye.hk6data.net.Hk6RestApiImpl;
 import com.joye.hk6data.repository.datasource.CloudHk6DataStore;
+import com.joye.hk6data.repository.datasource.DiskHk6DataStore;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -18,6 +20,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.annotation.Config;
+
+import java.util.List;
+
+import rx.Observable;
+import rx.Observer;
+import rx.functions.Func1;
 
 import static org.mockito.Mockito.verify;
 
@@ -42,7 +50,7 @@ public class CloudHk6DataStoreTest extends ApplicationTestCase {
     public ExpectedException expectedException = ExpectedException.none();
 
     @Mock
-    private CloudHk6DataStore dataStore;
+    private DiskHk6DataStore dataStore;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -57,7 +65,23 @@ public class CloudHk6DataStoreTest extends ApplicationTestCase {
 //        });
 //
 //        given(cloudHk6DataStore.getHk6ListData(DATE)).willReturn(Observable.just(hk6EntityList));
-        dataStore.getHk6ListData(DATE);
+        Observable<List<Hk6Entity>>data= dataStore.getHk6ListData(DATE);
+        data.subscribe(new Observer<List<Hk6Entity>>() {
+           @Override
+           public void onCompleted() {
+
+           }
+
+           @Override
+           public void onError(Throwable e) {
+
+           }
+
+           @Override
+           public void onNext(List<Hk6Entity> hk6EntityList) {
+                System.out.print(hk6EntityList.size()+"");
+           }
+       });
 //        verify(hk6RestApi).getHk6ListData("demo","hk6",DATE, BaseApiConstants.FORMAT_JSON);
         verify(dataStore).getHk6ListData(DATE);
     }

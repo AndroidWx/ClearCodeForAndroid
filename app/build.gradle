@@ -74,6 +74,7 @@ dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
     def childPresentationDependencies = rootProject.ext.childPresentationDependencies
+    def testDependencies = rootProject.ext.dataTestDependencies
     compile project(':basepresentation')
     compile project(':hk6data')
     compile project(':layouts')
@@ -108,4 +109,13 @@ dependencies {
     compile childPresentationDependencies.expandableTextView
 
     compile childPresentationDependencies.AnyPref
+
+
+
+
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.assertj
+    testCompile testDependencies.mockito
+    testCompile testDependencies.robolectric
 }

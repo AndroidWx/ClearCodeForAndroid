@@ -20,11 +20,11 @@ import javax.inject.Inject;
  */
 
 public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityVu> implements HasComponent<ColorComponent> {
-    ColorComponent mColorComponent;
+    public ColorComponent mColorComponent;
     @Inject
-    ColorActivityPresenter mRegionPresenter;
+    public  ColorActivityPresenter mRegionPresenter;
     @Inject
-    StatusBarHelp statusBarHelp;
+    public  StatusBarHelp statusBarHelp;
 
     @Override
     protected void onBindVu() {

@@ -16,6 +16,5 @@ public class ColorActivityPresenter extends ConstantsActivityPresenter<ColorActi
     @Inject
     public ColorActivityPresenter(@Named("GetColorUseCase") UseCase getHk6DataUseCase) {
         super(getHk6DataUseCase);
-
     }
 }
