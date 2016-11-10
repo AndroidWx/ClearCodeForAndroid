@@ -3,7 +3,6 @@ package com.joye.hk6.report;
 /**
  * Created by xiang on 16/11/5.
  */
-
 public class Statistics {
     public String typeName;
     public int thresholdKey;

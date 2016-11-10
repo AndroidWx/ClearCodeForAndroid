@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
         targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
-
+        multiDexEnabled true
         applicationId globalConfiguration.getAt("androidApplicationId")
         versionCode globalConfiguration.getAt("androidVersionCode")
         versionName globalConfiguration.getAt("androidVersionName")
@@ -68,6 +68,12 @@ android {
 //            manifestPlaceholders=[UMENG_CHANNEL:"debug"]
         }
     }
+
+    apt{
+        arguments {
+            "dart.henson.package" "com.joye.hk6"
+        }
+    }
 }
 
 dependencies {
@@ -83,7 +89,6 @@ dependencies {
 
     compile childPresentationDependencies.f2prateek
     provided childPresentationDependencies.f2prateekProvided
-
 
 
     provided presentationDependencies.javaxAnnotation

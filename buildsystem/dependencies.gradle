@@ -7,7 +7,7 @@ allprojects {
 ext {
   //Android
   androidBuildToolsVersion = "24.0.2"
-  androidMinSdkVersion = 21
+  androidMinSdkVersion = 19
   androidTargetSdkVersion = 23
   androidCompileSdkVersion = 23
 /**
@@ -51,13 +51,13 @@ ext {
 
   supportMultidex = '1.0.1'
   supportMultidexInstrumentation = '1.0.1'
-  supportDesign = '24.2.1'
-  supportAppcompatV7 = '24.2.1'
-  supportCardviewV7 = '24.2.1'
-  supportRecyclerviewV7 = '24.2.1'
-  supportV13='24.2.1'
+  supportDesign = '24.0.0'
+  supportAppcompatV7 = '24.0.0'
+  supportCardviewV7 = '24.0.0'
+  supportRecyclerviewV7 = '24.0.0'
+  supportV13='24.0.0'
   supportAannotation='23.1.0'
-  suportV4='24.2.1'
+  suportV4='24.0.0'
   supportConstraintLayout='1.0.0-alpha1'
   presentationDependencies = [
       daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
