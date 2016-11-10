@@ -17,6 +17,7 @@ ext {
   progressActivity='v1.0.3'
   expandableTextView='0.1.4'
   AnyPref='1.2.6'
+  MPAndroidChart='v3.0.0'
   f2prateek='2.0.1'
   pgyersdk='2.2.2'
   //Libraries
@@ -41,10 +42,10 @@ ext {
           progressActivity:"com.github.vlonjatg:progress-activity:${progressActivity}",
           expandableTextView:"com.ms-square:expandableTextView:${expandableTextView}",
           AnyPref:"com.github.NashLegend:AnyPref:${AnyPref}",
+          MPAndroidChart:"com.github.PhilJay:MPAndroidChart:${MPAndroidChart}",
           f2prateek:"com.f2prateek.dart:dart:${f2prateek}",
           f2prateekProvided:"com.f2prateek.dart:dart-processor:${f2prateek}",
           pgyerSdk:"com.pgyersdk:sdk:${pgyersdk}"
-
   ]
 
   childPresentationTestDependencies = [
