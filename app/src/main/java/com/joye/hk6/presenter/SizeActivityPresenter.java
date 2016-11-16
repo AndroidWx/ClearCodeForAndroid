@@ -45,7 +45,6 @@ public class SizeActivityPresenter implements Presenter<SizeActivityVu> {
     }
 
     public void initalize(SizeActivity sizeActivity ){
-        loadHk6Data();
         this.sizeActivity=sizeActivity;
         sizeActivity.setSupportActionBar(vu.toolbar);
         final ActionBar ab = sizeActivity.getSupportActionBar();

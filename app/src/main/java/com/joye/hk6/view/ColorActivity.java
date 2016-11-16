@@ -1,7 +1,10 @@
 package com.joye.hk6.view;
-
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.f2prateek.dart.HensonNavigable;
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
@@ -18,7 +21,6 @@ import javax.inject.Inject;
 /**
  * Created by xiang on 16/9/29.
  */
-
 public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityVu> implements HasComponent<ColorComponent> {
     public ColorComponent mColorComponent;
     @Inject
@@ -52,4 +54,24 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
     protected Class<ColorActivityVu> getVuClass() {
         return ColorActivityVu.class;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_open_rv_menu) {
+//            Intent intent =Henson.with(this);
+           /* Intent intentSampleFragment = Henson.with(this)
+                    .gotoSampleFragment()
+                    .foo("bar")
+                    .build();*/
+
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_all_activity, menu);
+        return true;
+    }
+
 }

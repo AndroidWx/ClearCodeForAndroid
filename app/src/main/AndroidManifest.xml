@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.joye.hk6">
 
-    <uses-sdk tools:overrideLibrary="com.jaeger.library,butterknife,com.joye.layouts,com.vlonjatg.progressactivity" />
+    <uses-sdk tools:overrideLibrary="com.jaeger.library,
+    butterknife,
+    com.joye.layouts,
+    com.vlonjatg.progressactivity,
+    android.support.appcompat" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信-->
@@ -18,7 +22,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,11 +33,11 @@
             android:name=".view.ChineseZodiacActivity"
             android:label="@string/title_activity_chinese_zodiac_probility" android:screenOrientation="landscape"/>
         <activity android:name=".ac.EmptyActivity" />
-        <activity android:name=".view.SizeActivity" />
-        <activity android:name=".view.ColorActivity" />
+        <activity android:name=".view.SizeActivity" android:screenOrientation="landscape" />
+        <activity android:name=".view.ColorActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.SizeTwosActivity" android:screenOrientation="landscape"/>
-        <activity android:name=".view.MantissaSizeActivity" />
-        <activity android:name=".view.CompositeSizeActivity" />
+        <activity android:name=".view.MantissaSizeActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".view.CompositeSizeActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.DefaultNumberActivity" android:screenOrientation="landscape"/>
         <activity android:name=".view.Modular3Activity" android:screenOrientation="landscape"/>
         <activity android:name=".view.Modular4Activity" android:screenOrientation="landscape"/>
