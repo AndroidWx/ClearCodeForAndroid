@@ -51,6 +51,9 @@ android {
         disable 'InvalidPackage'  // Some libraries have issues with this
         disable 'OldTargetApi'    // Due to Robolectric that modifies the manifest when running tests
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -62,6 +65,7 @@ dependencies {
     compile project(':basedata')
     compile project(':hk6domain')
 
+    testCompile  group: 'commons-codec', name: 'commons-codec', version: '1.9'
 
     testCompile testDependencies.junit
     testCompile testDependencies.assertj

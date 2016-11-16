@@ -1,7 +1,9 @@
 package com.joye.hk6data;
 
+
 import com.joye.hk6data.entity.Hk6Entity;
 
+import org.bouncycastle.util.encoders.Base64;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,5 +29,11 @@ public class Hk6EntityTest {
     public void testGetDataTransformerEntity() throws Exception {
 //        hk6Entity.getDataTransformerEntity();
         System.out.println(hk6Entity.getExpect().substring(0,4)+"期");
+        String auth="api:NMrq7srswRm9J6Wlflm0TmjMKH8Bq56D";
+        byte[] mbyte = auth.getBytes();
+        byte[] newByte= Base64.encode(mbyte);//,Base64.NO_PADDING);
+        String basevalue = new String(newByte);
+        String value="Basic "+basevalue;
+        System.out.println(value);
     }
 }
