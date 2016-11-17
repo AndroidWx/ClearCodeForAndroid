@@ -1,5 +1,9 @@
 package com.joye.hk6.vu;
 
+import android.content.Context;
+
+import com.joye.hk6.adapter.ReportAdapter;
+import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.report.IPieChart;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 
@@ -14,5 +18,8 @@ public class ReportActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerV
     public void setToolbarTimeAndViewStubInflate() {
 
     }
-
+    @Override
+    public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
+        return new ReportAdapter(context);
+    }
 }

@@ -1,10 +1,10 @@
 package com.joye.hk6.view;
+
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.f2prateek.dart.HensonNavigable;
 import com.joye.basepresentation.internal.di.HasComponent;
 import com.joye.hk6.R;
 import com.joye.hk6.StatusBarHelp;
@@ -14,7 +14,11 @@ import com.joye.hk6.internal.di.component.DaggerColorComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.ColorActivityPresenter;
+import com.joye.hk6.report.PieChartImpl;
 import com.joye.hk6.vu.ColorActivityVu;
+import com.joye.hk6data.utils.CollectionUtils;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -22,11 +26,15 @@ import javax.inject.Inject;
  * Created by xiang on 16/9/29.
  */
 public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityVu> implements HasComponent<ColorComponent> {
+    public static final String TITLE = "波色走势预警";
+    public static final int PICRESID = R.drawable.color;
     public ColorComponent mColorComponent;
     @Inject
-    public  ColorActivityPresenter mRegionPresenter;
+    public ColorActivityPresenter mRegionPresenter;
     @Inject
-    public  StatusBarHelp statusBarHelp;
+    public StatusBarHelp statusBarHelp;
+
+    ArrayList<PieChartImpl> datas=new ArrayList<>();
 
     @Override
     protected void onBindVu() {
@@ -38,6 +46,7 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
         mRegionPresenter.setView(vu);
         mRegionPresenter.initalize(this);
     }
+
     public void initializeInjector() {
         mColorComponent = DaggerColorComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
@@ -45,6 +54,7 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mColorComponent.inject(this);
     }
+
     @Override
     public ColorComponent getComponent() {
         return mColorComponent;
@@ -59,11 +69,14 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_open_rv_menu) {
 //            Intent intent =Henson.with(this);
-           /* Intent intentSampleFragment = Henson.with(this)
-                    .gotoSampleFragment()
-                    .foo("bar")
-                    .build();*/
-
+            if(CollectionUtils.isEmpty(datas)){
+                return true;
+            }
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putParcelableArrayListExtra(ReportActivity.EXTRA_KEY_DATAS, datas);
+            intent.putExtra(ReportActivity.EXTRA_KEY_PICRESID, PICRESID);
+            intent.putExtra(ReportActivity.EXTRA_KEY_TITLE, TITLE);
+            startActivity(intent);
         }
         return true;
     }
@@ -74,4 +87,14 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
         return true;
     }
 
+    @Override
+    protected void onVuInit() {
+        super.onVuInit();
+        vu.setCallback(new IPieChartCallback() {
+            @Override
+            public void callback(ArrayList<PieChartImpl> mdatas) {
+                datas.addAll(mdatas);
+            }
+        });
+    }
 }

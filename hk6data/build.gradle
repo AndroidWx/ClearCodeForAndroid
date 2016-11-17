@@ -65,7 +65,7 @@ dependencies {
     compile project(':basedata')
     compile project(':hk6domain')
 
-    testCompile  group: 'commons-codec', name: 'commons-codec', version: '1.9'
+//    testCompile  group: 'commons-codec', name: 'commons-codec', version: '1.9'
 
     testCompile testDependencies.junit
     testCompile testDependencies.assertj

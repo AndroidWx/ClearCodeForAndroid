@@ -1,5 +1,6 @@
 package com.joye.hk6.view;
 
+import android.content.Intent;
 import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
@@ -72,7 +73,8 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
                 vu.drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_home:
-
+                 Intent intent =(new Intent(this,ReportActivity.class));
+                startActivity(intent);
                 return true;
             case R.id.about_me:
                 return true;
