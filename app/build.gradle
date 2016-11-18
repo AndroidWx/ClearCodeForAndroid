@@ -13,7 +13,7 @@ android {
         }
     }
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        minSdkVersion 17//globalConfiguration.getAt("androidMinSdkVersion")
         targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         multiDexEnabled true
         applicationId globalConfiguration.getAt("androidApplicationId")

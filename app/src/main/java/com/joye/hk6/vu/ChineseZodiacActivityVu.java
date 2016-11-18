@@ -7,6 +7,8 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.ChineseZodiacAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.ChineseZodiacReport;
+import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
@@ -25,9 +27,14 @@ import rx.schedulers.Schedulers;
  */
 
 public class ChineseZodiacActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<ChineseZodiacVo> {
+    private IPieChartCallback callback;
+
+    public void setCallback(IPieChartCallback callback) {
+        this.callback = callback;
+    }
+
     @Override
     public void setToolbarTimeAndViewStubInflate() {
-        toolbar.setTitle("生肖走势预警");
         backdrop.setImageResource(R.drawable.chinesezodiac);
         lableViewStub.setLayoutResource( R.layout.item_chinese_zodiac);
         lableViewStub.inflate();
@@ -42,6 +49,23 @@ public class ChineseZodiacActivityVu extends CoordinatorLayoutToolBarImageViewRe
     @Override
     public void onNext(List<ChineseZodiacVo> chineseZodiacVos) {
         super.onNext(chineseZodiacVos);
+        Observable.just(chineseZodiacVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<ChineseZodiacVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<ChineseZodiacVo> colorVos) {
+                new ChineseZodiacReport(colorVos).BubbleSort(callback);
+            }
+        });
+
         Observable.from(chineseZodiacVos).filter(new Func1<ChineseZodiacVo, Boolean>() {
             @Override
             public Boolean call(ChineseZodiacVo compositeVo) {

@@ -6,6 +6,7 @@
     <uses-sdk tools:overrideLibrary="com.jaeger.library,
     butterknife,
     com.joye.layouts,
+    com.joye.hk6data,
     com.vlonjatg.progressactivity,
     android.support.appcompat" />
 

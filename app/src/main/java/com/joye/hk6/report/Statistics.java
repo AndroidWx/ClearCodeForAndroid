@@ -8,6 +8,10 @@ public class Statistics {
     public int thresholdKey;
     public int thresholdValue;
 
+    public Statistics(int thresholdKey, int thresholdValue)
+    {
+        this("",thresholdKey,thresholdValue);
+    }
     public Statistics(String typeName, int thresholdKey, int thresholdValue) {
         this.typeName = typeName;
         this.thresholdKey = thresholdKey;

@@ -16,7 +16,6 @@ import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 public class ReportActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<IPieChart>{
     @Override
     public void setToolbarTimeAndViewStubInflate() {
-
     }
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {

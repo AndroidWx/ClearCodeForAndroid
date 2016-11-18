@@ -60,17 +60,20 @@ public class ReportActivity extends BasePresenterAppCompatActivity<ReportActivit
         if(getIntent().hasExtra(EXTRA_KEY_DATAS)){
             listPirChartDatas=getIntent().getParcelableArrayListExtra(EXTRA_KEY_DATAS);
         }
-        if(getIntent().hasExtra(EXTRA_KEY_TITLE)){
-            vu.toolbar.setTitle(getIntent().getStringExtra(EXTRA_KEY_TITLE));
-        }
         if(getIntent().hasExtra(EXTRA_KEY_PICRESID)){
             vu. backdrop.setImageResource(getIntent().getIntExtra(EXTRA_KEY_PICRESID,R.drawable.color));
         }
-
         vu.mAdapter.updateItems(listPirChartDatas,true);
-
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getIntent().hasExtra(EXTRA_KEY_TITLE)) {
+            vu.toolbar.setTitle(getIntent().getStringExtra(EXTRA_KEY_TITLE));
+        }
+    }
+
     public void initializeInjector(){
         reportComponent= DaggerReportComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())

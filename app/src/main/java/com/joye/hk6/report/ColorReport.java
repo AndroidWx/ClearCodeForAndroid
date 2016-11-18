@@ -1,5 +1,6 @@
 package com.joye.hk6.report;
 
+import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6domain.vo.ColorVo;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import rx.schedulers.Schedulers;
  * Remeark:波色报表统计
  */
 
-public class ColorReport {
+public class ColorReport extends BaseReport{
     /**
      * 总数据
      */
@@ -28,9 +29,6 @@ public class ColorReport {
 
     public static final int MIN_VALUE=9;
 
-    public interface  IColorReport{
-        void onReportMapData(Map<Integer,Integer> blueMap,Map<Integer,Integer>redMap,Map<Integer,Integer>greeMap);
-    }
 
 
     public ColorReport(List<ColorVo> chineseZodiacVos) {
@@ -38,39 +36,7 @@ public class ColorReport {
     }
 
 
-    private Map<Integer, Integer> mBubbleSort(List<Statistics> blueStatistics){
-        Statistics[] vos=new Statistics[blueStatistics.size()];
-        vos= blueStatistics.toArray(vos);
-        Statistics temp = vos[0];
-        for (int i = vos.length - 1; i > 0; --i)
-        {
-            for (int j = 0; j < i; ++j)
-            {
-                if (vos[j + 1].thresholdKey < vos[j].thresholdKey)
-                {
-                    temp = vos[j];
-                    vos[j] = vos[j + 1];
-                    vos[j + 1] = temp;
-                }
-            }
-        }
-        Map<Integer,Integer> realMap=new TreeMap();
-        for (int i=0;i<vos.length;i++){
-            int realValue=vos[i].getThresholdValue();
-            for(int j=i+1;j<vos.length;j++){
-                realValue=realValue-vos[j].getThresholdValue();
-                realMap.put(vos[i].getThresholdKey(),realValue);
-                break;
-            }
-            if((i+1)==vos.length){
-                realMap.put(vos[i].getThresholdKey(),realValue);
-            }
 
-        }
-
-        return realMap;
-
-    }
 
 //    private Func1<ColorVo,Boolean> filterBlueFunc=new Func1<ColorVo, Boolean>() {
 //        @Override
@@ -92,8 +58,8 @@ public class ColorReport {
 //    };
 
 
-
-    public void BubbleSort(final IColorReport colorReport){
+    @Override
+    public void BubbleSort(final IPieChartCallback callback){
         Observable<Map<Integer, Integer>> bluemapObserverable = Observable.just(colorVos).flatMap(new Func1<List<ColorVo>, Observable<Map<Integer, Integer>>>() {
             @Override
             public Observable<Map<Integer, Integer>> call(List<ColorVo> colorVos) {
@@ -171,8 +137,12 @@ public class ColorReport {
         Observable.zip(bluemapObserverable, redmapObserverable, greenMapObserverable, new Func3<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Void>() {
             @Override
             public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3) {
-                if(colorReport!=null) {
-                    colorReport.onReportMapData(map, map2, map3);
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(genPieChartImpl(map,"蓝波"));
+                    datas.add(genPieChartImpl(map2,"红波"));
+                    datas.add(genPieChartImpl(map3,"绿波"));
+                    callback.callback(datas);
                 }
                 return null;
             }
