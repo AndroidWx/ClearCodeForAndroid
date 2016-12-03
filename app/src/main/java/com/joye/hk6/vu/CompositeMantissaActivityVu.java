@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.CompositeMantissaAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.CompositeMantissaReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.CompositeMantissaVo;
@@ -39,9 +40,26 @@ public class CompositeMantissaActivityVu extends CoordinatorLayoutToolBarImageVi
     int composite0,composite1, composite2, composite3, composite4, composite5;
       int composite6, composite7, composite8, composite9;
     @Override
-    public void onNext(List<CompositeMantissaVo> CompositeMantissaVos) {
-        super.onNext(CompositeMantissaVos);
-        Observable.from(CompositeMantissaVos).filter(new Func1<CompositeMantissaVo, Boolean>() {
+    public void onNext(List<CompositeMantissaVo> MantissaVos) {
+        super.onNext(MantissaVos);
+        Observable.just(MantissaVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<CompositeMantissaVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<CompositeMantissaVo> mantissaVos) {
+                new CompositeMantissaReport(mantissaVos).BubbleSort(callback);
+            }
+        });
+
+        Observable.from(MantissaVos).filter(new Func1<CompositeMantissaVo, Boolean>() {
             @Override
             public Boolean call(CompositeMantissaVo compositeVo) {
                 return compositeVo.getOpentimestamp() >= Hk6EnumHelp.Default2016;

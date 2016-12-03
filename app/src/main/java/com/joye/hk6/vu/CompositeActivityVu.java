@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.CompositeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.CompositeReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.CompositeVo;
@@ -45,6 +46,23 @@ public class CompositeActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
     @Override
     public void onNext(List<CompositeVo> chineseZodiacVos) {
         super.onNext(chineseZodiacVos);
+        Observable.just(chineseZodiacVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<CompositeVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<CompositeVo> colorVos) {
+                new CompositeReport(colorVos).BubbleSort(callback);
+            }
+        });
+
         Observable.from(chineseZodiacVos).filter(new Func1<CompositeVo, Boolean>() {
             @Override
             public Boolean call(CompositeVo compositeVo) {

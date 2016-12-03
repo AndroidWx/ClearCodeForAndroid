@@ -25,8 +25,8 @@
     <string name="region_6" formatted="false">第六段%1$d</string>
     <string name="region_7" formatted="false">第七段%1$d</string>
     <string name="size">大小</string>
-    <string name="big">大</string>
-    <string name="small">小</string>
+    <string name="big" formatted="false">大-%1$d次</string>
+    <string name="small" formatted="false">小-%1$d次</string>
     <!--半波（固定不变)-->
     <string name="colorTows">半波</string>
     <string name="redEven" formatted="false">红双-%1$d次</string>
@@ -72,16 +72,16 @@
 
 
     <string name="mantissa">尾数</string>
-    <string name="mantissa0" formatted="false">尾0-%1$d次</string>
-    <string name="mantissa1" formatted="false">尾1-%1$d次</string>
-    <string name="mantissa2" formatted="false">尾2-%1$d次</string>
-    <string name="mantissa3" formatted="false">尾3-%1$d次</string>
-    <string name="mantissa4" formatted="false">尾4-%1$d次</string>
-    <string name="mantissa5" formatted="false">尾5-%1$d次</string>
-    <string name="mantissa6" formatted="false">尾6-%1$d次</string>
-    <string name="mantissa7" formatted="false">尾7-%1$d次</string>
-    <string name="mantissa8" formatted="false">尾8-%1$d次</string>
-    <string name="mantissa9" formatted="false">尾9-%1$d次</string>
+    <string name="mantissa0" formatted="false">0-%1$d次</string>
+    <string name="mantissa1" formatted="false">1-%1$d次</string>
+    <string name="mantissa2" formatted="false">2-%1$d次</string>
+    <string name="mantissa3" formatted="false">3-%1$d次</string>
+    <string name="mantissa4" formatted="false">4-%1$d次</string>
+    <string name="mantissa5" formatted="false">5-%1$d次</string>
+    <string name="mantissa6" formatted="false">6-%1$d次</string>
+    <string name="mantissa7" formatted="false">7-%1$d次</string>
+    <string name="mantissa8" formatted="false">8-%1$d次</string>
+    <string name="mantissa9" formatted="false">9-%1$d次</string>
 
 
     <string name="compositeSize">合大合小</string>

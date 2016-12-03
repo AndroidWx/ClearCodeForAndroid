@@ -36,6 +36,7 @@ public abstract class BasePresenterAppCompatActivity<V extends Vu> extends BaseA
         }
     }
 
+
     protected void onVuInit() {
     };
     protected void onBindVu() {

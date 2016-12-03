@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.ColorTwosAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.ColorTwosReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.ColorTwosVo;
@@ -40,6 +41,23 @@ public class ColorTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
     @Override
     public void onNext(List<ColorTwosVo> ColorTwosVos) {
         super.onNext(ColorTwosVos);
+        Observable.just(ColorTwosVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<ColorTwosVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<ColorTwosVo> colorVos) {
+                new ColorTwosReport(colorVos).BubbleSort(callback);
+            }
+        });
+
         Observable.from(ColorTwosVos).filter(new Func1<ColorTwosVo, Boolean>() {
             @Override
             public Boolean call(ColorTwosVo compositeVo) {
@@ -78,4 +96,5 @@ public class ColorTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
             }
         });
     }
+
 }

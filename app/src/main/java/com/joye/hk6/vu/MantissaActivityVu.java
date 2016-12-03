@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.MantissaAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.MantissaReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.MantissaVo;
@@ -40,6 +41,22 @@ public class MantissaActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
     @Override
     public void onNext(List<MantissaVo> MantissaVos) {
         super.onNext(MantissaVos);
+        Observable.just(MantissaVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<MantissaVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<MantissaVo> mantissaVos) {
+                new MantissaReport(mantissaVos).BubbleSort(callback);
+            }
+        });
         Observable.from(MantissaVos).filter(new Func1<MantissaVo, Boolean>() {
             @Override
             public Boolean call(MantissaVo compositeVo) {

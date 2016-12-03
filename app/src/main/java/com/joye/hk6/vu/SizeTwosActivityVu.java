@@ -7,6 +7,8 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.SizeTwosAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.SizeTowsReport;
+import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.SizeTwosVo;
@@ -23,6 +25,7 @@ import rx.schedulers.Schedulers;
  */
 
 public class SizeTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<SizeTwosVo> {
+    private IPieChartCallback callback;
     @Override
     public void setToolbarTimeAndViewStubInflate() {
         toolbar.setTitle("半单双走势预警");
@@ -41,6 +44,22 @@ public class SizeTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
     @Override
     public void onNext(List<SizeTwosVo> SizeTwosVos) {
         super.onNext(SizeTwosVos);
+        Observable.just(SizeTwosVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<SizeTwosVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<SizeTwosVo> colorVos) {
+                new SizeTowsReport(colorVos).BubbleSort(callback);
+            }
+        });
         Observable.from(SizeTwosVos).filter(new Func1<SizeTwosVo, Boolean>() {
             @Override
             public Boolean call(SizeTwosVo compositeVo) {
@@ -73,5 +92,8 @@ public class SizeTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
                 }
             }
         });
+    }
+    public void setCallback(IPieChartCallback callback) {
+        this.callback = callback;
     }
 }

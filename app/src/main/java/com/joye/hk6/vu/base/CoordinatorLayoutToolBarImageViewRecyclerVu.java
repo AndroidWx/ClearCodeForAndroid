@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.RegionAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.view.IPieChartCallback;
 
 import butterknife.BindView;
 
@@ -21,7 +22,7 @@ import butterknife.BindView;
  * Remeark:
  */
 public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends ProgressSwipeRefreshRecyclerVu<T> {
-
+    protected IPieChartCallback callback;
     @BindView(R.id.backdrop)
     public ImageView backdrop;
     @BindView(R.id.toolbar)
@@ -51,5 +52,8 @@ public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends Pro
     @Override
     public UpdateItemRecyclerViewAdapter getRecylerViewAdapter(Context context) {
         return new RegionAdapter(context);
+    }
+    public void setCallback(IPieChartCallback callback) {
+        this.callback = callback;
     }
 }

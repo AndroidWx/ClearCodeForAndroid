@@ -4,6 +4,7 @@ import android.widget.TextView;
 
 import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
+import com.joye.hk6.report.RegionReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.RegionVo;
@@ -33,6 +34,22 @@ public class RegionActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerV
     @Override
     public void onNext(List<RegionVo> chineseZodiacVos) {
         super.onNext(chineseZodiacVos);
+        Observable.just(chineseZodiacVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<RegionVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<RegionVo> colorVos) {
+                new RegionReport(colorVos).BubbleSort(callback);
+            }
+        });
         Observable.from(chineseZodiacVos).filter(new Func1<RegionVo, Boolean>() {
             @Override
             public Boolean call(RegionVo compositeVo) {

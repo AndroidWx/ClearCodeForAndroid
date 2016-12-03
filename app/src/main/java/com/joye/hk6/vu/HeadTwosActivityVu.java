@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.HeadTwosAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.HeadTwosReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.HeadTwosVo;
@@ -43,6 +44,23 @@ public class HeadTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
     @Override
     public void onNext(List<HeadTwosVo> HeadTwosVos) {
         super.onNext(HeadTwosVos);
+        Observable.just(HeadTwosVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<HeadTwosVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<HeadTwosVo> HeadTwosVo) {
+                new HeadTwosReport(HeadTwosVo).BubbleSort(callback);
+            }
+        });
+
         Observable.from(HeadTwosVos).filter(new Func1<HeadTwosVo, Boolean>() {
             @Override
             public Boolean call(HeadTwosVo compositeVo) {

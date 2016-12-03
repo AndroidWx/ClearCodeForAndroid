@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.HeadAgeAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.HeadAgeReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.HeadAgeVo;
@@ -41,6 +42,23 @@ public class HeadAgeActivityVu extends CoordinatorLayoutToolBarImageViewRecycler
     @Override
     public void onNext(List<HeadAgeVo> HeadAgeVos) {
         super.onNext(HeadAgeVos);
+        Observable.just(HeadAgeVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<HeadAgeVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<HeadAgeVo> colorVos) {
+                new HeadAgeReport(colorVos).BubbleSort(callback);
+            }
+        });
+
         Observable.from(HeadAgeVos).filter(new Func1<HeadAgeVo, Boolean>() {
             @Override
             public Boolean call(HeadAgeVo compositeVo) {

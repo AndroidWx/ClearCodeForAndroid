@@ -28,14 +28,12 @@ import javax.inject.Inject;
 public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityVu> implements HasComponent<ColorComponent> {
     public static final String TITLE = "波色走势预警";
     public static final int PICRESID = R.drawable.color;
+    ArrayList<PieChartImpl> datas=new ArrayList<>();
     public ColorComponent mColorComponent;
     @Inject
     public ColorActivityPresenter mRegionPresenter;
     @Inject
     public StatusBarHelp statusBarHelp;
-
-    ArrayList<PieChartImpl> datas=new ArrayList<>();
-
     @Override
     protected void onBindVu() {
         super.onBindVu();
@@ -68,7 +66,6 @@ public class ColorActivity extends BasePresenterAppCompatActivity<ColorActivityV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_open_rv_menu) {
-//            Intent intent =Henson.with(this);
             if(CollectionUtils.isEmpty(datas)){
                 return true;
             }

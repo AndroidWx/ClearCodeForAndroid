@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.GateCountAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.GateCountReport;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.GateCountVo;
@@ -40,6 +41,22 @@ public class GateCountActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
     @Override
     public void onNext(List<GateCountVo> GateCountVos) {
         super.onNext(GateCountVos);
+        Observable.just(GateCountVos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<GateCountVo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<GateCountVo> colorVos) {
+                new GateCountReport(colorVos).BubbleSort(callback);
+            }
+        });
         Observable.from(GateCountVos).filter(new Func1<GateCountVo, Boolean>() {
             @Override
             public Boolean call(GateCountVo compositeVo) {

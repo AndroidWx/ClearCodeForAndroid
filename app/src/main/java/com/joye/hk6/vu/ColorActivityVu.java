@@ -8,7 +8,6 @@ import com.joye.hk6.R;
 import com.joye.hk6.adapter.ColorAdapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.report.ColorReport;
-import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.ColorVo;
@@ -30,7 +29,6 @@ import static com.joye.hk6.view.ColorActivity.TITLE;
 
 public class ColorActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<ColorVo> {
 
-    private IPieChartCallback callback;
 
     @Override
     public void setToolbarTimeAndViewStubInflate() {
@@ -113,7 +111,4 @@ public class ColorActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu
         });
     }
 
-    public void setCallback(IPieChartCallback callback) {
-        this.callback = callback;
-    }
 }

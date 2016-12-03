@@ -7,6 +7,7 @@ import com.joye.basedata.executor.JobExecutor_Factory;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.Modular6Adapter;
 import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
+import com.joye.hk6.report.Modular6Report;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.vo.Modular6Vo;
@@ -40,6 +41,22 @@ public class Modular6ActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
     @Override
     public void onNext(List<Modular6Vo> Modular6Vos) {
         super.onNext(Modular6Vos);
+        Observable.just(Modular6Vos).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<List<Modular6Vo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<Modular6Vo> colorVos) {
+                new Modular6Report(colorVos).BubbleSort(callback);
+            }
+        });
         Observable.from(Modular6Vos).filter(new Func1<Modular6Vo, Boolean>() {
             @Override
             public Boolean call(Modular6Vo compositeVo) {
