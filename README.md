@@ -1,6 +1,8 @@
 # HK6走势分析
 ## 前言
-	关于研发这个应用程序，初衷是应人之托，写一个直接干净简洁的框架，15年就持续关注Android-CleanArchitecutre以及最早的mvp概念，如今成了主流，Google官方也出了干净简洁框架的demo，建议大家每个框架尝试看一遍
+	关于研发这个应用程序，初衷是应人之托，写一个直接干净简洁的框架，
+	15年就持续关注Android-CleanArchitecutre以及最早的mvp概念，如今成了主流.
+	Google官方也出了干净简洁框架的demo，值得尝试轮着看一遍
 
 [Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture)
 ##why to use HK6‘s data?
@@ -29,7 +31,8 @@
 </br>
 [每个子项目拓展文件类似](https://github.com/AndroidWx/SimpleCodeForAndroid/blob/master/buildsystem/childDependencies.gradle)
 <br>
-ci集成配置可以写在项目里面，也可以在jenkins写，单独这种项目，别没有公开，上gank去宣传,纯素私人私用。
+		ci集成配置可以写在项目里面，也可以在jenkins写
+		github仅仅就是个存放而已，不gank，不妹子！
 ###求解决的一个仓位公式
 	求每一期投资每个数的下注额度？
 	题目：
