@@ -55,7 +55,9 @@ public class HeadAgeActivityVu extends CoordinatorLayoutToolBarImageViewRecycler
 
             @Override
             public void onNext(List<HeadAgeVo> colorVos) {
-                new HeadAgeReport(colorVos).BubbleSort(callback);
+                HeadAgeReport report=new HeadAgeReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

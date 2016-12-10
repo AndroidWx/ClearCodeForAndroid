@@ -14,6 +14,12 @@ import rx.functions.Func1;
 import rx.functions.Func5;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.GetCountDemarcations.gateCount1;
+import static com.joye.hk6.util.demarcations.GetCountDemarcations.gateCount2;
+import static com.joye.hk6.util.demarcations.GetCountDemarcations.gateCount3;
+import static com.joye.hk6.util.demarcations.GetCountDemarcations.gateCount4;
+import static com.joye.hk6.util.demarcations.GetCountDemarcations.gateCount5;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -169,6 +175,30 @@ public class GateCountReport extends BaseReport{
                     datas.add(genPieChartImpl(map4,"4门"));
                     datas.add(genPieChartImpl(map5,"5门"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(gateCount1(colorVos),
+                gateCount2(colorVos),
+                gateCount3(colorVos),
+                gateCount4(colorVos),
+                gateCount5(colorVos), new Func5<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Void>() {
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"1门"));
+                    datas.add(demarcationPieChartImpl(map2,"2门"));
+                    datas.add(demarcationPieChartImpl(map3,"3门"));
+                    datas.add(demarcationPieChartImpl(map4,"4门"));
+                    datas.add(demarcationPieChartImpl(map5,"5门"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

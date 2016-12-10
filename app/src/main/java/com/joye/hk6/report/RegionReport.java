@@ -14,6 +14,14 @@ import rx.functions.Func1;
 import rx.functions.Func7;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Five;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Four;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.One;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Seven;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Sex;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Three;
+import static com.joye.hk6.util.demarcations.RegionDemarcations.Two;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -224,5 +232,28 @@ public class RegionReport extends BaseReport{
 
 
 
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(One(colorVos),Two(colorVos),Three(colorVos),Four(colorVos),Five(colorVos),Sex(colorVos),
+                Seven(colorVos), new Func7<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Void>() {
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6, Map<Integer, Integer> map7) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"第一段"));
+                    datas.add(demarcationPieChartImpl(map2,"第二段"));
+                    datas.add(demarcationPieChartImpl(map3,"第三段"));
+                    datas.add(demarcationPieChartImpl(map4,"第四段"));
+                    datas.add(demarcationPieChartImpl(map5,"第五段"));
+                    datas.add(demarcationPieChartImpl(map6,"第六段"));
+                    datas.add(demarcationPieChartImpl(map7,"第七段"));
+                    callback.demarcationCallBack(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
     }
 }

@@ -59,7 +59,9 @@ public class CompositeActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
 
             @Override
             public void onNext(List<CompositeVo> colorVos) {
-                new CompositeReport(colorVos).BubbleSort(callback);
+                CompositeReport report = new CompositeReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 
@@ -71,19 +73,19 @@ public class CompositeActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
         }).subscribeOn(Schedulers.from(JobExecutor_Factory.INSTANCE.get())).subscribe(new Observer<CompositeVo>() {
             @Override
             public void onCompleted() {
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_1)).setText(view.getResources().getString(R.string.composite_1,composite1));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_2)).setText(view.getResources().getString(R.string.composite_2,composite2));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_3)).setText(view.getResources().getString(R.string.composite_3,composite3));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_4)).setText(view.getResources().getString(R.string.composite_4,composite4));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_5)).setText(view.getResources().getString(R.string.composite_5,composite5));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_6)).setText(view.getResources().getString(R.string.composite_6,composite6));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_7)).setText(view.getResources().getString(R.string.composite_7,composite7));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_8)).setText(view.getResources().getString(R.string.composite_8,composite8));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_9)).setText(view.getResources().getString(R.string.composite_9,composite9));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_10)).setText(view.getResources().getString(R.string.composite_10,composite10));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_11)).setText(view.getResources().getString(R.string.composite_11,composite11));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_12)).setText(view.getResources().getString(R.string.composite_12,composite12));
-                TextView.class.cast(view.findViewById(R.id.report_left_composite_13)).setText(view.getResources().getString(R.string.composite_13,composite13));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_1)).setText(view.getResources().getString(R.string.composite_1, composite1));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_2)).setText(view.getResources().getString(R.string.composite_2, composite2));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_3)).setText(view.getResources().getString(R.string.composite_3, composite3));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_4)).setText(view.getResources().getString(R.string.composite_4, composite4));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_5)).setText(view.getResources().getString(R.string.composite_5, composite5));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_6)).setText(view.getResources().getString(R.string.composite_6, composite6));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_7)).setText(view.getResources().getString(R.string.composite_7, composite7));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_8)).setText(view.getResources().getString(R.string.composite_8, composite8));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_9)).setText(view.getResources().getString(R.string.composite_9, composite9));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_10)).setText(view.getResources().getString(R.string.composite_10, composite10));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_11)).setText(view.getResources().getString(R.string.composite_11, composite11));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_12)).setText(view.getResources().getString(R.string.composite_12, composite12));
+                TextView.class.cast(view.findViewById(R.id.report_left_composite_13)).setText(view.getResources().getString(R.string.composite_13, composite13));
             }
 
             @Override

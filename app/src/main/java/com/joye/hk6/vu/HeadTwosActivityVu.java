@@ -57,7 +57,9 @@ public class HeadTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
 
             @Override
             public void onNext(List<HeadTwosVo> HeadTwosVo) {
-                new HeadTwosReport(HeadTwosVo).BubbleSort(callback);
+                HeadTwosReport report= new HeadTwosReport(HeadTwosVo);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

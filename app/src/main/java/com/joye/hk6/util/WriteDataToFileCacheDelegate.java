@@ -2,13 +2,13 @@ package com.joye.hk6.util;
 
 import android.content.Context;
 
-import com.apkfuns.logutils.LogUtils;
 import com.google.common.reflect.TypeToken;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.hk6data.cache.impl.Hk6Cache;
 import com.joye.hk6data.entity.Hk6DataSourceBean;
 import com.joye.hk6data.entity.Hk6Entity;
 import com.joye.hk6data.utils.GsonFactory;
+import com.orhanobut.logger.Logger;
 
 import net.nashlegend.anypref.AnyPref;
 import net.nashlegend.anypref.SharedPrefs;
@@ -56,7 +56,7 @@ public class WriteDataToFileCacheDelegate {
 
             @Override
             public void onError(Throwable e) {
-
+                Logger.e("判断是否需要缓存失败",e);
             }
 
             @Override
@@ -73,12 +73,13 @@ public class WriteDataToFileCacheDelegate {
             Observable.from(overYears).subscribeOn(Schedulers.from(mJobExecutor)).observeOn(Schedulers.from(mJobExecutor)).subscribe(new Observer<String>() {
                 @Override
                 public void onCompleted() {
+                    Logger.i("load all cache completed ");
                     prefs.beginTransaction().putBoolean("CacheToFileFetchDataSuccess", true).putBoolean("needCacheToFile",false).commit();
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    LogUtils.e(e.getMessage());
+                    Logger.e(e.getMessage());
                     prefs.beginTransaction().putBoolean("CacheToFileFetchDataSuccess", false).putBoolean("needCacheToFile",true).commit();
                 }
                 @Override

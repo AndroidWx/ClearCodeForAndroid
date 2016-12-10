@@ -1,16 +1,16 @@
 package com.joye.hk6.report;
 
+import com.joye.hk6.util.demarcations.ColorDemarcations;
+import com.joye.hk6.util.reports.ColorReports;
 import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6domain.vo.ColorVo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.functions.Func3;
 import rx.schedulers.Schedulers;
 
@@ -34,107 +34,30 @@ public class ColorReport extends BaseReport{
     public ColorReport(List<ColorVo> chineseZodiacVos) {
         this.colorVos = chineseZodiacVos;
     }
-
-
-
-
-//    private Func1<ColorVo,Boolean> filterBlueFunc=new Func1<ColorVo, Boolean>() {
-//        @Override
-//        public Boolean call(ColorVo colorVo) {
-//            return colorVo.Blue>MIN_VALUE;
-//        }
-//    };
-//    private Func1<ColorVo,Boolean> filterRedFunc=new Func1<ColorVo, Boolean>() {
-//        @Override
-//        public Boolean call(ColorVo colorVo) {
-//            return colorVo.Red>MIN_VALUE;
-//        }
-//    };
-//    private Func1<ColorVo,Boolean> filterGreenFunc=new Func1<ColorVo, Boolean>() {
-//        @Override
-//        public Boolean call(ColorVo colorVo) {
-//            return colorVo.Green>MIN_VALUE;
-//        }
-//    };
-
-
+    @Override
+    public void Demarcations(final IPieChartCallback callback){
+        Observable.zip(ColorDemarcations.BlueColor(colorVos),
+                ColorDemarcations.RedColor(colorVos),
+                ColorDemarcations.GreenColor(colorVos), new Func3<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Void>() {
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"蓝波"));
+                    datas.add(demarcationPieChartImpl(map2,"红波"));
+                    datas.add(demarcationPieChartImpl(map3,"绿波"));
+                    callback.demarcationCallBack(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
     @Override
     public void BubbleSort(final IPieChartCallback callback){
-        Observable<Map<Integer, Integer>> bluemapObserverable = Observable.just(colorVos).flatMap(new Func1<List<ColorVo>, Observable<Map<Integer, Integer>>>() {
-            @Override
-            public Observable<Map<Integer, Integer>> call(List<ColorVo> colorVos) {
-                List<Statistics> blueDatas =new ArrayList<>();
-                final Map<Integer,Integer>  blueMap=new TreeMap<>();
-                for (int i = 0; i < colorVos.size(); i++) {
-                    if(colorVos.get(i).Blue<MIN_VALUE){
-                        continue;
-                    }
-                    int blueNum = 0;
-                    if (blueMap.get(colorVos.get(i).Blue) != null) {
-                        blueNum = blueMap.get(colorVos.get(i).Blue);
-                    }
-                    blueNum++;
-                    blueMap.put(colorVos.get(i).Blue, blueNum);
-                }
-                for (Integer integer : blueMap.keySet()) {
-                    Statistics item = new Statistics("blue", integer, blueMap.get(integer));
-                    blueDatas.add(item);
-                }
-                Map<Integer, Integer> retBlueMap = mBubbleSort(blueDatas);
-                return Observable.just(retBlueMap);
-            }
-        }).subscribeOn(Schedulers.newThread());
-        Observable<Map<Integer, Integer>> redmapObserverable = Observable.just(colorVos).flatMap(new Func1<List<ColorVo>, Observable<Map<Integer, Integer>>>() {
-            @Override
-            public Observable<Map<Integer, Integer>> call(List<ColorVo> colorVos) {
-                List<Statistics> redDatas =new ArrayList<>();
-                final Map<Integer,Integer>  redMap=new TreeMap<>();
-                for (int i = 0; i < colorVos.size(); i++) {
-                    if(colorVos.get(i).Red<MIN_VALUE){
-                        continue;
-                    }
-                    int redNum = 0;
-                    if (redMap.get(colorVos.get(i).Red) != null) {
-                        redNum = redMap.get(colorVos.get(i).Red);
-                    }
-                    redNum++;
-                    redMap.put(colorVos.get(i).Red, redNum);
-                }
-                for (Integer integer : redMap.keySet()) {
-                    Statistics item = new Statistics("red", integer, redMap.get(integer));
-                    redDatas.add(item);
-                }
-                Map<Integer, Integer> retRedMap = mBubbleSort(redDatas);
-                return Observable.just(retRedMap);
-            }
-        }).subscribeOn(Schedulers.newThread());
-
-        Observable<Map<Integer, Integer>> greenMapObserverable = Observable.just(colorVos).flatMap(new Func1<List<ColorVo>, Observable<Map<Integer, Integer>>>() {
-            @Override
-            public Observable<Map<Integer, Integer>> call(List<ColorVo> colorVos) {
-                final Map<Integer,Integer>  greenMap=new TreeMap<>();
-                List<Statistics> greenDatas =new ArrayList<>();
-                for (int i = 0; i < colorVos.size(); i++) {
-                    if(colorVos.get(i).Green<MIN_VALUE){
-                        continue;
-                    }
-                    int greenNum = 0;
-                    if (greenMap.get(colorVos.get(i).Green) != null) {
-                        greenNum = greenMap.get(colorVos.get(i).Green);
-                    }
-                    greenNum++;
-                    greenMap.put(colorVos.get(i).Green, greenNum);
-                }
-                for (Integer integer : greenMap.keySet()) {
-                    Statistics item = new Statistics("green", integer, greenMap.get(integer));
-                    greenDatas.add(item);
-                }
-                Map<Integer, Integer> retRedMap = mBubbleSort(greenDatas);
-                return Observable.just(retRedMap);
-            }
-        }).subscribeOn(Schedulers.newThread());
-
-        Observable.zip(bluemapObserverable, redmapObserverable, greenMapObserverable, new Func3<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Void>() {
+        Observable.zip(ColorReports.getBluemapObserverable(colorVos), ColorReports.getRedmapObserverable(colorVos), ColorReports.getGreenObserverable(colorVos),
+                new Func3<Map<Integer,Integer>,
+                Map<Integer,Integer>,
+                Map<Integer,Integer>, Void>() {
             @Override
             public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3) {
                 if(callback!=null) {

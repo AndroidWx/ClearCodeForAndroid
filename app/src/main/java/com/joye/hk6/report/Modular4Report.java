@@ -14,6 +14,11 @@ import rx.functions.Func1;
 import rx.functions.Func4;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.Modular4Demarcations.M0;
+import static com.joye.hk6.util.demarcations.Modular4Demarcations.M1;
+import static com.joye.hk6.util.demarcations.Modular4Demarcations.M2;
+import static com.joye.hk6.util.demarcations.Modular4Demarcations.M3;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -146,6 +151,26 @@ public class Modular4Report extends BaseReport{
                     datas.add(genPieChartImpl(map3,"模4余2"));
                     datas.add(genPieChartImpl(map4,"模4余3"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(M0(colorVos),M1(colorVos),M2(colorVos),M3(colorVos), new Func4<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>,Void>() {
+
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3,Map<Integer, Integer> map4) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"模4余0"));
+                    datas.add(demarcationPieChartImpl(map2,"模4余1"));
+                    datas.add(demarcationPieChartImpl(map3,"模4余2"));
+                    datas.add(demarcationPieChartImpl(map4,"模4余3"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

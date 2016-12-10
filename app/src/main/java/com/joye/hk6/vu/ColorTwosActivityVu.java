@@ -54,7 +54,9 @@ public class ColorTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
 
             @Override
             public void onNext(List<ColorTwosVo> colorVos) {
-                new ColorTwosReport(colorVos).BubbleSort(callback);
+                ColorTwosReport report = new ColorTwosReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

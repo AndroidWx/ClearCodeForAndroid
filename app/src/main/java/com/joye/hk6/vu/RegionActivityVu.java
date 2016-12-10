@@ -47,7 +47,9 @@ public class RegionActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerV
 
             @Override
             public void onNext(List<RegionVo> colorVos) {
-                new RegionReport(colorVos).BubbleSort(callback);
+                RegionReport report=new RegionReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
         Observable.from(chineseZodiacVos).filter(new Func1<RegionVo, Boolean>() {

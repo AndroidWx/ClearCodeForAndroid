@@ -14,6 +14,13 @@ import rx.functions.Func1;
 import rx.functions.Func6;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.blueEven;
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.blueOdd;
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.greenEven;
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.greenOdd;
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.redEven;
+import static com.joye.hk6.util.demarcations.ColorTwosDemarcations.redOdd;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -27,7 +34,7 @@ public class ColorTwosReport extends BaseReport{
      */
     private final List<ColorTwosVo> colorVos;
 
-    public static final int MIN_VALUE=18;
+    public static final int MIN_VALUE=11;
 
 
 
@@ -219,6 +226,27 @@ public class ColorTwosReport extends BaseReport{
                     datas.add(genPieChartImpl(map5,"蓝双"));
                     datas.add(genPieChartImpl(map6,"蓝单"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(redEven(colorVos), redOdd(colorVos), greenEven(colorVos),greenOdd(colorVos),blueEven(colorVos),blueOdd(colorVos), new Func6<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>,Map<Integer,Integer>,Map<Integer,Integer>, Void>() {
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"红双"));
+                    datas.add(demarcationPieChartImpl(map2,"红单"));
+                    datas.add(demarcationPieChartImpl(map3,"绿双"));
+                    datas.add(demarcationPieChartImpl(map4,"绿单"));
+                    datas.add(demarcationPieChartImpl(map5,"蓝双"));
+                    datas.add(demarcationPieChartImpl(map6,"蓝单"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

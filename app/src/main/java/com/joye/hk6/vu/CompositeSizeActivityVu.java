@@ -76,7 +76,9 @@ public class CompositeSizeActivityVu extends CoordinatorLayoutToolBarImageViewRe
 
             @Override
             public void onNext(List<CompositeSizeVo> CompositeSizeVos) {
-                new CompositeSizeReport(CompositeSizeVos).BubbleSort(callback);
+                CompositeSizeReport report=new CompositeSizeReport(CompositeSizeVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.joye.hk6.report;
 
+import com.joye.hk6.util.demarcations.ChineseZodiacDemarcations;
 import com.joye.hk6.view.IPieChartCallback;
 import com.joye.hk6domain.vo.ChineseZodiacVo;
 
@@ -15,6 +16,13 @@ import rx.functions.Func2;
 import rx.functions.Func3;
 import rx.functions.Func9;
 import rx.schedulers.Schedulers;
+
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Chook;
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Dog;
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Horse;
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Monkey;
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Pig;
+import static com.joye.hk6.util.demarcations.ChineseZodiacDemarcations.Sheep;
 
 /**
  * Created by xiang on 16/11/18.
@@ -341,6 +349,56 @@ public class ChineseZodiacReport extends BaseReport {
                 datas.addAll(pieCharts2);
                 if(callback!=null){
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();;
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable<List<PieChartImpl>> someData = Observable.zip(ChineseZodiacDemarcations.Mouse(chineseZodiacVos),
+                ChineseZodiacDemarcations.Cow(chineseZodiacVos),
+                ChineseZodiacDemarcations.Tiger(chineseZodiacVos),
+                ChineseZodiacDemarcations.Rabbit(chineseZodiacVos),
+                ChineseZodiacDemarcations.Dragon(chineseZodiacVos),
+                ChineseZodiacDemarcations.Snake(chineseZodiacVos),
+                Horse(chineseZodiacVos),
+                Sheep(chineseZodiacVos),
+                Monkey(chineseZodiacVos), new Func9<Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, List<PieChartImpl>>() {
+            @Override
+            public List<PieChartImpl> call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6, Map<Integer, Integer> map7, Map<Integer, Integer> map8, Map<Integer, Integer> map9) {
+                ArrayList<PieChartImpl> datas = new ArrayList<PieChartImpl>();
+                datas.add(demarcationPieChartImpl(map, "鼠"));
+                datas.add(demarcationPieChartImpl(map2, "牛"));
+                datas.add(demarcationPieChartImpl(map3, "虎"));
+                datas.add(demarcationPieChartImpl(map4, "兔"));
+                datas.add(demarcationPieChartImpl(map5, "龙"));
+                datas.add(demarcationPieChartImpl(map6, "蛇"));
+                datas.add(demarcationPieChartImpl(map7, "马"));
+                datas.add(demarcationPieChartImpl(map8, "羊"));
+                datas.add(demarcationPieChartImpl(map9, "猴"));
+                return datas;
+            }
+        }).subscribeOn(Schedulers.newThread());
+        Observable<List<PieChartImpl>> otherData = Observable.zip(Chook(chineseZodiacVos), Dog(chineseZodiacVos), Pig(chineseZodiacVos), new Func3<Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, List<PieChartImpl>>() {
+            @Override
+            public List<PieChartImpl> call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3) {
+                ArrayList<PieChartImpl> datas = new ArrayList<PieChartImpl>();
+                datas.add(demarcationPieChartImpl(map, "鸡"));
+                datas.add(demarcationPieChartImpl(map2, "狗"));
+                datas.add(demarcationPieChartImpl(map3, "猪"));
+                return datas;
+            }
+        }).subscribeOn(Schedulers.newThread());
+        Observable.zip(someData, otherData, new Func2<List<PieChartImpl>, List<PieChartImpl>, Void>() {
+            @Override
+            public Void call(List<PieChartImpl> pieCharts, List<PieChartImpl> pieCharts2) {
+                ArrayList<PieChartImpl> datas = new ArrayList<PieChartImpl>();
+                datas.addAll(pieCharts);
+                datas.addAll(pieCharts2);
+                if(callback!=null){
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

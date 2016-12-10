@@ -14,6 +14,12 @@ import rx.functions.Func1;
 import rx.functions.Func5;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.Modular5Demarcations.M0;
+import static com.joye.hk6.util.demarcations.Modular5Demarcations.M1;
+import static com.joye.hk6.util.demarcations.Modular5Demarcations.M2;
+import static com.joye.hk6.util.demarcations.Modular5Demarcations.M3;
+import static com.joye.hk6.util.demarcations.Modular5Demarcations.M4;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -170,6 +176,27 @@ public class Modular5Report extends BaseReport{
                     datas.add(genPieChartImpl(map4,"模5余3"));
                     datas.add(genPieChartImpl(map5,"模5余4"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(M0(colorVos),M1(colorVos),M2(colorVos),M3(colorVos),M4(colorVos), new Func5<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>,Map<Integer,Integer>,Void>() {
+
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3,Map<Integer, Integer> map4,Map<Integer, Integer> map5) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"模5余0"));
+                    datas.add(demarcationPieChartImpl(map2,"模5余1"));
+                    datas.add(demarcationPieChartImpl(map3,"模5余2"));
+                    datas.add(demarcationPieChartImpl(map4,"模5余3"));
+                    datas.add(demarcationPieChartImpl(map5,"模5余4"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

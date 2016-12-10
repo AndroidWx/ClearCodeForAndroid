@@ -47,19 +47,33 @@ public abstract class BaseReport {
         }
 
         return realMap;
-
     }
+    protected PieChartImpl demarcationPieChartImpl(Map<Integer,Integer> map, String contentText){
+        PieChartImpl item=new PieChartImpl();
+        item.setContentText(contentText);
+        ArrayList<Float> redFloatList=new ArrayList<Float>();
+        ArrayList<String> lableList=new ArrayList<String>();
+        Iterator<Map.Entry<Integer, Integer>> intera = map.entrySet().iterator();
+        while (intera.hasNext()){
+            Map.Entry entry = (Map.Entry) intera.next();
+            Integer val = (Integer) entry.getValue();
+            if(val>0) {
+                lableList.add("连出" + entry.getKey() + "期共" + map.get(entry.getKey())+"次");
+                redFloatList.add(val.floatValue() * 100.0f);
+            }
+        }
+        item.setPieEntryFlotArrayList(redFloatList);
+        item.setPieEntryLabelArrayList(lableList);
+        return item;
+    }
+
+
 
     protected PieChartImpl genPieChartImpl(Map<Integer,Integer> map,String contentText){
         PieChartImpl item=new PieChartImpl();
         item.setContentText(contentText);
         ArrayList<Float> redFloatList=new ArrayList<Float>();
         ArrayList<String> lableList=new ArrayList<String>();
-//        Iterator<Integer> iterator = map.keySet().iterator();
-//        while (iterator.hasNext()){
-//            Integer key=iterator.next();
-//            lableList.add("阈"+key+"共"+map.get(key));
-//        }
         Iterator<Map.Entry<Integer, Integer>> intera = map.entrySet().iterator();
         while (intera.hasNext()){
             Map.Entry entry = (Map.Entry) intera.next();
@@ -75,4 +89,5 @@ public abstract class BaseReport {
     }
 
     public abstract void BubbleSort(IPieChartCallback callback);
+    public abstract void Demarcations(  IPieChartCallback callback);
 }

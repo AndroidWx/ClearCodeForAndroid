@@ -37,12 +37,11 @@ public class MainPresenter implements Presenter<MainActivityVu> {
     private UpdateManagerListener updateLitener = new UpdateManagerListener() {
         @Override
         public void onNoUpdateAvailable() {
-            LogUtils.v("onNoUpdateAvailable");
+//            Logger.v("onNoUpdateAvailable");
         }
 
         @Override
         public void onUpdateAvailable(String result) {
-            LogUtils.v("onUpdateAvailable");
             // 将新版本信息封装到AppBean中
             final AppBean appBean = getAppBeanFromString(result);
             new AlertDialog.Builder(mainActivity)

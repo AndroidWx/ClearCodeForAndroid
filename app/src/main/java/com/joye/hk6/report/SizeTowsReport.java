@@ -14,6 +14,11 @@ import rx.functions.Func1;
 import rx.functions.Func4;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.SizeTowsDemarcations.BigEven;
+import static com.joye.hk6.util.demarcations.SizeTowsDemarcations.BigOdd;
+import static com.joye.hk6.util.demarcations.SizeTowsDemarcations.SmallEven;
+import static com.joye.hk6.util.demarcations.SizeTowsDemarcations.SmallOdd;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -176,6 +181,24 @@ public class SizeTowsReport extends BaseReport{
 
 
 
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(SmallEven(colorVos), SmallOdd(colorVos), BigEven(colorVos),BigOdd(colorVos), new Func4<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>, Void>() {
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3,Map<Integer, Integer> map4) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"小双"));
+                    datas.add(demarcationPieChartImpl(map2,"小单"));
+                    datas.add(demarcationPieChartImpl(map3,"大双"));
+                    datas.add(demarcationPieChartImpl(map4,"大单"));
+                    callback.demarcationCallBack(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
     }
 //    public void BubbleSort(final IColorReport colorReport){
 ////        //获取最大的阈值

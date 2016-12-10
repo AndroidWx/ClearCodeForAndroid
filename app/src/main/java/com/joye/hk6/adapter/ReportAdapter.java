@@ -130,7 +130,7 @@ public class ReportAdapter extends UpdateItemRecyclerViewAdapter<PieChartImpl> {
                 entries.add(new PieEntry(range.get(i), lables.get(i)));
             }
 
-            PieDataSet dataSet = new PieDataSet(entries, "阈值下期出特机率");
+            PieDataSet dataSet = new PieDataSet(entries, "控制仓位");
             dataSet.setSliceSpace(3f);
             dataSet.setSelectionShift(5f);
 

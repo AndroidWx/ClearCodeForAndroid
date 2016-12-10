@@ -15,6 +15,17 @@ import rx.functions.Func2;
 import rx.functions.Func9;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadEven0;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadEven1;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadEven2;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadEven3;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadEven4;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadOdd0;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadOdd1;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadOdd2;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadOdd3;
+import static com.joye.hk6.util.demarcations.HeadTwosDemarcations.HeadOdd4;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -301,6 +312,39 @@ public class HeadTwosReport extends BaseReport {
             public Void call(ArrayList<PieChartImpl> pieCharts, Map<Integer, Integer> map) {
                 if (callback != null) {
                     pieCharts.add(genPieChartImpl(map, "4头单"));
+                    callback.callback(pieCharts);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable<ArrayList<PieChartImpl>> o0_9 = Observable.zip(HeadEven0(colorVos), HeadEven1(colorVos),
+                HeadEven2(colorVos), HeadEven3(colorVos), HeadEven4(colorVos), HeadOdd0(colorVos),
+                HeadOdd1(colorVos), HeadOdd2(colorVos), HeadOdd3(colorVos), new Func9<Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, ArrayList<PieChartImpl>>() {
+
+            @Override
+            public ArrayList<PieChartImpl> call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6, Map<Integer, Integer> map7, Map<Integer, Integer> map8, Map<Integer, Integer> map9) {
+                ArrayList<PieChartImpl> datas = new ArrayList<PieChartImpl>();
+                datas.add(demarcationPieChartImpl(map, "0头双"));
+                datas.add(demarcationPieChartImpl(map2, "1头双"));
+                datas.add(demarcationPieChartImpl(map3, "2头双"));
+                datas.add(demarcationPieChartImpl(map4, "3头双"));
+                datas.add(demarcationPieChartImpl(map5, "4头双"));
+                datas.add(demarcationPieChartImpl(map6, "0头单"));
+                datas.add(demarcationPieChartImpl(map7, "1头单"));
+                datas.add(demarcationPieChartImpl(map8, "2头单"));
+                datas.add(demarcationPieChartImpl(map9, "3头单"));
+                return datas;
+            }
+        }).subscribeOn(Schedulers.newThread());
+        Observable.zip(o0_9, HeadOdd4(colorVos), new Func2<ArrayList<PieChartImpl>, Map<Integer, Integer>, Void>() {
+            @Override
+            public Void call(ArrayList<PieChartImpl> pieCharts, Map<Integer, Integer> map) {
+                if (callback != null) {
+                    pieCharts.add(demarcationPieChartImpl(map, "4头单"));
                     callback.callback(pieCharts);
                 }
                 return null;

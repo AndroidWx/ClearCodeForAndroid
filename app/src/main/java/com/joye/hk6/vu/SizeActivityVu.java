@@ -82,7 +82,9 @@ public class SizeActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<
 
             @Override
             public void onNext(List<SizeVo> sizeVos) {
-                new SizeReport(sizeVos).BubbleSort(callback);
+                SizeReport report= new SizeReport(sizeVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

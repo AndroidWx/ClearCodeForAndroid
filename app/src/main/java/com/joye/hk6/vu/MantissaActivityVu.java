@@ -54,7 +54,9 @@ public class MantissaActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
 
             @Override
             public void onNext(List<MantissaVo> mantissaVos) {
-                new MantissaReport(mantissaVos).BubbleSort(callback);
+                MantissaReport report=new MantissaReport(mantissaVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
         Observable.from(MantissaVos).filter(new Func1<MantissaVo, Boolean>() {

@@ -14,6 +14,12 @@ import rx.functions.Func1;
 import rx.functions.Func5;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.HeadAgeDemarcations.headage0;
+import static com.joye.hk6.util.demarcations.HeadAgeDemarcations.headage1;
+import static com.joye.hk6.util.demarcations.HeadAgeDemarcations.headage2;
+import static com.joye.hk6.util.demarcations.HeadAgeDemarcations.headage3;
+import static com.joye.hk6.util.demarcations.HeadAgeDemarcations.headage4;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -180,6 +186,28 @@ public class HeadAgeReport extends BaseReport{
             }
         }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
 
+
+
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(headage0(colorVos),headage1(colorVos),headage2(colorVos),headage3(colorVos),headage4(colorVos), new Func5<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Void>() {
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"0头"));
+                    datas.add(demarcationPieChartImpl(map2,"1头"));
+                    datas.add(demarcationPieChartImpl(map3,"2头"));
+                    datas.add(demarcationPieChartImpl(map4,"3头"));
+                    datas.add(demarcationPieChartImpl(map5,"4头"));
+                    callback.demarcationCallBack(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
 
 
     }

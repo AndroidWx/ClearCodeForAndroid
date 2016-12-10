@@ -54,7 +54,9 @@ public class GateCountActivityVu extends CoordinatorLayoutToolBarImageViewRecycl
 
             @Override
             public void onNext(List<GateCountVo> colorVos) {
-                new GateCountReport(colorVos).BubbleSort(callback);
+                GateCountReport report=new GateCountReport(colorVos);
+                        report.BubbleSort(callback);
+                        report.Demarcations(callback);
             }
         });
         Observable.from(GateCountVos).filter(new Func1<GateCountVo, Boolean>() {

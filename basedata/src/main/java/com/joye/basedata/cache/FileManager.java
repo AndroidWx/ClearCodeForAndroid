@@ -18,6 +18,8 @@ package com.joye.basedata.cache;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.orhanobut.logger.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,7 +35,7 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class FileManager {
-
+  public static final String TAG="FileManager";
   @Inject
   public FileManager() {}
 
@@ -45,15 +47,16 @@ public class FileManager {
    * @param file The file to write to Disk.
    */
   public void writeToFile(File file, String fileContent) {
+
     if (!file.exists()) {
       try {
         FileWriter writer = new FileWriter(file);
         writer.write(fileContent);
         writer.close();
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        Logger.t(TAG).i("invoke writeToFile fileName=%s",e);
       } catch (IOException e) {
-        e.printStackTrace();
+        Logger.t(TAG).i("invoke writeToFile fileName=%s",e);
       } finally {
 
       }
@@ -81,9 +84,9 @@ public class FileManager {
         bufferedReader.close();
         fileReader.close();
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        Logger.t(TAG).e("invoke readFileContent("+file.getName()+")",e);
       } catch (IOException e) {
-        e.printStackTrace();
+        Logger.t(TAG).e("invoke readFileContent("+file.getName()+")",e);
       }
     }
 
@@ -125,7 +128,6 @@ public class FileManager {
    */
   public void writeToPreferences(Context context, String preferenceFileName, String key,
       long value) {
-
     SharedPreferences sharedPreferences = context.getSharedPreferences(preferenceFileName,
         Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -10,6 +10,7 @@ import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.hk6data.entity.Hk6Entity;
 import com.joye.hk6data.utils.CollectionUtils;
 import com.joye.hk6data.utils.GsonFactory;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.util.List;
@@ -27,6 +28,7 @@ import rx.Observable;
  */
 @Singleton
 public class Hk6FileCacheImpl implements Hk6Cache {
+    public static final String TAG="Hk6FileCache";
     private static final String DEFAULT_FILE_NAME = "com.joye.hk6data.hk6cache";
     private static final String SETTINGS_KEY_LAST_CACHE_UPDATE = "last_cache_update";
     //与上期开奖时期的opentimestamp间隔两天 10分钟就去拿开奖数去
@@ -47,7 +49,10 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     @Override
     public Observable<List<Hk6Entity>> getHk6ListData(String date) {
         return Observable.create(subscriber -> {
-            File file=buildFile(date);
+            String transData=date.replace("-12-31","");
+
+            File file=buildFile(transData);
+            Logger.t(TAG).i("getHk6ListData" +file.getName());
             String fileContent=fileManager.readFileContent(file);
             List<Hk6Entity> dataList= GsonFactory.SingleTon.create().fromJson(fileContent,typeToken.getType());
             if(!CollectionUtils.isEmpty(dataList)){
@@ -65,8 +70,10 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         if(CollectionUtils.isEmpty(hk6EntityList)){
             return;
         }
+
         File hk6EntityListFile=this.buildFile(date);
         if(!isCached(date)){
+            Logger.t(TAG).i(date+"数据写入");
             String jsonContent=GsonFactory.SingleTon.create().toJson(hk6EntityList,typeToken.getType());
             this.executeAsynchronously(new CacheWriter(fileManager,hk6EntityListFile,jsonContent));
             setLastCacheUpdateTimeMillis( date,hk6EntityList.get(0).getOpentimestamp());
@@ -76,7 +83,9 @@ public class Hk6FileCacheImpl implements Hk6Cache {
 
     @Override
     public boolean isCached(String date) {
-        File userEntitiyFile = this.buildFile(date);
+        String newsData=date.replace("-12-31","");
+        File userEntitiyFile = this.buildFile(newsData);
+        Logger.t(TAG).i(date+" fileManager.exists"+fileManager.exists(userEntitiyFile));
         return this.fileManager.exists(userEntitiyFile);
     }
 
@@ -88,7 +97,7 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         boolean expired = ((currentTime - lastUpdateTime) > EXPIRATION_TIME);
         //并却要大于2015年最后一天
         if (expired&&date.compareTo("2015-12-31")>0) {
-            this.evictAll();
+            this.evictFile(buildFile(date));
         }
         if(date.compareTo("2016-01-01")<0){
             return false;
@@ -100,6 +109,11 @@ public class Hk6FileCacheImpl implements Hk6Cache {
     @Override
     public void evictAll() {
         this.executeAsynchronously(new CacheEvictor(this.fileManager, this.cacheDir));
+    }
+
+    @Override
+    public void evictFile(File file) {
+        this.executeAsynchronously(new CacheEvictor(this.fileManager, file));
     }
 
     /**

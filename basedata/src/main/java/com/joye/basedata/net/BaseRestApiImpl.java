@@ -5,10 +5,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.joye.basedata.BuildConfig;
+import com.orhanobut.logger.Logger;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public abstract  class BaseRestApiImpl<API>   {
-
+    public static final String TAG="BaseRestApiImpl";
     private final Context context;
 
     private static OkHttpClient okHttpClient;
@@ -61,6 +66,21 @@ public abstract  class BaseRestApiImpl<API>   {
 
     protected abstract Class<API> getApiClass();
 
+    private final Interceptor LoggingInterceptor = new Interceptor() {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            long t1 = System.nanoTime();
+            Logger.t(TAG).i(String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
+            Logger.t(TAG).d(request);
+            Response response = chain.proceed(request);
+            long t2 = System.nanoTime();
+            Logger.t(TAG).i(String.format("Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.code()));
+            Logger.t(TAG).d(response);
+//            Logger.t(TAG).i(response.body().toString());
+            return response;
+        }
+    };
 
     protected Retrofit getRetrofit() {
         return new Retrofit.Builder()
@@ -72,7 +92,10 @@ public abstract  class BaseRestApiImpl<API>   {
     }
     private OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) {
-            okHttpClient = new OkHttpClient.Builder().readTimeout(okHttpReadTimeout(), TimeUnit.MILLISECONDS).connectTimeout(okHttpConnectTimeout(), TimeUnit.MILLISECONDS).build();
+            okHttpClient = new OkHttpClient.Builder().
+                    readTimeout(okHttpReadTimeout(), TimeUnit.MILLISECONDS).
+                    connectTimeout(okHttpConnectTimeout(), TimeUnit.MILLISECONDS).
+                    addInterceptor(LoggingInterceptor).build();
         }
         return okHttpClient;
     }

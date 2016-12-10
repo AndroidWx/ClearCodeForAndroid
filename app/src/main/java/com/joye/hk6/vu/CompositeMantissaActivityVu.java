@@ -55,7 +55,9 @@ public class CompositeMantissaActivityVu extends CoordinatorLayoutToolBarImageVi
 
             @Override
             public void onNext(List<CompositeMantissaVo> mantissaVos) {
-                new CompositeMantissaReport(mantissaVos).BubbleSort(callback);
+                CompositeMantissaReport report=new CompositeMantissaReport(mantissaVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

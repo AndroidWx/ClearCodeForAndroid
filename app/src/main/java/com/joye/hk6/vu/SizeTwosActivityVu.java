@@ -57,7 +57,9 @@ public class SizeTwosActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
 
             @Override
             public void onNext(List<SizeTwosVo> colorVos) {
-                new SizeTowsReport(colorVos).BubbleSort(callback);
+                SizeTowsReport report=new SizeTowsReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
         Observable.from(SizeTwosVos).filter(new Func1<SizeTwosVo, Boolean>() {

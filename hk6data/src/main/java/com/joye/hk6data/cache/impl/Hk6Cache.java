@@ -2,6 +2,7 @@ package com.joye.hk6data.cache.impl;
 
 import com.joye.hk6data.entity.Hk6Entity;
 
+import java.io.File;
 import java.util.List;
 
 import rx.Observable;
@@ -44,4 +45,10 @@ public interface Hk6Cache {
      * Evict all elements of the cache.
      */
     void evictAll();
+
+    /**
+     * 删除指定文件
+     * @param file
+     */
+    void evictFile(File file);
 }

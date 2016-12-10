@@ -62,7 +62,9 @@ public class ChineseZodiacActivityVu extends CoordinatorLayoutToolBarImageViewRe
 
             @Override
             public void onNext(List<ChineseZodiacVo> colorVos) {
-                new ChineseZodiacReport(colorVos).BubbleSort(callback);
+                ChineseZodiacReport report= new ChineseZodiacReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

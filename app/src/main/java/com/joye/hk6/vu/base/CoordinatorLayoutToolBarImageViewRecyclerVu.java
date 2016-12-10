@@ -56,4 +56,5 @@ public abstract class CoordinatorLayoutToolBarImageViewRecyclerVu<T> extends Pro
     public void setCallback(IPieChartCallback callback) {
         this.callback = callback;
     }
+
 }

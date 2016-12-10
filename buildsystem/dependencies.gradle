@@ -30,7 +30,7 @@ ext {
   retroGsonConverterVersion='2.1.0'
   retroRxAdapterVersion='2.1.0'
   javaxInject='1'
-
+  logger='1.15'
   /**
    * 待使用
   rxbinding='0.3.0'
@@ -80,6 +80,7 @@ ext {
       recyclerview:             "com.android.support:recyclerview-v7:${supportRecyclerviewV7}",
       supportV13    :"com.android.support:support-v13:${supportV13}",
       constranit:"com.android.support.constraint:constraint-layout:${supportConstraintLayout}"
+
   ]
 
   presentationTestDependencies = [
@@ -119,6 +120,7 @@ ext {
       androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
       retroGsonConverter: "com.squareup.retrofit2:converter-gson:${retroGsonConverterVersion}",
       retroRxAdapter:     "com.squareup.retrofit2:adapter-rxjava:${retroRxAdapterVersion}",
+      logger:"com.orhanobut:logger:${logger}"
   ]
 
   dataTestDependencies = [

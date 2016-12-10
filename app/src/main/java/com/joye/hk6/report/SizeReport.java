@@ -14,6 +14,10 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.SizeDemarcations.Big;
+import static com.joye.hk6.util.demarcations.SizeDemarcations.Small;
+
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -95,6 +99,22 @@ public class SizeReport extends BaseReport{
                     datas.add(genPieChartImpl(map,"小"));
                     datas.add(genPieChartImpl(map2,"大"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(Small(colorVos), Big(colorVos) , new Func2<Map<Integer,Integer>, Map<Integer,Integer>, Void>() {
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2 ) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"小"));
+                    datas.add(demarcationPieChartImpl(map2,"大"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

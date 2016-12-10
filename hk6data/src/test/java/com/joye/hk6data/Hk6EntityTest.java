@@ -21,6 +21,7 @@ public class Hk6EntityTest {
         hk6Entity.setOpencode("**,34,08,41,32,11+47");
         hk6Entity.setOpentime("2016-01-02 21:35:06");
         hk6Entity.setOpentimestamp(1451741706);
+//        {1,2,3,0,0,0,1,2,3,4,5,6}
 
     }
 

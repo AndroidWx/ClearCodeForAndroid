@@ -15,6 +15,17 @@ import rx.functions.Func2;
 import rx.functions.Func9;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa0;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa1;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa2;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa3;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa4;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa5;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa6;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa7;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa8;
+import static com.joye.hk6.util.demarcations.MantissaDemarcations.Mantissa9;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -301,6 +312,41 @@ public class MantissaReport extends BaseReport {
             public Void call(ArrayList<PieChartImpl> pieCharts, Map<Integer, Integer> map) {
                 if (callback != null) {
                     pieCharts.add(genPieChartImpl(map, "9尾"));
+                    callback.callback(pieCharts);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable<ArrayList<PieChartImpl>> o0_9 = Observable.zip(Mantissa0(colorVos),
+                Mantissa1(colorVos), Mantissa2(colorVos), Mantissa3(colorVos), Mantissa4(colorVos),
+                Mantissa5(colorVos),
+                Mantissa6(colorVos),
+                Mantissa7(colorVos), Mantissa8(colorVos), new Func9<Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, ArrayList<PieChartImpl>>() {
+
+            @Override
+            public ArrayList<PieChartImpl> call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6, Map<Integer, Integer> map7, Map<Integer, Integer> map8, Map<Integer, Integer> map9) {
+                ArrayList<PieChartImpl> datas = new ArrayList<PieChartImpl>();
+                datas.add(demarcationPieChartImpl(map, "0尾"));
+                datas.add(demarcationPieChartImpl(map2, "1尾"));
+                datas.add(demarcationPieChartImpl(map3, "2尾"));
+                datas.add(demarcationPieChartImpl(map4, "3尾"));
+                datas.add(demarcationPieChartImpl(map5, "4尾"));
+                datas.add(demarcationPieChartImpl(map6, "5尾"));
+                datas.add(demarcationPieChartImpl(map7, "6尾"));
+                datas.add(demarcationPieChartImpl(map8, "7尾"));
+                datas.add(demarcationPieChartImpl(map9, "8尾"));
+                return datas;
+            }
+        }).subscribeOn(Schedulers.newThread());
+        Observable.zip(o0_9, Mantissa9(colorVos), new Func2<ArrayList<PieChartImpl>, Map<Integer, Integer>, Void>() {
+            @Override
+            public Void call(ArrayList<PieChartImpl> pieCharts, Map<Integer, Integer> map) {
+                if (callback != null) {
+                    pieCharts.add(demarcationPieChartImpl(map, "9尾"));
                     callback.callback(pieCharts);
                 }
                 return null;

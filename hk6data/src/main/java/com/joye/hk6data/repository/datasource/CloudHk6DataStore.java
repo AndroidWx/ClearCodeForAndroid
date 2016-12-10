@@ -43,7 +43,7 @@ public class CloudHk6DataStore implements Hk6DataStore {
             return retHk6Entitys;
         }).doOnNext(hk6EntityList -> {
             if(!CollectionUtils.isEmpty(hk6EntityList))
-                hk6Cache.put(hk6EntityList,date);
+                hk6Cache.put(hk6EntityList,date.substring(0,4));
         });
     }
 }

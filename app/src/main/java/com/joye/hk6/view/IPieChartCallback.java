@@ -10,4 +10,6 @@ import java.util.ArrayList;
 
 public interface IPieChartCallback {
     void callback(ArrayList<PieChartImpl> datas);
+    void demarcationCallBack(ArrayList<PieChartImpl> datas);
+
 }

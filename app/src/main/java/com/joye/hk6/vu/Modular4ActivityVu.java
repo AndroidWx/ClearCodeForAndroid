@@ -54,7 +54,9 @@ public class Modular4ActivityVu extends CoordinatorLayoutToolBarImageViewRecycle
 
             @Override
             public void onNext(List<Modular4Vo> colorVos) {
-                new Modular4Report(colorVos).BubbleSort(callback);
+                Modular4Report report=new Modular4Report(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
         Observable.from(Modular4Vos).filter(new Func1<Modular4Vo, Boolean>() {

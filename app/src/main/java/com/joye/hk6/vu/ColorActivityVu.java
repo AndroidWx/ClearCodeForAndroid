@@ -30,6 +30,7 @@ import static com.joye.hk6.view.ColorActivity.TITLE;
 public class ColorActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu<ColorVo> {
 
 
+
     @Override
     public void setToolbarTimeAndViewStubInflate() {
         toolbar.setTitle(TITLE);
@@ -81,7 +82,9 @@ public class ColorActivityVu extends CoordinatorLayoutToolBarImageViewRecyclerVu
 
             @Override
             public void onNext(List<ColorVo> colorVos) {
-                new ColorReport(colorVos).BubbleSort(callback);
+                ColorReport report=new ColorReport(colorVos);
+                report.BubbleSort(callback);
+                report.Demarcations(callback);
             }
         });
 

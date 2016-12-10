@@ -15,6 +15,20 @@ import rx.functions.Func5;
 import rx.functions.Func9;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite1;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite10;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite11;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite12;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite13;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite2;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite3;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite4;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite5;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite6;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite7;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite8;
+import static com.joye.hk6.util.demarcations.CompositeDemarcations.composite9;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -381,5 +395,42 @@ public class CompositeReport extends BaseReport{
 
 
 
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable<ArrayList<PieChartImpl>> c1_9=Observable.zip(composite1(colorVos),composite2(colorVos),
+                composite3(colorVos),composite4(colorVos),composite5(colorVos),
+                composite6(colorVos),composite7(colorVos),composite8(colorVos),
+                composite9(colorVos), new Func9<Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>, Map<Integer,Integer>, ArrayList<PieChartImpl>>() {
+
+            @Override
+            public ArrayList<PieChartImpl> call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4, Map<Integer, Integer> map5, Map<Integer, Integer> map6, Map<Integer, Integer> map7, Map<Integer, Integer> map8, Map<Integer, Integer> map9) {
+                ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                datas.add(demarcationPieChartImpl(map,"1合"));
+                datas.add(demarcationPieChartImpl(map2,"2合"));
+                datas.add(demarcationPieChartImpl(map3,"3合"));
+                datas.add(demarcationPieChartImpl(map4,"4合"));
+                datas.add(demarcationPieChartImpl(map5,"5合"));
+                datas.add(demarcationPieChartImpl(map6,"6合"));
+                datas.add(demarcationPieChartImpl(map7,"7合"));
+                datas.add(demarcationPieChartImpl(map7,"8合"));
+                datas.add(demarcationPieChartImpl(map7,"9合"));
+                return datas;
+            }
+        });
+        Observable.zip(c1_9,composite10(colorVos),composite11(colorVos),composite12(colorVos),composite13(colorVos), new Func5<ArrayList<PieChartImpl>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Map<Integer, Integer>, Void>() {
+            @Override
+            public Void call(ArrayList<PieChartImpl> pieCharts, Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3, Map<Integer, Integer> map4) {
+                pieCharts.add(demarcationPieChartImpl(map,"10合"));
+                pieCharts.add(demarcationPieChartImpl(map2,"11合"));
+                pieCharts.add(demarcationPieChartImpl(map3,"12合"));
+                pieCharts.add(demarcationPieChartImpl(map4,"13合"));
+                if(callback!=null){
+                    callback.demarcationCallBack(pieCharts);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
     }
 }

@@ -76,7 +76,9 @@ public class MantissaSizeActivityVu extends CoordinatorLayoutToolBarImageViewRec
 
             @Override
             public void onNext(List<MantissaSizeVo> MantissaSizeVos) {
-                new MantissaSizeReport(MantissaSizeVos).BubbleSort(callback);
+                MantissaSizeReport report=new MantissaSizeReport(MantissaSizeVos);
+                        report.BubbleSort(callback);
+                        report.Demarcations(callback);
             }
         });
 

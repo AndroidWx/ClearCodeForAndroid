@@ -74,7 +74,7 @@ dependencies {
     compile dataDependencies.retrofit
     compile dataDependencies.retroGsonConverter
     compile dataDependencies.retroRxAdapter
-
+    compile dataDependencies.logger
 
     testCompile testDependencies.junit
     testCompile testDependencies.assertj

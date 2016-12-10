@@ -14,6 +14,14 @@ import rx.functions.Func1;
 import rx.functions.Func7;
 import rx.schedulers.Schedulers;
 
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M0;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M1;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M2;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M3;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M4;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M5;
+import static com.joye.hk6.util.demarcations.Modular7Demarcations.M6;
+
 /**
  * Created by W,x (JoyeWang)
  * on 2016/11/5.
@@ -220,6 +228,29 @@ public class Modular7Report extends BaseReport{
                     datas.add(genPieChartImpl(map6,"模7余5"));
                     datas.add(genPieChartImpl(map6,"模7余6"));
                     callback.callback(datas);
+                }
+                return null;
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+    }
+
+    @Override
+    public void Demarcations(final IPieChartCallback callback) {
+        Observable.zip(M0(colorVos),M1(colorVos),M2(colorVos),M3(colorVos),M4(colorVos),M5(colorVos),M6(colorVos), new Func7<Map<Integer,Integer>,Map<Integer,Integer>,Map<Integer,Integer>, Map<Integer,Integer>, Map<Integer,Integer>,Map<Integer,Integer>,Map<Integer,Integer>,Void>() {
+
+
+            @Override
+            public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2, Map<Integer, Integer> map3,Map<Integer, Integer> map4,Map<Integer, Integer> map5,Map<Integer, Integer> map6,Map<Integer,Integer>map7) {
+                if(callback!=null) {
+                    ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
+                    datas.add(demarcationPieChartImpl(map,"模7余0"));
+                    datas.add(demarcationPieChartImpl(map2,"模7余1"));
+                    datas.add(demarcationPieChartImpl(map3,"模7余2"));
+                    datas.add(demarcationPieChartImpl(map4,"模7余3"));
+                    datas.add(demarcationPieChartImpl(map5,"模7余4"));
+                    datas.add(demarcationPieChartImpl(map6,"模7余5"));
+                    datas.add(demarcationPieChartImpl(map6,"模7余6"));
+                    callback.demarcationCallBack(datas);
                 }
                 return null;
             }

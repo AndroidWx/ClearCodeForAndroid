@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.joye.basedata">
 
-    <uses-sdk tools:overrideLibrary="com.joye.basedata,rx.android,com.fernandocejas.frodo"/>
+    <uses-sdk tools:overrideLibrary="com.joye.basedata,rx.android,com.fernandocejas.frodo,com.orhanobut.logger"/>
     <application android:allowBackup="true" >
 
     </application>
