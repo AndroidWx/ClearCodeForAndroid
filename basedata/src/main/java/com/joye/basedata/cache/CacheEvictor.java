@@ -20,6 +20,10 @@ public class CacheEvictor implements Runnable {
 
     @Override
     public void run() {
-        fileManager.clearDirectory(file);
+        if(file.isDirectory()) {
+            fileManager.clearDirectory(file);
+        }else{
+            file.delete();
+        }
     }
 }

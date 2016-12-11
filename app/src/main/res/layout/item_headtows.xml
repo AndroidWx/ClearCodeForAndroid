@@ -41,7 +41,7 @@
         android:id="@+id/report_left_headOdd3"
         style="@style/TextViewStyleHeadTwos"
         android:text="@string/headOdd3"
-        android:layout_toRightOf="@id/report_left_headOdd1"
+        android:layout_toRightOf="@id/report_left_headOdd2"
         />
     <com.joye.layouts.BorderTextView
         android:id="@+id/report_left_headOdd4"
