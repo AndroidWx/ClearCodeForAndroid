@@ -1,7 +1,10 @@
 # HK6走势分析
 [APK](http://fir.im/eu9g)
 ## 前言
-	关于研发这个应用程序，初衷是应人之托，写一个直接干净简洁的框架，15年就持续关注Android-CleanArchitecutre以及最早的mvp概念，如今成了主流，Google官方也出了干净简洁框架的demo，建议大家每个框架尝试看一遍
+    关于研发这个应用程序，初衷是应人之托，写一个直接干净简洁的框架。
+    15年就持续关注Android-CleanArchitecutre以及最早的mvp概念，
+    如今成了主流，Google官方也出了干净简洁框架的demo。
+    ps.建议大家每个框架尝试看一遍
 
 [Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture)
 ##why to use HK6‘s data?
