@@ -66,18 +66,18 @@ public class OddEvenAdapter extends UpdateItemRecyclerViewAdapter<OddEvenVo> {
         public void setViewValue(OddEvenVo vo) {
             reportLeftExpect.setText(vo.getExpect());
             reportLeftOpencode.setText(Html.fromHtml("<font color='red'>"+vo.getOpenCode()+"</font>"));
-            reportLeftBig.setText(vo.Even==0?"双":vo.Even+"");
+            reportLeftSmall.setText(vo.Even==0?"单":vo.Even+"");
             if(vo.Even==0){
                 reportLeftBig.setBackgroundColor(android.R.color.holo_red_dark);
             }else if(vo.Odd==0){
                 reportLeftSmall.setBackgroundColor(android.R.color.holo_red_dark);
             }
-            reportLeftSmall.setText(vo.Odd==0?"单":vo.Odd+"");
-            Drawable bigDrawable = reportLeftBig.getResources().getDrawable(VigilantHelp.getDrawable(vo.evenVigilant()));
+            reportLeftBig.setText(vo.Odd==0?"双":vo.Odd+"");
+            Drawable bigDrawable = reportLeftBig.getResources().getDrawable(VigilantHelp.getDrawable(vo.oddVigilant()));
             bigDrawable.setBounds(0, 0, bigDrawable.getMinimumWidth(), bigDrawable.getMinimumHeight());
             reportLeftBig.setCompoundDrawables(bigDrawable, null, null, null)  ;;
 
-            Drawable smallDrawable = reportLeftBig.getResources().getDrawable(VigilantHelp.getDrawable(vo.oddVigilant()));
+            Drawable smallDrawable = reportLeftBig.getResources().getDrawable(VigilantHelp.getDrawable(vo.evenVigilant()));
             smallDrawable.setBounds(0, 0, smallDrawable.getMinimumWidth(), smallDrawable.getMinimumHeight());
             reportLeftSmall.setCompoundDrawables(smallDrawable, null, null, null);
 

@@ -97,8 +97,8 @@ public class OddEvenReport extends BaseReport{
             public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2 ) {
                 if(callback!=null) {
                     ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
-                    datas.add(genPieChartImpl(map,"单"));
-                    datas.add(genPieChartImpl(map2,"双"));
+                    datas.add(genPieChartImpl(map,"双"));
+                    datas.add(genPieChartImpl(map2,"单"));
                     callback.callback(datas);
                 }
                 return null;
@@ -113,8 +113,8 @@ public class OddEvenReport extends BaseReport{
             public Void call(Map<Integer, Integer> map, Map<Integer, Integer> map2 ) {
                 if(callback!=null) {
                     ArrayList<PieChartImpl> datas=new ArrayList<PieChartImpl>();
-                    datas.add(demarcationPieChartImpl(map,"单"));
-                    datas.add(demarcationPieChartImpl(map2,"双"));
+                    datas.add(demarcationPieChartImpl(map,"双"));
+                    datas.add(demarcationPieChartImpl(map2,"单"));
                     callback.demarcationCallBack(datas);
                 }
                 return null;
