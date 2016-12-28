@@ -60,7 +60,7 @@ public class SizeReport extends BaseReport{
                     blueMap.put(colorVos.get(i).Small, blueNum);
                 }
                 for (Integer integer : blueMap.keySet()) {
-                    Statistics item = new Statistics("Small", integer, blueMap.get(integer));
+                    Statistics item = new Statistics("Even", integer, blueMap.get(integer));
                     blueDatas.add(item);
                 }
                 Map<Integer, Integer> retBlueMap = mBubbleSort(blueDatas);
@@ -84,7 +84,7 @@ public class SizeReport extends BaseReport{
                     blueMap.put(colorVos.get(i).Big, blueNum);
                 }
                 for (Integer integer : blueMap.keySet()) {
-                    Statistics item = new Statistics("Big", integer, blueMap.get(integer));
+                    Statistics item = new Statistics("Odd", integer, blueMap.get(integer));
                     blueDatas.add(item);
                 }
                 Map<Integer, Integer> retBlueMap = mBubbleSort(blueDatas);

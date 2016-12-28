@@ -37,11 +37,11 @@ public class Probalility {
     //大小的理论概率
     public static class Size{
         /**
-         * Big
+         * Odd
          */
         public static final double Big = 0.5102040816326531;
         /**
-         * Small
+         * Even
          */
         public static final double Small = 0.4897959183673469;
     }
@@ -167,11 +167,11 @@ public class Probalility {
     //合数大小的理论概率
     public static class CompositeSize{
         /**
-         * Big
+         * Odd
          */
         public static final double Big = 0.5102040816326531;
         /**
-         * Small
+         * Even
          */
         public static final double Small = 0.4897959183673469;
     }
@@ -179,11 +179,11 @@ public class Probalility {
     //尾数数大小的理论概率
     public static class MantissaSize{
         /**
-         * Big
+         * Odd
          */
         public static final double Big = 0.5102040816326531;
         /**
-         * Small
+         * Even
          */
         public static final double Small = 0.4897959183673469;
     }

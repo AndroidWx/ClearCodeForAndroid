@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joye.layouts.BorderLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    auto:borderColor="@color/com_border"
+    auto:borderWidth="1dp"
+    auto:borders="bottom"
+    android:orientation="horizontal">
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_expect"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_expect"
+        auto:borderColor="@android:color/black"
+        auto:borderWidth__="1dp"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_opencode"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/report_left_opencode"
+        auto:borderColor="@android:color/black"
+        auto:borderWidth__="1dp"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_Big"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/odd"
+        auto:borderColor="@android:color/black"
+        auto:borderWidth__="1dp"
+        auto:borders="bottom|top|right|left" />
+
+    <com.joye.layouts.BorderTextView
+        android:id="@id/report_left_Small"
+        style="@style/TextViewStyleLeft"
+        android:text="@string/even"
+        auto:borderColor="@android:color/black"
+        auto:borderWidth__="1dp"
+        auto:borders="bottom|top|right|left" />
+</com.joye.layouts.BorderLinearLayout>

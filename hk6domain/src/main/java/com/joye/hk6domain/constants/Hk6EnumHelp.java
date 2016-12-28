@@ -257,6 +257,7 @@ public class Hk6EnumHelp {
         }
     }
 
+
     public Hk6Color getHk6Color(int n){
         for(int i=0;i<16;i++){
             if(n==RedColorNumber[i]){
@@ -275,5 +276,12 @@ public class Hk6EnumHelp {
         return Hk6Color.Green;
     }
 
+    public static OddEven getOddEven(int n){
+        if((n & 1) == 0){
+            return OddEven.Even;
+        }else{
+            return OddEven.Odd;
+        }
+    }
 
 }

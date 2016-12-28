@@ -22,6 +22,7 @@ import com.joye.hk6domain.interactor.GetModular4UseCase;
 import com.joye.hk6domain.interactor.GetModular5UseCase;
 import com.joye.hk6domain.interactor.GetModular6UseCase;
 import com.joye.hk6domain.interactor.GetModular7UseCase;
+import com.joye.hk6domain.interactor.GetOddEvenUseCase;
 import com.joye.hk6domain.interactor.GetRegionUseCase;
 import com.joye.hk6domain.interactor.GetSizeTwosUseCase;
 import com.joye.hk6domain.interactor.GetSizeUseCase;
@@ -189,6 +190,11 @@ public class Hk6Module {
                                    PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
         return new
                 GetDefaultNumberUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
+    }
+    @Provides @PerActivity @Named("GetOddEvenUseCase")
+    UseCase provideGetOddEvenUseCase(ThreadExecutor threadExecutor,
+                                     PostExecutionThread postExecutionThread , Hk6Repository hk6Repository){
+        return new GetOddEvenUseCase(threadExecutor,postExecutionThread,hk6Repository,date);
     }
 
 }

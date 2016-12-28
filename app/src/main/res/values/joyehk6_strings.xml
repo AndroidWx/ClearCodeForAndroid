@@ -27,6 +27,9 @@
     <string name="size">大小</string>
     <string name="big" formatted="false">大-%1$d次</string>
     <string name="small" formatted="false">小-%1$d次</string>
+    <string name="oddeven">单双</string>
+    <string name="odd" formatted="false">单-%1$d次</string>
+    <string name="even" formatted="false">双-%1$d次</string>
     <!--半波（固定不变)-->
     <string name="colorTows">半波</string>
     <string name="redEven" formatted="false">红双-%1$d次</string>

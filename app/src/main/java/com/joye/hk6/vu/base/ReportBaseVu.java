@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.CallSuper;
 import android.view.View;
 
+import com.google.gson.JsonSyntaxException;
 import com.joye.hk6.R;
 import com.joye.hk6.adapter.ReportLeftAdapter;
 import com.joye.hk6.adapter.ReportRightAdapter;
@@ -15,10 +16,12 @@ import com.joye.hk6.widget.ReportMeasureWidthListView;
 import com.joye.hk6.widget.ReportSyncHorizontalScrollView;
 import com.vlonjatg.progressactivity.ProgressActivity;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import retrofit2.adapter.rxjava.HttpException;
 
 /**
  * Created by W,x (JoyeWang)
@@ -58,18 +61,40 @@ public abstract  class ReportBaseVu <T>extends BaseVuImp implements ProgressVu<L
     public Drawable getErrorDrawable(){
         return  getView().getResources().getDrawable(R.drawable.default_progress_empty);
     }
-    public String getErrorTextTitle(){
+    public String getErrorTextTitle(Throwable e){
+        if(e instanceof JsonSyntaxException){
+            return "JSON转换异常";
+        }else if(e instanceof HttpException){
+            return "http异常";
+        }else if(e instanceof SocketTimeoutException){
+            return "超时异常";
+        }
         return getView().getResources().getString(R.string.default_progress_empty);
     }
-    public String getErrorTextContent(){
+    public String getErrorTextContent(Throwable e){
+        if(e instanceof JsonSyntaxException){
+            return "JSON转换异常";
+        }else if(e instanceof HttpException){
+            return "http异常";
+        }else if(e instanceof SocketTimeoutException){
+            return "超时异常";
+        }
         return getView().getResources().getString(R.string.default_progress_empty);
     }
-    public String getErrorButtonText(){
+    public String getErrorButtonText(Throwable e){
+        if(e instanceof JsonSyntaxException){
+            return "JSON转换异常";
+        }else if(e instanceof HttpException){
+            return "http异常";
+        }else if(e instanceof SocketTimeoutException){
+            return "超时异常";
+        }
         return getView().getResources().getString(R.string.default_progress_empty);
     }
     @Override
     public void showError(Throwable e) {
-        progressListener.showError(getErrorDrawable(),getErrorTextTitle(),getErrorTextContent(),getErrorButtonText(),listener);
+
+        progressListener.showError(getErrorDrawable(),getErrorTextTitle(e),getErrorTextContent(e),getErrorButtonText(e),listener);
     }
 
     @Override

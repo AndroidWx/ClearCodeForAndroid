@@ -4,8 +4,10 @@ import com.joye.basedomain.executor.PostExecutionThread;
 import com.joye.basedomain.executor.ThreadExecutor;
 import com.joye.hk6domain.constants.Hk6EnumHelp;
 import com.joye.hk6domain.constants.Hk6Size;
+import com.joye.hk6domain.constants.OddEven;
 import com.joye.hk6domain.entity.Hk6UiData;
 import com.joye.hk6domain.repository.Hk6Repository;
+import com.joye.hk6domain.vo.OddEvenVo;
 import com.joye.hk6domain.vo.SizeVo;
 
 import java.util.ArrayList;
@@ -15,7 +17,6 @@ import java.util.Map;
 
 import rx.Observable;
 import rx.functions.Func1;
-import rx.functions.Func9;
 
 /**
  * Created by Wx on 2016/9/25.
@@ -23,33 +24,33 @@ import rx.functions.Func9;
  * remark:
  */
 
-public class GetSizeUseCase extends GetHk6Data {
-    public GetSizeUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
+public class GetOddEvenUseCase extends GetHk6Data {
+    public GetOddEvenUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, Hk6Repository hk6Repository, String date) {
         super(threadExecutor, postExecutionThread, hk6Repository, date);
     }
 
     @Override
     protected Observable buildUseCaseObservable() {
-        return  getHistory().map(new Func1<List<Hk6UiData>, List<SizeVo>>() {
+        return  getHistory().map(new Func1<List<Hk6UiData>, List<OddEvenVo>>() {
             @Override
-            public List<SizeVo> call(List<Hk6UiData> hk6UiDatas) {
-                List<SizeVo> list = new ArrayList<SizeVo>(hk6UiDatas.size());
+            public List<OddEvenVo> call(List<Hk6UiData> hk6UiDatas) {
+                List<OddEvenVo> list = new ArrayList<OddEvenVo>(hk6UiDatas.size());
                 Map<String,Integer> map=null;
                 Collections.reverse(hk6UiDatas);
-                int Big = 0,Small=0;
-                SizeVo vo;
+                int Odd = 0,Even=0;
+                OddEvenVo vo;
                 for (Hk6UiData itemVo:hk6UiDatas){
-                      vo = new SizeVo(itemVo);
-                    if(Hk6EnumHelp.getHk6Size(vo.getOpenCode()).equals(Hk6Size.Big)){
-                        Small++;
-                        Big=0;
-                        vo.Big=0;
-                        vo.Small=Small;
+                      vo = new OddEvenVo(itemVo);
+                    if(Hk6EnumHelp.getOddEven(vo.getOpenCode()).equals(OddEven.Even)){
+                        Even++;
+                        Odd=0;
+                        vo.Odd=Odd;
+                        vo.Even=Even;
                     }else{
-                        Big++;
-                        Small=0;
-                        vo.Small=0;
-                        vo.Big=Big;
+                        Odd++;
+                        Even=0;
+                        vo.Odd=Odd;
+                        vo.Even=Even;
                     }
                     list.add(vo);
                 }

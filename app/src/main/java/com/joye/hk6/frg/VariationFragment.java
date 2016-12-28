@@ -11,6 +11,7 @@ import com.joye.hk6.adapter.UpdateItemRecyclerViewAdapter;
 import com.joye.hk6.mvp.BaseBannerOnePageFragment;
 import com.joye.hk6.view.ChineseZodiacActivity;
 import com.joye.hk6.view.ColorActivity;
+import com.joye.hk6.view.OddEvenActivity;
 import com.joye.hk6.vu.ConstantsFragmentVu;
 
 import java.util.ArrayList;
@@ -58,6 +59,8 @@ public class VariationFragment extends BaseBannerOnePageFragment<ConstantsFragme
         ConstantsItem item = new ConstantsItem(R.string.chieseZodiac, ChineseZodiacActivity.class);
         list.add(item);
         item = new ConstantsItem(R.string.color, ColorActivity.class);
+        list.add(item);
+        item = new ConstantsItem(R.string.oddeven, OddEvenActivity.class);
         list.add(item);
 //        item = new ConstantsItem(R.string.number, ReportActivity.class);
 //        list.add(item);
