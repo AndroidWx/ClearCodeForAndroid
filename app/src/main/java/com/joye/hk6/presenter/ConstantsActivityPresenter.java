@@ -10,6 +10,7 @@ import com.joye.basepresentation.internal.di.PerActivity;
 import com.joye.hk6.R;
 import com.joye.hk6.mvp.Presenter;
 import com.joye.hk6.vu.base.CoordinatorLayoutToolBarImageViewRecyclerVu;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -82,6 +83,7 @@ public class ConstantsActivityPresenter<V extends CoordinatorLayoutToolBarImageV
         @Override
         public void onError(Throwable e) {
             vu.showError(e);
+            Logger.e(e,"");
         }
 
         @Override

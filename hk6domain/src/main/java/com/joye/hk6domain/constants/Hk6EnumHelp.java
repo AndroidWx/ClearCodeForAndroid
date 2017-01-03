@@ -186,7 +186,7 @@ public class Hk6EnumHelp {
         return HeadTwos.HeadEven0;
     }
     
-    public static  ChineseZodiac getChineseZodiac(int n ,long time){
+    public static  ChineseZodiac getChineseZodiac(int n ,int time){
         for (ChineseZodiac mChineseZodiac:ChineseZodiac.values()){
             for (int item:mChineseZodiac.getNumbers(time)){
                 if(item==n){

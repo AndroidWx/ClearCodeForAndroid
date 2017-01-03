@@ -1,11 +1,26 @@
-package com.joye.hk6data;
+package com.joye.hk6;
 
 
 import com.joye.hk6data.entity.Hk6Entity;
+import com.joye.hk6domain.constants.ChineseZodiac;
 
 import org.bouncycastle.util.encoders.Base64;
 import org.junit.Before;
 import org.junit.Test;
+
+import static com.joye.hk6domain.constants.ChineseZodiac.Chook;
+import static com.joye.hk6domain.constants.ChineseZodiac.Cow;
+import static com.joye.hk6domain.constants.ChineseZodiac.Dog;
+import static com.joye.hk6domain.constants.ChineseZodiac.Dragon;
+import static com.joye.hk6domain.constants.ChineseZodiac.Horse;
+import static com.joye.hk6domain.constants.ChineseZodiac.Monkey;
+import static com.joye.hk6domain.constants.ChineseZodiac.Mouse;
+import static com.joye.hk6domain.constants.ChineseZodiac.Pig;
+import static com.joye.hk6domain.constants.ChineseZodiac.Rabbit;
+import static com.joye.hk6domain.constants.ChineseZodiac.Sheep;
+import static com.joye.hk6domain.constants.ChineseZodiac.Snake;
+import static com.joye.hk6domain.constants.ChineseZodiac.Tiger;
+
 
 /**
  * Created by W,x (JoyeWang)
@@ -48,20 +63,36 @@ public class Hk6EntityTest {
 
     @Test
     public void testChineseZodiac() throws Exception {
-        System.out.println(getYear(2017));
+        int year=2013;
+        if(getYear(year)==Mouse){
+
+        }else{
+            int a[]=new int[]{1,13,25,37,49};
+            int c=getYear(year).ordinal()-Monkey.ordinal();
+//            System.out.println(c);
+            for (int b:a){
+                System.out.println(String.valueOf(b+c));
+            }
+        }
+
 
     }
-    public String getYear(Integer year){
-        if(year<1900){
-            return "未知";
-        }
-        Integer start=1900;
-        String [] years=new String[]{
-                "鼠","牛","虎","兔",
-                "龙","蛇","马","羊",
-                "猴","鸡","狗","猪"
-        };
 
+    @Test
+    public void testA() throws Exception {
+        int n=2017001;
+        int k=4;
+        System.out.print (n>>4);
+
+    }
+
+    public ChineseZodiac getYear(Integer year){
+        Integer start=1900;
+        ChineseZodiac [] years=new ChineseZodiac[]{
+                Mouse,Cow,Tiger,Rabbit,
+                Dragon,Snake,Horse,Sheep,
+                Monkey,Chook,Dog,Pig
+        };
         return years[(year-start)%years.length];
     }
 }

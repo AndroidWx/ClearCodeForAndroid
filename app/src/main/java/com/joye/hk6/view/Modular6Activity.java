@@ -11,6 +11,7 @@ import com.joye.hk6.internal.di.component.Modular6Component;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.Modular6ActivityPresenter;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.Modular6ActivityVu;
 
 import javax.inject.Inject;
@@ -40,7 +41,7 @@ public class Modular6Activity extends Hk6ReportAppCompatActivity<Modular6Activit
     public void initializeInjector() {
         mModularComponent = DaggerModular6Component.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mModularComponent.inject(this);
     }

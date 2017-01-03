@@ -95,11 +95,11 @@ public class Hk6FileCacheImpl implements Hk6Cache {
         long lastUpdateTime = this.getLastCacheUpdateTimeMillis(date);
 
         boolean expired = ((currentTime - lastUpdateTime) > EXPIRATION_TIME);
-        //并却要大于2015年最后一天
-        if (expired&&date.compareTo("2015-12-31")>0) {
+        //并却要大于2016年最后一天
+        if (expired&&date.compareTo("2016-12-31")>0) {
             this.evictFile(buildFile(date));
         }
-        if(date.compareTo("2016-01-01")<0){
+        if(date.compareTo("2017-01-01")<0){
             return false;
         }
 

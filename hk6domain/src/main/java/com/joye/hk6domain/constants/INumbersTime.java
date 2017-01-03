@@ -7,5 +7,6 @@ package com.joye.hk6domain.constants;
  */
 
 public interface INumbersTime {
-    int[] getNumbers(long time);
+    int[] getNumbers(int year);
+//    int []getNumbers(int year);
 }

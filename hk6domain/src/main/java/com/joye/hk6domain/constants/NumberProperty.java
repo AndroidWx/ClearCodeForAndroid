@@ -3,17 +3,6 @@ package com.joye.hk6domain.constants;
 
 import java.util.Arrays;
 
-import static com.joye.hk6domain.constants.ChineseZodiac.Cow;
-import static com.joye.hk6domain.constants.ChineseZodiac.Dog;
-import static com.joye.hk6domain.constants.ChineseZodiac.Dragon;
-import static com.joye.hk6domain.constants.ChineseZodiac.Horse;
-import static com.joye.hk6domain.constants.ChineseZodiac.Monkey;
-import static com.joye.hk6domain.constants.ChineseZodiac.Mouse;
-import static com.joye.hk6domain.constants.ChineseZodiac.Pig;
-import static com.joye.hk6domain.constants.ChineseZodiac.Rabbit;
-import static com.joye.hk6domain.constants.ChineseZodiac.Sheep;
-import static com.joye.hk6domain.constants.ChineseZodiac.Snake;
-import static com.joye.hk6domain.constants.ChineseZodiac.Tiger;
 import static com.joye.hk6domain.constants.Hk6Color.Blue;
 import static com.joye.hk6domain.constants.Hk6Color.Green;
 import static com.joye.hk6domain.constants.Hk6Color.Red;
@@ -79,15 +68,6 @@ public enum NumberProperty implements INumberProperty{
             return N_1;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Monkey;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -129,15 +109,7 @@ public enum NumberProperty implements INumberProperty{
             return N_2;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Sheep;
-        }
+
 
         @Override
         public Hk6Color getHk6Color() {
@@ -184,15 +156,6 @@ public enum NumberProperty implements INumberProperty{
             return N_3;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Horse;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -239,15 +202,7 @@ public enum NumberProperty implements INumberProperty{
             return N_4;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Snake;
-        }
+
 
         @Override
         public Hk6Color getHk6Color() {
@@ -295,16 +250,6 @@ public enum NumberProperty implements INumberProperty{
         }
 
         @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Dragon;
-        }
-
-        @Override
         public Hk6Color getHk6Color() {
             for (Hk6Color color:Hk6Color.values()){
                 if(Arrays.asList(color.getNumbers()).contains(getValue())){
@@ -349,15 +294,6 @@ public enum NumberProperty implements INumberProperty{
             return N_6;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Rabbit;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -404,15 +340,7 @@ public enum NumberProperty implements INumberProperty{
             return N_7;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Tiger;
-        }
+
 
         @Override
         public Hk6Color getHk6Color() {
@@ -459,15 +387,7 @@ public enum NumberProperty implements INumberProperty{
             return N_8;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Cow;
-        }
+
 
         @Override
         public Hk6Color getHk6Color() {
@@ -504,15 +424,6 @@ public enum NumberProperty implements INumberProperty{
             return N_9;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Mouse;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -549,15 +460,6 @@ public enum NumberProperty implements INumberProperty{
             return N_10;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Pig;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -594,15 +496,6 @@ public enum NumberProperty implements INumberProperty{
             return N_11;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Dog;
-        }
 
         @Override
         public Hk6Color getHk6Color() {
@@ -639,15 +532,6 @@ public enum NumberProperty implements INumberProperty{
             return N_11;
         }
 
-        @Override
-        public ChineseZodiac getChineseZodiac() {
-            for (ChineseZodiac zodiac:ChineseZodiac.values()){
-                if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                    return zodiac;
-                }
-            }
-            return Dog;
-        }
 
         @Override
         public Region getRegion() {
@@ -863,15 +747,7 @@ public enum NumberProperty implements INumberProperty{
         }
         return Green;
     }
-    @Override
-    public ChineseZodiac getChineseZodiac() {
-        for (ChineseZodiac zodiac:ChineseZodiac.values()){
-            if(Arrays.asList(zodiac.getNumbers()).contains(getValue())){
-                return zodiac;
-            }
-        }
-        return Dog;
-    }
+
     @Override
     public Region getRegion() {
         for (Region region:Region.values()){

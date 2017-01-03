@@ -11,6 +11,7 @@ import com.joye.hk6.internal.di.component.OddEvenComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.OddEvenActivityPresenter;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.OddEvenActivityVu;
 
 import javax.inject.Inject;
@@ -49,7 +50,7 @@ public class OddEvenActivity extends Hk6ReportAppCompatActivity<OddEvenActivityV
     public void initializeInjector(){
         mOddEvenComponent = DaggerOddEvenComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mOddEvenComponent.inject(this);
     }

@@ -10,11 +10,7 @@ public interface INumberProperty {
 
     int getValue();
 
-    /**
-     * number归属生肖
-     * @return
-     */
-    ChineseZodiac getChineseZodiac();
+
 
     /**
      *

@@ -12,6 +12,7 @@ import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.GateCountActivityPresenter;
 import com.joye.hk6.report.PieChartImpl;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.GateCountActivityVu;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class GateCountActivity extends Hk6ReportAppCompatActivity<GateCountActiv
     public void initializeInjector() {
         mGateCountComponent = DaggerGateCountComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mGateCountComponent.inject(this);
     }

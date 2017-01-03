@@ -11,6 +11,7 @@ import com.joye.hk6.internal.di.component.RegionComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.RegionActivityPresenter;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.RegionActivityVu;
 
 import javax.inject.Inject;
@@ -45,7 +46,7 @@ public class RegionActivity extends Hk6ReportAppCompatActivity<RegionActivityVu>
     public void initializeInjector() {
         mRegionComponent = DaggerRegionComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mRegionComponent.inject(this);
     }

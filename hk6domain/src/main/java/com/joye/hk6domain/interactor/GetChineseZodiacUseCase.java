@@ -14,8 +14,6 @@ import java.util.List;
 
 import rx.Observable;
 import rx.functions.Func1;
-import rx.functions.Func3;
-import rx.functions.Func9;
 
 /**
  * Created by W,x (JoyeWang)
@@ -56,51 +54,51 @@ public class GetChineseZodiacUseCase extends GetHk6Data {
                 ChineseZodiacVo vo;
                 for (Hk6UiData itemVo : hk6UiDatas) {
                   vo= new ChineseZodiacVo(itemVo);
-                    if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Mouse)) {
+                    if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(),Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Mouse)) {
                         addNumber();
                         Mouse = 0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else  if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Cow)) {
+                    }else  if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Cow)) {
                         addNumber();
                         Cow=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Tiger)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Tiger)) {
                         addNumber();
                         Tiger=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Rabbit)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Rabbit)) {
                         addNumber();
                         Rabbit=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Dragon)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Dragon)) {
                         addNumber();
                         Dragon=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Snake)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Snake)) {
                         addNumber();
                         Snake=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Horse)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Horse)) {
                         addNumber();
                         Horse=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Sheep)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Sheep)) {
                         addNumber();
                         Sheep=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Monkey)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Monkey)) {
                         addNumber();
                         Monkey=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Chook)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Chook)) {
                         addNumber();
                         Chook=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Dog)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Dog)) {
                         addNumber();
                         Dog=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);
-                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), vo.getOpentimestamp()).equals(ChineseZodiac.Pig)) {
+                    }else if (Hk6EnumHelp.getChineseZodiac(vo.getOpenCode(), Integer.valueOf(vo.getOpentime().substring(0,4))).equals(ChineseZodiac.Pig)) {
                         addNumber();
                         Pig=0;
                         initialValue(Mouse, Cow, Tiger, Rabbit, Dragon, Snake, Horse, Sheep, Monkey, Chook, Dog, Pig, vo);

@@ -1,4 +1,4 @@
-package report;
+package com.joye.hk6;
 
 
 import android.app.Instrumentation;
@@ -6,7 +6,6 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.joye.hk6.view.ColorActivity;
 import com.joye.hk6domain.constants.Formula;
-import com.joye.hk6domain.constants.Hk6EnumHelp;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,5 +50,22 @@ public class TestColorReport extends ActivityInstrumentationTestCase2<ColorActiv
          System.out.println(i+" = "+ Hk6EnumHelp.getRegion(i));
      }
     }*/
+    @Test
+    public void testChineseZodiac() throws Exception {
+        System.out.println(getYear(2017));
 
+    }
+    public String getYear(Integer year){
+        if(year<1900){
+            return "未知";
+        }
+        Integer start=1900;
+        String [] years=new String[]{
+                "鼠","牛","虎","兔",
+                "龙","蛇","马","羊",
+                "猴","鸡","狗","猪"
+        };
+
+        return years[(year-start)%years.length];
+    }
 }

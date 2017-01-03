@@ -11,6 +11,7 @@ import com.joye.hk6.internal.di.component.SizeComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.SizeActivityPresenter;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.SizeActivityVu;
 
 import javax.inject.Inject;
@@ -45,11 +46,10 @@ public class SizeActivity extends Hk6ReportAppCompatActivity<SizeActivityVu> imp
         mSizeActivityPresenter.setView(vu);
         mSizeActivityPresenter.initalize(this);
     }
-
     public void initializeInjector(){
         sizeComponent=DaggerSizeComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         sizeComponent.inject(this);
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Func3;
+import rx.functions.Func4;
 import rx.functions.Func9;
 
 /**
@@ -147,15 +147,17 @@ public class GetHk6Data extends UseCase {
                         return datas;
                     }
                 });
-        Observable<List<Hk6UiData>> observable=Observable.zip(observable2,observable1,observable0,new Func3<List<Hk6UiData>,
-                List<Hk6UiData>,
-                List<Hk6UiData>,
-                List<Hk6UiData>>(){
+        Observable<List<Hk6UiData>> observable=Observable.zip(observable2,observable1,observable0,buildUseCaseObservable(date),new Func4<List<Hk6UiData>,
+                        List<Hk6UiData>,
+                        List<Hk6UiData>,
+                        List<Hk6UiData>,
+                        List<Hk6UiData>>(){
 
 
             @Override
-            public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2, List<Hk6UiData> o3) {
+            public List<Hk6UiData> call(List<Hk6UiData> o, List<Hk6UiData> o2, List<Hk6UiData> o3,List<Hk6UiData> o4) {
                 List<Hk6UiData> datas=new ArrayList<Hk6UiData>();
+                datas.addAll(o4);
                 datas.addAll(o3);
                 datas.addAll(o2);
                 datas.addAll(o);

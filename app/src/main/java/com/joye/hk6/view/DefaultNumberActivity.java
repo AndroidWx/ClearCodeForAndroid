@@ -9,6 +9,7 @@ import com.joye.hk6.internal.di.component.DefaultNumberComponent;
 import com.joye.hk6.internal.di.modules.Hk6Module;
 import com.joye.hk6.internal.di.modules.StatusbarActivityModule;
 import com.joye.hk6.presenter.DefaultNumberActivityPresenter;
+import com.joye.hk6.util.DateUtil;
 import com.joye.hk6.vu.DefaultNumberActivityVu;
 
 import javax.inject.Inject;
@@ -32,7 +33,7 @@ public class DefaultNumberActivity extends BasePresenterAppCompatActivity<Defaul
     public void initializeInjector() {
          mDefaultNumberComponent = DaggerDefaultNumberComponent.builder()
                 .hk6ApplicationComponent(getApplicationComponent())
-                .hk6Module(new Hk6Module("2016-12-31"))
+                .hk6Module(new Hk6Module(DateUtil.getDate()))
                 .statusbarActivityModule(new StatusbarActivityModule(this)).build();
         mDefaultNumberComponent.inject(this);
     }
