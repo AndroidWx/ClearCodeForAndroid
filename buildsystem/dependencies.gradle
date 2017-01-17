@@ -6,7 +6,7 @@ allprojects {
 
 ext {
   //Android
-  androidBuildToolsVersion = "24.0.2"
+  androidBuildToolsVersion = "25.0.0"
   androidMinSdkVersion = 19
   androidTargetSdkVersion = 23
   androidCompileSdkVersion = 23
@@ -58,7 +58,7 @@ ext {
   supportV13='24.0.0'
   supportAannotation='23.1.0'
   suportV4='24.0.0'
-  supportConstraintLayout='1.0.0-alpha1'
+  supportConstraintLayout='1.0.0-beta4'
   presentationDependencies = [
       daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
       dagger:             "com.google.dagger:dagger:${daggerVersion}",
