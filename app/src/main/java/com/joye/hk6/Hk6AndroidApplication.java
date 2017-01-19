@@ -6,6 +6,7 @@ import com.joye.hk6.common.JoyeEnvironment;
 import com.joye.hk6.internal.di.component.DaggerHk6ApplicationComponent;
 import com.joye.hk6.internal.di.component.Hk6ApplicationComponent;
 import com.joye.hk6.internal.di.modules.Hk6ApplicationModule;
+import com.ninegor.sdk.NinegorSDK;
 
 import net.nashlegend.anypref.AnyPref;
 
@@ -26,6 +27,7 @@ public class Hk6AndroidApplication extends Application {
             }
         }.start();
         initializeInjector();
+        NinegorSDK.register(this);
     }
 
     private void initializeInjector(){

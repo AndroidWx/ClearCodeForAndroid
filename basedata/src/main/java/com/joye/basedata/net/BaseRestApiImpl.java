@@ -8,6 +8,9 @@ import com.joye.basedata.BuildConfig;
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -28,7 +31,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract  class BaseRestApiImpl<API>   {
     public static final String TAG="BaseRestApiImpl";
     private final Context context;
-
+    public Context getContext(){
+        return  context;
+    }
     private static OkHttpClient okHttpClient;
     /**
      * 响应超时
@@ -92,13 +97,29 @@ public abstract  class BaseRestApiImpl<API>   {
     }
     private OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) {
-            okHttpClient = new OkHttpClient.Builder().
+            OkHttpClient.Builder builder=new OkHttpClient.Builder().
                     readTimeout(okHttpReadTimeout(), TimeUnit.MILLISECONDS).
-                    connectTimeout(okHttpConnectTimeout(), TimeUnit.MILLISECONDS).
-                    addInterceptor(LoggingInterceptor).build();
+                    connectTimeout(okHttpConnectTimeout(), TimeUnit.MILLISECONDS);
+            List<Interceptor> interceptors=getListInterceptors();
+            if(interceptors!=null &&interceptors.size()>0){
+                for (Interceptor item:interceptors){
+                    builder.addInterceptor(item);
+                }
+
+            }
+            if(BuildConfig.DEBUG) {
+                builder.addInterceptor(LoggingInterceptor);
+            }
+            return builder.build();
         }
         return okHttpClient;
     }
+
+    protected List<Interceptor> getListInterceptors(){
+        List<Interceptor> datas=new ArrayList<>();
+        return datas;
+    }
+
 
     /**
      * Checks if the device has any active internet connection.

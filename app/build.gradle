@@ -77,6 +77,7 @@ android {
 }
 
 dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
     def childPresentationDependencies = rootProject.ext.childPresentationDependencies
@@ -86,11 +87,8 @@ dependencies {
     compile project(':layouts')
     apt presentationDependencies.daggerCompiler
     apt presentationDependencies.butterKnifeCompiler
-
     compile childPresentationDependencies.f2prateek
     provided childPresentationDependencies.f2prateekProvided
-
-
     provided presentationDependencies.javaxAnnotation
     compile childPresentationDependencies.javaxInject
     compile childPresentationDependencies.statusbaruitl
@@ -98,33 +96,26 @@ dependencies {
     releaseCompile childPresentationDependencies.logutilsRelease
     compile childPresentationDependencies.guava
     compile childPresentationDependencies.progressActivity
-
     androidTestCompile presentationTestDependencies.mockito
     androidTestCompile presentationTestDependencies.dexmaker
     androidTestCompile presentationTestDependencies.dexmakerMockito
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.testingSupportLib
-
     compile presentationDependencies.cardview
     compile presentationDependencies.supportV13
     compile presentationDependencies.appcompat
     compile presentationDependencies.recyclerview
     compile presentationDependencies.design
     compile presentationDependencies.supportv4
-
     compile presentationDependencies.constranit
-
     compile childPresentationDependencies.pgyerSdk
-//    compile 'com.umeng.analytics:analytics:latest.integration'
-
+    //    compile 'com.umeng.analytics:analytics:latest.integration'
     compile childPresentationDependencies.expandableTextView
     compile childPresentationDependencies.AnyPref
     compile childPresentationDependencies.MPAndroidChart
-
-
-
     testCompile testDependencies.junit
     testCompile testDependencies.assertj
     testCompile testDependencies.mockito
     testCompile testDependencies.robolectric
+    compile files('libs/test.jar')
 }
