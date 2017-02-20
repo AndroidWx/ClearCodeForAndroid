@@ -2,10 +2,10 @@
 [APK DownLoad](http://fir.im/eu9g)
 
 ##screenshots
-<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/0.jpg?raw=true" >
-<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/1.jpg?raw=true" >
-<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/2.jpg?raw=true" >
-<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/3.jpg?raw=true" >
+<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/0.jpg?raw=true" width = "70%">
+<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/1.jpg?raw=true" width = "70%">
+<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/2.jpg?raw=true"  width = "70%" >
+<img src="https://github.com/AndroidWx/ClearCodeForAndroid/blob/master/screenshots/3.jpg?raw=true"  width = "70%">
 ## 前言
     关于研发这个应用程序，初衷是应人之托，写一个直接干净简洁的框架。
     15年就持续关注Android-CleanArchitecutre以及最早的mvp概念，
