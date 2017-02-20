@@ -50,14 +50,25 @@ public class SdkNetApiImpl extends BaseRestApiImpl<SdkNetApi> implements  SdkNet
         }
     };
 
+//
+//    @Override
+//    public Observable<String> activateUseCase() {
+//        return create().activateUseCase();
+//    }
+
     @Override
-    public Observable<String> activateUseCase() {
-        return create().activateUseCase();
+    public Observable<String> activateUseCase(@Query(TOKEN) String token, @Query(CODE) String code, @Query(DATE) String date, @Query(FORMAT) String format) {
+        return create().activateUseCase(token,code,date,format);
     }
 
     @Override
     public Observable<String> retentionRateUseCase(String date) {
         return create().retentionRateUseCase(date);
+    }
+
+    @Override
+    protected String BaseUrl() {
+        return "http://c.apiplus.cn/";
     }
 
     @Override

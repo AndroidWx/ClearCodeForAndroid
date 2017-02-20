@@ -10,11 +10,38 @@ import rx.Observable;
 
 public interface SdkNetApi {
     /**
+     * 令牌
+     */
+    public static final  String TOKEN="token";
+
+    /**
+     * 代码
+     */
+    public static final String CODE="code";
+
+    /**
+     * 时间
+     */
+    public static final  String DATE="date";
+
+    /**
+     * 转换格式
+     */
+    public static final   String FORMAT="format";
+    /**
+     * json 格式
+     */
+    public static final   String FORMAT_JSON = "json";
+
+    /**
      * 注册
      * @return
      */
-    @GET
-    Observable<String> activateUseCase();
+    @GET("daily.do")
+    Observable<String> activateUseCase(@Query( TOKEN) String token,
+                                       @Query(CODE) String code,
+                                       @Query(DATE) String date,
+                                       @Query(FORMAT) String format);
 
     /**
      * 留存提交

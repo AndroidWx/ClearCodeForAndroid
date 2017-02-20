@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 //dagger2 okhttp
 apply plugin: 'com.neenbedankt.android-apt'
 //调试RxJava 插件
@@ -85,6 +85,7 @@ dependencies {
     androidTestCompile presentationTestDependencies.testingSupportLib
 
 }
+/*
 
 BuildJar{
     //输出目录
@@ -103,7 +104,7 @@ BuildJar{
     //不需要输出jar的jar包列表,如['baidu.jar','baidu1.jar'...]
     excludeJar=[]
     //不需要输出jar的类名列表,如['baidu.calss','baidu1.class'...]
-//    excludeClass=['com/ninegor/sdk/NinegorManager.class','com/ninegor/sdk/SharedPreferenceHelp.class']
+    excludeClass=['com/ninegor/sdk/NinegorManager.class','com/ninegor/sdk/SharedPreferenceHelp.class']
     //不需要输出jar的包名列表,如 excludePackage=['com/adison/testjarplugin/exclude','com/adison/testjarplugin/exclude1'...]
-//    excludePackage=['com/ninegor/sdk/net','com/ninegor/sdk/utils']
-}
+    excludePackage=['com/ninegor/sdk/net','com/ninegor/sdk/utils']
+}*/

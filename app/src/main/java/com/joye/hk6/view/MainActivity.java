@@ -1,6 +1,9 @@
 package com.joye.hk6.view;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
@@ -15,6 +18,8 @@ import com.joye.hk6.internal.di.modules.WriteDataToFileCacheModule;
 import com.joye.hk6.presenter.MainPresenter;
 import com.joye.hk6.util.WriteDataToFileCacheDelegate;
 import com.joye.hk6.vu.MainActivityVu;
+import com.ninegor.sdk.NinegorManager;
+import com.ninegor.sdk.NinegorSDK;
 
 import javax.inject.Inject;
 
@@ -64,6 +69,11 @@ public class MainActivity extends BasePresenterAppCompatActivity<MainActivityVu>
         return MainActivityVu.class;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        NinegorSDK.register(this);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

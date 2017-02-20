@@ -10,7 +10,7 @@ public class SharedPreferenceHelp {
     @PrefField(boolDef = true)
     public boolean isRegister = true;
 
-    @PrefField
+    @PrefField(boolDef = true)
     public boolean  isRegisterSuccess = false;
 
     @PrefField

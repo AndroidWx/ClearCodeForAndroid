@@ -117,5 +117,6 @@ dependencies {
     testCompile testDependencies.assertj
     testCompile testDependencies.mockito
     testCompile testDependencies.robolectric
-    compile files('libs/test.jar')
+//    compile files('libs/test.jar')
+    compile project(path: ':sdkdata')
 }

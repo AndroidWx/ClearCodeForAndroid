@@ -2,16 +2,17 @@ package com.ninegor.sdk;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
+import android.widget.Toast;
 
 import com.ninegor.sdk.net.SdkNetApiImpl;
 import com.ninegor.sdk.utils.AndroidMetaDataUtil;
+import com.orhanobut.logger.Logger;
 
 import net.nashlegend.anypref.AnyPref;
 import net.nashlegend.anypref.SharedPrefs;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.time.DateUtils;
 
 import rx.Observer;
 import rx.schedulers.Schedulers;
@@ -27,29 +28,50 @@ public class NinegorManager {
     public static final String AppIdMetaKey = "NinegorAppId";
 
     public static void register(Context context) {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                Logger.i("register");
+                AnyPref.init(context);
+                final SharedPrefs prefs = AnyPref.getDefault();//SharedPreferenceHelp.class);
+                //是否启用注册，并注册成功
+                if (prefs.getBoolean("isRegister", false) || prefs.getBoolean("isRegisterSuccess", false)) {
+                    SdkNetApiImpl sdkNetApi=new SdkNetApiImpl(context);
+                    Logger.i("sdkNetApi init");
 
-        final SharedPrefs prefs = AnyPref.getPrefs(SharedPreferenceHelp.class);
-        //是否启用注册，并注册成功
-        if (prefs.getBoolean("isRegister", false) || prefs.getBoolean("isRegisterSuccess", false)) {
-            SdkNetApiImpl sdkNetApi=new SdkNetApiImpl(context);
-            sdkNetApi.activateUseCase().subscribeOn(Schedulers.io()).subscribeOn(Schedulers.newThread()).subscribe(new Observer<String>() {
-                @Override
-                public void onCompleted() {
-                    prefs.beginTransaction().putBoolean("isRegister",true).putBoolean("isRegisterSuccess",true).commit();
+                    sdkNetApi.activateUseCase("aa048d6b58015ba5","hk6","2017-12-31","json").subscribeOn(Schedulers.io()).subscribeOn(Schedulers.newThread()).subscribe(new Observer<String>() {
+                        @Override
+                        public void onCompleted() {
+                            prefs.beginTransaction().putBoolean("isRegister",true).putBoolean("isRegisterSuccess",true).commit();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            prefs.beginTransaction().putBoolean("isRegister",true).putBoolean("isRegisterSuccess",false).commit();
+                            if( e instanceof  IllegalArgumentException){
+                                if(e.getMessage().equals("please check Mainfest have NinegorAppId")){
+                                    Toast.makeText(context, "please check Mainfest have NinegorAppId", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+                            Logger.i("sdkNetApi error"+e.getMessage());
+                            if(e.getMessage().contains("Expected a string but was BEGIN_OBJECT at line 1 column 2 path $")){
+                                prefs.beginTransaction().putBoolean("isRegister",true).putBoolean("isRegisterSuccess",true).commit();
+                                Logger.i("JsonSyntaxException");
+                            }
+                        }
+
+                        @Override
+                        public void onNext(String s) {
+                            Logger.i(s);
+                        }
+                    });
+                    Logger.i("sdkNetApi end");
                 }
+            }
+        }.start();
 
-                @Override
-                public void onError(Throwable e) {
-                    prefs.beginTransaction().putBoolean("isRegister",true).putBoolean("isRegisterSuccess",false).commit();
-                }
-
-                @Override
-                public void onNext(String s) {
-
-                }
-            });
-
-        }
     }
 
     public static String getAppId(Context context){
