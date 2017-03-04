@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 
 public class NinegorSDK {
     public static void register(Context context){
-        Logger.i("sdk register");
-        NinegorManager.register(context);
+//        Logger.i("sdk register");
+        NinegorManager.register2(context);
     }
 }

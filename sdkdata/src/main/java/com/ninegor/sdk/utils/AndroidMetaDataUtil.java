@@ -8,6 +8,11 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
 /**
  * Created by joye on 2017/1/17.
  * 获取manifestMeta数据类
@@ -65,6 +70,9 @@ public class AndroidMetaDataUtil {
         }
         return "";
     }
+
+
+
 
 
 

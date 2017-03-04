@@ -81,7 +81,7 @@ public class MainPresenter implements Presenter<MainActivityVu> {
 
     public void onBindVu(final MainActivity mainActivity) {
         this.mainActivity=mainActivity;
-        PgyUpdateManager.register(mainActivity, updateLitener);
+//        PgyUpdateManager.register(mainActivity, updateLitener);
 
     }
 

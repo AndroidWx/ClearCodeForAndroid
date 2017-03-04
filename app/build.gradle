@@ -21,7 +21,7 @@ android {
         versionName globalConfiguration.getAt("androidVersionName")
         testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
         testApplicationId globalConfiguration.getAt("testApplicationId")
-        manifestPlaceholders=[PGYER_APPID:"005cef4ebe6a9b20aba3d1bacdf779e3"]
+        manifestPlaceholders=[NinegorAppId:"6aa3ef7a78788c69bff469f99ec7f731"]
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -117,6 +117,7 @@ dependencies {
     testCompile testDependencies.assertj
     testCompile testDependencies.mockito
     testCompile testDependencies.robolectric
-//    compile files('libs/test.jar')
-    compile project(path: ':sdkdata')
+    //    compile files('libs/test.jar')
+//        compile project(path: ':sdkdata')
+//    compile files('src/main/libs/test.jar')
 }
