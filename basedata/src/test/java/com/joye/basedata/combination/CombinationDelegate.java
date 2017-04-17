@@ -34,16 +34,16 @@ public class CombinationDelegate {
 
     @Test
     public void testSpencer() throws Exception {
-        execulte("/Users/joye/Downloads/spencer-20170408对象站 (3).xlsx","/Users/joye/Search/combination/spencer", MyCrawler.getTime());
+        execulte("/Users/joye/Downloads/spencer-20170414对象站.xlsx","/Users/joye/Search/combination/spencer", MyCrawler.getTime());
     }
 
     @Test
     public void testKevin() throws Exception {
-        execulte("/Users/joye/Downloads/kevin_w88_4.12.xlsx","/Users/joye/Search/combination/kevin", "kevin_w88_4.12"+MyCrawler.getTime());
+        execulte("/Users/joye/Downloads/kevin_wusong_4.14.xlsx","/Users/joye/Search/combination/kevin", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
-        execulte("/Users/joye/Downloads/梦之城10个w88 16个待组合20170412.xlsx","/Users/joye/Search/combination/bruce", MyCrawler.getTime());
+        execulte("/Users/joye/Downloads/10梦40优待组合.xlsx","/Users/joye/Search/combination/bruce", MyCrawler.getTime());
     }
 
 
@@ -61,7 +61,10 @@ public class CombinationDelegate {
     public void execulte(String autoKeyCreateFilePath,String newPath,String newFileName) throws IOException {
         List<UploadRowResourceEntity> mUploadRowResourceEntitys=getUploadRowResourceEntitys(autoKeyCreateFilePath);
         List<DomainHandleRowEntity> mDomainHandleRowEntitys=getDomainHandleRowEntitys(autoKeyCreateFilePath);
-        if(mUploadRowResourceEntitys==null||mDomainHandleRowEntitys==null||mDomainHandleRowEntitys.size()!=mUploadRowResourceEntitys.size()){
+        if(mUploadRowResourceEntitys==null||
+                mDomainHandleRowEntitys==null||
+                mDomainHandleRowEntitys.size()!=mUploadRowResourceEntitys.size()
+                ){
             System.out.println(mUploadRowResourceEntitys.size()+":"+ mDomainHandleRowEntitys.size());
             throw new IllegalArgumentException("数量不一致");
         }
@@ -77,6 +80,7 @@ public class CombinationDelegate {
             uploadRowResourceEntity.setObjectDomain(domainHandleRowEntity.getCombinationDomains());
             //编码
             uploadRowResourceEntity.setChartsetStr(domainHandleRowEntity.getCharset());
+            uploadRowResourceEntity.setDescription(uploadRowResourceEntity.getTitle()+domainHandleRowEntity.getDescription());
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
             String keystr=domainHandleRowEntity.getKeys();
             if(keystr==null){
@@ -107,6 +111,21 @@ public class CombinationDelegate {
         getDomainHandleRowEntitys("/Users/joye/Downloads/spencer-20170408对象站.xlsx");
     }
 
+
+    private List<String> getDescriptions(String filePath) throws FileNotFoundException {
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
+        List<String> stringList=new ArrayList<>();
+        Sheet sheet = workBook.getSheetAt(2);
+        String cellValue = null;
+        for (Row r : sheet) {
+            for (Cell cell:r){
+                cellValue=cell.getStringCellValue();
+            }
+            stringList.add(cellValue);
+        }
+        return stringList;
+    }
+
     /**
      *
      * @param filePath
@@ -128,7 +147,7 @@ public class CombinationDelegate {
 
             entity=new DomainHandleRowEntity();
             for (Cell cell:r){
-                cellValue=cell.getStringCellValue();
+                 cellValue=cell.getStringCellValue();
                 if(cell.getColumnIndex()==0){
                     entity.setInitObjectDomains(cellValue);
                 }else if(cell.getColumnIndex()==1){
@@ -153,7 +172,6 @@ public class CombinationDelegate {
         return allResult;
 
     }
-
     /**
      * 根据文件路径,获取自动生成
      *

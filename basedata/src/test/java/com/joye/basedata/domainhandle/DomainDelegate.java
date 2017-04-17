@@ -6,6 +6,7 @@ import com.joye.basedata.autoseo.ExtralResourceWriteDelegate;
 import com.joye.basedata.majestic_.api.MajetsicApiRestImpl;
 import com.joye.basedata.majestic_.entity.AnchorTextEntity;
 import com.joye.basedata.majestic_.entity.MajetsicCommResponse;
+import com.joye.basedata.utils.AntorUtils;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -157,7 +158,12 @@ public class DomainDelegate {
 
     @Test
     public void testGetMajesticInfo() throws Exception {
-        getMajesticInfo(0, "/Users/joye/Search/域名处理/2017-4-13/域名-未用.xlsx", "/Users/joye/Search/域名处理/2017-4-13/", "处理域名排版结果");
+        getMajesticInfo(0, "/Users/joye/Search/域名处理/2017-4-17/域名-未用.xlsx", "/Users/joye/Search/域名处理/2017-4-17/", "处理域名排版结果");
+    }
+
+    @Test
+    public void testGetMajesticInfoAsync() throws Exception {
+        getMajesticInfoAsync(0, "/Users/joye/Search/域名处理/2017-4-17/域名-未用.xlsx", "/Users/joye/Search/域名处理/2017-4-17/", "处理域名排版结果");
 
     }
 
@@ -210,6 +216,57 @@ public class DomainDelegate {
         DomainWriteExcel.WriteDomainMajestic(list, writePath, fileName);
     }
 
+
+    /**
+     * 根据老域名列表，获取老域名所有的处理结果
+     *
+     * @param filePath  文件路劲
+     * @param writePath 写入位置
+     * @param fileName  文件名
+     * @throws IOException
+     */
+    public static void getMajesticInfoAsync(int index, String filePath, String writePath, String fileName) throws IOException {
+        List<MajetsicCommResponse<AnchorTextEntity>> AnchorTextEntityLists = new ArrayList<>();
+        List<String> urls = ExtralResourceWriteDelegate.getAllKeysByFilePath(filePath, index);
+        Lock lockAnchor = new ReentrantLock();
+        try {
+            lockAnchor.lock();
+            while (AnchorTextEntityLists.size() < urls.size()) {
+                for (int i = 0; i < urls.size(); i++) {
+                    int finalI = i;
+                    new MajetsicApiRestImpl().GetAnchorText(urls.get(i), "1", "0", "", "", "", "", "")
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(Schedulers.io()).subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onNext(MajetsicCommResponse<AnchorTextEntity> anchorTextEntityMajetsicCommResponse) {
+                            anchorTextEntityMajetsicCommResponse.getDataTables().setOldDomainStr(urls.get(finalI));
+                            AnchorTextEntityLists.add(anchorTextEntityMajetsicCommResponse);
+                        }
+                    });
+                }
+            }
+        } finally {
+            lockAnchor.unlock();
+        }
+        System.out.println(AnchorTextEntityLists.size());
+
+        List<AnchorTextEntity> list = new ArrayList<>();
+        for (int i = 0; i < AnchorTextEntityLists.size(); i++) {
+            AnchorTextEntity item = AnchorTextEntityLists.get(i).getDataTables();
+            list.add(item);
+        }
+        DomainWriteExcel.WriteDomainMajestic(list, writePath, fileName);
+    }
 
     @Test
     public void testAllUrls() throws Exception {
@@ -293,9 +350,13 @@ public class DomainDelegate {
         }
     }
 
+    /**
+     * 过滤域名排版
+     * @throws Exception
+     */
     @Test
     public void testDomain() throws Exception {
-        Workbook workBook = ExcelReaderHelper.getWorkBookByPath("/Users/joye/Downloads/4-15-删除域名.xlsx");
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath("/Users/joye/Downloads/5-17.xlsx");
         List<Item> allResult = new ArrayList<>();
         Item entity;
         String cellValue = "";
@@ -305,6 +366,9 @@ public class DomainDelegate {
             entity = new Item();
             for (Cell cell : r) {
                 cellValue = cell.getStringCellValue();
+                if(cellValue==null){
+                    cellValue="";
+                }
                 if (cell.getColumnIndex() == 0) {
                     entity.setDomain(cellValue);
                 } else if (cell.getColumnIndex() == 1) {
@@ -313,12 +377,8 @@ public class DomainDelegate {
                     break;
                 }
             }
-            if(isContainChinese(entity.getAntor())&&!entity.getAntor().contains("娱乐")&&!entity.getAntor().contains("传奇")&&!entity.getAntor().contains("合击")
-                    &&!entity.getAntor().contains("游戏")&&!entity.getAntor().contains("全讯网")&&!entity.getAntor().contains("seo")&&!entity.getAntor().contains("私服")
-                    &&!entity.getAntor().contains("癫病")&&!entity.getAntor().contains("博彩")&&!entity.getAntor().contains("六合彩")&&!entity.getAntor().contains("时时彩")
-                    &&!entity.getAntor().contains("合彩")&&!entity.getAntor().contains("马会")&&!entity.getAntor().contains("香港")&&!entity.getAntor().contains("色站")
-                    &&!entity.getAntor().contains("特码")&&!entity.getAntor().contains("美女图片")&&!entity.getAntor().contains("美眉")&&!entity.getAntor().contains("发票")
-                    &&!entity.getAntor().contains("七星彩")&&!entity.getAntor().contains("人体艺术")&&!entity.getAntor().contains("淘宝")
+            String antor = entity.getAntor();
+            if(AntorUtils.antorIsTure(antor)
                     ) {
                 allResult.add(entity);
             }
@@ -326,7 +386,7 @@ public class DomainDelegate {
 
 
 
-        Workbook workbook= createWorkBook("/Users/joye/Downloads/","描文本4-13-整理-新",EXCEL_TYPE_XLSX);
+        Workbook workbook= createWorkBook("/Users/joye/Downloads/","描文本4-17-整理-新",EXCEL_TYPE_XLSX);
         //根据资源,写入内容
         Sheet sheet1 =workbook.createSheet("sheet1");
         //获取样式
@@ -341,7 +401,7 @@ public class DomainDelegate {
             row.createCell(1).setCellValue(allResult.get(j).getAntor());
         }
         //创建文件流
-        OutputStream stream = new FileOutputStream("/Users/joye/Downloads/"+File.separator+"描文本4-13-整理-新."+EXCEL_TYPE_XLSX);
+        OutputStream stream = new FileOutputStream("/Users/joye/Downloads/"+File.separator+"描文本4-17-整理-新."+EXCEL_TYPE_XLSX);
         //写入数据
         workbook.write(stream);
         //关闭文件流
@@ -350,15 +410,6 @@ public class DomainDelegate {
     }
 
 
-    public static boolean isContainChinese(String str) {
-
-        Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
-        Matcher m = p.matcher(str);
-        if (m.find()) {
-            return true;
-        }
-        return false;
-    }
 
     @Test
     public void testABC() throws Exception {

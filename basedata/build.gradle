@@ -81,4 +81,7 @@ dependencies {
     testCompile testDependencies.robolectric
 //    compile files('src/test/libs/crawler4j-4.3.jar')
     compile group: 'edu.uci.ics', name: 'crawler4j', version: '4.3'
+    testCompile group:'cn.edu.hfut.dmic.webcollector', name:'WebCollector', version: '2.32'
+
+
 }

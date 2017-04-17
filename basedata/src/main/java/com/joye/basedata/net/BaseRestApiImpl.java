@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract  class BaseRestApiImpl<API>   {
     public static final String TAG="BaseRestApiImpl";
-    private final Context context;
+    private   Context context;
     public Context getContext(){
         return  context;
     }
@@ -43,12 +43,18 @@ public abstract  class BaseRestApiImpl<API>   {
     /**
      * 链接超时
      */
+
     private static final int OkHttpConnectTimeout=15000;
+
+    public BaseRestApiImpl(){
+    }
+
     /**
      * Constructor of the class
      *
      * @param context {@link android.content.Context}.
      */
+
     public BaseRestApiImpl(Context context) {
         if (context == null) {
             throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
@@ -76,12 +82,12 @@ public abstract  class BaseRestApiImpl<API>   {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             long t1 = System.nanoTime();
-            Logger.t(TAG).i(String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
-            Logger.t(TAG).d(request);
+//            Logger.t(TAG).i(String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
+//            Logger.t(TAG).d(request);
             Response response = chain.proceed(request);
             long t2 = System.nanoTime();
-            Logger.t(TAG).i(String.format("Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.code()));
-            Logger.t(TAG).d(response);
+//            Logger.t(TAG).i(String.format("Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.code()));
+//            Logger.t(TAG).d(response);
 //            Logger.t(TAG).i(response.body().toString());
             return response;
         }
@@ -105,7 +111,6 @@ public abstract  class BaseRestApiImpl<API>   {
                 for (Interceptor item:interceptors){
                     builder.addInterceptor(item);
                 }
-
             }
             if(BuildConfig.DEBUG) {
                 builder.addInterceptor(LoggingInterceptor);

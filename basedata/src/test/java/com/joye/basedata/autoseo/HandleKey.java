@@ -15,7 +15,7 @@ public class HandleKey {
      * 处理相同的数据
      * @param list
      */
-    private static void removeDuplicate(List list) {
+    public static void removeDuplicate(List list) {
         HashSet h = new HashSet(list);
         list.clear();
         list.addAll(h);
