@@ -54,7 +54,7 @@ public class WebCollectorDelegate {
 //        crawler.addRegex("-.*#.*");
 //        crawler.setTopN(5);
 //        crawler.start(3);
-        execute("/Users/joye/Downloads/spencer-2017041描述本.xlsx","/Users/joye/Downloads/","spencer-20170417描述本spaider结果");
+        execute("/Users/joye/Downloads/spencer-20170418描述本.xlsx","/Users/joye/Downloads/","spencer-20170418描述本-结果");
     }
 
     /**
@@ -93,27 +93,22 @@ public class WebCollectorDelegate {
         } finally {
             lockAnchor.unlock();
         }
-        write(map,writeExcelPath,fileName);
+        write(map,writeExcelPath,fileName,executeList);
     }
 
-    public void write(Map<OldDomainInfoBean, LinkedList<String>> map, String excelPath, String fileName) throws IOException {
-        /**
-         * 写入对象站
-         */
-        Set<OldDomainInfoBean> sets = map.keySet();
-        Iterator<OldDomainInfoBean> it = sets.iterator();
-        List<OldDomainCoincideEntity> lists=new LinkedList<>();
+    public void write(Map<OldDomainInfoBean, LinkedList<String>> map, String excelPath, String fileName, List<OldDomainInfoBean> executeList) throws IOException {
         OldDomainCoincideEntity entity;
-        while(it.hasNext()){
+        List<OldDomainCoincideEntity> lists=new LinkedList<>();
+        for (int i = 0; i < executeList.size(); i++) {
             entity=new OldDomainCoincideEntity();
-            OldDomainInfoBean item=it.next();
+            OldDomainInfoBean item=executeList.get(i);
             entity.setOldDomainStr(item.getOldDomainStr());
             entity.setCoincideLists(map.get(item));
             lists.add(entity);
         }
         WebCollectorWriteExcel.WriteObjectDomains(lists,excelPath,fileName);
-    }
 
+    }
 
     public   interface  ICrawlerCallBack{
         void onValidateUrl(String url);
