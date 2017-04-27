@@ -2,7 +2,6 @@ package com.joye.basedata.webcollector;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.junit.Test;
 
 import java.net.URLEncoder;
 import java.util.regex.Matcher;

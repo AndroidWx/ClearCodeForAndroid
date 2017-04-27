@@ -46,7 +46,7 @@ public class UploadRowResourceEntity {
 
     //网站编码
     private String chartsetStr;
-
+    private String oldDomainNoFrefix;
 
 
     public String getIpStr() {
@@ -63,6 +63,14 @@ public class UploadRowResourceEntity {
 
     public void setOldDomainStr(String oldDomainStr) {
         this.oldDomainStr = oldDomainStr;
+    }
+
+    public void setOldDomainNoFrefix(String oldDomainNoFrefix){
+        this.oldDomainNoFrefix=oldDomainNoFrefix;
+    }
+
+    public String getOldDomainNoFrefix() {
+        return oldDomainNoFrefix;
     }
 
     public String getIsOKStr() {

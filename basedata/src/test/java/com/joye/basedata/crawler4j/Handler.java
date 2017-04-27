@@ -1,7 +1,5 @@
 package com.joye.basedata.crawler4j;
 
-import com.joye.basedata.autoseo.ExtralResourceWriteDelegate;
-
 import org.junit.Test;
 
 import java.util.ArrayList;

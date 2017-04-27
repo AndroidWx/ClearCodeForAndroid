@@ -1,4 +1,4 @@
-package com.joye.basedata.autoseo.long8;
+package com.joye.basedata.autoseo.qianyi;
 
 import com.joye.basedata.autoseo.ExtralResourceWriteDelegate;
 

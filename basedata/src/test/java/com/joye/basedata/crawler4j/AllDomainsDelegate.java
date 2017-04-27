@@ -51,9 +51,13 @@ public class AllDomainsDelegate {
     }
 
 
-    public void setOldListDomains(List<String> oldListDomains) {
-        OldListDomains = oldListDomains;
+
+    private List<String> Indexs=new ArrayList<>();
+
+    public List<String> getIndexs() {
+        return Indexs;
     }
+
 
     /**
      * 对象站集合
@@ -62,7 +66,4 @@ public class AllDomainsDelegate {
         return listDomains;
     }
 
-    public void setListDomains(List<String> listDomains) {
-        this.listDomains = listDomains;
-    }
 }

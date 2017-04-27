@@ -104,9 +104,10 @@ dependencies {
     testCompile testDependencies.assertj
     testCompile testDependencies.mockito
     testCompile testDependencies.robolectric
-//    compile files('src/test/libs/crawler4j-4.3.jar')
-    compile group: 'edu.uci.ics', name: 'crawler4j', version: '4.3'
-    testCompile group:'cn.edu.hfut.dmic.webcollector', name:'WebCollector', version: '2.32'
-
-
+    //    compile files('src/test/libs/crawler4j-4.3.jar')
+    compile 'edu.uci.ics:crawler4j:4.3'
+    testCompile 'cn.edu.hfut.dmic.webcollector:WebCollector:2.32'
+    testCompile 'com.alibaba:dns-cache-manipulator:1.5.1'
+    testCompile 'com.google.code.gson:gson:2.3.1'
+    testCompile 'org.apache.httpcomponents:httpcore:4.4.6'
 }

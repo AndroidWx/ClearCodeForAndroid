@@ -1,13 +1,8 @@
 package com.joye.basedata.crawler4j;
 
-import com.joye.basedata.autoseo.ExcelWriterHelper;
-
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
 import edu.uci.ics.crawler4j.crawler.Page;
@@ -21,7 +16,7 @@ import edu.uci.ics.crawler4j.url.WebURL;
 
 public class MyCrawler extends WebCrawler{
     private static final Pattern IMAGE_EXTENSIONS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g|png|tiff?|mid|mp2|mp3|mp4|wav|avi|mov|mpeg|ram|m4v|pdf"
-            + "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
+            + "|rm|smil|wmv|swf|wma|zip|rar|gz|htm))$");
 
     /**
      *此方法接收两个参数。第一个参数是页面
@@ -36,8 +31,11 @@ public class MyCrawler extends WebCrawler{
     @Override
     public boolean shouldVisit(Page referringPage, WebURL url) {
         String href = url.getURL().toLowerCase();
-        return !IMAGE_EXTENSIONS.matcher(href).matches()
-                && AllDomainsDelegate.getInstance().getListDomains().contains(href);
+        return matcher(href) && AllDomainsDelegate.getInstance().getListDomains().contains(href);
+    }
+
+    protected boolean matcher(String href){
+        return !IMAGE_EXTENSIONS.matcher(href).matches();
     }
     DomainObjectEntity domainObjectEntity=new DomainObjectEntity();
     public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -52,7 +50,12 @@ public class MyCrawler extends WebCrawler{
     @Override
     public void visit(Page page) {
         String url = page.getWebURL().getURL();
+        System.out.println("page is redirect:"+page.isRedirect());
+        if(page.isRedirect()){
+            return;
+        }
          if (page.getParseData() instanceof HtmlParseData) {
+             System.out.println(((HtmlParseData) page.getParseData()).getHtml());
             domainObjectEntity=new DomainObjectEntity();
             domainObjectEntity.setUrl(url);
             domainObjectEntity.setSmallChartset(page.getContentCharset());

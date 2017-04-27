@@ -11,8 +11,6 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**

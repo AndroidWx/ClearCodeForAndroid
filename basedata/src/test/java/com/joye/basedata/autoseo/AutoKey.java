@@ -1,24 +1,5 @@
 package com.joye.basedata.autoseo;
 
-import com.monitorjbl.xlsx.StreamingReader;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
-import edu.emory.mathcs.backport.java.util.Collections;
-
 /**
  * Created by joye on 2017/3/26.
  */

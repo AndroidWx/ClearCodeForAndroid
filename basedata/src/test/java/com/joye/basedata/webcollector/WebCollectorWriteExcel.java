@@ -1,8 +1,6 @@
 package com.joye.basedata.webcollector;
 
 import com.joye.basedata.ExcelUtils;
-import com.joye.basedata.domainhandle.ArchiveResponse;
-import com.joye.basedata.majestic_.entity.AnchorTextEntity;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;

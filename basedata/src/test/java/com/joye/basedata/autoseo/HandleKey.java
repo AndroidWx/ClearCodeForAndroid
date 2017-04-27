@@ -1,5 +1,7 @@
 package com.joye.basedata.autoseo;
 
+import com.joye.basedata.utils.AntorUtils;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,7 +41,13 @@ public class HandleKey {
         for (int i = 0; i < allKeys.size(); i++) {
             for (int j = 0; j < allDomainKeys.size(); j++) {
                 int n = (int) (Math.random() * (allKeys.size() > 10 ? 10 : allKeys.size() - 1));
-                tlpicsb.get().append(allDomainKeys.get(j)).append(allKeys.get(i)).append("_").append(allKeys.get(i)).append("_").append(allKeys.get(n));
+
+                String string = allKeys.get(i);
+                if(AntorUtils.isContainChinese(string.substring(0,1))) {
+                    tlpicsb.get().append(allDomainKeys.get(j)).append(string).append("_").append(string).append("_").append(allKeys.get(n));
+                }else{
+                    tlpicsb.get().append(allDomainKeys.get(j)).append("_").append(string).append("_").append(allKeys.get(n));//.append(string);//.append("_").append(allKeys.get(n));
+                }
                 allResukt.add(tlpicsb.get().toString());
                 System.out.println(tlpicsb.get().toString());
                 tlpicsb.get().delete(0,tlpicsb.get().length());
@@ -61,7 +69,12 @@ public class HandleKey {
         for (int i = 0; i < allKeys.size(); i++) {
             for (int j = 0; j < allDomainKeys.size(); j++) {
                 int n = (int) (Math.random() * (allKeys.size() > 10 ? 10 : allKeys.size() - 1));
-                tlpicsb.get().append(allDomainKeys.get(j)).append(allKeys.get(i)).append("_").append("www.").append(allDomainKeys.get(j)).append(".com").append("_").append(allKeys.get(n));
+                String string = allKeys.get(i);
+                if(AntorUtils.isContainChinese(string.substring(0,1))) {
+                    tlpicsb.get().append(allDomainKeys.get(j)).append(string).append("_").append("www.").append(allDomainKeys.get(j)).append(".com").append("_").append(allKeys.get(n));
+                }else{
+                    tlpicsb.get().append(allDomainKeys.get(j)).append("_").append(string).append("_").append("www.").append(allDomainKeys.get(j)).append(".com");//.append("_").append(allKeys.get(n));
+                }
                 allResukt.add(tlpicsb.get().toString());
                 System.out.println(tlpicsb.get().toString());
                 tlpicsb.get().delete(0,tlpicsb.get().length());

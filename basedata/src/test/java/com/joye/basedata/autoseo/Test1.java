@@ -67,4 +67,12 @@ public class Test1 {
     }
 
 
+    @Test
+    public void testAbc() throws Exception {
+        String s="142.234.221.71    twdwL.com";
+
+        System.out.println(s.replaceAll("[^a-zA-Z.]",""));
+        System.out.println(s.replaceAll("[^0-9.]",""));
+
+    }
 }

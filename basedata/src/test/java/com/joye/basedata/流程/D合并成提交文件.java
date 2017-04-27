@@ -1,9 +1,11 @@
-package com.joye.basedata.combination;
+package com.joye.basedata.流程;
 
 import com.joye.basedata.autoseo.ExcelReaderHelper;
 import com.joye.basedata.autoseo.ExcelWriterHelper;
 import com.joye.basedata.autoseo.UploadRowResourceEntity;
+import com.joye.basedata.combination.DomainHandleRowEntity;
 import com.joye.basedata.crawler4j.MyCrawler;
+import com.joye.basedata.filter.ReplaceDomainEntity;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,45 +22,52 @@ import java.util.List;
  * Created by joye on 2017/4/9.
  */
 
-public class CombinationDelegate {
-//    /**
-//     * 1、获取生成的关键字组合
-//     * 2、获取对象站以及老域名情况
-//     * 3、生成新的上站Excel
-//     */
-//
-//    @Test
-//    public void testSpencer() throws Exception {
-//        execulte("/Users/joye/Downloads/spencer-20170414对象站.xlsx","/Users/joye/Search/combination/spencer", MyCrawler.getTime());
-//    }
-//
-//    @Test
-//    public void testKevin() throws Exception {
-//        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.18 (1).xlsx","/Users/joye/Search/combination/kevin", MyCrawler.getTime());
-//    }
-//    @Test
-//    public void testBruce() throws Exception {
-//        execulte("/Users/joye/Downloads/10梦40优待组合.xlsx","/Users/joye/Search/combination/bruce", MyCrawler.getTime());
-//    }
+public class D合并成提交文件 {
+    /**
+     * 1、获取生成的关键字组合
+     * 2、获取对象站以及老域名情况
+     * 3、生成新的上站Excel
+     */
+
+    @Test
+    public void testSpencer() throws Exception {
+//        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0427对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+    }
+
+    @Test
+    public void testKevin() throws Exception {
+//        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+    }
+    @Test
+    public void testBruce() throws Exception {
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+    }
+
+    @Test
+    public void testLvan() throws Exception {
+//        execulte("/Users/joye/Downloads/ivan-对象站 (2).xlsx","/Users/joye/Search/combination/lvan/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+    }
 
 
 
+    @Test
+    public void testJoye() throws Exception {
+//        execulte("/Users/joye/Downloads/明仕亚洲上传检查 (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/明仕亚洲上传检查 (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
 
-//
-//    @Test
-//    public void testGetDomainHandleRowEntitys() throws Exception {
-//        getDomainHandleRowEntitys("/Users/joye/Downloads/spencer-20170408对象站.xlsx");
-//    }
-
+    }
 
 
     /**
-     * 开始执行合并
-     * @param autoKeyCreateFilePath 关键字文档
-     * @param newPath
-     * @param newFileName
+     * 生成批量提交文档
+     * @param autoKeyCreateFilePath
+     * @return
+     * @throws FileNotFoundException
      */
-    public void execulte(String autoKeyCreateFilePath,String newPath,String newFileName) throws IOException {
+    public List<UploadRowResourceEntity> getCombineDatas(String autoKeyCreateFilePath) throws FileNotFoundException {
         List<UploadRowResourceEntity> mUploadRowResourceEntitys=getUploadRowResourceEntitys(autoKeyCreateFilePath);
         List<DomainHandleRowEntity> mDomainHandleRowEntitys=getDomainHandleRowEntitys(autoKeyCreateFilePath);
         if(mUploadRowResourceEntitys==null||
@@ -76,6 +85,7 @@ public class CombinationDelegate {
             domainHandleRowEntity=mDomainHandleRowEntitys.get(i);
             //老域名
             uploadRowResourceEntity.setOldDomainStr("www."+domainHandleRowEntity.getOldDomains());
+            uploadRowResourceEntity.setOldDomainNoFrefix(domainHandleRowEntity.getOldDomains());
             //对象站
             uploadRowResourceEntity.setObjectDomain(domainHandleRowEntity.getCombinationDomains());
             //编码
@@ -101,11 +111,34 @@ public class CombinationDelegate {
             }
             combinationEntitys.add(uploadRowResourceEntity);
         }
-        ExcelWriterHelper.WriteExtralRerouse(combinationEntitys,newPath,newFileName);
-
-
+        return combinationEntitys;
     }
 
+
+
+    public void execulteCombineAndTypeSetting(String autoKeyCreateFilePath,String newPath,String newFileName) throws IOException {
+
+        List<String> ips=getIps(autoKeyCreateFilePath);
+        List<ReplaceDomainEntity> replaceDomainEntityList=getReplaeDomainEntitys(autoKeyCreateFilePath);
+        ExcelWriterHelper.writeUploadCheck(getCombineDatas(autoKeyCreateFilePath),newPath,newFileName,ips,replaceDomainEntityList);
+    }
+
+
+
+    /**
+     * 开始执行合并
+     * @param autoKeyCreateFilePath 关键字文档
+     * @param newPath
+     * @param newFileName
+     */
+    public void execulte(String autoKeyCreateFilePath,String newPath,String newFileName) throws IOException {
+        ExcelWriterHelper.WriteExtralRerouse(getCombineDatas(autoKeyCreateFilePath),newPath,newFileName);
+    }
+
+    @Test
+    public void testGetDomainHandleRowEntitys() throws Exception {
+        getDomainHandleRowEntitys("/Users/joye/Downloads/spencer-20170408对象站.xlsx");
+    }
 
 
     /**
@@ -155,23 +188,62 @@ public class CombinationDelegate {
 
     }
 
-
-    public static List<UploadRowResourceEntity> getUploadRowResourceEntitys(String filePath) throws FileNotFoundException {
-        return getUploadRowResourceEntitys(filePath,0);
+    public static List<ReplaceDomainEntity> getReplaeDomainEntitys(String filePath) throws FileNotFoundException {
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
+        List<ReplaceDomainEntity> allResult = new ArrayList<>();
+        ReplaceDomainEntity entity;
+        String cellValue = "";
+        Sheet sheet = workBook.getSheetAt(3);
+        int i=0;
+        for (Row r:sheet) {
+            if(i==0){
+                i++;
+                continue;
+            }
+            entity=new ReplaceDomainEntity();
+            for (Cell cell : r) {
+                cellValue = cell.getStringCellValue();
+                if (cell.getColumnIndex() == 0) {
+                    entity.setDomain(cellValue);
+                }else if (cell.getColumnIndex() == 1) {
+                    entity.setKeystr(cellValue);
+                }else if(cell.getColumnIndex()==2){
+                    entity.setCharsert(cellValue);
+                }
+            }
+            allResult.add(entity);
+        }
+        return allResult;
     }
 
+    public static List<String> getIps(String filePath) throws FileNotFoundException {
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
+        List<String> allResult = new ArrayList<>();
+        UploadRowResourceEntity entity;
+        String cellValue = "";
+        Sheet sheet = workBook.getSheetAt(2);
+        for (Row r:sheet) {
+            for (Cell cell : r) {
+                cellValue = cell.getStringCellValue();
+                if (cell.getColumnIndex() == 0) {
+                    allResult.add(cellValue);
+                }
+            }
+        }
+        return allResult;
+    }
     /**
      * 根据文件路径,获取自动生成
      *
      * @param filePath
      * @return
      */
-    public static List<UploadRowResourceEntity> getUploadRowResourceEntitys(String filePath,int sheetIndex) throws FileNotFoundException {
+    public static List<UploadRowResourceEntity> getUploadRowResourceEntitys(String filePath) throws FileNotFoundException {
         Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
         List<UploadRowResourceEntity> allResult = new ArrayList<>();
         UploadRowResourceEntity entity;
         String cellValue = "";
-        Sheet sheet = workBook.getSheetAt(sheetIndex);
+        Sheet sheet = workBook.getSheetAt(0);
         int i=0;
         for (Row r:sheet) {
             if(i==0){

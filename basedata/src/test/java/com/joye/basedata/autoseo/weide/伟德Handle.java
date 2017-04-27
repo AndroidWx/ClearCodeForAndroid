@@ -8,7 +8,7 @@ import org.junit.Test;
  * Created by joye on 2017/4/4.
  */
 
-public class WeiDeHandle {
+public class 伟德Handle {
 
     @Test
     public void testHandleKeysExcel()  {

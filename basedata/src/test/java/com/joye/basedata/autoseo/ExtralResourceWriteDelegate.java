@@ -1,5 +1,7 @@
 package com.joye.basedata.autoseo;
 
+import com.joye.basedata.utils.AntorUtils;
+
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.FileNotFoundException;
@@ -82,7 +84,15 @@ public class ExtralResourceWriteDelegate {
         List<String> allNewAllKeys=new ArrayList<>();
         for (int i = 0; i < allKeys.size(); i++) {
             for (int j = 0; j < allDomainKeys.size(); j++) {
-                allNewAllKeys.add(allDomainKeys.get(j)+allKeys.get(i));
+                String keys = allKeys.get(i);
+
+                if(!AntorUtils.isContainChinese(keys.substring(0,1))) {
+                    while (!AntorUtils.isContainChinese(keys.substring(0, 1))) {
+                        keys = keys.substring(1, keys.length());
+                    }
+                }
+
+                allNewAllKeys.add(allDomainKeys.get(j)+keys);
             }
         }
         List<String> results=HandleKey.getAllTitleResultByKeys(allNewAllKeys);

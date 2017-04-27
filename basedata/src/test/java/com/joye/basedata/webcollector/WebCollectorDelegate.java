@@ -1,10 +1,9 @@
 package com.joye.basedata.webcollector;
 
-import com.joye.basedata.ExcelUtils;
 import com.joye.basedata.autoseo.ExcelReaderHelper;
-import com.joye.basedata.autoseo.ExcelWriterHelper;
 import com.joye.basedata.autoseo.HandleKey;
 import com.joye.basedata.utils.AntorUtils;
+import com.joye.basedata.流程.C1获取老域名多个对象站的信息;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -12,17 +11,18 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static org.apache.poi.xssf.usermodel.XSSFWorkbookType.XLSX;
 
 /**
  * Created by joye on 2017/4/14.
@@ -58,9 +58,49 @@ public class WebCollectorDelegate {
     }
 
     /**
+     * 开始执行并开启抓取对象站信息
+     */
+    public static  void executeDomain(String filePath,String writeExcelPath,String fileName) throws Exception {
+//        List<OldDomainInfoBean> infoBeans=getOldDomainInfos(filePath);
+//        List<OldDomainInfoBean> executeList=new ArrayList<>();
+//        List<OldDomainInfoBean> waitList=new ArrayList<>();
+//        for (OldDomainInfoBean item:infoBeans
+//                ) {
+//            if(item.getAutherTxts().isEmpty()){
+//                waitList.add(item);
+//            }else {
+//                executeList.add(item);
+//            }
+//        }
+//
+//        Map<OldDomainInfoBean,LinkedList<String>> map=new HashMap<>();
+//        Lock lockAnchor = new ReentrantLock();
+//        try {
+//            lockAnchor.lock();
+//            for (OldDomainInfoBean item : executeList
+//                    ) {
+//                LinkedList<String> linkedList = new LinkedList<>();
+//                map.put(item, linkedList);
+//                new JoyeBingCrawler(item, new ICrawlerCallBack() {
+//                    @Override
+//                    public void onValidateUrl(String url) {
+//                        linkedList.add(url);
+//                        HandleKey.removeDuplicate(linkedList);
+//                        map.put(item, linkedList);
+//                    }
+//                }).start(2);
+//            }
+//        } finally {
+//            lockAnchor.unlock();
+//        }
+//        write(map,writeExcelPath,fileName,executeList);
+        C1获取老域名多个对象站的信息.exculte(writeExcelPath+fileName+ "."+XLSX.getExtension());
+    }
+
+    /**
      * 开始执行
      */
-    public void execute(String filePath,String writeExcelPath,String fileName) throws Exception {
+    public static  void execute(String filePath,String writeExcelPath,String fileName) throws Exception {
         List<OldDomainInfoBean> infoBeans=getOldDomainInfos(filePath);
         List<OldDomainInfoBean> executeList=new ArrayList<>();
         List<OldDomainInfoBean> waitList=new ArrayList<>();
@@ -96,7 +136,7 @@ public class WebCollectorDelegate {
         write(map,writeExcelPath,fileName,executeList);
     }
 
-    public void write(Map<OldDomainInfoBean, LinkedList<String>> map, String excelPath, String fileName, List<OldDomainInfoBean> executeList) throws IOException {
+    public static void write(Map<OldDomainInfoBean, LinkedList<String>> map, String excelPath, String fileName, List<OldDomainInfoBean> executeList) throws IOException {
         OldDomainCoincideEntity entity;
         List<OldDomainCoincideEntity> lists=new LinkedList<>();
         for (int i = 0; i < executeList.size(); i++) {

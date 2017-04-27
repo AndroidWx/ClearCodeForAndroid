@@ -1,7 +1,5 @@
 package com.joye.basedata.majestic_.entity;
 
-import java.util.List;
-
 /**
  * Created by joye on 2017/4/6.
  */

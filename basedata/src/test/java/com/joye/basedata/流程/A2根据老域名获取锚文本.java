@@ -1,29 +1,17 @@
-package com.joye.basedata.domainhandle;
+package com.joye.basedata.流程;
 
-import com.joye.basedata.autoseo.ExcelReaderHelper;
 import com.joye.basedata.autoseo.ExtralResourceWriteDelegate;
+import com.joye.basedata.domainhandle.ArchiveNetApiImpl;
+import com.joye.basedata.domainhandle.ArchiveResponse;
+import com.joye.basedata.domainhandle.DomainWriteExcel;
 import com.joye.basedata.majestic_.api.MajetsicApiRestImpl;
 import com.joye.basedata.majestic_.entity.AnchorTextEntity;
 import com.joye.basedata.majestic_.entity.MajetsicCommResponse;
-import com.joye.basedata.utils.AntorUtils;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
@@ -33,33 +21,22 @@ import rx.Observable;
 import rx.Observer;
 import rx.schedulers.Schedulers;
 
-import static com.joye.basedata.ExcelUtils.CreateCellStyle;
-import static com.joye.basedata.ExcelUtils.EXCEL_TYPE_XLSX;
-import static com.joye.basedata.ExcelUtils.createWorkBook;
-
 /**
- * Created by joye on 2017/4/5.
+ * Created by joye on 2017/4/20.
  */
 
-public class DomainDelegate {
-
-    @Test
-    public void testMajetsicApi() throws Exception {
-
-
-    }
-
+public class A2根据老域名获取锚文本 {
     /**
      * 根据老域名，获取老域名快照， 并把信息写入Excel里面
      *
      * @throws Exception
      */
     @Test
-    public void testUrlArchive() throws Exception {
+    public void testFirstArchiveAndMajectsict() throws Exception {
         List<ArchiveResponse> ArchiveResponses = new ArrayList<>();
         List<ArchiveResponse> MajetsicList = new ArrayList<>();
         List<MajetsicCommResponse<AnchorTextEntity>> AnchorTextEntityLists = new ArrayList<>();
-        List<String> urls = ExtralResourceWriteDelegate.getAllKeysByFilePath("/Users/joye/Search/a/域名-未用-4-10.xlsx");
+        List<String> urls = ExtralResourceWriteDelegate.getAllKeysByFilePath("/Users/joye/Search/a/域名.xlsx");
         System.out.println(urls.size());
         boolean archiveBoolean = true;
         Lock lock = new ReentrantLock();
@@ -153,16 +130,16 @@ public class DomainDelegate {
     }
 
 
+
+
+    private String oldDomainPath="/Users/joye/Search/域名处理/2017-4-27/域名-未用.xlsx";
+    private String newExcelPath="/Users/joye/Search/域名处理/2017-4-27/";
+    private String newExcelName="处理域名排版结果";
     @Test
     public void testGetMajesticInfo() throws Exception {
-        getMajesticInfo(0, "/Users/joye/Search/域名处理/2017-4-20/ivan-域名.xlsx", "/Users/joye/Search/域名处理/2017-4-20/", "处理域名排版结果");
+        getMajesticInfo(0,oldDomainPath , newExcelPath, newExcelName);
     }
 
-    @Test
-    public void testGetMajesticInfoAsync() throws Exception {
-        getMajesticInfoAsync(0, "/Users/joye/Search/域名处理/2017-4-20/ivan-域名.xlsx", "/Users/joye/Search/域名处理/2017-4-20/", "处理域名排版结果");
-
-    }
 
     /**
      * 根据老域名列表，获取老域名所有的处理结果
@@ -178,9 +155,11 @@ public class DomainDelegate {
         Lock lockAnchor = new ReentrantLock();
         try {
             lockAnchor.lock();
-            while (AnchorTextEntityLists.size() < urls.size()) {
+            int j=0;
+            while (j<urls.size()) {
                 for (int i = 0; i < urls.size(); i++) {
-                    int finalI = i;
+                    j++;
+                    int finalI=i;
                     new MajetsicApiRestImpl().GetAnchorText(urls.get(i), "1", "0", "", "", "", "", "").subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
                         @Override
                         public void onCompleted() {
@@ -189,11 +168,25 @@ public class DomainDelegate {
 
                         @Override
                         public void onError(Throwable e) {
+                            //失败的情况下，构建一个锚文本
+                            MajetsicCommResponse<AnchorTextEntity> response =new MajetsicCommResponse<AnchorTextEntity>();
+                            AnchorTextEntity anchorText=new AnchorTextEntity();
+                            anchorText.setOldDomainStr(urls.get(finalI));
+                            AnchorTextEntity.AnchorTextBean anchorbean =new AnchorTextEntity.AnchorTextBean();
+                            List<AnchorTextEntity.AnchorTextBean.DataBean> datas=new ArrayList<AnchorTextEntity.AnchorTextBean.DataBean>();
+                            AnchorTextEntity.AnchorTextBean.DataBean dataBean=new AnchorTextEntity.AnchorTextBean.DataBean();
+                            dataBean.setAnchorText("");
+                            datas.add(dataBean);
+                            anchorbean.setData(datas);
+                            anchorText.setAnchorText(anchorbean);
+                            response.setDataTables(anchorText);
+                            AnchorTextEntityLists.add(response);
                             e.printStackTrace();
                         }
 
                         @Override
                         public void onNext(MajetsicCommResponse<AnchorTextEntity> anchorTextEntityMajetsicCommResponse) {
+
                             anchorTextEntityMajetsicCommResponse.getDataTables().setOldDomainStr(urls.get(finalI));
                             AnchorTextEntityLists.add(anchorTextEntityMajetsicCommResponse);
                         }
@@ -214,58 +207,6 @@ public class DomainDelegate {
     }
 
 
-    /**
-     * 根据老域名列表，获取老域名所有的处理结果
-     *
-     * @param filePath  文件路劲
-     * @param writePath 写入位置
-     * @param fileName  文件名
-     * @throws IOException
-     */
-    public static void getMajesticInfoAsync(int index, String filePath, String writePath, String fileName) throws IOException {
-        List<MajetsicCommResponse<AnchorTextEntity>> AnchorTextEntityLists = new ArrayList<>();
-        List<String> urls = ExtralResourceWriteDelegate.getAllKeysByFilePath(filePath, index);
-        Lock lockAnchor = new ReentrantLock();
-        try {
-            lockAnchor.lock();
-            while (AnchorTextEntityLists.size() < urls.size()) {
-                int finalI = 0;
-                if(finalI>=urls.size()){
-                    break;
-                }
-                for (int i = 0; i < urls.size(); i++) {
-                    new MajetsicApiRestImpl().GetAnchorText(urls.get(i), "1", "0", "", "", "", "", "")
-                            .subscribeOn(Schedulers.io()).subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
-                        @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            e.printStackTrace();
-                        }
-
-                        @Override
-                        public void onNext(MajetsicCommResponse<AnchorTextEntity> anchorTextEntityMajetsicCommResponse) {
-                            anchorTextEntityMajetsicCommResponse.getDataTables().setOldDomainStr(urls.get(finalI));
-                            AnchorTextEntityLists.add(anchorTextEntityMajetsicCommResponse);
-                        }
-                    });
-                }
-            }
-        } finally {
-            lockAnchor.unlock();
-        }
-        System.out.println(AnchorTextEntityLists.size());
-
-        List<AnchorTextEntity> list = new ArrayList<>();
-        for (int i = 0; i < AnchorTextEntityLists.size(); i++) {
-            AnchorTextEntity item = AnchorTextEntityLists.get(i).getDataTables();
-            list.add(item);
-        }
-        DomainWriteExcel.WriteDomainMajestic(list, writePath, fileName);
-    }
 
     @Test
     public void testAllUrls() throws Exception {
@@ -328,107 +269,7 @@ public class DomainDelegate {
 
     }
 
-    public static class Item {
-        private String domain;
-        private String antor;
-
-        public String getDomain() {
-            return domain;
-        }
-
-        public void setDomain(String domain) {
-            this.domain = domain;
-        }
-
-        public String getAntor() {
-            return antor;
-        }
-
-        public void setAntor(String antor) {
-            this.antor = antor;
-        }
-    }
-
-    /**
-     * 过滤域名排版
-     * @throws Exception
-     */
-    @Test
-    public void testDomain() throws Exception {
-        Workbook workBook = ExcelReaderHelper.getWorkBookByPath("/Users/joye/Downloads/4-22-删除.xlsx");
-        List<Item> allResult = new ArrayList<>();
-        Item entity;
-        String cellValue = "";
-        Sheet sheet = workBook.getSheetAt(0);
-        int i = 0;
-        for (Row r : sheet) {
-            entity = new Item();
-            for (Cell cell : r) {
-                cellValue = cell.getStringCellValue();
-                if(cellValue==null){
-                    cellValue="";
-                }
-                if (cell.getColumnIndex() == 0) {
-                    entity.setDomain(cellValue);
-                } else if (cell.getColumnIndex() == 1) {
-                    entity.setAntor(cellValue);
-                } else {
-                    break;
-                }
-            }
-            String antor = entity.getAntor();
-            if(AntorUtils.antorIsTure(antor)
-                    ) {
-                allResult.add(entity);
-            }
-        }
 
 
 
-        Workbook workbook= createWorkBook("/Users/joye/Downloads/","描文本4-19-整理-新",EXCEL_TYPE_XLSX);
-        //根据资源,写入内容
-        Sheet sheet1 =workbook.createSheet("sheet1");
-        //获取样式
-        CellStyle mCellStyle=CreateCellStyle(workbook);
-
-        Row row=null;
-        for (int j = 0; j < allResult.size(); j++) {
-            Item entiy= allResult.get(j);
-            row = (Row) sheet1.createRow(j);
-            row.setHeight((short) 500);
-            row.createCell(0).setCellValue(allResult.get(j).getDomain());
-            row.createCell(1).setCellValue(allResult.get(j).getAntor());
-        }
-        //创建文件流
-        OutputStream stream = new FileOutputStream("/Users/joye/Downloads/"+File.separator+"描文本4-19-整理-新."+EXCEL_TYPE_XLSX);
-        //写入数据
-        workbook.write(stream);
-        //关闭文件流
-        stream.close();
-
-    }
-
-
-
-    @Test
-    public void testABC() throws Exception {
-        try {
-            String key = "广州学邦"; //查询关键字
-            key = URLEncoder.encode(key, "utf-8");
-            URL u = new URL("http://www.baidu.com.cn/s?wd=" + key + "&cl=3");
-            URLConnection conn = u.openConnection();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    conn.getInputStream(), "gb2312"));
-            String str = reader.readLine();
-            while (str != null) {
-                System.out.println(str);
-                str = reader.readLine();
-            }
-
-            reader.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 }

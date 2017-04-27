@@ -53,7 +53,6 @@ public class JoyeBingCrawler extends RamCrawler {
         if (IMAGE_EXTENSIONS.matcher(href).matches()) {
             return;
         }
-
         String keyword = page.getMetaData("keyword");
         String pageType = page.getMetaData("pageType");
         int depth = Integer.valueOf(page.getMetaData("depth"));
