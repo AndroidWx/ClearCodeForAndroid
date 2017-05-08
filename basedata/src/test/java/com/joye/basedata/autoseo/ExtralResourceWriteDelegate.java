@@ -69,6 +69,28 @@ public class ExtralResourceWriteDelegate {
         ExcelWriterHelper.WriteExtralRerouse(resources,excelWritePath,fileName);
     }
 
+
+
+    /**
+     * 根据域关键词和搜索次数出来的关键字组合，自动生成外部资源
+     * 千亿国际+www.qy8.com+随便填写
+     * @param path 搜索次数排名的关键词
+     * @param path1 域词语关键词
+     * @param excelWritePath 写入Excel地址
+     * @param fileName 文件名
+     */
+    public static void handleWWWDomainKeysOnlyKeys(String path,String path1,String excelWritePath, String fileName) throws IOException {
+        //获取所有关键字
+        List<String> allKeys=getAllKeysByFilePath(path);
+        //获取所有域词
+        List<String> allDomainKeys=getAllKeysByFilePath(path1);
+        //获取所有title qy8千亿国际+www.qy8.com+随便填写
+        List<String> results=HandleKey.getAllDomainTitlesByKeys(allKeys,allDomainKeys);
+        List<UploadRowResourceEntity> resources=completeDatas(results,null);
+        ExcelWriterHelper.WriteExtralRerouse(resources,excelWritePath,fileName);
+    }
+
+
     /**
      * 根据域关键词和搜索次数出来的关键字组合，自动生成外部资源
      * @param path 搜索次数排名的关键词
@@ -81,11 +103,13 @@ public class ExtralResourceWriteDelegate {
         List<String> allKeys=getAllKeysByFilePath(path);
         //获取所有域词
         List<String> allDomainKeys=getAllKeysByFilePath(path1);
+        //所有新的关键字
         List<String> allNewAllKeys=new ArrayList<>();
         for (int i = 0; i < allKeys.size(); i++) {
+            //所有域词
             for (int j = 0; j < allDomainKeys.size(); j++) {
+                //关键字
                 String keys = allKeys.get(i);
-
                 if(!AntorUtils.isContainChinese(keys.substring(0,1))) {
                     while (!AntorUtils.isContainChinese(keys.substring(0, 1))) {
                         keys = keys.substring(1, keys.length());
@@ -95,6 +119,7 @@ public class ExtralResourceWriteDelegate {
                 allNewAllKeys.add(allDomainKeys.get(j)+keys);
             }
         }
+
         List<String> results=HandleKey.getAllTitleResultByKeys(allNewAllKeys);
         List<UploadRowResourceEntity> resources=completeDatas(results,null);
         ExcelWriterHelper.WriteExtralRerouse(resources,excelWritePath,fileName);
@@ -151,6 +176,7 @@ public class ExtralResourceWriteDelegate {
             s=s.replaceAll("_","[or][to]");
             s="[to]"+s;
             rowData.setReplaceKeyStr(s);
+
             result.add(rowData);
         }
         return result;

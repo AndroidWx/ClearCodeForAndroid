@@ -132,8 +132,8 @@ public class A2根据老域名获取锚文本 {
 
 
 
-    private String oldDomainPath="/Users/joye/Search/域名处理/2017-4-27/域名-未用.xlsx";
-    private String newExcelPath="/Users/joye/Search/域名处理/2017-4-27/";
+    private String oldDomainPath="/Users/joye/Search/域名处理/2017-5-8/域名-未用.xlsx";
+    private String newExcelPath="/Users/joye/Search/域名处理/2017-5-8/";
     private String newExcelName="处理域名排版结果";
     @Test
     public void testGetMajesticInfo() throws Exception {

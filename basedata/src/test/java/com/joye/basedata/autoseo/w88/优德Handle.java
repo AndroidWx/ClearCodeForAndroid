@@ -15,26 +15,34 @@ public class 优德Handle {
         try {
             /**
              * 关键字生成
-             * AAA:w88
+             * AAA:优德
              * AAA+AAAB+Random
              * 龙8娱乐_龙8娱乐客户端城_龙8娱乐手机下载
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/w88/优德娱乐关键词.xlsx","/Users/joye/search/word/w88/create","优德娱乐组合");
+            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/w88/优德.xlsx","/Users/joye/search/word/w88/create","1.优德关键词组合");
             /**
              * 域名词+关键字生成
-             * long8520龙8娱乐官网_long8520龙8娱乐官网下载_long8520龙8娱乐老虎机
+             * long8520龙8娱乐娱乐_long8520龙8娱乐娱乐下载_long8520龙8娱乐娱乐
              */
-            ExtralResourceWriteDelegate.handleDomainKeys("/Users/joye/search/word/w88/优德娱乐关键词.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","优德娱乐域加关键字组合");
+            ExtralResourceWriteDelegate.handleDomainKeys("/Users/joye/search/word/w88/优德.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","4.优德关键词域加关键字组合");
             /**
              * 域名加关键字 组合成关键字
-             * long8877龙8娱乐官网_龙8娱乐官网_龙8娱乐官网
+             * long8877龙8娱乐娱乐_龙8娱乐娱乐_龙8娱乐娱乐
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/w88/优德娱乐关键词.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","优德娱乐域加关键字作为组合");
+            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/w88/优德.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","3.优德关键词域加关键字作为组合");
             /**
              * 域名词+关键字生成
-             * long8.cc龙8娱乐备用网址_www.long8.cc.com_龙8娱乐老虎机手机版
+             * long8.cc龙8娱乐备用网址_www.long8.cc.com_龙8娱乐娱乐手机版
              */
-            ExtralResourceWriteDelegate.handleWWWDomainKeys("/Users/joye/search/word/w88/优德娱乐关键词.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","优德娱乐关键词+www域组合");
+            ExtralResourceWriteDelegate.handleWWWDomainKeys("/Users/joye/search/word/w88/优德.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","5.优德关键词域关键词+www域组合");
+
+
+            /**
+             * 域名词+关键字生成
+             * 龙8娱乐备用网址_www.long8.cc.com_龙8娱乐娱乐手机版
+             */
+            ExtralResourceWriteDelegate.handleWWWDomainKeysOnlyKeys("/Users/joye/search/word/w88/优德.xlsx","/Users/joye/search/word/w88/优德域词.xlsx","/Users/joye/search/word/w88/create","2.优德关键词关键词+www域组合");
+
 
         } catch (Exception e) {
             e.printStackTrace();

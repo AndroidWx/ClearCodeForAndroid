@@ -44,14 +44,14 @@ public class B根据锚文本抓取对象站 {
         WebCollectorDelegate.execute(lvanFilePath,"/Users/joye/Search/webconllector/lvan/",MyCrawler.getTime()+"-lvan爬站列表");
     }
 
-    public static final String totalFilePath="/Users/joye/Search/域名处理/2017-4-27/处理域名排版结果.xlsx";
+    public static final String totalFilePath="/Users/joye/Search/域名处理/2017-5-1/处理域名排版结果.xlsx";
     /**
      * 选取最合适的对象站信息
      * @throws Exception
      */
     @Test
     public void testTotal() throws Exception {
-        WebCollectorDelegate.executeDomain(totalFilePath,"/Users/joye/Search/webconllector/joye/",MyCrawler.getTime()+"-joye爬站列表");
+        WebCollectorDelegate.executeDomain(totalFilePath,"/Users/joye/Search/webconllector/joye/",MyCrawler.getTime()+"对象站");
     }
 
 }

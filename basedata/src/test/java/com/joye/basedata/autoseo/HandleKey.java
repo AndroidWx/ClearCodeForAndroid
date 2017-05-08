@@ -40,9 +40,12 @@ public class HandleKey {
         List<String> allResukt=new ArrayList<>();
         for (int i = 0; i < allKeys.size(); i++) {
             for (int j = 0; j < allDomainKeys.size(); j++) {
-                int n = (int) (Math.random() * (allKeys.size() > 10 ? 10 : allKeys.size() - 1));
-
+                int n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
                 String string = allKeys.get(i);
+                while (allKeys.get(n)==string){
+                    n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
+                }
+
                 if(AntorUtils.isContainChinese(string.substring(0,1))) {
                     tlpicsb.get().append(allDomainKeys.get(j)).append(string).append("_").append(string).append("_").append(allKeys.get(n));
                 }else{
@@ -68,8 +71,12 @@ public class HandleKey {
         List<String> allResukt=new ArrayList<>();
         for (int i = 0; i < allKeys.size(); i++) {
             for (int j = 0; j < allDomainKeys.size(); j++) {
-                int n = (int) (Math.random() * (allKeys.size() > 10 ? 10 : allKeys.size() - 1));
+                int n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
                 String string = allKeys.get(i);
+                while (allKeys.get(n)==string){
+                    n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
+                }
+
                 if(AntorUtils.isContainChinese(string.substring(0,1))) {
                     tlpicsb.get().append(allDomainKeys.get(j)).append(string).append("_").append("www.").append(allDomainKeys.get(j)).append(".com").append("_").append(allKeys.get(n));
                 }else{
@@ -82,6 +89,38 @@ public class HandleKey {
         }
         return allResukt;
     }
+
+
+    /**
+     * 获取所有title qy8千亿国际+www.qy8.com+随便填写
+     * @param allKeys
+     * @param allDomainKeys
+     * @return
+     */
+    public static List<String> getAllDomainTitlesByKeys( List<String> allKeys,  List<String> allDomainKeys){
+        StringBuffer sb=new StringBuffer();
+        tlpicsb.set(sb);
+        List<String> allResukt=new ArrayList<>();
+        for (int i = 0; i < allKeys.size(); i++) {
+            for (int j = 0; j < allDomainKeys.size(); j++) {
+                int n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
+                while (allKeys.get(n)==allKeys.get(i)){
+                    n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
+                }
+                String string = allKeys.get(i);
+                if(AntorUtils.isContainChinese(string.substring(0,1))) {
+                    tlpicsb.get().append(string).append("_").append("www.").append(allDomainKeys.get(j)).append(".com").append("_").append(allKeys.get(n));
+                }else{
+                    tlpicsb.get().append(allDomainKeys.get(j)).append("_").append(string).append("_").append("www.").append(allDomainKeys.get(j)).append(".com");//.append("_").append(allKeys.get(n));
+                }
+                allResukt.add(tlpicsb.get().toString());
+                System.out.println(tlpicsb.get().toString());
+                tlpicsb.get().delete(0,tlpicsb.get().length());
+            }
+        }
+        return allResukt;
+    }
+
 
 //    public static List<String> getAll
 
@@ -134,11 +173,14 @@ public class HandleKey {
      * @param allResult
      */
     private static void allKeyshandle(List<String> list,List<String>allKeys,List<String> allResult ) {
-        int n = (int) (Math.random() * (allKeys.size() > 10 ? 10 : allKeys.size() - 1));
+        int n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
         if (list.size() == 2) {
             String s = new String("");
             for (int j = 0; j < list.size(); j++) {
                 s += (list.get(j) + "_");
+            }
+            while (allKeys.get(n).equals(list.get(0))||allKeys.get(n).equals(list.get(1))){
+                n = (int) (Math.random() * (allKeys.size() > 10 ? allKeys.size()/2 : allKeys.size() - 1));
             }
             s=s + allKeys.get(n);
             allResult.add(s);

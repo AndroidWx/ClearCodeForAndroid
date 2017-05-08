@@ -38,8 +38,10 @@ public class A1过滤域名排版 {
 //        filter("/Users/joye/Downloads/4-24.xlsx","/Users/joye/Downloads/","描文本4-24-整理-新");
 //        filter("/Users/joye/Downloads/4-25.xlsx","/Users/joye/Downloads/","描文本4-25-整理-新");
 //        filter("/Users/joye/Downloads/4-26.xlsx","/Users/joye/Downloads/","描文本4-26-整理-新");
-        filter("/Users/joye/Downloads/4-29.xlsx","/Users/joye/Downloads/","描文本4-29-整理-新");
-        filter("/Users/joye/Downloads/4-30.xlsx","/Users/joye/Downloads/","描文本4-30-整理-新");
+        filter("/Users/joye/Downloads/5-8.xlsx","/Users/joye/Downloads/","描文本5-8-整理-新");
+//        filter("/Users/joye/Downloads/5-6.xlsx","/Users/joye/Downloads/","描文本5-6-整理-新");
+//        filter("/Users/joye/Downloads/5-7.xlsx","/Users/joye/Downloads/","描文本5-7-整理-新");
+//        filter("/Users/joye/Downloads/4-30.xlsx","/Users/joye/Downloads/","描文本4-30-整理-新");
 
     }
 

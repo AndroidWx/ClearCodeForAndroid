@@ -11,6 +11,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -65,8 +66,11 @@ public class MajetsicApiRestImpl extends BaseRestApiImpl<MajetsicApi> {
                                                                      String FilterRefDomain,
                                                                      String Count,
                                                                      String UsePrefixScan){
+//        return create().GetAnchorText("GetAnchorText", "historic", "域名","1", "0", "", "", "", "", "");
         return create().GetAnchorText("GetAnchorText", "historic", item, TextMode, Mode, FilterAnchorText, FilterAnchorTextMode, FilterRefDomain, Count, UsePrefixScan);
+
     }
+
 
     @Override
     protected String BaseUrl() {

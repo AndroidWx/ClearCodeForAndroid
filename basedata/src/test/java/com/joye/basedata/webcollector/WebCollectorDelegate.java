@@ -61,39 +61,39 @@ public class WebCollectorDelegate {
      * 开始执行并开启抓取对象站信息
      */
     public static  void executeDomain(String filePath,String writeExcelPath,String fileName) throws Exception {
-//        List<OldDomainInfoBean> infoBeans=getOldDomainInfos(filePath);
-//        List<OldDomainInfoBean> executeList=new ArrayList<>();
-//        List<OldDomainInfoBean> waitList=new ArrayList<>();
-//        for (OldDomainInfoBean item:infoBeans
-//                ) {
-//            if(item.getAutherTxts().isEmpty()){
-//                waitList.add(item);
-//            }else {
-//                executeList.add(item);
-//            }
-//        }
-//
-//        Map<OldDomainInfoBean,LinkedList<String>> map=new HashMap<>();
-//        Lock lockAnchor = new ReentrantLock();
-//        try {
-//            lockAnchor.lock();
-//            for (OldDomainInfoBean item : executeList
-//                    ) {
-//                LinkedList<String> linkedList = new LinkedList<>();
-//                map.put(item, linkedList);
-//                new JoyeBingCrawler(item, new ICrawlerCallBack() {
-//                    @Override
-//                    public void onValidateUrl(String url) {
-//                        linkedList.add(url);
-//                        HandleKey.removeDuplicate(linkedList);
-//                        map.put(item, linkedList);
-//                    }
-//                }).start(2);
-//            }
-//        } finally {
-//            lockAnchor.unlock();
-//        }
-//        write(map,writeExcelPath,fileName,executeList);
+        List<OldDomainInfoBean> infoBeans=getOldDomainInfos(filePath);
+        List<OldDomainInfoBean> executeList=new ArrayList<>();
+        List<OldDomainInfoBean> waitList=new ArrayList<>();
+        for (OldDomainInfoBean item:infoBeans
+                ) {
+            if(item.getAutherTxts().isEmpty()){
+                waitList.add(item);
+            }else {
+                executeList.add(item);
+            }
+        }
+
+        Map<OldDomainInfoBean,LinkedList<String>> map=new HashMap<>();
+        Lock lockAnchor = new ReentrantLock();
+        try {
+            lockAnchor.lock();
+            for (OldDomainInfoBean item : executeList
+                    ) {
+                LinkedList<String> linkedList = new LinkedList<>();
+                map.put(item, linkedList);
+                new JoyeBingCrawler(item, new ICrawlerCallBack() {
+                    @Override
+                    public void onValidateUrl(String url) {
+                        linkedList.add(url);
+                        HandleKey.removeDuplicate(linkedList);
+                        map.put(item, linkedList);
+                    }
+                }).start(2);
+            }
+        } finally {
+            lockAnchor.unlock();
+        }
+        write(map,writeExcelPath,fileName,executeList);
         C1获取老域名多个对象站的信息.exculte(writeExcelPath+fileName+ "."+XLSX.getExtension());
     }
 

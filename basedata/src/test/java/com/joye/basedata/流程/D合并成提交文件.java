@@ -7,6 +7,7 @@ import com.joye.basedata.combination.DomainHandleRowEntity;
 import com.joye.basedata.crawler4j.MyCrawler;
 import com.joye.basedata.filter.ReplaceDomainEntity;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,6 +17,7 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,13 +34,13 @@ public class D合并成提交文件 {
     @Test
     public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/0427对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0508对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
     }
 
     @Test
     public void testKevin() throws Exception {
 //        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0508对象站.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
@@ -56,7 +58,7 @@ public class D合并成提交文件 {
     @Test
     public void testJoye() throws Exception {
 //        execulte("/Users/joye/Downloads/明仕亚洲上传检查 (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/明仕亚洲上传检查 (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
 
     }
 
@@ -90,7 +92,52 @@ public class D合并成提交文件 {
             uploadRowResourceEntity.setObjectDomain(domainHandleRowEntity.getCombinationDomains());
             //编码
             uploadRowResourceEntity.setChartsetStr(domainHandleRowEntity.getCharset());
-            uploadRowResourceEntity.setDescription(uploadRowResourceEntity.getTitle()+domainHandleRowEntity.getDescription());
+
+            /**
+             *  把描述里面加入关键字
+             *  1.分割以前的描述
+             */
+            String[] keystrArray = new String[6];
+            String keystr_or_to = uploadRowResourceEntity.getReplaceKeyStr();
+            int indexTo = keystr_or_to.indexOf("[to]");
+            int indexOr = keystr_or_to.indexOf("[or]");
+            keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+            keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+            keystrArray[2] = keystr_or_to.substring(keystr_or_to.lastIndexOf("[to]")+4);
+            keystrArray[3]=keystrArray[0];
+            keystrArray[4]=keystrArray[1];
+            keystrArray[5]=keystrArray[2];
+            String description=domainHandleRowEntity.getDescription();
+            String[]array_small=description.split(",");
+            String[]array_big=description.split("，");
+
+            //如果按，分割
+            if(array_big.length>array_small.length){
+                description=description.replaceAll(",","，");
+                for (int j = 1; j <array_big.length ; j++) {
+
+                    if(j==6){
+                        break;
+                    }
+                    description=description.replace(array_big[j],keystrArray[j]+array_big[j]);
+                }
+            }else  {
+                description=description.replaceAll("，",",");
+                for (int j = 1; j <array_small.length ; j++) {
+
+                    if(j==6){
+                        break;
+                    }
+                    description=description.replace(array_small[j],keystrArray[j]+array_small[j]);
+                }
+            }
+
+
+            /**
+             *
+             */
+            uploadRowResourceEntity.setDescription(uploadRowResourceEntity.getTitle()+description);
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
             String keystr=domainHandleRowEntity.getKeys();
             if(keystr==null){
@@ -124,6 +171,20 @@ public class D合并成提交文件 {
     }
 
 
+    /**
+     * 取出数组中的最大值
+     * @param arr
+     * @return
+     */
+    public static int getMax(int[] arr){
+        int max=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        return max;
+    }
 
     /**
      * 开始执行合并

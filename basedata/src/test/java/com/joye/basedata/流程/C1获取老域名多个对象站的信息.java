@@ -35,7 +35,7 @@ public class C1获取老域名多个对象站的信息 {
     public static final String joyePath="/Users/joye/Downloads/2017-04-21-spencer爬站列表.xlsx";
     @Test
     public void testJoye() throws Exception {
-        exculte("/Users/joye/Search/webconllector/joye/2017-04-27-joye爬站列表.xlsx");
+        exculte("/Users/joye/Search/webconllector/joye/2017-5-1-joye爬站列表.xlsx");
     }
 
     private String oldDomainPath="/Users/joye/Search/域名处理/2017-4-27/域名-未用.xlsx";

@@ -19,23 +19,30 @@ public class 必赢亚洲Handle {
              * AAA+AAAB+Random
              * 龙8娱乐_龙8娱乐客户端城_龙8娱乐手机下载
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/必赢亚洲/必赢亚洲关键词-娱乐.xlsx","/Users/joye/search/word/必赢亚洲/create","必赢亚洲关键词-娱乐组合");
+            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/必赢亚洲/必赢亚洲.xlsx","/Users/joye/search/word/必赢亚洲/create","1.必赢亚洲组合");
             /**
              * 域名词+关键字生成
              * long8520龙8娱乐官网_long8520龙8娱乐官网下载_long8520龙8娱乐老虎机
              */
-            ExtralResourceWriteDelegate.handleDomainKeys("/Users/joye/search/word/必赢亚洲/必赢亚洲关键词-娱乐.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","必赢亚洲关键词-娱乐域加关键字组合");
+            ExtralResourceWriteDelegate.handleDomainKeys("/Users/joye/search/word/必赢亚洲/必赢亚洲.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","4.必赢亚洲域加关键字组合");
             /**
              * 域名加关键字 组合成关键字
              * long8877龙8娱乐官网_龙8娱乐官网_龙8娱乐官网
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/必赢亚洲/必赢亚洲关键词-娱乐.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","必赢亚洲关键词-娱乐域加关键字作为组合");
+            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/必赢亚洲/必赢亚洲.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","3.必赢亚洲域加关键字作为组合");
             /**
              * 域名词+关键字生成
              * long8.cc龙8娱乐备用网址_www.long8.cc.com_龙8娱乐老虎机手机版
              */
-            ExtralResourceWriteDelegate.handleWWWDomainKeys("/Users/joye/search/word/必赢亚洲/必赢亚洲关键词-娱乐.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","必赢亚洲关键词-娱乐关键词+www域组合");
+            ExtralResourceWriteDelegate.handleWWWDomainKeys("/Users/joye/search/word/必赢亚洲/必赢亚洲.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","5.域加必赢亚洲关键词+www域组合");
 
+            /**
+             * 域名词+关键字生成
+             * 龙8娱乐备用网址_www.long8.cc.com_龙8娱乐娱乐手机版
+             */
+            ExtralResourceWriteDelegate.handleWWWDomainKeysOnlyKeys("/Users/joye/search/word/必赢亚洲/必赢亚洲.xlsx","/Users/joye/search/word/必赢亚洲/必赢亚洲域词.xlsx","/Users/joye/search/word/必赢亚洲/create","2.必赢亚洲关键词+www域组合");
+
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
