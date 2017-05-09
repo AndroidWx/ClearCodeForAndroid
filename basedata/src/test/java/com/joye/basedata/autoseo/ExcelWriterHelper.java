@@ -93,7 +93,9 @@ public class ExcelWriterHelper extends ExcelUtils{
         CellStyle mCellStyle=CreateCellStyle(workbook);
         //创建第一行
         Row row = sheet.createRow(0);
-        String[]titleRow=new String[]{"对象站","关键词*","编码"};
+        String[]titleRow=new String[]{"对象站*","关键词*","编码*","循环交叉第1台服务器域名",
+        "循环交叉第1台关键词","循环交叉第2台服务器域名","循环交叉第2台服务器域名","已上第一台域名","已上第一台标题",
+        "已上第二台域名","已上第二台标题","已上第三台域名","已上第三台标题","已上第四台域名","已上第四台标题","已上第五台域名","已上第五台标题","已上第六台域名","已上第六台标题"};
         Cell cell=null;
         for (int i =0;i<titleRow.length;i++){
             cell = row.createCell(i);
@@ -109,6 +111,22 @@ public class ExcelWriterHelper extends ExcelUtils{
             row.createCell(0).setCellValue(entiy.getDomain());
             row.createCell(1).setCellValue(entiy.getKeystr());
             row.createCell(2).setCellValue(entiy.getCharsert());
+            row.createCell(3).setCellValue(entiy.getOtherOldDomains());
+            row.createCell(4).setCellValue(entiy.getOtherOldTitle());
+            row.createCell(5).setCellValue(entiy.getElseOldDomains());
+            row.createCell(6).setCellValue(entiy.getElseOldTitle());
+            row.createCell(7).setCellValue(entiy.getE1Domains());
+            row.createCell(8).setCellValue(entiy.getE1Title());
+            row.createCell(9).setCellValue(entiy.getE2Domains());
+            row.createCell(10).setCellValue(entiy.getE2Title());
+            row.createCell(11).setCellValue(entiy.getE3Domains());
+            row.createCell(12).setCellValue(entiy.getE3Title());
+            row.createCell(13).setCellValue(entiy.getE4Domains());
+            row.createCell(14).setCellValue(entiy.getE4Title());
+            row.createCell(15).setCellValue(entiy.getE5Domains());
+            row.createCell(16).setCellValue(entiy.getE5Title());
+            row.createCell(17).setCellValue(entiy.getE6Domains());
+            row.createCell(18).setCellValue(entiy.getE6Title());
         }
     }
 

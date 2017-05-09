@@ -52,33 +52,18 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Downloads/2017-05-08检查 - 副本.xlsx";
-    String newPath = "/Users/joye/Downloads/";//重新提交的excel路径
+    String filePath = "/Users/joye/Search/combination/kevin/2017-05-09.xlsx";
+    String newPath = "/Users/joye/Search/combination/kevin/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
         List<UploadRowResourceEntity> upLoadRows = CombinationDelegate.getUploadRowResourceEntitys(filePath, 0);
+
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{164,
-                128,
-                127,
-                20,
-                144,
-                178,
-                253,
-                169,
-                238,
-                237,
-                236,
-                152,
-                228,
-                245,
-                167,
-                13,
-                69};
+        int failed[] = new int[]{19,21,25,27};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -215,28 +200,78 @@ public class Test {
                 }
                 UploadRowResourceEntity kUpEntity= reUploadRows.get(kUp);
                 UploadRowResourceEntity kDownEntity = reUploadRows.get(kDown);
+                //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
                         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+                        //加入关键字
                         "</head><h1><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
+                //引入上面和下面
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
-                        "<a href='http://"+kUpEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kUpEntity.getKey()+"</strong>" +
+                        //加入第一个外链
+                        "<a href='http://www."+replaceDomainEntity.getOtherOldDomains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getOtherOldTitle()+"</strong>" +
                         "</a>" +
-                        "<a href='http://"+kDownEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kDownEntity.getKey()+"</strong></a>" +
-                            "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
-                                "<tr>" +
-                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-                                    "<td><a href='http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[1]+"<strong></a></td>" +
-                                    "<td><a href=''http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[2]+"<strong></a></td>" +
-                                "</<tr>" +
-                                "<tr>" +
-                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-                                    "<td><u>"+keystrArray[1]+"</u></td>" +
-                                    "<td><u>"+keystrArray[2]+"</u></td>" +
-                                "</<tr>" +
-                            "</table>" +
+                        //加入第二个外链
+                        "<a href='http://www."+replaceDomainEntity.getElseOldDomains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getElseOldTitle()+"</strong>" +
+                        "</a>" +
+                        //加入表格
+                        "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
+                        "<tr>" +
+                        "<td><u>"+keystrArray[0]+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getOtherOldTitle()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getElseOldTitle()+"</u></td>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE1Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE1Title()+"<strong></a></td>" +
+                        "</<tr>" +
+                        "<tr>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE2Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE2Title()+"<strong></a></td>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE3Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE3Title()+"<strong></a></td>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE4Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE4Title()+"<strong></a></td>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE5Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE5Title()+"<strong></a></td>" +
+                        "</<tr>" +
+                        "<tr>" +
+                        "<td><a href='http://"+replaceDomainEntity.getE6Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE2Title()+"<strong></a></td>" +
+                        "<td><u>"+replaceDomainEntity.getOtherOldTitle()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getElseOldTitle()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getE6Title()+"</u></td>" +
+                        "</<tr>" +
+                        "<tr>" +
+                        "<td><u>"+keystrArray[0]+"</u></td>" +
+                        "<td><u>"+keystrArray[1]+"</u></td>" +
+                        "<td><u>"+keystrArray[2]+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getE1Title()+"</u></td>" +
+                        "</<tr>" +
+                        "<tr>" +
+                        "<td><u>"+replaceDomainEntity.getE2Title()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getE3Title()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getE4Title()+"</u></td>" +
+                        "<td><u>"+replaceDomainEntity.getE5Title()+"</u></td>" +
+                        "</<tr>" +
+                        "</table>" +
                         "</body>";
+//                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+//                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
+//                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+//                        "</head><h1><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
+//                needReplaceKeystr= needReplaceKeystr
+//                        +"[or]</body>[to]" +
+//                        "<a href='http://"+kUpEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kUpEntity.getKey()+"</strong>" +
+//                        "</a>" +
+//                        "<a href='http://"+kDownEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kDownEntity.getKey()+"</strong></a>" +
+//                            "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
+//                                "<tr>" +
+//                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+//                                    "<td><a href='http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[1]+"<strong></a></td>" +
+//                                    "<td><a href=''http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[2]+"<strong></a></td>" +
+//                                "</<tr>" +
+//                                "<tr>" +
+//                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+//                                    "<td><u>"+keystrArray[1]+"</u></td>" +
+//                                    "<td><u>"+keystrArray[2]+"</u></td>" +
+//                                "</<tr>" +
+//                            "</table>" +
+//                        "</body>";
                 item.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
                 e.printStackTrace();
@@ -250,33 +285,6 @@ public class Test {
     }
 
 
-    //        DnsCache dnsCache = DnsCacheManipulator.getWholeDnsCache();
-//        System.out.println(dnsCache);
-//        System.out.println("失败域名");
-//        for (int i = 0; i < failedItem.size(); i++) {
-//            ItemEntity itemEntity=failedItem.get(i);
-//            System.out.println(itemEntity.getDomain());
-//        }
-//
-//        System.out.println("失败ip");
-//        for (int i = 0; i < failedItem.size(); i++) {
-//            ItemEntity itemEntity=failedItem.get(i);
-//            System.out.println(itemEntity.getIp());
-//        }
-//
-//        System.out.println("成功域名");
-//        for (int i = 0; i < successItem.size(); i++) {
-//            ItemEntity itemEntity=successItem.get(i);
-//            System.out.println(itemEntity.getDomain());
-//        }
-//
-//        System.out.println("成功ip");
-//        for (int i = 0; i < successItem.size(); i++) {
-//            ItemEntity itemEntity=successItem.get(i);
-//            System.out.println(itemEntity.getIp());
-//        }
-//    }
-
     /**
      * 获取一批批量替换的备用
      *
@@ -288,7 +296,6 @@ public class Test {
         Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
         List<ReplaceDomainEntity> allResult = new ArrayList<>();
         ReplaceDomainEntity entity;
-        String cellValue = "";
         Sheet sheet = workBook.getSheetAt(sheetindex);
         int i = 0;
         for (Row r : sheet) {
@@ -297,16 +304,7 @@ public class Test {
                 continue;
             }
             entity = new ReplaceDomainEntity();
-            for (Cell cell : r) {
-                cellValue = cell.getStringCellValue();
-                if (cell.getColumnIndex() == 0) {
-                    entity.setDomain(cellValue);
-                } else if (cell.getColumnIndex() == 1) {
-                    entity.setKeystr(cellValue);
-                } else if (cell.getColumnIndex() == 2) {
-                    entity.setCharsert(cellValue);
-                }
-            }
+            entity.setRow(r);
             allResult.add(entity);
         }
         return allResult;

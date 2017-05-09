@@ -112,4 +112,18 @@ public class All {
         }
 
     }
+
+
+    @Test
+    public void testB() throws Exception {
+        int y=7;
+        for (int i = 2; i <7 ; i++) {
+            System.out.println("else if(cell.getColumnIndex()=="+y+"){");
+            System.out.println("setE"+i+"Domains(cellValue);");
+            System.out.println("}else if(cell.getColumnIndex()=="+(y+1)+"){");
+            System.out.println("setE"+i+"Title(cellValue);");
+            System.out.println("}");
+            y+=2;
+        }
+    }
 }
