@@ -5,11 +5,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.joye.basedata.BuildConfig;
-import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

@@ -5,6 +5,7 @@ import com.joye.basedata.autoseo.ExcelReaderHelper;
 import com.joye.basedata.autoseo.ExcelWriterHelper;
 import com.joye.basedata.autoseo.UploadRowResourceEntity;
 import com.joye.basedata.combination.CombinationDelegate;
+import com.joye.basedata.combination.DomainHandleRowEntity;
 import com.joye.basedata.crawler4j.MyCrawler;
 
 import org.apache.commons.lang.StringUtils;
@@ -51,10 +52,9 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/kevin/2017-05-08.xlsx";
-    String newPath = "/Users/joye/Search/combination/kevin/";//重新提交的excel路径
+    String filePath = "/Users/joye/Downloads/2017-05-08检查 - 副本.xlsx";
+    String newPath = "/Users/joye/Downloads/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
-
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
@@ -62,9 +62,23 @@ public class Test {
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{10, 13, 20,24, 25, 27, 32, 33, 34, 36, 37, 46, 53, 56, 61, 65, 69, 70, 79, 91, 93, 95, 96, 103, 107,
-        110, 111, 113, 120, 127, 132, 137, 144, 152, 162, 164, 166, 167, 169, 170, 176, 177, 178, 181, 185, 193, 194, 195, 202, 207,
-                214, 222, 228, 236, 237, 238, 243,245, 253};
+        int failed[] = new int[]{164,
+                128,
+                127,
+                20,
+                144,
+                178,
+                253,
+                169,
+                238,
+                237,
+                236,
+                152,
+                228,
+                245,
+                167,
+                13,
+                69};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -174,8 +188,6 @@ public class Test {
             item.setObjectDomain(replaceDomainEntity.getDomain());
             item.setChartsetStr(replaceDomainEntity.getCharsert());
             try {
-                item.setReplaceKeyStr(replaceKeys[0] + "[to]" + keys[0] + "[or]" + replaceKeys[1] + "[to]" + keys[1] + "[or]" + replaceKeys[2] + "[to]" + keys[2]);
-            } catch (Exception e) {
                 //            电影[to]qy014千亿国际[or]综艺[to]千亿国际[or]动漫[to]千亿国际娱乐平台
                 String[] keystrArray = new String[3];
                 String keystr_or_to = item.getReplaceKeyStr();
@@ -184,18 +196,52 @@ public class Test {
                 keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
                 keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
                 keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
-                keystrArray[2] = keystr_or_to.substring(keystr_or_to.lastIndexOf("[to]") + 4);
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
+                keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
                 for (String str :
                         replaceKeys) {
                     System.out.println(str);
                 }
 //                System.out.println(replaceKeys.length);
-                item.setReplaceKeyStr(replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" + replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" + replaceKeys[2] + "[to]" + keystrArray[2]);
+                String needReplaceKeystr=replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" + replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" + replaceKeys[2] + "[to]" + keystrArray[2];
+                //引入上面和下面
+                int kUp=i-1;
+                int kDown=i+1;
+                if(kUp==-1) {
+                    kUp=reUploadRows.size()-1;
+                }
+                if(kDown==reUploadRows.size()){
+                    kDown=0;
+                }
+                UploadRowResourceEntity kUpEntity= reUploadRows.get(kUp);
+                UploadRowResourceEntity kDownEntity = reUploadRows.get(kDown);
+                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
+                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+                        "</head><h1><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
+                needReplaceKeystr= needReplaceKeystr
+                        +"[or]</body>[to]" +
+                        "<a href='http://"+kUpEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kUpEntity.getKey()+"</strong>" +
+                        "</a>" +
+                        "<a href='http://"+kDownEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kDownEntity.getKey()+"</strong></a>" +
+                            "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
+                                "<tr>" +
+                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+                                    "<td><a href='http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[1]+"<strong></a></td>" +
+                                    "<td><a href=''http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[2]+"<strong></a></td>" +
+                                "</<tr>" +
+                                "<tr>" +
+                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+                                    "<td><u>"+keystrArray[1]+"</u></td>" +
+                                    "<td><u>"+keystrArray[2]+"</u></td>" +
+                                "</<tr>" +
+                            "</table>" +
+                        "</body>";
+                item.setReplaceKeyStr(needReplaceKeystr);
+            }catch (Exception e){
+                e.printStackTrace();
             }
-
-
         }
-
         if (reUploadRows.size() == 0) {
             System.out.println("没有需要重新上传的");
             return;
@@ -312,13 +358,14 @@ public class Test {
     @org.junit.Test
     public void testB() throws Exception {
         String[] keystrArray = new String[3];
-        String keystr_or_to = "[to]优发娱乐[or][to]优发娱乐老虎机[or][to]优发";
+        String keystr_or_to = "发现[to]伟德国际[or]农业[to]伟德国际娱乐1946[or]生活[to]伟德娱乐客户端[or]</head>[to]</head><h1><a href='http://www.hffbsh.com'>伟德国际</a></h1>[or]</body>[to]</body><a href='http://www.hffbsh.com'><strong>伟德国际娱乐1946</strong></a><a href='http://www.hffbsh.com'><strong>伟德娱乐客户端</strong></a>";
         int indexTo = keystr_or_to.indexOf("[to]");
         int indexOr = keystr_or_to.indexOf("[or]");
         keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
         keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
         keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
-        keystrArray[2] = keystr_or_to.substring(keystr_or_to.lastIndexOf("[to]") + 4);
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
+        keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
         for (String str :
                 keystrArray) {
             System.out.println(str);

@@ -94,6 +94,8 @@ public class CombinationDelegate {
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[to\\]", keys[0] + "[to]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[1] + "\\[to\\]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[2] + "\\[to\\]");
+                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]</head><h1><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keys[0]+"</a></h1>";
+                needReplaceKeystr=  needReplaceKeystr+"[or]</body>[to]</body><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keys[1]+"</a><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keys[2]+"</a>";
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
                 System.out.println("出错的地方"+i);

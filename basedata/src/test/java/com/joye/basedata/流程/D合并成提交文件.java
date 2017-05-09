@@ -40,7 +40,7 @@ public class D合并成提交文件 {
     @Test
     public void testKevin() throws Exception {
 //        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/0508对象站.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin (4).xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
@@ -50,7 +50,7 @@ public class D合并成提交文件 {
     @Test
     public void testLvan() throws Exception {
 //        execulte("/Users/joye/Downloads/ivan-对象站 (2).xlsx","/Users/joye/Search/combination/lvan/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0508对象站  -2.xlsx","/Users/joye/Search/combination/lvan/", MyCrawler.getTime());
     }
 
 
@@ -58,7 +58,7 @@ public class D合并成提交文件 {
     @Test
     public void testJoye() throws Exception {
 //        execulte("/Users/joye/Downloads/明仕亚洲上传检查 (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin (1).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 - kevin (2).xlsx","/Users/joye/Search/combination/joye/", MyCrawler.getTime());
 
     }
 
@@ -151,6 +151,41 @@ public class D合并成提交文件 {
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[to\\]", keys[0] + "[to]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[1] + "\\[to\\]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[2] + "\\[to\\]");
+                //头部加个链接
+                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
+                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+                        "</head><h1><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
+                //引入上面和下面
+                int kUp=i-1;
+                int kDown=i+1;
+                if(kUp==-1) {
+                    kUp=mUploadRowResourceEntitys.size()-1;
+                }
+                if(kDown==mUploadRowResourceEntitys.size()){
+                    kDown=0;
+                }
+                DomainHandleRowEntity kUpEntity = mDomainHandleRowEntitys.get(kUp);
+                DomainHandleRowEntity kDownEntity = mDomainHandleRowEntitys.get(kDown);
+
+
+                needReplaceKeystr= needReplaceKeystr
+                        +"[or]</body>[to]<a href='http://www."+kUpEntity.getOldDomains()+"' target=\"_blank\"><strong>"+mUploadRowResourceEntitys.get(kUp).getKey()+"</strong>" +
+                        "</a>" +
+                        "<a href='http://www."+kDownEntity.getOldDomains()+"' target=\"_blank\"><strong>"+mUploadRowResourceEntitys.get(kDown).getKey()+"</strong></a>" +
+                        "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
+                            "<tr>" +
+                                "<td><u>"+keystrArray[0]+"</u></td>" +
+                                "<td><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'><strong>"+keystrArray[1]+"<strong></a></td>" +
+                                "<td><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'><strong>"+keystrArray[2]+"<strong></a></td>" +
+                            "</<tr>" +
+                            "<tr>" +
+                                "<td><u>"+keystrArray[0]+"</u></td>" +
+                                "<td><u>"+keystrArray[1]+"</u></td>" +
+                                "<td><u>"+keystrArray[2]+"</u></td>" +
+                            "</<tr>" +
+                        "</table>" +
+                    "</body>";
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
                 System.out.println("出错的地方"+i);
@@ -171,20 +206,7 @@ public class D合并成提交文件 {
     }
 
 
-    /**
-     * 取出数组中的最大值
-     * @param arr
-     * @return
-     */
-    public static int getMax(int[] arr){
-        int max=arr[0];
-        for(int i=1;i<arr.length;i++){
-            if(arr[i]>max){
-                max=arr[i];
-            }
-        }
-        return max;
-    }
+
 
     /**
      * 开始执行合并

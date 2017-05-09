@@ -1,12 +1,14 @@
 package com.joye.basedata.流程;
 
 import com.joye.basedata.autoseo.ExcelReaderHelper;
+import com.joye.basedata.autoseo.ExtralResourceWriteDelegate;
 import com.joye.basedata.majestic_.entity.AnchorTextEntity;
 
 import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -50,10 +52,12 @@ public class All {
     private List<String> oldDomains=new ArrayList<>();
 
     private List<String> objDomains=new ArrayList<>();
-
+    String filePath = "/Users/joye/Downloads/a - 副本.xlsx";
     @Test
     public void testA() throws Exception {
-
+        oldDomains = ExtralResourceWriteDelegate.getAllKeysByFilePath(filePath, 0);
+        objDomains= ExtralResourceWriteDelegate.getAllKeysByFilePath(filePath, 1);
+        System.out.println(oldDomains.size()+"  "+objDomains.size());
 //        ExcelReaderHelper.getAllCellsByRowsIndex(0,)
         /**
          * 1.遍历老域名  100
@@ -70,14 +74,25 @@ public class All {
          */
         String oldDomainItem;
         String objItem;
-        Map<String,String> map=new HashMap<>();
+        Map<String,List<String>> map=new HashMap<>();
         for (int i = 0; i < oldDomains.size(); i++) {
             oldDomainItem=oldDomains.get(i);
             for (int j = 0; j < objDomains.size(); j++) {
                 objItem=objDomains.get(j);
-                for (int k = objItem.length(); k >2; k++) {
-                    if(oldDomainItem.contains(objItem.substring(0,k))){
-                        map.put(oldDomainItem,objItem);
+                int y=0;
+                y=oldDomainItem.length()-2;
+                for (int k = objItem.length(); k >y; k--) {
+                    if(oldDomainItem.length()<objItem.length()){
+                        continue;
+                    }
+//                    System.out.println(i+"-"+j+"-"+k);
+                    if(oldDomainItem.indexOf(objItem.substring(0,k-1))==0){
+                        List<String> lst = map.get(oldDomainItem);
+                        if(lst==null){
+                            lst=new ArrayList<>();
+                        }
+                        lst.add(objItem);
+                        map.put(oldDomainItem,lst);
                         break;
                     }
                 }
@@ -85,9 +100,15 @@ public class All {
         }
 
         Iterator<String> it = map.keySet().iterator();
+        System.out.println(map.size());
         while (it.hasNext()){
             String domains=it.next();
-            System.out.println(domains+"-"+map.get(domains));
+            String str="";
+            Collections.sort(map.get(domains));
+            for (int i=0;i<map.get(domains).size();i++){
+                str+=map.get(domains).get(i)+"_";
+            }
+            System.out.println(domains+":::"+str);
         }
 
     }
