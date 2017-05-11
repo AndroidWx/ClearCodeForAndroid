@@ -52,8 +52,8 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/kevin/2017-05-09.xlsx";
-    String newPath = "/Users/joye/Search/combination/kevin/";//重新提交的excel路径
+    String filePath = "/Users/joye/Search/combination/spencer/2017-05-11.xlsx";
+    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
@@ -61,6 +61,8 @@ public class Test {
         List<UploadRowResourceEntity> upLoadRows = CombinationDelegate.getUploadRowResourceEntitys(filePath, 0);
 
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
+
+        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
         int failed[] = new int[]{19,21,25,27};
@@ -69,8 +71,14 @@ public class Test {
                 failed) {
             reUploadRows.add(upLoadRows.get(index - 2));
         }
+        List<OtherInfoEntity>writeInfoEntitys=new ArrayList<>();
+        for (int index :
+                failed) {
+            writeInfoEntitys.add(otherInfoEntityList.get(index - 2));
+        }
 
-        writeAgainUpload(reUploadRows, replaceDomainEntityList);
+
+        writeAgainUpload(reUploadRows, replaceDomainEntityList,writeInfoEntitys);
     }
 
     @org.junit.Test
@@ -81,6 +89,8 @@ public class Test {
 
         //获取上传的列表
         List<UploadRowResourceEntity> upLoadRows = CombinationDelegate.getUploadRowResourceEntitys(filePath, 0);
+        //获取其他的
+        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //成功的
         List<ItemEntity> successItem = new ArrayList<>();
         //失败的
@@ -131,6 +141,7 @@ public class Test {
                 }
             });
         }
+        List<OtherInfoEntity> writeOtherinfoEntity=new ArrayList<>();
         UploadRowResourceEntity uploadRowResourceEntity;
         //遍历失败的，准备构建重新上传的列表
         for (int i = 0; i < upLoadRows.size(); i++) {
@@ -139,13 +150,37 @@ public class Test {
                 //如果失败的域名等于老域名，证明这行上传失败
                 if (failedItem.get(j).getPrefixDomain().equals(uploadRowResourceEntity.getOldDomainStr())) {
                     reUploadRows.add(uploadRowResourceEntity);
+                    writeOtherinfoEntity.add(otherInfoEntityList.get(i));
                     break;
                 }
             }
 
         }
-        writeAgainUpload(reUploadRows, replaceDomainEntityList);
+        writeAgainUpload(reUploadRows, replaceDomainEntityList,writeOtherinfoEntity);
 
+    }
+    /**
+     * 获取要替换的对象站
+     * @param filePath
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static List<OtherInfoEntity> getOtherInfoEntitys(String filePath) throws FileNotFoundException {
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
+        List<OtherInfoEntity> allResult = new ArrayList<>();
+        OtherInfoEntity entity;
+        Sheet sheet = workBook.getSheetAt(3);
+        int i=0;
+        for (Row r:sheet) {
+            if(i==0){
+                i++;
+                continue;
+            }
+            entity=new OtherInfoEntity();
+            entity.setRow(r);
+            allResult.add(entity);
+        }
+        return allResult;
     }
 
     /**
@@ -155,7 +190,8 @@ public class Test {
      * @param replaceDomainEntityList
      * @throws IOException
      */
-    private void writeAgainUpload(List<UploadRowResourceEntity> reUploadRows, List<ReplaceDomainEntity> replaceDomainEntityList) throws IOException {
+    private void writeAgainUpload(List<UploadRowResourceEntity> reUploadRows, List<ReplaceDomainEntity> replaceDomainEntityList,
+        List<OtherInfoEntity> otherInfoEntityList) throws IOException {
         //标题
         String title = "";
         //关键字
@@ -167,8 +203,8 @@ public class Test {
             //获取需要上传失败的
             UploadRowResourceEntity item = reUploadRows.get(i);
             title = item.getTitle();
-            keys = title.split("_");
             ReplaceDomainEntity replaceDomainEntity = replaceDomainEntityList.get(i);
+            OtherInfoEntity otherInfoEntity=otherInfoEntityList.get(i);
             replaceKeys = replaceDomainEntity.getkeys();
             item.setObjectDomain(replaceDomainEntity.getDomain());
             item.setChartsetStr(replaceDomainEntity.getCharsert());
@@ -189,66 +225,88 @@ public class Test {
                 }
 //                System.out.println(replaceKeys.length);
                 String needReplaceKeystr=replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" + replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" + replaceKeys[2] + "[to]" + keystrArray[2];
-                //引入上面和下面
-                int kUp=i-1;
-                int kDown=i+1;
-                if(kUp==-1) {
-                    kUp=reUploadRows.size()-1;
-                }
-                if(kDown==reUploadRows.size()){
-                    kDown=0;
-                }
-                UploadRowResourceEntity kUpEntity= reUploadRows.get(kUp);
-                UploadRowResourceEntity kDownEntity = reUploadRows.get(kDown);
+                //去掉 手机代理跳转
+                needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+keystrArray[0];
+
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                         "<meta  name='Author' content='"+keystrArray[0]+"'>"+
                         //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
                         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
                         //加入关键字
-                        "</head><h1><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
+                        "</head><h1 style='text-align:center'><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
                 //引入上面和下面
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
-                        //加入第一个外链
-                        "<a href='http://www."+replaceDomainEntity.getOtherOldDomains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getOtherOldTitle()+"</strong>" +
-                        "</a>" +
-                        //加入第二个外链
-                        "<a href='http://www."+replaceDomainEntity.getElseOldDomains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getElseOldTitle()+"</strong>" +
-                        "</a>" +
+                        "<ul style='text-align:center'>"+
+                            //加入第一个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='http://www."+otherInfoEntity.getOtherOldDomains()+"' target=\"_blank\">" +
+                                    "<strong>"+otherInfoEntity.getOtherOldTitle()+"</strong>" +
+                                "</a>" +
+                            "</li>"+
+                            //加入第二个外链
+                            "<li style='display:inline-block; margin-right:20px'>"+
+                                "<a href='http://www."+otherInfoEntity.getElseOldDomains()+"' target=\"_blank\">" +
+                                    "<strong>"+otherInfoEntity.getElseOldTitle()+"</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第三个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='https://love.alipay.com/donate/index.htm' target=\"_blank\">" +
+                                    "<strong>公益平台</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第四个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='http://gongyi.qq.com' target=\"_blank\">" +
+                                    "<strong>腾讯公益</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第五个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='https://m.gongyi.baidu.com/pages/index.html#/' target=\"_blank\">" +
+                                    "<strong>百度公益</strong>" +
+                                "</a>" +
+                            "</li>" +
+                        "</ul>"+
+
+
+
                         //加入表格
                         "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
-                        "<tr>" +
-                        "<td><u>"+keystrArray[0]+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getOtherOldTitle()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getElseOldTitle()+"</u></td>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE1Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE1Title()+"<strong></a></td>" +
-                        "</<tr>" +
-                        "<tr>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE2Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE2Title()+"<strong></a></td>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE3Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE3Title()+"<strong></a></td>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE4Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE4Title()+"<strong></a></td>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE5Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE5Title()+"<strong></a></td>" +
-                        "</<tr>" +
-                        "<tr>" +
-                        "<td><a href='http://"+replaceDomainEntity.getE6Domains()+"' target=\"_blank\"><strong>"+replaceDomainEntity.getE2Title()+"<strong></a></td>" +
-                        "<td><u>"+replaceDomainEntity.getOtherOldTitle()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getElseOldTitle()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getE6Title()+"</u></td>" +
-                        "</<tr>" +
-                        "<tr>" +
-                        "<td><u>"+keystrArray[0]+"</u></td>" +
-                        "<td><u>"+keystrArray[1]+"</u></td>" +
-                        "<td><u>"+keystrArray[2]+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getE1Title()+"</u></td>" +
-                        "</<tr>" +
-                        "<tr>" +
-                        "<td><u>"+replaceDomainEntity.getE2Title()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getE3Title()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getE4Title()+"</u></td>" +
-                        "<td><u>"+replaceDomainEntity.getE5Title()+"</u></td>" +
-                        "</<tr>" +
-                        "</table>" +
+                                "<tr>" +
+                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getOtherOldTitle()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getElseOldTitle()+"</u></td>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE1Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE1Title()+"<strong></a></td>" +
+                                "</<tr>" +
+                                "<tr>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE2Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE2Title()+"<strong></a></td>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE3Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE3Title()+"<strong></a></td>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE4Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE4Title()+"<strong></a></td>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE5Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE5Title()+"<strong></a></td>" +
+                                "</<tr>" +
+                                "<tr>" +
+                                    "<td><a href='http://"+otherInfoEntity.getE6Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE2Title()+"<strong></a></td>" +
+                                    "<td><u>"+otherInfoEntity.getOtherOldTitle()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getElseOldTitle()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getE6Title()+"</u></td>" +
+                                "</<tr>" +
+                                "<tr>" +
+                                    "<td><u>"+keystrArray[0]+"</u></td>" +
+                                    "<td><u>"+keystrArray[1]+"</u></td>" +
+                                    "<td><u>"+keystrArray[2]+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getE1Title()+"</u></td>" +
+                                "</<tr>" +
+                                "<tr>" +
+                                    "<td><u>"+otherInfoEntity.getE2Title()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getE3Title()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getE4Title()+"</u></td>" +
+                                    "<td><u>"+otherInfoEntity.getE5Title()+"</u></td>" +
+                                "</<tr>" +
+                            "</table>" +
                         "</body>";
 //                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
 //                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +

@@ -1,6 +1,7 @@
 package com.joye.basedata.autoseo;
 
 import com.joye.basedata.ExcelUtils;
+import com.joye.basedata.filter.OtherInfoEntity;
 import com.joye.basedata.filter.ReplaceDomainEntity;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -52,7 +53,9 @@ public class ExcelWriterHelper extends ExcelUtils{
                                         String excelPath,
                                         String fileName,
                                         List<String>ips,
-                                        List<ReplaceDomainEntity> replaceDomainEntities) throws IOException {
+                                        List<ReplaceDomainEntity> replaceDomainEntities,
+                                        List<OtherInfoEntity> mOtherInfoEntitys
+    ) throws IOException {
         //创建Excel文件
         Workbook workbook= createWorkBook(excelPath,fileName,EXCEL_TYPE_XLSX);
         //根据资源,写入内容
@@ -61,6 +64,9 @@ public class ExcelWriterHelper extends ExcelUtils{
         writeTypesetting(workbook,mResourceEntities,ips);
         //写入备用检查对象站
         writeNeedReplaces(workbook,replaceDomainEntities);
+        //写入其他信息
+        writeOthersReplaces(workbook,mOtherInfoEntitys);
+
         excelPath=excelPath+ File.separator+fileName+"."+EXCEL_TYPE_XLSX;
         //创建文件流
         OutputStream stream = new FileOutputStream(excelPath);
@@ -93,9 +99,7 @@ public class ExcelWriterHelper extends ExcelUtils{
         CellStyle mCellStyle=CreateCellStyle(workbook);
         //创建第一行
         Row row = sheet.createRow(0);
-        String[]titleRow=new String[]{"对象站*","关键词*","编码*","循环交叉第1台服务器域名",
-        "循环交叉第1台关键词","循环交叉第2台服务器域名","循环交叉第2台服务器域名","已上第一台域名","已上第一台标题",
-        "已上第二台域名","已上第二台标题","已上第三台域名","已上第三台标题","已上第四台域名","已上第四台标题","已上第五台域名","已上第五台标题","已上第六台域名","已上第六台标题"};
+        String[]titleRow=new String[]{"对象站*","关键词*","编码*"};
         Cell cell=null;
         for (int i =0;i<titleRow.length;i++){
             cell = row.createCell(i);
@@ -111,25 +115,48 @@ public class ExcelWriterHelper extends ExcelUtils{
             row.createCell(0).setCellValue(entiy.getDomain());
             row.createCell(1).setCellValue(entiy.getKeystr());
             row.createCell(2).setCellValue(entiy.getCharsert());
-            row.createCell(3).setCellValue(entiy.getOtherOldDomains());
-            row.createCell(4).setCellValue(entiy.getOtherOldTitle());
-            row.createCell(5).setCellValue(entiy.getElseOldDomains());
-            row.createCell(6).setCellValue(entiy.getElseOldTitle());
-            row.createCell(7).setCellValue(entiy.getE1Domains());
-            row.createCell(8).setCellValue(entiy.getE1Title());
-            row.createCell(9).setCellValue(entiy.getE2Domains());
-            row.createCell(10).setCellValue(entiy.getE2Title());
-            row.createCell(11).setCellValue(entiy.getE3Domains());
-            row.createCell(12).setCellValue(entiy.getE3Title());
-            row.createCell(13).setCellValue(entiy.getE4Domains());
-            row.createCell(14).setCellValue(entiy.getE4Title());
-            row.createCell(15).setCellValue(entiy.getE5Domains());
-            row.createCell(16).setCellValue(entiy.getE5Title());
-            row.createCell(17).setCellValue(entiy.getE6Domains());
-            row.createCell(18).setCellValue(entiy.getE6Title());
         }
     }
 
+    public static void writeOthersReplaces(Workbook workbook, List<OtherInfoEntity> resourceEntities){
+        Sheet sheet =workbook.createSheet("预备替换");
+        //获取样式
+        CellStyle mCellStyle=CreateCellStyle(workbook);
+        //创建第一行
+        Row row = sheet.createRow(0);
+        String[]titleRow=new String[]{"循环交叉第1台服务器域名",
+                "循环交叉第1台关键词","循环交叉第2台服务器域名","循环交叉第2台服务器域名","已上第一台域名","已上第一台标题",
+                "已上第二台域名","已上第二台标题","已上第三台域名","已上第三台标题","已上第四台域名","已上第四台标题","已上第五台域名","已上第五台标题","已上第六台域名","已上第六台标题"};
+        Cell cell=null;
+        for (int i =0;i<titleRow.length;i++){
+            cell = row.createCell(i);
+            cell.setCellValue(titleRow[i]);
+            cell.setCellStyle(mCellStyle); // 样式，居中
+            sheet.setColumnWidth(i, 20 * 256);
+        }
+        row.setHeight((short) 540);
+        for (int i = 0; i < resourceEntities.size(); i++) {
+            OtherInfoEntity entiy= resourceEntities.get(i);
+            row = (Row) sheet.createRow(i+1);
+            row.setHeight((short) 500);
+            row.createCell(0).setCellValue(entiy.getOtherOldDomains());
+            row.createCell(1).setCellValue(entiy.getOtherOldTitle());
+            row.createCell(2).setCellValue(entiy.getElseOldDomains());
+            row.createCell(3).setCellValue(entiy.getElseOldTitle());
+            row.createCell(4).setCellValue(entiy.getE1Domains());
+            row.createCell(5).setCellValue(entiy.getE1Title());
+            row.createCell(6).setCellValue(entiy.getE2Domains());
+            row.createCell(7).setCellValue(entiy.getE2Title());
+            row.createCell(8).setCellValue(entiy.getE3Domains());
+            row.createCell(9).setCellValue(entiy.getE3Title());
+            row.createCell(10).setCellValue(entiy.getE4Domains());
+            row.createCell(11).setCellValue(entiy.getE4Title());
+            row.createCell(12).setCellValue(entiy.getE5Domains());
+            row.createCell(13).setCellValue(entiy.getE5Title());
+            row.createCell(14).setCellValue(entiy.getE6Domains());
+            row.createCell(15).setCellValue(entiy.getE6Title());
+        }
+    }
 
     /**
      * 写入排版专用

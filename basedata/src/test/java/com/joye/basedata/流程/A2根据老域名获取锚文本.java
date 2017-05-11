@@ -19,6 +19,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import rx.Observable;
 import rx.Observer;
+import rx.Subscriber;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -132,17 +134,76 @@ public class A2根据老域名获取锚文本 {
 
 
 
-//    private String oldDomainPath="/Users/joye/Search/域名处理/2017-5-8/域名-未用.xlsx";
-//    private String newExcelPath="/Users/joye/Search/域名处理/2017-5-8/";
-//    private String newExcelName="处理域名排版结果";
-    private String oldDomainPath="/Users/joye/Downloads/a - 副本.xlsx";
-    private String newExcelPath="/Users/joye/Downloads";
+    private String oldDomainPath="/Users/joye/Search/域名处理/2017-5-8/域名-未用.xlsx";
+    private String newExcelPath="/Users/joye/Search/域名处理/2017-5-8/";
     private String newExcelName="处理域名排版结果";
+//    private String oldDomainPath="/Users/joye/Downloads/a - 副本.xlsx";
+//    private String newExcelPath="/Users/joye/Downloads";
+//    private String newExcelName="处理域名排版结果";
     @Test
     public void testGetMajesticInfo() throws Exception {
         getMajesticInfo(0,oldDomainPath , newExcelPath, newExcelName);
     }
 
+
+    @Test
+    public void testABC() throws Exception {
+        int index=0;
+        String filePath=oldDomainPath;
+        String writePath=newExcelPath;
+        String fileName=newExcelName;
+        List<MajetsicCommResponse<AnchorTextEntity>> AnchorTextEntityLists = new ArrayList<>();
+        List<String> urls = ExtralResourceWriteDelegate.getAllKeysByFilePath(filePath, index);
+        Observable.from(urls).flatMap(new Func1<String, Observable<MajetsicCommResponse<AnchorTextEntity>>>() {
+            @Override
+            public Observable<MajetsicCommResponse<AnchorTextEntity>> call(String s) {
+                Observable<MajetsicCommResponse<AnchorTextEntity>> response = new MajetsicApiRestImpl().GetAnchorText(s, "1", "0", "", "", "", "", "");
+                return  response;
+            }
+        }).subscribeOn(Schedulers.computation()).subscribeOn(Schedulers.io()).subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
+            @Override
+            public void onCompleted() {
+                List<AnchorTextEntity> list = new ArrayList<>();
+                for (int i = 0; i < AnchorTextEntityLists.size(); i++) {
+                    AnchorTextEntity item = AnchorTextEntityLists.get(i).getDataTables();
+                    list.add(item);
+                }
+                try {
+                    DomainWriteExcel.WriteDomainMajestic(list, writePath, fileName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e)
+            {
+                e.printStackTrace();
+                //失败的情况下，构建一个锚文本
+                MajetsicCommResponse<AnchorTextEntity> response =new MajetsicCommResponse<AnchorTextEntity>();
+                AnchorTextEntity anchorText=new AnchorTextEntity();
+                anchorText.setOldDomainStr("failed");
+                AnchorTextEntity.AnchorTextBean anchorbean =new AnchorTextEntity.AnchorTextBean();
+                List<AnchorTextEntity.AnchorTextBean.DataBean> datas=new ArrayList<AnchorTextEntity.AnchorTextBean.DataBean>();
+                AnchorTextEntity.AnchorTextBean.DataBean dataBean=new AnchorTextEntity.AnchorTextBean.DataBean();
+                dataBean.setAnchorText("");
+                datas.add(dataBean);
+                anchorbean.setData(datas);
+                anchorText.setAnchorText(anchorbean);
+                response.setDataTables(anchorText);
+                AnchorTextEntityLists.add(response);
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(MajetsicCommResponse<AnchorTextEntity> anchorTextEntityMajetsicCommResponse) {
+                System.out.println(anchorTextEntityMajetsicCommResponse.getCode());
+                anchorTextEntityMajetsicCommResponse.getDataTables().setOldDomainStr("查询失败的");
+                AnchorTextEntityLists.add(anchorTextEntityMajetsicCommResponse);
+            }
+        });
+
+    }
 
     /**
      * 根据老域名列表，获取老域名所有的处理结果
@@ -160,10 +221,14 @@ public class A2根据老域名获取锚文本 {
             lockAnchor.lock();
             int j=0;
             while (j<urls.size()) {
+
+
+
+
                 for (int i = 0; i < urls.size(); i++) {
                     j++;
                     int finalI=i;
-                    new MajetsicApiRestImpl().GetAnchorText(urls.get(i), "1", "0", "", "", "", "", "").subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
+                    new MajetsicApiRestImpl().GetAnchorText(urls.get(i), "1", "0", "", "", "", "", "").subscribeOn(Schedulers.newThread()).subscribe(new Observer<MajetsicCommResponse<AnchorTextEntity>>() {
                         @Override
                         public void onCompleted() {
 

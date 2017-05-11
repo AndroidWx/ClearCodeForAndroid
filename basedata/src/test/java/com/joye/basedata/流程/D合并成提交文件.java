@@ -5,6 +5,7 @@ import com.joye.basedata.autoseo.ExcelWriterHelper;
 import com.joye.basedata.autoseo.UploadRowResourceEntity;
 import com.joye.basedata.combination.DomainHandleRowEntity;
 import com.joye.basedata.crawler4j.MyCrawler;
+import com.joye.basedata.filter.OtherInfoEntity;
 import com.joye.basedata.filter.ReplaceDomainEntity;
 
 import org.apache.commons.lang.StringUtils;
@@ -34,13 +35,13 @@ public class D合并成提交文件 {
     @Test
     public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/0508对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0511对象站对的.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
     }
 
     @Test
     public void testKevin() throws Exception {
 //        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 (1).xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站 (2).xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
@@ -72,19 +73,22 @@ public class D合并成提交文件 {
     public List<UploadRowResourceEntity> getCombineDatas(String autoKeyCreateFilePath) throws FileNotFoundException {
         List<UploadRowResourceEntity> mUploadRowResourceEntitys=getUploadRowResourceEntitys(autoKeyCreateFilePath);
         List<DomainHandleRowEntity> mDomainHandleRowEntitys=getDomainHandleRowEntitys(autoKeyCreateFilePath);
+        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(autoKeyCreateFilePath);
         if(mUploadRowResourceEntitys==null||
                 mDomainHandleRowEntitys==null||
                 mDomainHandleRowEntitys.size()!=mUploadRowResourceEntitys.size()
                 ){
             System.out.println(mUploadRowResourceEntitys.size()+":"+ mDomainHandleRowEntitys.size());
-            throw new IllegalArgumentException("数量不一致");
+//            throw new IllegalArgumentException("数量不一致");
         }
         List<UploadRowResourceEntity> combinationEntitys=new ArrayList<>();
         UploadRowResourceEntity uploadRowResourceEntity;
         DomainHandleRowEntity domainHandleRowEntity;
+        OtherInfoEntity mOtherInfoEntity;
         for (int i = 0; i < mUploadRowResourceEntitys.size(); i++) {
             uploadRowResourceEntity=mUploadRowResourceEntitys.get(i);
             domainHandleRowEntity=mDomainHandleRowEntitys.get(i);
+            mOtherInfoEntity=otherInfoEntityList.get(i);
             //老域名
             uploadRowResourceEntity.setOldDomainStr("www."+domainHandleRowEntity.getOldDomains());
             uploadRowResourceEntity.setOldDomainNoFrefix(domainHandleRowEntity.getOldDomains());
@@ -151,53 +155,79 @@ public class D合并成提交文件 {
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[to\\]", keys[0] + "[to]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[1] + "\\[to\\]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[2] + "\\[to\\]");
+                //去掉 手机代理跳转
+                needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+uploadRowResourceEntity.getKey();
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        "<meta  name='Author' content='"+uploadRowResourceEntity.getKey()+"'>"+
                         //加入手机适配以及Google
-                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
-                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+                        "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>" +
+                        "<meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'>"+
                         //加入关键字
-                        "</head><h1><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
+                        "</head>" +
+                        "<h1 style='text-align:center'><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
                 //引入上面和下面
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
-                        //加入第一个外链
-                        "<a href='http://www."+domainHandleRowEntity.getOtherOldDomains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getOtherOldTitle()+"</strong>" +
-                        "</a>" +
-                        //加入第二个外链
-                        "<a href='http://www."+domainHandleRowEntity.getElseOldDomains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getElseOldTitle()+"</strong>" +
-                        "</a>" +
+                        "<ul style='text-align:center'>"+
+                            //加入第一个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='http://www."+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第二个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='http://www."+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第三个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='https://love.alipay.com/donate/index.htm' target='_blank'><strong>公益平台</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第四个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='http://gongyi.qq.com' target='_blank'><strong>腾讯公益</strong>" +
+                                "</a>" +
+                            "</li>" +
+                            //加入第五个外链
+                            "<li style='display:inline-block; margin-right:20px'>" +
+                                "<a href='https://m.gongyi.baidu.com/pages/index.html#/' target='_blank'><strong>百度公益</strong>" +
+                                "</a>" +
+                            "</li>" +
+                        "</ul>"+
+
                         //加入表格
                         "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
                             "<tr>" +
                                 "<td><u>"+keystrArray[0]+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getOtherOldTitle()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getElseOldTitle()+"</u></td>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE1Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE1Title()+"<strong></a></td>" +
+                                "<td><u>"+mOtherInfoEntity.getOtherOldTitle()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getElseOldTitle()+"</u></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"<strong></a></td>" +
                             "</<tr>" +
                             "<tr>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE2Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE2Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE3Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE3Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE4Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE4Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE5Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE5Title()+"<strong></a></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"<strong></a></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE3Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE3Title()+"<strong></a></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE4Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE4Title()+"<strong></a></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE5Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE5Title()+"<strong></a></td>" +
                             "</<tr>" +
                             "<tr>" +
-                                "<td><a href='http://"+domainHandleRowEntity.getE6Domains()+"' target=\"_blank\"><strong>"+domainHandleRowEntity.getE2Title()+"<strong></a></td>" +
-                                "<td><u>"+domainHandleRowEntity.getOtherOldTitle()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getElseOldTitle()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getE6Title()+"</u></td>" +
+                                "<td><a href='http://"+mOtherInfoEntity.getE6Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"<strong></a></td>" +
+                                "<td><u>"+mOtherInfoEntity.getOtherOldTitle()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getElseOldTitle()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE6Title()+"</u></td>" +
                             "</<tr>" +
                             "<tr>" +
                                 "<td><u>"+keystrArray[0]+"</u></td>" +
                                 "<td><u>"+keystrArray[1]+"</u></td>" +
                                 "<td><u>"+keystrArray[2]+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getE1Title()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE1Title()+"</u></td>" +
                             "</<tr>" +
                             "<tr>" +
-                                "<td><u>"+domainHandleRowEntity.getE2Title()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getE3Title()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getE4Title()+"</u></td>" +
-                                "<td><u>"+domainHandleRowEntity.getE5Title()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE2Title()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE3Title()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE4Title()+"</u></td>" +
+                                "<td><u>"+mOtherInfoEntity.getE5Title()+"</u></td>" +
                             "</<tr>" +
                         "</table>" +
                     "</body>";
@@ -212,12 +242,22 @@ public class D合并成提交文件 {
     }
 
 
-
+    /**
+     *
+     * @param autoKeyCreateFilePath
+     * @param newPath
+     * @param newFileName
+     * @throws IOException
+     */
     public void execulteCombineAndTypeSetting(String autoKeyCreateFilePath,String newPath,String newFileName) throws IOException {
-
+        //获取IP
         List<String> ips=getIps(autoKeyCreateFilePath);
+        //获取替换
         List<ReplaceDomainEntity> replaceDomainEntityList=getReplaeDomainEntitys(autoKeyCreateFilePath);
-        ExcelWriterHelper.writeUploadCheck(getCombineDatas(autoKeyCreateFilePath),newPath,newFileName,ips,replaceDomainEntityList);
+        //其他站点信息
+        List<OtherInfoEntity>otherInfoEntityList=getOtherInfoEntitys(autoKeyCreateFilePath);
+
+        ExcelWriterHelper.writeUploadCheck(getCombineDatas(autoKeyCreateFilePath),newPath,newFileName,ips,replaceDomainEntityList,otherInfoEntityList);
     }
 
 
@@ -264,6 +304,30 @@ public class D合并成提交文件 {
 
         return allResult;
 
+    }
+
+    /**
+     * 获取要替换的对象站
+     * @param filePath
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static List<OtherInfoEntity> getOtherInfoEntitys(String filePath) throws FileNotFoundException {
+        Workbook workBook = ExcelReaderHelper.getWorkBookByPath(filePath);
+        List<OtherInfoEntity> allResult = new ArrayList<>();
+        OtherInfoEntity entity;
+        Sheet sheet = workBook.getSheetAt(4);
+        int i=0;
+        for (Row r:sheet) {
+            if(i==0){
+                i++;
+                continue;
+            }
+            entity=new OtherInfoEntity();
+            entity.setRow(r);
+            allResult.add(entity);
+        }
+        return allResult;
     }
 
     /**
