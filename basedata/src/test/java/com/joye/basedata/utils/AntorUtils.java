@@ -24,7 +24,7 @@ public class AntorUtils {
                 &&!antor.contains("冰毒")&&!antor.contains("美女图片")&&!antor.contains("新开")&&!antor.contains("赌场")
                 &&!antor.contains("cf")&&!antor.contains("成人")&&!antor.contains("开户")&&!antor.contains("做爱")
                 &&!antor.contains("裸聊")&&!antor.contains("捕鱼")&&!antor.contains("漫画")&&!antor.contains("热血")
-                &&!antor.contains("代孕")&&!antor.contains("撸")&&!antor.contains("哥哥射")&&!antor.contains("偷偷色");
+                &&!antor.contains("代孕")&&!antor.contains("撸")&&!antor.contains("哥哥射")&&!antor.contains("偷偷色")&&!antor.contains("银雀");
     }
 
 

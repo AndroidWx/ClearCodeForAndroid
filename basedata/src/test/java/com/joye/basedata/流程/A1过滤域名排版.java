@@ -38,9 +38,12 @@ public class A1过滤域名排版 {
 //        filter("/Users/joye/Downloads/4-24.xlsx","/Users/joye/Downloads/","描文本4-24-整理-新");
 //        filter("/Users/joye/Downloads/4-25.xlsx","/Users/joye/Downloads/","描文本4-25-整理-新");
 //        filter("/Users/joye/Downloads/4-26.xlsx","/Users/joye/Downloads/","描文本4-26-整理-新");
-        filter("/Users/joye/Downloads/5-11.xlsx","/Users/joye/Downloads/","描文本5-11-整理-新");
-        filter("/Users/joye/Downloads/5-12.xlsx","/Users/joye/Downloads/","描文本5-12-整理-新");
-        filter("/Users/joye/Downloads/5-10.xlsx","/Users/joye/Downloads/","描文本5-10-整理-新");
+//        filter("/Users/joye/Downloads/5-18.xlsx","/Users/joye/Downloads/","描文本5-18-整理-新");
+//        filter("/Users/joye/Downloads/5-19.xlsx","/Users/joye/Downloads/","描文本5-19-整理-新");
+        filter("/Users/joye/Downloads/5-23.xlsx","/Users/joye/Downloads/","描文本5-23-整理-新");
+        filter("/Users/joye/Downloads/5-24.xlsx","/Users/joye/Downloads/","描文本5-24-整理-新");
+        filter("/Users/joye/Downloads/5-25.xlsx","/Users/joye/Downloads/","描文本5-25-整理-新");
+//        filter("/Users/joye/Downloads/5-17.xlsx","/Users/joye/Downloads/","描文本5-17-整理-新");
 //        filter("/Users/joye/Downloads/4-30.xlsx","/Users/joye/Downloads/","描文本4-30-整理-新");
 
     }
@@ -63,8 +66,95 @@ public class A1过滤域名排版 {
                     entity.setDomain(cellValue);
                 } else if (cell.getColumnIndex() == 1) {
                     entity.setAntor(cellValue);
-                } else {
-                    break;
+                } else if(cell.getColumnIndex() == 2) {
+                    entity.setmExternalBacklinks(cellValue);
+                }
+                else if(cell.getColumnIndex() == 3) {
+                    entity.setmExternalBacklinksEDU(cellValue);
+                }
+                else if(cell.getColumnIndex() == 4) {
+                    entity.setmExternalBacklinksGOV(cellValue);
+                }
+                else if(cell.getColumnIndex() == 5) {
+                    entity.setmReferringDomains(cellValue);
+                }
+                else if(cell.getColumnIndex() == 6) {
+                    entity.setmReferringDomainsEDU(cellValue);
+                }
+                else if(cell.getColumnIndex() == 7) {
+                    entity.setmReferringDomainsGOV(cellValue);
+                }
+                else if(cell.getColumnIndex() == 8) {
+                    entity.setmIPAddresses(cellValue);
+                }
+                else if(cell.getColumnIndex() == 9) {
+                    entity.setmClassCSubnets(cellValue);
+                }
+                else if(cell.getColumnIndex() == 10) {
+                    entity.setmTrustFlow(cellValue);
+                }
+                else if(cell.getColumnIndex() == 11) {
+                    entity.setmCitationFlow(cellValue);
+                }
+                else if(cell.getColumnIndex() == 12) {
+                    entity.setmTopicalTrustFlowTopic0(cellValue);
+                }
+                else if(cell.getColumnIndex() == 13) {
+                    entity.setmTopicalTrustFlowValue0(cellValue);
+                }
+                else if(cell.getColumnIndex() == 14) {
+                    entity.setmTopicalTrustFlowTopic1(cellValue);
+                }
+                else if(cell.getColumnIndex() == 15) {
+                    entity.setmTopicalTrustFlowValue1(cellValue);
+                }
+                else if(cell.getColumnIndex() == 16) {
+                    entity.setmTopicalTrustFlowTopic2(cellValue);
+                }
+                else if(cell.getColumnIndex() == 17) {
+                    entity.setmTopicalTrustFlowValue2(cellValue);
+                }
+                else if(cell.getColumnIndex() == 18) {
+                    entity.setmTopicalTrustFlowTopic3(cellValue);
+                }
+                else if(cell.getColumnIndex() == 19) {
+                    entity.setmTopicalTrustFlowValue3(cellValue);
+                }
+                else if(cell.getColumnIndex() == 20) {
+                    entity.setmTopicalTrustFlowTopic4(cellValue);
+                }
+                else if(cell.getColumnIndex() == 21) {
+                    entity.setmTopicalTrustFlowValue4(cellValue);
+                }
+                else if(cell.getColumnIndex() == 22) {
+                    entity.setmTopicalTrustFlowTopic5(cellValue);
+                }
+                else if(cell.getColumnIndex() == 23) {
+                    entity.setmTopicalTrustFlowValue5(cellValue);
+                }
+                else if(cell.getColumnIndex() == 24) {
+                    entity.setmTopicalTrustFlowTopic6(cellValue);
+                }
+                else if(cell.getColumnIndex() == 25) {
+                    entity.setmTopicalTrustFlowValue6(cellValue);
+                }
+                else if(cell.getColumnIndex() == 26) {
+                    entity.setmTopicalTrustFlowTopic7(cellValue);
+                }
+                else if(cell.getColumnIndex() == 27) {
+                    entity.setmTopicalTrustFlowValue7(cellValue);
+                }
+                else if(cell.getColumnIndex() == 28) {
+                    entity.setmTopicalTrustFlowTopic8(cellValue);
+                }
+                else if(cell.getColumnIndex() == 29) {
+                    entity.setmTopicalTrustFlowValue8(cellValue);
+                }
+                else if(cell.getColumnIndex() == 30) {
+                    entity.setmTopicalTrustFlowTopic9(cellValue);
+                }
+                else if(cell.getColumnIndex() == 31) {
+                    entity.setmTopicalTrustFlowValue9(cellValue);
                 }
             }
             String antor = entity.getAntor();
@@ -82,12 +172,43 @@ public class A1过滤域名排版 {
         CellStyle mCellStyle=CreateCellStyle(workbook);
 
         Row row=null;
+
         for (int j = 0; j < allResult.size(); j++) {
             DomainDelegate.Item entiy= allResult.get(j);
             row = (Row) sheet1.createRow(j);
             row.setHeight((short) 500);
             row.createCell(0).setCellValue(allResult.get(j).getDomain());
             row.createCell(1).setCellValue(allResult.get(j).getAntor());
+            row.createCell(2).setCellValue(allResult.get(j).getmExternalBacklinks());
+            row.createCell(3).setCellValue(allResult.get(j).getmExternalBacklinksEDU());
+            row.createCell(4).setCellValue(allResult.get(j).getmExternalBacklinksGOV());
+            row.createCell(5).setCellValue(allResult.get(j).getmReferringDomains());
+            row.createCell(6).setCellValue(allResult.get(j).getmReferringDomainsEDU());
+            row.createCell(7).setCellValue(allResult.get(j).getmReferringDomainsGOV());
+            row.createCell(8).setCellValue(allResult.get(j).getmIPAddresses());
+            row.createCell(9).setCellValue(allResult.get(j).getmClassCSubnets());
+            row.createCell(10).setCellValue(allResult.get(j).getmTrustFlow());
+            row.createCell(11).setCellValue(allResult.get(j).getmCitationFlow());
+            row.createCell(12).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic0());
+            row.createCell(13).setCellValue(allResult.get(j).getmTopicalTrustFlowValue0());
+            row.createCell(14).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic1());
+            row.createCell(15).setCellValue(allResult.get(j).getmTopicalTrustFlowValue1());
+            row.createCell(16).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic2());
+            row.createCell(17).setCellValue(allResult.get(j).getmTopicalTrustFlowValue2());
+            row.createCell(18).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic3());
+            row.createCell(19).setCellValue(allResult.get(j).getmTopicalTrustFlowValue3());
+            row.createCell(20).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic4());
+            row.createCell(21).setCellValue(allResult.get(j).getmTopicalTrustFlowValue4());
+            row.createCell(22).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic5());
+            row.createCell(23).setCellValue(allResult.get(j).getmTopicalTrustFlowValue5());
+            row.createCell(24).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic6());
+            row.createCell(25).setCellValue(allResult.get(j).getmTopicalTrustFlowValue6());
+            row.createCell(26).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic7());
+            row.createCell(27).setCellValue(allResult.get(j).getmTopicalTrustFlowValue7());
+            row.createCell(28).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic8());
+            row.createCell(29).setCellValue(allResult.get(j).getmTopicalTrustFlowValue8());
+            row.createCell(30).setCellValue(allResult.get(j).getmTopicalTrustFlowTopic9());
+            row.createCell(31).setCellValue(allResult.get(j).getmTopicalTrustFlowValue9());
         }
         //创建文件流
         OutputStream stream = new FileOutputStream(newBookPath+ File.separator+newExcelName+"."+EXCEL_TYPE_XLSX);

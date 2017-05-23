@@ -37,7 +37,9 @@ import java.util.List;
  */
 
 public class Test {
-
+/**
+ *
+ */
     /**
      * 1.读取Excel 加入到hosts
      * <p>
@@ -52,7 +54,7 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/spencer/2017-05-11.xlsx";
+    String filePath = "/Users/joye/Search/combination/spencer/2017-05-23.xlsx";
     String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
@@ -65,7 +67,7 @@ public class Test {
         List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{19,21,25,27};
+        int failed[] = new int[]{22,30,101,181,213,226};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -143,11 +145,11 @@ public class Test {
         }
         List<OtherInfoEntity> writeOtherinfoEntity=new ArrayList<>();
         UploadRowResourceEntity uploadRowResourceEntity;
-        //遍历失败的，准备构建重新上传的列表
+        //遍历失败的,准备构建重新上传的列表
         for (int i = 0; i < upLoadRows.size(); i++) {
             uploadRowResourceEntity = upLoadRows.get(i);
             for (int j = 0; j < failedItem.size(); j++) {
-                //如果失败的域名等于老域名，证明这行上传失败
+                //如果失败的域名等于老域名,证明这行上传失败
                 if (failedItem.get(j).getPrefixDomain().equals(uploadRowResourceEntity.getOldDomainStr())) {
                     reUploadRows.add(uploadRowResourceEntity);
                     writeOtherinfoEntity.add(otherInfoEntityList.get(i));
@@ -159,6 +161,27 @@ public class Test {
         writeAgainUpload(reUploadRows, replaceDomainEntityList,writeOtherinfoEntity);
 
     }
+
+
+    @org.junit.Test
+    public void testCheck() throws Exception {
+//        Workbook book=ExcelReaderHelper.getWorkBookByPath( "/Users/joye/Search/combination/kevin/2017-05-12.xlsx");
+//        List<String> domains=ExcelReaderHelper.getAllCellsByRowsIndex(0,book);
+//        for(int i=0;i<domains.size()/100;i++){
+//            httpURLConGet(result.get(i), upLoadRows.get(i), new CallBack() {
+//                @Override
+//                public void failedItem(ItemEntity itemEntity) {
+//                    failedItem.add(itemEntity);
+//                }
+//
+//                @Override
+//                public void successItem(ItemEntity item) {
+//                    successItem.add(item);
+//                }
+//            });
+//        }
+    }
+
     /**
      * 获取要替换的对象站
      * @param filePath
@@ -198,7 +221,7 @@ public class Test {
         String[] keys;
         //需要替换的关键字
         String[] replaceKeys;
-        //重新构建新的上传站列表，替换下
+        //重新构建新的上传站列表,替换下
         for (int i = 0; i < reUploadRows.size(); i++) {
             //获取需要上传失败的
             UploadRowResourceEntity item = reUploadRows.get(i);
@@ -443,12 +466,12 @@ public class Test {
             System.out.println(str);
         }
 
-        String description = "，拥有完整且庞大的游戏资讯体系和优质的社区服务,客观真实的反应玩家的声音,是广大玩家喜爱的游戏平台";
+        String description = ",拥有完整且庞大的游戏资讯体系和优质的社区服务,客观真实的反应玩家的声音,是广大玩家喜爱的游戏平台";
         String[] array_small = description.split(",");
-        String[] array_big = description.split("，");
-        //如果按，分割
+        String[] array_big = description.split(",");
+        //如果按,分割
         if (array_big.length > array_small.length) {
-            description = description.replaceAll(",", "，");
+            description = description.replaceAll(",", ",");
             for (int i = 0; i < array_big.length; i++) {
                 if (StringUtils.isBlank(array_big[i])) {
                     continue;
@@ -459,7 +482,7 @@ public class Test {
                 description = description.replace(array_big[i], keystrArray[i] + array_big[i]);
             }
         } else {
-            description = description.replaceAll("，", ",");
+            description = description.replaceAll(",", ",");
             for (int i = 0; i < array_small.length; i++) {
                 if (StringUtils.isBlank(array_small[i])) {
                     continue;
@@ -482,21 +505,28 @@ public class Test {
     }
 
 
+
+
+
     /**
      * 使用java.net.HttpURLConnection类的【GET】的方式登录
      */
-    public static String httpURLConGet(ItemEntity itemEntity, UploadRowResourceEntity uploadRow, CallBack callBack) {
+    public static String httpURLConGet(ItemEntity itemEntity, UploadRowResourceEntity uploadRow, CallBack callBack ) {
         HttpURLConnection httpURLConnection = null;
         try {
-            URL url = new URL(itemEntity.getHttpStr().replaceAll("\"", "") + "/");//"?"后面的内容都属于请求头中的内容，服务器获取到请求信息后通过"&"分离出数据
+            URL url = new URL(itemEntity.getHttpStr().replaceAll("\"", "") + "/");//"?"后面的内容都属于请求头中的内容,服务器获取到请求信息后通过"&"分离出数据
             httpURLConnection = (HttpURLConnection) url.openConnection();//打开指定URL的连接
             httpURLConnection.setRequestMethod("GET"); // get或者post必须大写
-            httpURLConnection.setConnectTimeout(5000); // 连接的超时时间，非必须
-            httpURLConnection.setReadTimeout(5000); // 读数据的超时时间，非必须
+            httpURLConnection.setConnectTimeout(5000); // 连接的超时时间,非必须
+            httpURLConnection.setReadTimeout(5000); // 读数据的超时时间,非必须
             httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)");//非必须
             System.out.println(httpURLConnection.getURL().toString());
             int responseCode = httpURLConnection.getResponseCode();//获取响应码
             System.out.println(httpURLConnection.getURL().toString());
+            if(httpURLConnection.getURL().toString().contains("baidu.com")){
+                callBack.failedItem(itemEntity);
+                return "";
+            }
             if (responseCode == 200) {
                 InputStream is = httpURLConnection.getInputStream();
                 String result;
@@ -508,9 +538,11 @@ public class Test {
                 }
                 if (result.contains("<title>11")) {
                     callBack.failedItem(itemEntity);
-                } else if (result.contains(uploadRow.getTitle())) {
-                    callBack.successItem(itemEntity);
+                } else  if (result.contains(uploadRow.getTitle())) {
+                        callBack.successItem(itemEntity);
+
                 } else {
+
                     callBack.failedItem(itemEntity);
                 }
                 return result;
@@ -544,10 +576,10 @@ public class Test {
     ;
 
     /**
-     * 从流中读取数据，返回字节数组
+     * 从流中读取数据,返回字节数组
      */
     public static byte[] getBytesFromInputStream(InputStream is) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();// 字节数组输出流(内存输出流)：可以捕获内存缓冲区的数据，转换成字节数组
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();// 字节数组输出流(内存输出流)：可以捕获内存缓冲区的数据,转换成字节数组
         byte[] buffer = new byte[1024];
         int len = -1;
         try {
@@ -588,7 +620,7 @@ public class Test {
     }
 
     /**
-     * 打开指定URL的URLConnection对象，获取一个InputStream
+     * 打开指定URL的URLConnection对象,获取一个InputStream
      */
     public static InputStream getInputStreamFromUrl(String url) {
         try {

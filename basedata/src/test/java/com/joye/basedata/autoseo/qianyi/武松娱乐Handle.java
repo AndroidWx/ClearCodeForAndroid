@@ -19,24 +19,24 @@ public class 武松娱乐Handle {
              * AAA+AAAB+Random
              * 龙8娱乐_龙8娱乐客户端城_龙8娱乐手机下载
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/千亿公司/武松/武松.xlsx","/Users/joye/search/word/千亿公司/武松/create","1.武松组合");
+            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/千亿公司/武松/诚博.xlsx","/Users/joye/search/word/千亿公司/武松/create","1.诚博组合");
             /**
              * 域名词+关键字生成
              * long8520龙8娱乐官网_long8520龙8娱乐官网下载_long8520龙8娱乐老虎机
              */
-            ExtralResourceWriteDelegate.handleDomainKeys(1,"/Users/joye/search/word/千亿公司/武松/武松.xlsx","/Users/joye/search/word/千亿公司/武松/create","5.武松域加关键字组合");
+            ExtralResourceWriteDelegate.handleDomainKeys(1,"/Users/joye/search/word/千亿公司/武松/诚博.xlsx","/Users/joye/search/word/千亿公司/武松/create","5.诚博域加关键字组合");
             /**
              * 域名加关键字 组合成关键字
              * long8877龙8娱乐官网_龙8娱乐官网_龙8娱乐官网
              */
-            ExtralResourceWriteDelegate.handleKeysExcel(1,"/Users/joye/search/word/千亿公司/武松/武松.xlsx","/Users/joye/search/word/千亿公司/武松/create","4.武松域加关键字作为组合");
+            ExtralResourceWriteDelegate.handleKeysExcel(1,"/Users/joye/search/word/千亿公司/武松/诚博.xlsx","/Users/joye/search/word/千亿公司/武松/create","4.诚博域加关键字作为组合");
             /**
              * 域名词+关键字生成
              * long8.cc龙8娱乐备用网址_www.long8.cc.com_龙8娱乐老虎机手机版
              */
-            ExtralResourceWriteDelegate.handleWWWDomainKeys(1,"/Users/joye/search/word/千亿公司/武松/武松.xlsx","/Users/joye/search/word/千亿公司/武松/create","2.武松域加关键词+www域组合");
+            ExtralResourceWriteDelegate.handleWWWDomainKeys(1,"/Users/joye/search/word/千亿公司/武松/诚博.xlsx","/Users/joye/search/word/千亿公司/武松/create","2.诚博域加关键词+www域组合");
 
-            ExtralResourceWriteDelegate.handleWWWDomainKeysOnlyKeys(1,"/Users/joye/search/word/千亿公司/武松/武松.xlsx","/Users/joye/search/word/千亿公司/武松/create","3.武松关键词+www域组合");
+            ExtralResourceWriteDelegate.handleWWWDomainKeysOnlyKeys(1,"/Users/joye/search/word/千亿公司/武松/诚博.xlsx","/Users/joye/search/word/千亿公司/武松/create","3.诚博关键词+www域组合");
         } catch (Exception e) {
             e.printStackTrace();
         }

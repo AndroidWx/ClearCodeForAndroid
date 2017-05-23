@@ -328,10 +328,79 @@ public class DomainDelegate {
 
     }
 
+    @Test
+    public void testABC123() throws Exception {
+//        for (int i = 0; i < TITLE.length; i++) {
+//            System.out.println("else if(cell.getColumnIndex() == "+i+") {");
+//            System.out.println("entity.setm"+TITLE[i]+"(cellValue);");
+//            System.out.println("}");
+//        }
+//row.createCell(0).setCellValue(allResult.get(j).getDomain());
+        for (int i = 0; i < TITLE.length; i++) {
+            System.out.println("row.createCell("+i+").setCellValue(allResult.get(j).getm"+TITLE[i]+"());");
+        }
+    }
+
+    public static final String []TITLE=new String[]{"Item"	,"锚文本",	"ExternalBacklinks",	"ExternalBacklinksEDU",
+            "ExternalBacklinksGOV",	"ReferringDomains",
+            "ReferringDomainsEDU",
+            "ReferringDomainsGOV"
+            ,"IPAddresses",	"ClassCSubnets",
+            "TrustFlow",
+            "CitationFlow",
+            "TopicalTrustFlowTopic0"
+            ,"TopicalTrustFlowValue0",
+            "TopicalTrustFlowTopic1",
+            "TopicalTrustFlowValue1",
+            "TopicalTrustFlowTopic2"
+            ,"TopicalTrustFlowValue2"
+            ,"TopicalTrustFlowTopic3"
+            ,"TopicalTrustFlowValue3"
+            ,"TopicalTrustFlowTopic4"
+            ,"TopicalTrustFlowValue4"
+            ,"TopicalTrustFlowTopic5"
+            ,"TopicalTrustFlowValue5"
+            ,"TopicalTrustFlowTopic6"
+            ,"TopicalTrustFlowValue6"
+            ,"TopicalTrustFlowTopic7"
+            ,"TopicalTrustFlowValue7"
+            ,"TopicalTrustFlowTopic8"
+            ,"TopicalTrustFlowValue8"
+            ,"TopicalTrustFlowTopic9"
+            ,"TopicalTrustFlowValue9"};
     public static class Item {
         private String domain;
         private String antor;
-
+        private String mExternalBacklinks;
+        private String mExternalBacklinksEDU;
+        private String mExternalBacklinksGOV;
+        private String mReferringDomains;
+        private String mReferringDomainsEDU;
+        private String mReferringDomainsGOV;
+        private String mIPAddresses;
+        private String mClassCSubnets;
+        private String mTrustFlow;
+        private String mCitationFlow;
+        private String mTopicalTrustFlowTopic0;
+        private String mTopicalTrustFlowValue0;
+        private String mTopicalTrustFlowTopic1;
+        private String mTopicalTrustFlowValue1;
+        private String mTopicalTrustFlowTopic2;
+        private String mTopicalTrustFlowValue2;
+        private String mTopicalTrustFlowTopic3;
+        private String mTopicalTrustFlowValue3;
+        private String mTopicalTrustFlowTopic4;
+        private String mTopicalTrustFlowValue4;
+        private String mTopicalTrustFlowTopic5;
+        private String mTopicalTrustFlowValue5;
+        private String mTopicalTrustFlowTopic6;
+        private String mTopicalTrustFlowValue6;
+        private String mTopicalTrustFlowTopic7;
+        private String mTopicalTrustFlowValue7;
+        private String mTopicalTrustFlowTopic8;
+        private String mTopicalTrustFlowValue8;
+        private String mTopicalTrustFlowTopic9;
+        private String mTopicalTrustFlowValue9;
         public String getDomain() {
             return domain;
         }
@@ -346,6 +415,246 @@ public class DomainDelegate {
 
         public void setAntor(String antor) {
             this.antor = antor;
+        }
+
+        public String getmExternalBacklinks() {
+            return mExternalBacklinks;
+        }
+
+        public void setmExternalBacklinks(String mExternalBacklinks) {
+            this.mExternalBacklinks = mExternalBacklinks;
+        }
+
+        public String getmExternalBacklinksEDU() {
+            return mExternalBacklinksEDU;
+        }
+
+        public void setmExternalBacklinksEDU(String mExternalBacklinksEDU) {
+            this.mExternalBacklinksEDU = mExternalBacklinksEDU;
+        }
+
+        public String getmExternalBacklinksGOV() {
+            return mExternalBacklinksGOV;
+        }
+
+        public void setmExternalBacklinksGOV(String mExternalBacklinksGOV) {
+            this.mExternalBacklinksGOV = mExternalBacklinksGOV;
+        }
+
+        public String getmReferringDomains() {
+            return mReferringDomains;
+        }
+
+        public void setmReferringDomains(String mReferringDomains) {
+            this.mReferringDomains = mReferringDomains;
+        }
+
+        public String getmReferringDomainsEDU() {
+            return mReferringDomainsEDU;
+        }
+
+        public void setmReferringDomainsEDU(String mReferringDomainsEDU) {
+            this.mReferringDomainsEDU = mReferringDomainsEDU;
+        }
+
+        public String getmReferringDomainsGOV() {
+            return mReferringDomainsGOV;
+        }
+
+        public void setmReferringDomainsGOV(String mReferringDomainsGOV) {
+            this.mReferringDomainsGOV = mReferringDomainsGOV;
+        }
+
+        public String getmIPAddresses() {
+            return mIPAddresses;
+        }
+
+        public void setmIPAddresses(String mIPAddresses) {
+            this.mIPAddresses = mIPAddresses;
+        }
+
+        public String getmClassCSubnets() {
+            return mClassCSubnets;
+        }
+
+        public void setmClassCSubnets(String mClassCSubnets) {
+            this.mClassCSubnets = mClassCSubnets;
+        }
+
+        public String getmTrustFlow() {
+            return mTrustFlow;
+        }
+
+        public void setmTrustFlow(String mTrustFlow) {
+            this.mTrustFlow = mTrustFlow;
+        }
+
+        public String getmCitationFlow() {
+            return mCitationFlow;
+        }
+
+        public void setmCitationFlow(String mCitationFlow) {
+            this.mCitationFlow = mCitationFlow;
+        }
+
+        public String getmTopicalTrustFlowTopic0() {
+            return mTopicalTrustFlowTopic0;
+        }
+
+        public void setmTopicalTrustFlowTopic0(String mTopicalTrustFlowTopic0) {
+            this.mTopicalTrustFlowTopic0 = mTopicalTrustFlowTopic0;
+        }
+
+        public String getmTopicalTrustFlowValue0() {
+            return mTopicalTrustFlowValue0;
+        }
+
+        public void setmTopicalTrustFlowValue0(String mTopicalTrustFlowValue0) {
+            this.mTopicalTrustFlowValue0 = mTopicalTrustFlowValue0;
+        }
+
+        public String getmTopicalTrustFlowTopic1() {
+            return mTopicalTrustFlowTopic1;
+        }
+
+        public void setmTopicalTrustFlowTopic1(String mTopicalTrustFlowTopic1) {
+            this.mTopicalTrustFlowTopic1 = mTopicalTrustFlowTopic1;
+        }
+
+        public String getmTopicalTrustFlowValue1() {
+            return mTopicalTrustFlowValue1;
+        }
+
+        public void setmTopicalTrustFlowValue1(String mTopicalTrustFlowValue1) {
+            this.mTopicalTrustFlowValue1 = mTopicalTrustFlowValue1;
+        }
+
+        public String getmTopicalTrustFlowTopic2() {
+            return mTopicalTrustFlowTopic2;
+        }
+
+        public void setmTopicalTrustFlowTopic2(String mTopicalTrustFlowTopic2) {
+            this.mTopicalTrustFlowTopic2 = mTopicalTrustFlowTopic2;
+        }
+
+        public String getmTopicalTrustFlowValue2() {
+            return mTopicalTrustFlowValue2;
+        }
+
+        public void setmTopicalTrustFlowValue2(String mTopicalTrustFlowValue2) {
+            this.mTopicalTrustFlowValue2 = mTopicalTrustFlowValue2;
+        }
+
+        public String getmTopicalTrustFlowTopic3() {
+            return mTopicalTrustFlowTopic3;
+        }
+
+        public void setmTopicalTrustFlowTopic3(String mTopicalTrustFlowTopic3) {
+            this.mTopicalTrustFlowTopic3 = mTopicalTrustFlowTopic3;
+        }
+
+        public String getmTopicalTrustFlowValue3() {
+            return mTopicalTrustFlowValue3;
+        }
+
+        public void setmTopicalTrustFlowValue3(String mTopicalTrustFlowValue3) {
+            this.mTopicalTrustFlowValue3 = mTopicalTrustFlowValue3;
+        }
+
+        public String getmTopicalTrustFlowTopic4() {
+            return mTopicalTrustFlowTopic4;
+        }
+
+        public void setmTopicalTrustFlowTopic4(String mTopicalTrustFlowTopic4) {
+            this.mTopicalTrustFlowTopic4 = mTopicalTrustFlowTopic4;
+        }
+
+        public String getmTopicalTrustFlowValue4() {
+            return mTopicalTrustFlowValue4;
+        }
+
+        public void setmTopicalTrustFlowValue4(String mTopicalTrustFlowValue4) {
+            this.mTopicalTrustFlowValue4 = mTopicalTrustFlowValue4;
+        }
+
+        public String getmTopicalTrustFlowTopic5() {
+            return mTopicalTrustFlowTopic5;
+        }
+
+        public void setmTopicalTrustFlowTopic5(String mTopicalTrustFlowTopic5) {
+            this.mTopicalTrustFlowTopic5 = mTopicalTrustFlowTopic5;
+        }
+
+        public String getmTopicalTrustFlowValue5() {
+            return mTopicalTrustFlowValue5;
+        }
+
+        public void setmTopicalTrustFlowValue5(String mTopicalTrustFlowValue5) {
+            this.mTopicalTrustFlowValue5 = mTopicalTrustFlowValue5;
+        }
+
+        public String getmTopicalTrustFlowTopic6() {
+            return mTopicalTrustFlowTopic6;
+        }
+
+        public void setmTopicalTrustFlowTopic6(String mTopicalTrustFlowTopic6) {
+            this.mTopicalTrustFlowTopic6 = mTopicalTrustFlowTopic6;
+        }
+
+        public String getmTopicalTrustFlowValue6() {
+            return mTopicalTrustFlowValue6;
+        }
+
+        public void setmTopicalTrustFlowValue6(String mTopicalTrustFlowValue6) {
+            this.mTopicalTrustFlowValue6 = mTopicalTrustFlowValue6;
+        }
+
+        public String getmTopicalTrustFlowTopic7() {
+            return mTopicalTrustFlowTopic7;
+        }
+
+        public void setmTopicalTrustFlowTopic7(String mTopicalTrustFlowTopic7) {
+            this.mTopicalTrustFlowTopic7 = mTopicalTrustFlowTopic7;
+        }
+
+        public String getmTopicalTrustFlowValue7() {
+            return mTopicalTrustFlowValue7;
+        }
+
+        public void setmTopicalTrustFlowValue7(String mTopicalTrustFlowValue7) {
+            this.mTopicalTrustFlowValue7 = mTopicalTrustFlowValue7;
+        }
+
+        public String getmTopicalTrustFlowTopic8() {
+            return mTopicalTrustFlowTopic8;
+        }
+
+        public void setmTopicalTrustFlowTopic8(String mTopicalTrustFlowTopic8) {
+            this.mTopicalTrustFlowTopic8 = mTopicalTrustFlowTopic8;
+        }
+
+        public String getmTopicalTrustFlowValue8() {
+            return mTopicalTrustFlowValue8;
+        }
+
+        public void setmTopicalTrustFlowValue8(String mTopicalTrustFlowValue8) {
+            this.mTopicalTrustFlowValue8 = mTopicalTrustFlowValue8;
+        }
+
+        public String getmTopicalTrustFlowTopic9() {
+            return mTopicalTrustFlowTopic9;
+        }
+
+        public void setmTopicalTrustFlowTopic9(String mTopicalTrustFlowTopic9) {
+            this.mTopicalTrustFlowTopic9 = mTopicalTrustFlowTopic9;
+        }
+
+        public String getmTopicalTrustFlowValue9() {
+            return mTopicalTrustFlowValue9;
+        }
+
+        public void setmTopicalTrustFlowValue9(String mTopicalTrustFlowValue9) {
+            this.mTopicalTrustFlowValue9 = mTopicalTrustFlowValue9;
         }
     }
 
