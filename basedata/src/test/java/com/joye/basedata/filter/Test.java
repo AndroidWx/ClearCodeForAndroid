@@ -54,8 +54,8 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/spencer/2017-05-23.xlsx";
-    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
+    String filePath = "/Users/joye/Search/combination/kevin/2017-05-26.xlsx";
+    String newPath = "/Users/joye/Search/combination/kevin/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
@@ -67,7 +67,7 @@ public class Test {
         List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{22,30,101,181,213,226};
+        int failed[] = new int[]{10,17,22,33,38,67};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -253,6 +253,7 @@ public class Test {
 
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        "<meta name='keywords'  content='"+keystrArray[0]+"，"+keystrArray[1]+"，"+keystrArray[2]+"'>"+
                          "<meta  name='Author' content='"+keystrArray[0]+"'>"+
                         //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +

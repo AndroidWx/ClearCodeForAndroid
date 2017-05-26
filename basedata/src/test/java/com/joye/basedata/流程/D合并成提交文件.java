@@ -36,7 +36,7 @@ public class D合并成提交文件 {
     @Test
     public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/0523组合.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0526组合.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class D合并成提交文件 {
     }
     @Test
     public void testBruce() throws Exception {
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站1.xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站1 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
     }
 
     @Test
@@ -175,10 +175,13 @@ public class D合并成提交文件 {
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[to\\]", keys[0] + "[to]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[1] + "\\[to\\]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[2] + "\\[to\\]");
+                String key=uploadRowResourceEntity.getKey();
+                key+="，"+keystrArray[1]+"，"+keystrArray[2];
                 //去掉 手机代理跳转
                 needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+uploadRowResourceEntity.getKey();
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
+                        "<meta name='keywords'  content='"+key+"'>"+
                         "<meta  name='Author' content='"+uploadRowResourceEntity.getKey()+"'>"+
                         //加入手机适配以及Google
                         "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>" +
@@ -251,6 +254,7 @@ public class D合并成提交文件 {
                             "</<tr>" +
                         "</table>" +
                     "</body>";
+                setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[1],keystrArray[2]);
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
                 System.out.println("出错的地方"+i);
@@ -261,7 +265,94 @@ public class D合并成提交文件 {
         return combinationEntitys;
     }
 
+    /**
+     * 随机设置标题
+     * @param index
+     * @param uploadRowResourceEntity
+     * @param keys1
+     * @param keys2
+     * @param keys3
+     */
+    private void setTitle(int index,UploadRowResourceEntity uploadRowResourceEntity,String keys1,String keys2,String keys3){
+        int i=index%10;
+        int j=0;
+        String title=uploadRowResourceEntity.getTitle();
+         if(i==1){
+            j= (int) (Math.random() * 12);
+            if(j==1){
+                //key-key(唯一)授权娱乐平台-key
+                title=keys1+"-"+keys2+"(唯一)授权娱乐平台-"+keys3;
+            }else if(j==2||j==3||j==4||j==5||j==11||j==12){
+                title=keys1+"-"+keys2+"-"+keys3;
+            }else if(j==6||j==7||j==8){
+                title=keys1+"-"+keys2+"-"+keys3+"【官方网址】";
+            }else if(j==9||j==10){
+                title=keys1+"，"+keys2+"-"+keys3;
+            }
+         }else if(i==2||i==3||i==4||i==5||i==6||i==7){
+             j=(int) (Math.random() * 25);
+             if(j==1){
+                 title=title+">>首页";
+             }else if(j==2 || j==3||j==4||j==5||j==6){
+                 title=title+"【唯一授权官网】";
+             }else if(j==7||j==8){
+                 title=title+"(唯一)网址";
+             }else if(j==9||j==10||j==11||j==12||j==13||j==14||j==15){
+                 title=title+"【欢迎光临】";
+             }else if(j==16||j==17||j==18){
+                 title=title+"【全网独家】";
+             }else if(j==19){
+                 title=keys1+"_"+keys2+">>>【唯一官网】欢迎您";
+             }else if(j==20){
+                 title=keys1+"_"+keys2+"(唯一)官方网站_"+keys3;
+             }else if(j==21){
+                 title=keys1+"_"+keys2+"【唯一】官方网站_"+keys3;
+             }else if(j==22){
+                 title=keys1+"_"+keys2+"，"+keys3;
+             }else if(j==23){
+                 title=keys1+"_"+keys2+"【唯一授权官网】_"+keys3;
+             }
 
+         }else if(i==8){
+             j=(int) (Math.random() * 6);;
+             if(j==1){
+                 title=keys1+"|"+keys2+"|"+keys3;
+             }else if(j==2||j==3||j==4){
+                 title=keys1+"|"+keys2+"|"+keys3+"【欢迎您】";
+             }else{
+                 title=keys1+"|"+keys2+"|"+keys3+"-在线首页";
+             }
+         }else if(i==9){
+             j=(int) (Math.random() * 13);;
+             if(j==1){
+                 title=keys1+"【"+keys2+"(指定)官方网站 - "+keys3+"】";
+             }else if(j==2){
+                 title=keys1+","+keys2+","+keys3;
+             }else if(j==3){
+                 title=keys1+"_"+keys2+"_"+keys3+"【亚洲知名】欢迎您";
+             }else if(j==4){
+                 title=keys1+"_"+keys2+"(唯一授权)_"+keys3;
+             }else if(j==5){
+                 title=keys1+"【"+keys2+"(唯一)官网-"+keys3+"】";
+             }else if(j==6){
+                 title="【"+keys1+"】_"+keys2+"_"+keys3;
+             }else if(j==7){
+                 title=keys1+"【"+keys2+"】"+keys3;
+             }else if(j==8){
+                 title=keys1+"【"+keys2+"唯一授权网站】"+keys3;
+             }else if(j==9){
+                 title=keys1+"【"+keys2+"】"+keys3;
+             }else if(j==10){
+                 title="【"+keys1+"】"+keys2+"_"+keys3;
+             }else if(j==11){
+                title="【"+keys1+"】"+keys2+"_"+keys3+"(唯一)官网欢迎您!(亚洲第一品牌)";
+             }else if(j==12){
+                 title=keys1+"【唯一授权网站】"+keys2+"_"+keys3;
+             }
+         }
+        uploadRowResourceEntity.setTitle(title);
+
+    }
     /**
      *
      * @param autoKeyCreateFilePath
