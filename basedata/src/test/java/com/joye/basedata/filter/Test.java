@@ -54,8 +54,8 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/kevin/2017-05-26.xlsx";
-    String newPath = "/Users/joye/Search/combination/kevin/";//重新提交的excel路径
+    String filePath = "/Users/joye/Search/combination/spencer/2017-05-29.xlsx";
+    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
     String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
@@ -67,7 +67,7 @@ public class Test {
         List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{10,17,22,33,38,67};
+        int failed[] = new int[]{9,19,22,80,88,90,153,170,177,215,223,240};
         System.out.println(failed.length);
         for (int index :
                 failed) {

@@ -36,17 +36,17 @@ public class D合并成提交文件 {
     @Test
     public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/0526组合.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/0529组合.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
     }
 
     @Test
     public void testKevin() throws Exception {
 //        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin (1).xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站1 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站二级域名测试 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
     }
 
     @Test
@@ -179,6 +179,8 @@ public class D合并成提交文件 {
                 key+="，"+keystrArray[1]+"，"+keystrArray[2];
                 //去掉 手机代理跳转
                 needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+uploadRowResourceEntity.getKey();
+                needReplaceKeystr = needReplaceKeystr+"[or]<meta name=\"baidu-site-verification\"[to]<meta name=\"test\"";
+                needReplaceKeystr = needReplaceKeystr+"[or]<meta name=\"360-site-verification\"[to]<meta name=\"test\"";
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
                         "<meta name='keywords'  content='"+key+"'>"+
@@ -187,72 +189,33 @@ public class D合并成提交文件 {
                         "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>" +
                         "<meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'>"+
                         //加入关键字
-                        "</head>" +
-                        "<h1 style='text-align:center'><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
+                        "</head>";
+                        //+"<h1 style='text-align:center'><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
                 //引入上面和下面
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
                         "<ul style='text-align:center'>"+
                             //加入第一个外链
                             "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://www."+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
+                                "<a href='http://"+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
                                 "</a>" +
                             "</li>" +
                             //加入第二个外链
                             "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://www."+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
+                                "<a href='http://"+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
                                 "</a>" +
                             "</li>" +
                             //加入第三个外链
                             "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='https://love.alipay.com/donate/index.htm' target='_blank'><strong>公益平台</strong>" +
+                                "<a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"</strong>" +
                                 "</a>" +
-                            "</li>" +
+                            "</li>"+
                             //加入第四个外链
                             "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://gongyi.qq.com' target='_blank'><strong>腾讯公益</strong>" +
+                                "<a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"</strong>" +
                                 "</a>" +
-                            "</li>" +
-                            //加入第五个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='https://m.gongyi.baidu.com/pages/index.html#/' target='_blank'><strong>百度公益</strong>" +
-                                "</a>" +
-                            "</li>" +
+                            "</li>"+
                         "</ul>"+
-
-                        //加入表格
-                        "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
-                            "<tr>" +
-                                "<td><u>"+keystrArray[0]+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getOtherOldTitle()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getElseOldTitle()+"</u></td>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"<strong></a></td>" +
-                            "</<tr>" +
-                            "<tr>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE3Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE3Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE4Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE4Title()+"<strong></a></td>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE5Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE5Title()+"<strong></a></td>" +
-                            "</<tr>" +
-                            "<tr>" +
-                                "<td><a href='http://"+mOtherInfoEntity.getE6Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"<strong></a></td>" +
-                                "<td><u>"+mOtherInfoEntity.getOtherOldTitle()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getElseOldTitle()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getE6Title()+"</u></td>" +
-                            "</<tr>" +
-                            "<tr>" +
-                                "<td><u>"+keystrArray[0]+"</u></td>" +
-                                "<td><u>"+keystrArray[1]+"</u></td>" +
-                                "<td><u>"+keystrArray[2]+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getE1Title()+"</u></td>" +
-                            "</<tr>" +
-                            "<tr>" +
-                                "<td><u>"+mOtherInfoEntity.getE2Title()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getE3Title()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getE4Title()+"</u></td>" +
-                                "<td><u>"+mOtherInfoEntity.getE5Title()+"</u></td>" +
-                            "</<tr>" +
-                        "</table>" +
                     "</body>";
                 setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[1],keystrArray[2]);
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);

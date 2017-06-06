@@ -40,9 +40,9 @@ public class A1过滤域名排版 {
 //        filter("/Users/joye/Downloads/4-26.xlsx","/Users/joye/Downloads/","描文本4-26-整理-新");
 //        filter("/Users/joye/Downloads/5-18.xlsx","/Users/joye/Downloads/","描文本5-18-整理-新");
 //        filter("/Users/joye/Downloads/5-19.xlsx","/Users/joye/Downloads/","描文本5-19-整理-新");
-        filter("/Users/joye/Downloads/5-26.xlsx","/Users/joye/Downloads/","描文本5-26-整理-新");
-        filter("/Users/joye/Downloads/5-27.xlsx","/Users/joye/Downloads/","描文本5-27-整理-新");
-        filter("/Users/joye/Downloads/5-28.xlsx","/Users/joye/Downloads/","描文本5-28-整理-新");
+        filter("/Users/joye/Downloads/5-31.xlsx","/Users/joye/Downloads/","描文本5-31-整理-新");
+      //  filter("/Users/joye/Downloads/5-27.xlsx","/Users/joye/Downloads/","描文本5-27-整理-新");
+        //filter("/Users/joye/Downloads/5-28.xlsx","/Users/joye/Downloads/","描文本5-28-整理-新");
 //        filter("/Users/joye/Downloads/5-17.xlsx","/Users/joye/Downloads/","描文本5-17-整理-新");
 //        filter("/Users/joye/Downloads/4-30.xlsx","/Users/joye/Downloads/","描文本4-30-整理-新");
 
