@@ -215,6 +215,9 @@ public class D合并成提交文件 {
                                 "<a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"</strong>" +
                                 "</a>" +
                             "</li>"+
+                            "<li>" +
+                                "<span style=\"display:inline-block;width:160px;height:30px;text-align:center;border:#000 1px dotted;font-family:Arial,Helvetica,sans-serif;font-size:11px;background-color:#FFFFFF;\"><strong style=\"display:block;padding:0px;margin:0px;\"></strong><a href=\"http://www.submitexpress.com/\" title=\"SubmitExpress.com\" style=\"font-family:Arial,Helvetica,sans-serif;font-size:11px;\">SubmitExpress.com</a></span>"+
+                            "</li>"+
                         "</ul>"+
                     "</body>";
                 setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[1],keystrArray[2]);
