@@ -46,7 +46,7 @@ public class D合并成提交文件 {
     }
     @Test
     public void testBruce() throws Exception {
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站二级域名测试 (1).xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Search/word/钱柜/create/®_1.钱柜组合.xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
     }
 
     @Test
@@ -104,15 +104,25 @@ public class D合并成提交文件 {
              */
             String[] keystrArray = new String[6];
             String keystr_or_to = uploadRowResourceEntity.getReplaceKeyStr();
+//            System.out.println(keystr_or_to);
             int indexTo = keystr_or_to.indexOf("[to]");
             int indexOr = keystr_or_to.indexOf("[or]");
+            //第一个关键字
             keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
             keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+            //第二个关键字
             keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-            keystrArray[2] = keystr_or_to.substring(keystr_or_to.lastIndexOf("[to]")+4);
-            keystrArray[3]=keystrArray[0];
-            keystrArray[4]=keystrArray[1];
-            keystrArray[5]=keystrArray[2];
+            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+            //第三个关键字
+            keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+
+            keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+            keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.length());
+            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.length());
+            keystrArray[5] = keystr_or_to.substring(0,keystr_or_to.length());
+//            keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
             String description=domainHandleRowEntity.getDescription();
             if(StringUtils.isBlank(description)){
                 Validate.isTrue(false,"描述没填写");
@@ -139,6 +149,14 @@ public class D合并成提交文件 {
                             .replace("登录入口","")
                             .replace("欢迎您","")
                             .replace("【唯一授权官网】","")
+                            .replace("777官网登录","")
+                            .replace("老虎机手机版","")
+                            .replace("手机版官方网","")
+                            .replace("777手机客户端","")
+                            .replace("777","")
+                            .replace("官网手机版","")
+                            .replace("老虎机官网","")
+                            .replace("官网登录","")
                             .replace("入口","");
                     if(keystrArray[j].contains("www.")){
                         keystrArray[j]="";
@@ -161,7 +179,7 @@ public class D合并成提交文件 {
             /**
              *
              */
-            uploadRowResourceEntity.setDescription(keystrArray[0]+"_"+keystrArray[1]+"_"+keystrArray[2]+description);
+            uploadRowResourceEntity.setDescription("钱柜娱乐"+description);
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
             String keystr=domainHandleRowEntity.getKeys();
             if(keystr==null){
@@ -175,52 +193,52 @@ public class D合并成提交文件 {
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[to\\]", keys[0] + "[to]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[1] + "\\[to\\]");
                 needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[2] + "\\[to\\]");
+                needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[3] + "\\[to\\]");
+                needReplaceKeystr = needReplaceKeystr.replaceFirst("\\[or\\]\\[to\\]", "\\[or\\]" + keys[4] + "\\[to\\]");
                 String key=uploadRowResourceEntity.getKey();
-                key+="，"+keystrArray[1]+"，"+keystrArray[2];
+                key+="，"+keystrArray[3]+"，"+keystrArray[4];
                 //去掉 手机代理跳转
                 needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+uploadRowResourceEntity.getKey();
-                needReplaceKeystr = needReplaceKeystr+"[or]<meta name=\"baidu-site-verification\"[to]<meta name=\"test\"";
-                needReplaceKeystr = needReplaceKeystr+"[or]<meta name=\"360-site-verification\"[to]<meta name=\"test\"";
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
                         "<meta name='keywords'  content='"+key+"'>"+
                         "<meta  name='Author' content='"+uploadRowResourceEntity.getKey()+"'>"+
                         //加入手机适配以及Google
-                        "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>" +
-                        "<meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'>"+
+//                        "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>" +
+//                        "<meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'>"+
                         //加入关键字
                         "</head>";
                         //+"<h1 style='text-align:center'><a href='http://www."+domainHandleRowEntity.getOldDomains()+"'>"+keystrArray[0]+"</a></h1>";
                 //引入上面和下面
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
-                        "<ul style='text-align:center'>"+
-                            //加入第一个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://"+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
-                                "</a>" +
-                            "</li>" +
-                            //加入第二个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://"+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
-                                "</a>" +
-                            "</li>" +
-                            //加入第三个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"</strong>" +
-                                "</a>" +
-                            "</li>"+
-                            //加入第四个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"</strong>" +
-                                "</a>" +
-                            "</li>"+
+                        "<ul style='text-align:left'>"+
+//                            //加入第一个外链
+//                            "<li style='display:inline-block; margin-right:20px'>" +
+//                                "<a href='http://"+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
+//                                "</a>" +
+//                            "</li>" +
+//                            //加入第二个外链
+//                            "<li style='display:inline-block; margin-right:20px'>" +
+//                                "<a href='http://"+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
+//                                "</a>" +
+//                            "</li>" +
+//                            //加入第三个外链
+//                            "<li style='display:inline-block; margin-right:20px'>" +
+//                                "<a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"</strong>" +
+//                                "</a>" +
+//                            "</li>"+
+//                            //加入第四个外链
+//                            "<li style='display:inline-block; margin-right:20px'>" +
+//                                "<a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"</strong>" +
+//                                "</a>" +
+//                            "</li>"+
                             "<li>" +
                                 "<span style=\"display:inline-block;width:160px;height:30px;text-align:center;border:#000 1px dotted;font-family:Arial,Helvetica,sans-serif;font-size:11px;background-color:#FFFFFF;\"><strong style=\"display:block;padding:0px;margin:0px;\"></strong><a href=\"http://www.submitexpress.com/\" title=\"SubmitExpress.com\" style=\"font-family:Arial,Helvetica,sans-serif;font-size:11px;\">SubmitExpress.com</a></span>"+
                             "</li>"+
                         "</ul>"+
                     "</body>";
-                setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[1],keystrArray[2]);
+                setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[3],keystrArray[4]);
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
                 System.out.println("出错的地方"+i);
@@ -355,6 +373,29 @@ public class D合并成提交文件 {
         getDomainHandleRowEntitys("/Users/joye/Downloads/spencer-20170408对象站.xlsx");
     }
 
+
+    @Test
+    public void testNew() throws Exception {
+        String[] keystrArray = new String[6];
+        String keystr_or_to = "[to]钱柜娱乐[or][to]钱柜娱乐[or][to]钱柜娱乐[or][to]钱柜娱乐官网[or][to]钱柜娱乐老虎机手机版";
+        int indexTo = keystr_or_to.indexOf("[to]");
+        int indexOr = keystr_or_to.indexOf("[or]");
+        //第一个关键字
+        keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        //第二个关键字
+        keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        //第三个关键字
+        keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+
+        keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.length());
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.length());
+        keystrArray[5] = keystr_or_to.substring(0,keystr_or_to.length());
+    }
 
     /**
      *
