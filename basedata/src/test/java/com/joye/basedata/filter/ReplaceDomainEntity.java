@@ -41,7 +41,7 @@ public class ReplaceDomainEntity{//}  extends OtherInfoEntity{
     }
 
     public String[]getkeys(){
-        if(keys==null||keys.length<3){
+        if(keys==null||keys.length<7){
             keys=keystr.split("，");
         }
         return keys;

@@ -213,26 +213,6 @@ public class D合并成提交文件 {
                 needReplaceKeystr= needReplaceKeystr
                         +"[or]</body>[to]" +
                         "<ul style='text-align:left'>"+
-//                            //加入第一个外链
-//                            "<li style='display:inline-block; margin-right:20px'>" +
-//                                "<a href='http://"+mOtherInfoEntity.getOtherOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getOtherOldTitle()+"</strong>" +
-//                                "</a>" +
-//                            "</li>" +
-//                            //加入第二个外链
-//                            "<li style='display:inline-block; margin-right:20px'>" +
-//                                "<a href='http://"+mOtherInfoEntity.getElseOldDomains()+"' target='_blank'><strong>"+mOtherInfoEntity.getElseOldTitle()+"</strong>" +
-//                                "</a>" +
-//                            "</li>" +
-//                            //加入第三个外链
-//                            "<li style='display:inline-block; margin-right:20px'>" +
-//                                "<a href='http://"+mOtherInfoEntity.getE1Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE1Title()+"</strong>" +
-//                                "</a>" +
-//                            "</li>"+
-//                            //加入第四个外链
-//                            "<li style='display:inline-block; margin-right:20px'>" +
-//                                "<a href='http://"+mOtherInfoEntity.getE2Domains()+"' target='_blank'><strong>"+mOtherInfoEntity.getE2Title()+"</strong>" +
-//                                "</a>" +
-//                            "</li>"+
                             "<li>" +
                                 "<span style=\"display:inline-block;width:160px;height:30px;text-align:center;border:#000 1px dotted;font-family:Arial,Helvetica,sans-serif;font-size:11px;background-color:#FFFFFF;\"><strong style=\"display:block;padding:0px;margin:0px;\"></strong><a href=\"http://www.submitexpress.com/\" title=\"SubmitExpress.com\" style=\"font-family:Arial,Helvetica,sans-serif;font-size:11px;\">SubmitExpress.com</a></span>"+
                             "</li>"+

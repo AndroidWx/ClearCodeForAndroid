@@ -54,9 +54,9 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/spencer/2017-05-29.xlsx";
-    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
-    String newFileName = MyCrawler.getTime() + "待重新上传列表";
+    String filePath = "/Users/joye/Search/combination/bruce/用所选项目新建的文件夹 2/2017-06-13.xlsx";
+    String newPath = "/Users/joye/Search/combination/bruce/";//重新提交的excel路径
+    String newFileName = MyCrawler.getTime() + "~~待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
@@ -67,7 +67,8 @@ public class Test {
         List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
-        int failed[] = new int[]{9,19,22,80,88,90,153,170,177,215,223,240};
+//        int failed[] = new int[]{25,93,143,146,163,188,214,219,229,236,254};
+        int failed[] = new int[]{188,219,254};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -227,132 +228,61 @@ public class Test {
             UploadRowResourceEntity item = reUploadRows.get(i);
             title = item.getTitle();
             ReplaceDomainEntity replaceDomainEntity = replaceDomainEntityList.get(i);
-            OtherInfoEntity otherInfoEntity=otherInfoEntityList.get(i);
+//            OtherInfoEntity otherInfoEntity=otherInfoEntityList.get(i);
             replaceKeys = replaceDomainEntity.getkeys();
             item.setObjectDomain(replaceDomainEntity.getDomain());
             item.setChartsetStr(replaceDomainEntity.getCharsert());
             try {
                 //            电影[to]qy014千亿国际[or]综艺[to]千亿国际[or]动漫[to]千亿国际娱乐平台
-                String[] keystrArray = new String[3];
+                String[] keystrArray = new String[6];
                 String keystr_or_to = item.getReplaceKeyStr();
+//            System.out.println(keystr_or_to);
                 int indexTo = keystr_or_to.indexOf("[to]");
                 int indexOr = keystr_or_to.indexOf("[or]");
-                keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
-                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
-                keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
-                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
-                keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
-                for (String str :
-                        replaceKeys) {
-                    System.out.println(str);
-                }
-//                System.out.println(replaceKeys.length);
-                String needReplaceKeystr=replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" + replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" + replaceKeys[2] + "[to]" + keystrArray[2];
+                //第一个关键字
+                keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                System.out.println(keystrArray[0]);
+                //第二个关键字
+                keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                System.out.println(keystrArray[1]);
+                //第三个关键字
+                keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                System.out.println(keystrArray[2]);
+                keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                System.out.println(keystrArray[3]);
+                keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.indexOf("[or]"));
+                System.out.println(keystrArray[4]);
+
+
+                String needReplaceKeystr=replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" +
+                                         replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" +
+                                         replaceKeys[2] + "[to]" + keystrArray[2] + "[or]" +
+                                         replaceKeys[3] + "[to]" + keystrArray[3] + "[or]" +
+                                         replaceKeys[4] + "[to]" + keystrArray[4] ;
                 //去掉 手机代理跳转
                 needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+keystrArray[0];
 
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
-                        "<meta name='keywords'  content='"+keystrArray[0]+"，"+keystrArray[1]+"，"+keystrArray[2]+"'>"+
-                         "<meta  name='Author' content='"+keystrArray[0]+"'>"+
+                        "<meta name=\"keywords\"  content=\""+keystrArray[0]+"，"+keystrArray[3]+"，"+keystrArray[4]+"\">"+
+                         "<meta  name=\"Author\" content=\""+keystrArray[0]+"\">"+
                         //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
                         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
-                        //加入关键字
-                        "</head><h1 style='text-align:center'><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
-                //引入上面和下面
-                needReplaceKeystr= needReplaceKeystr
-                        +"[or]</body>[to]" +
-                        "<ul style='text-align:center'>"+
-                            //加入第一个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://www."+otherInfoEntity.getOtherOldDomains()+"' target=\"_blank\">" +
-                                    "<strong>"+otherInfoEntity.getOtherOldTitle()+"</strong>" +
-                                "</a>" +
-                            "</li>"+
-                            //加入第二个外链
-                            "<li style='display:inline-block; margin-right:20px'>"+
-                                "<a href='http://www."+otherInfoEntity.getElseOldDomains()+"' target=\"_blank\">" +
-                                    "<strong>"+otherInfoEntity.getElseOldTitle()+"</strong>" +
-                                "</a>" +
-                            "</li>" +
-                            //加入第三个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='https://love.alipay.com/donate/index.htm' target=\"_blank\">" +
-                                    "<strong>公益平台</strong>" +
-                                "</a>" +
-                            "</li>" +
-                            //加入第四个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='http://gongyi.qq.com' target=\"_blank\">" +
-                                    "<strong>腾讯公益</strong>" +
-                                "</a>" +
-                            "</li>" +
-                            //加入第五个外链
-                            "<li style='display:inline-block; margin-right:20px'>" +
-                                "<a href='https://m.gongyi.baidu.com/pages/index.html#/' target=\"_blank\">" +
-                                    "<strong>百度公益</strong>" +
-                                "</a>" +
-                            "</li>" +
-                        "</ul>"+
-
-
-
-                        //加入表格
-                        "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
-                                "<tr>" +
-                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getOtherOldTitle()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getElseOldTitle()+"</u></td>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE1Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE1Title()+"<strong></a></td>" +
-                                "</<tr>" +
-                                "<tr>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE2Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE2Title()+"<strong></a></td>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE3Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE3Title()+"<strong></a></td>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE4Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE4Title()+"<strong></a></td>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE5Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE5Title()+"<strong></a></td>" +
-                                "</<tr>" +
-                                "<tr>" +
-                                    "<td><a href='http://"+otherInfoEntity.getE6Domains()+"' target=\"_blank\"><strong>"+otherInfoEntity.getE2Title()+"<strong></a></td>" +
-                                    "<td><u>"+otherInfoEntity.getOtherOldTitle()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getElseOldTitle()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getE6Title()+"</u></td>" +
-                                "</<tr>" +
-                                "<tr>" +
-                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-                                    "<td><u>"+keystrArray[1]+"</u></td>" +
-                                    "<td><u>"+keystrArray[2]+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getE1Title()+"</u></td>" +
-                                "</<tr>" +
-                                "<tr>" +
-                                    "<td><u>"+otherInfoEntity.getE2Title()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getE3Title()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getE4Title()+"</u></td>" +
-                                    "<td><u>"+otherInfoEntity.getE5Title()+"</u></td>" +
-                                "</<tr>" +
-                            "</table>" +
-                        "</body>";
-//                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
-//                        "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
-//                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
-//                        "</head><h1><a href='http://"+item.getOldDomainStr()+"'>"+keystrArray[0]+"</a></h1>";
+                        "</head>";
+//                //引入上面和下面
 //                needReplaceKeystr= needReplaceKeystr
 //                        +"[or]</body>[to]" +
-//                        "<a href='http://"+kUpEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kUpEntity.getKey()+"</strong>" +
-//                        "</a>" +
-//                        "<a href='http://"+kDownEntity.getOldDomainStr()+"' target=\"_blank\"><strong>"+kDownEntity.getKey()+"</strong></a>" +
-//                            "<table style='width:100%;border-collapse:collapse;text-align:center;' border='1'>" +
-//                                "<tr>" +
-//                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-//                                    "<td><a href='http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[1]+"<strong></a></td>" +
-//                                    "<td><a href=''http://"+item.getOldDomainStr()+"'><strong>"+keystrArray[2]+"<strong></a></td>" +
-//                                "</<tr>" +
-//                                "<tr>" +
-//                                    "<td><u>"+keystrArray[0]+"</u></td>" +
-//                                    "<td><u>"+keystrArray[1]+"</u></td>" +
-//                                    "<td><u>"+keystrArray[2]+"</u></td>" +
-//                                "</<tr>" +
-//                            "</table>" +
+//                            "<ul style='text-align:left'>"+
+//                                "<li>" +
+//                                    "<span style=\"display:inline-block;width:160px;height:30px;text-align:center;border:#000 1px dotted;font-family:Arial,Helvetica,sans-serif;font-size:11px;background-color:#FFFFFF;\"><strong style=\"display:block;padding:0px;margin:0px;\"></strong><a href=\"http://www.submitexpress.com/\" title=\"SubmitExpress.com\" style=\"font-family:Arial,Helvetica,sans-serif;font-size:11px;\">SubmitExpress.com</a></span>"+
+//                                "</li>"+
+//                            "</ul>"+
 //                        "</body>";
                 item.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
@@ -454,14 +384,26 @@ public class Test {
 
     @org.junit.Test
     public void testC() throws Exception {
-        String[] keystrArray = new String[3];
-        String keystr_or_to = "[to]优发娱乐[or][to]优发娱乐老虎机[or][to]优发";
+        String keystr_or_to = "首页[to]钱柜娱乐官网[or]家装体验[to]钱柜娱乐官网[or]装修服务[to]钱柜娱乐官网[or]公司特色[to]钱柜娱乐官网登录[or]关于我们[to]钱柜娱乐手机版官方网";
+        String[] keystrArray = new String[6];
+//            System.out.println(keystr_or_to);
         int indexTo = keystr_or_to.indexOf("[to]");
         int indexOr = keystr_or_to.indexOf("[or]");
-        keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
-        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
-        keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
-        keystrArray[2] = keystr_or_to.substring(keystr_or_to.lastIndexOf("[to]") + 4);
+        //第一个关键字
+        keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        //第二个关键字
+        keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        //第三个关键字
+        keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+
+        keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.length());
+        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.length());
+        keystrArray[5] = keystr_or_to.substring(0,keystr_or_to.length());
         for (String str :
                 keystrArray) {
             System.out.println(str);
