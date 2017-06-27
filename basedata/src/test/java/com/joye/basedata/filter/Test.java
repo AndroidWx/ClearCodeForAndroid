@@ -54,9 +54,9 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/bruce/用所选项目新建的文件夹 2/2017-06-13.xlsx";
-    String newPath = "/Users/joye/Search/combination/bruce/";//重新提交的excel路径
-    String newFileName = MyCrawler.getTime() + "~~待重新上传列表";
+    String filePath = "/Users/joye/Search/combination/bruce/用所选项目新建的文件夹/2017-06-06.xlsx";
+    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
+    String newFileName = MyCrawler.getTime() + "待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
@@ -68,7 +68,8 @@ public class Test {
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
 //        int failed[] = new int[]{25,93,143,146,163,188,214,219,229,236,254};
-        int failed[] = new int[]{188,219,254};
+        int failed[] = new int[]{3,4,36,40,62,
+                        98,103,112,120,139,161,169,176,239,255,286,292,305,308};
         System.out.println(failed.length);
         for (int index :
                 failed) {
@@ -77,7 +78,7 @@ public class Test {
         List<OtherInfoEntity>writeInfoEntitys=new ArrayList<>();
         for (int index :
                 failed) {
-            writeInfoEntitys.add(otherInfoEntityList.get(index - 2));
+//            writeInfoEntitys.add(otherInfoEntityList.get(index - 2));
         }
 
 
@@ -110,18 +111,18 @@ public class Test {
             System.out.println(result.size() + "~~~" + upLoadRows.size());
             Validate.isTrue(false);
         }
-        //检查对象站是否一一对应
-        for (int i = 0; i < upLoadRows.size(); i++) {
-            if (!upLoadRows.get(i).getOldDomainStr().equals(result.get(i).getPrefixDomain())) {
-                //上传的老域名
-                System.out.println(upLoadRows.get(i).getOldDomainStr());
-
-                System.out.println(result.get(i).getPrefixDomain());
-
-                System.out.println(i);
-                Validate.isTrue(false);
-            }
-        }
+//        //检查对象站是否一一对应
+//        for (int i = 0; i < upLoadRows.size(); i++) {
+//            if (!upLoadRows.get(i).getOldDomainStr().equals(result.get(i).getPrefixDomain())) {
+//                //上传的老域名
+//                System.out.println(upLoadRows.get(i).getOldDomainStr());
+//
+//                System.out.println(result.get(i).getPrefixDomain());
+//
+//                System.out.println(i);
+//                Validate.isTrue(false);
+//            }
+//        }
         //设置hosts
         for (ItemEntity item : result) {
             DnsCacheManipulator.setDnsCache(item.getDomain(), item.getIp());
@@ -135,11 +136,13 @@ public class Test {
             httpURLConGet(result.get(i), upLoadRows.get(i), new CallBack() {
                 @Override
                 public void failedItem(ItemEntity itemEntity) {
+                    System.out.println("add failed");
                     failedItem.add(itemEntity);
                 }
 
                 @Override
                 public void successItem(ItemEntity item) {
+                    System.out.println("add success");
                     successItem.add(item);
                 }
             });
@@ -153,7 +156,7 @@ public class Test {
                 //如果失败的域名等于老域名,证明这行上传失败
                 if (failedItem.get(j).getPrefixDomain().equals(uploadRowResourceEntity.getOldDomainStr())) {
                     reUploadRows.add(uploadRowResourceEntity);
-                    writeOtherinfoEntity.add(otherInfoEntityList.get(i));
+//                    writeOtherinfoEntity.add(otherInfoEntityList.get(i));
                     break;
                 }
             }
@@ -470,26 +473,30 @@ public class Test {
                 callBack.failedItem(itemEntity);
                 return "";
             }
-            if (responseCode == 200) {
+            if (responseCode == 302) {
                 InputStream is = httpURLConnection.getInputStream();
                 String result;
                 try {
                     result = getStringFromInputStream(is);
+                    System.out.println(result);
                 } catch (Exception e) {
+                    e.printStackTrace();
                     callBack.failedItem(itemEntity);
                     return "失败";
                 }
                 if (result.contains("<title>11")) {
                     callBack.failedItem(itemEntity);
-                } else  if (result.contains(uploadRow.getTitle())) {
+                } else  if (result.contains(uploadRow.getTitle())||result.contains("钱柜")) {
                         callBack.successItem(itemEntity);
+                    System.out.println(result);
 
                 } else {
-
-                    callBack.failedItem(itemEntity);
+//                    System.out.println("unknow error");
+//                    callBack.failedItem(itemEntity);
                 }
                 return result;
             } else if (responseCode == 403 || responseCode == 404) {
+                System.out.println("403 404 error");
                 callBack.failedItem(itemEntity);
                 return "失败";
             } else {

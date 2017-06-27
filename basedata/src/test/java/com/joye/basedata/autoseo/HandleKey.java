@@ -2,11 +2,15 @@ package com.joye.basedata.autoseo;
 
 import com.joye.basedata.utils.AntorUtils;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import edu.emory.mathcs.backport.java.util.Collections;
+
+import static com.joye.basedata.autoseo.ExtralResourceWriteDelegate.getAllKeysByFilePath;
 
 /**
  * Created by joye on 2017/4/4.
@@ -124,6 +128,28 @@ public class HandleKey {
 
 //    public static List<String> getAll
 
+
+
+
+    public static  List<String> getAllTitleByForeach(List<String> allKeys){
+        List<String> allResult=new ArrayList<>();
+
+        //遍历所有的关键词
+        for (int i = 0; i < allKeys.size(); i++) {
+            for (int j = i+1; j < allKeys.size(); j++) {
+
+                if(j+2>allKeys.size()-1){
+                    break;
+                }
+                String s=allKeys.get(i);
+                s=s+"_"+allKeys.get(j)+"_"+allKeys.get(j+2);
+                allResult.add(s);
+            }
+
+
+        }
+        return allResult;
+    }
 
     /**
      * 根据所有的关键字 返回所有的标题组合
