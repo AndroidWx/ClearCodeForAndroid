@@ -36,7 +36,7 @@ public class D合并成提交文件 {
     @Test
     public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/~~~1.钱柜关键词组合.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin-3.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
     }
 
     @Test
@@ -130,53 +130,53 @@ public class D合并成提交文件 {
             if(StringUtils.isBlank(description)){
                 Validate.isTrue(false,"描述没填写");
             }
-            String[]array_small=description.split(",");
-            String[]array_big=description.split("，");
-
-            //如果按，分割
-            if(array_big.length>array_small.length){
-                description=description.replaceAll(",","，");
-                for (int j = 1; j <array_big.length ; j++) {
-
-                    if(j==6){
-                        break;
-                    }
-                    keystrArray[j]=keystrArray[j]
-                            .replace("网址","")
-                            .replace("登录","")
-                            .replace("注册","")
-                            .replace("下载","")
-                            .replace("开户","")
-                            .replace("安装","")
-                            .replace("登陆","")
-                            .replace("登录入口","")
-                            .replace("欢迎您","")
-                            .replace("【唯一授权官网】","")
-                            .replace("777官网登录","")
-                            .replace("老虎机手机版","")
-                            .replace("手机版官方网","")
-                            .replace("777手机客户端","")
-                            .replace("777","")
-                            .replace("官网手机版","")
-                            .replace("老虎机官网","")
-                            .replace("官网登录","")
-                            .replace("入口","");
-                    if(keystrArray[j].contains("www.")){
-                        keystrArray[j]="";
-                    }
-
-                    description=description.replace(array_big[j],keystrArray[j]+array_big[j]);
-                }
-            }else  {
-                description=description.replaceAll("，",",");
-                for (int j = 1; j <array_small.length ; j++) {
-
-                    if(j==6){
-                        break;
-                    }
-                    description=description.replace(array_small[j],keystrArray[j]+array_small[j]);
-                }
-            }
+//            String[]array_small=description.split(",");
+//            String[]array_big=description.split("，");
+//
+//            //如果按，分割
+//            if(array_big.length>array_small.length){
+//                description=description.replaceAll(",","，");
+//                for (int j = 1; j <array_big.length ; j++) {
+//
+//                    if(j==6){
+//                        break;
+//                    }
+//                    keystrArray[j]=keystrArray[j]
+//                            .replace("网址","")
+//                            .replace("登录","")
+//                            .replace("注册","")
+//                            .replace("下载","")
+//                            .replace("开户","")
+//                            .replace("安装","")
+//                            .replace("登陆","")
+//                            .replace("登录入口","")
+//                            .replace("欢迎您","")
+//                            .replace("【唯一授权官网】","")
+//                            .replace("777官网登录","")
+//                            .replace("老虎机手机版","")
+//                            .replace("手机版官方网","")
+//                            .replace("777手机客户端","")
+//                            .replace("777","")
+//                            .replace("官网手机版","")
+//                            .replace("老虎机官网","")
+//                            .replace("官网登录","")
+//                            .replace("入口","");
+//                    if(keystrArray[j].contains("www.")){
+//                        keystrArray[j]="";
+//                    }
+//
+//                    description=description.replace(array_big[j],keystrArray[j]+array_big[j]);
+//                }
+//            }else  {
+//                description=description.replaceAll("，",",");
+//                for (int j = 1; j <array_small.length ; j++) {
+//
+//                    if(j==6){
+//                        break;
+//                    }
+//                    description=description.replace(array_small[j],keystrArray[j]+array_small[j]);
+//                }
+//            }
             String keystr=domainHandleRowEntity.getKeys();
             String[]keys=keystr.split("，");
             if(keys==null){
@@ -185,7 +185,7 @@ public class D合并成提交文件 {
             /**
              *
              */
-            uploadRowResourceEntity.setDescription(keystrArray[0]+"_"+keystrArray[3]+"_"+keystrArray[4]+description);
+            uploadRowResourceEntity.setDescription("钱柜娱乐777官网_"+description);
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
 
             if(keystr==null){
