@@ -5,7 +5,6 @@ import com.joye.basedata.autoseo.ExcelReaderHelper;
 import com.joye.basedata.autoseo.ExcelWriterHelper;
 import com.joye.basedata.autoseo.UploadRowResourceEntity;
 import com.joye.basedata.combination.CombinationDelegate;
-import com.joye.basedata.combination.DomainHandleRowEntity;
 import com.joye.basedata.crawler4j.MyCrawler;
 
 import org.apache.commons.lang.StringUtils;
@@ -54,9 +53,9 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/bruce/用所选项目新建的文件夹/2017-06-06.xlsx";
-    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
-    String newFileName = MyCrawler.getTime() + "待重新上传列表";
+    String filePath = "/Users/joye/Search/combination/bruce/2017-08-04待重新上传列表_待重新上传列表_待重新上传列表.xlsx";
+    String newPath = "/Users/joye/Search/combination/bruce/";//重新提交的excel路径
+    String newFileName = MyCrawler.getTime() + "待重新上传列表_待重新上传列表_待重新上传列表_待重新上传列表";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
@@ -65,24 +64,33 @@ public class Test {
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
 
         List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
+
+        //所有的
+        List<ItemEntity> result = getAllItemEntity(filePath, 1);
+
+
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
 //        int failed[] = new int[]{25,93,143,146,163,188,214,219,229,236,254};
-        int failed[] = new int[]{3,4,36,40,62,
-                        98,103,112,120,139,161,169,176,239,255,286,292,305,308};
+        int failed[] = new int[]{5};
         System.out.println(failed.length);
+        List<String> ips = new ArrayList<>();
         for (int index :
                 failed) {
             reUploadRows.add(upLoadRows.get(index - 2));
+            ips.add(result.get(index-2).getIp());
         }
-        List<OtherInfoEntity>writeInfoEntitys=new ArrayList<>();
+        List<OtherInfoEntity> writeInfoEntitys = new ArrayList<>();
         for (int index :
                 failed) {
 //            writeInfoEntitys.add(otherInfoEntityList.get(index - 2));
         }
 
-
-        writeAgainUpload(reUploadRows, replaceDomainEntityList,writeInfoEntitys);
+        List<ReplaceDomainEntity> antherReplaceDomainEntitys = new ArrayList<>();
+        for (int i = reUploadRows.size() - 1; i < replaceDomainEntityList.size(); i++) {
+            antherReplaceDomainEntitys.add(replaceDomainEntityList.get(i));
+        }
+        writeAgainUpload(reUploadRows, replaceDomainEntityList, writeInfoEntitys, ips, antherReplaceDomainEntitys);
     }
 
     @org.junit.Test
@@ -94,7 +102,7 @@ public class Test {
         //获取上传的列表
         List<UploadRowResourceEntity> upLoadRows = CombinationDelegate.getUploadRowResourceEntitys(filePath, 0);
         //获取其他的
-        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
+        List<OtherInfoEntity> otherInfoEntityList = getOtherInfoEntitys(filePath);
         //成功的
         List<ItemEntity> successItem = new ArrayList<>();
         //失败的
@@ -106,23 +114,24 @@ public class Test {
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
 
-
+        //如果所有的数量与上站的数量不一样
         if (result.size() != upLoadRows.size()) {
             System.out.println(result.size() + "~~~" + upLoadRows.size());
             Validate.isTrue(false);
         }
-//        //检查对象站是否一一对应
-//        for (int i = 0; i < upLoadRows.size(); i++) {
-//            if (!upLoadRows.get(i).getOldDomainStr().equals(result.get(i).getPrefixDomain())) {
-//                //上传的老域名
-//                System.out.println(upLoadRows.get(i).getOldDomainStr());
-//
-//                System.out.println(result.get(i).getPrefixDomain());
-//
-//                System.out.println(i);
-//                Validate.isTrue(false);
-//            }
-//        }
+        //检查对象站是否一一对应
+        for (int i = 0; i < upLoadRows.size(); i++) {
+            if (!upLoadRows.get(i).getOldDomainStr().equals(result.get(i).getPrefixDomain())) {
+                //上传的老域名
+                System.out.println(upLoadRows.get(i).getOldDomainStr());
+
+                System.out.println(result.get(i).getPrefixDomain());
+
+                System.out.println(i);
+                Validate.isTrue(false);
+            }
+        }
+
         //设置hosts
         for (ItemEntity item : result) {
             DnsCacheManipulator.setDnsCache(item.getDomain(), item.getIp());
@@ -147,7 +156,8 @@ public class Test {
                 }
             });
         }
-        List<OtherInfoEntity> writeOtherinfoEntity=new ArrayList<>();
+        List<String> ips = new ArrayList<>();
+        List<OtherInfoEntity> writeOtherinfoEntity = new ArrayList<>();
         UploadRowResourceEntity uploadRowResourceEntity;
         //遍历失败的,准备构建重新上传的列表
         for (int i = 0; i < upLoadRows.size(); i++) {
@@ -155,14 +165,24 @@ public class Test {
             for (int j = 0; j < failedItem.size(); j++) {
                 //如果失败的域名等于老域名,证明这行上传失败
                 if (failedItem.get(j).getPrefixDomain().equals(uploadRowResourceEntity.getOldDomainStr())) {
+                    ips.add(failedItem.get(j).getIp());
                     reUploadRows.add(uploadRowResourceEntity);
 //                    writeOtherinfoEntity.add(otherInfoEntityList.get(i));
                     break;
                 }
             }
-
         }
-        writeAgainUpload(reUploadRows, replaceDomainEntityList,writeOtherinfoEntity);
+        List<OtherInfoEntity> newOtherInfoEntitys = new ArrayList<>();
+        otherInfoEntityList.removeAll(writeOtherinfoEntity);
+        for (OtherInfoEntity item :
+                otherInfoEntityList) {
+            newOtherInfoEntitys.add(item);
+        }
+        List<ReplaceDomainEntity> antherReplaceDomainEntitys = new ArrayList<>();
+        for (int i = reUploadRows.size() - 1; i < replaceDomainEntityList.size(); i++) {
+            antherReplaceDomainEntitys.add(replaceDomainEntityList.get(i));
+        }
+        writeAgainUpload(reUploadRows, replaceDomainEntityList, newOtherInfoEntitys, ips, antherReplaceDomainEntitys);
 
     }
 
@@ -188,6 +208,7 @@ public class Test {
 
     /**
      * 获取要替换的对象站
+     *
      * @param filePath
      * @return
      * @throws FileNotFoundException
@@ -197,17 +218,34 @@ public class Test {
         List<OtherInfoEntity> allResult = new ArrayList<>();
         OtherInfoEntity entity;
         Sheet sheet = workBook.getSheetAt(3);
-        int i=0;
-        for (Row r:sheet) {
-            if(i==0){
+        int i = 0;
+        for (Row r : sheet) {
+            if (i == 0) {
                 i++;
                 continue;
             }
-            entity=new OtherInfoEntity();
+            entity = new OtherInfoEntity();
             entity.setRow(r);
             allResult.add(entity);
         }
         return allResult;
+    }
+
+    /**
+     * 重新生成一份上站程序
+     *
+     * @param reUploadRows            上传的数据
+     * @param replaceDomainEntityList 下一次替换的数据
+     * @param otherInfoEntityList     外链数据
+     * @param ips                     ips
+     * @throws IOException
+     */
+    public void writeAgainUpload(List<UploadRowResourceEntity> reUploadRows, List<ReplaceDomainEntity> replaceDomainEntityList,
+                                 List<OtherInfoEntity> otherInfoEntityList, List<String> ips, List<ReplaceDomainEntity> antherRepalceEntityLists) throws IOException {
+        //获取需要重新上传的
+        if (writeAginUploadData(reUploadRows, replaceDomainEntityList, otherInfoEntityList)) return;
+        ExcelWriterHelper.WriteAginUploadData(reUploadRows, newPath, newFileName, ips, antherRepalceEntityLists, otherInfoEntityList);
+
     }
 
     /**
@@ -218,7 +256,20 @@ public class Test {
      * @throws IOException
      */
     private void writeAgainUpload(List<UploadRowResourceEntity> reUploadRows, List<ReplaceDomainEntity> replaceDomainEntityList,
-        List<OtherInfoEntity> otherInfoEntityList) throws IOException {
+                                  List<OtherInfoEntity> otherInfoEntityList) throws IOException {
+        //获取需要重新上传的
+        if (writeAginUploadData(reUploadRows, replaceDomainEntityList, otherInfoEntityList)) return;
+        ExcelWriterHelper.WriteExtralRerouse(reUploadRows, newPath, newFileName);
+
+    }
+
+    /**
+     * @param reUploadRows
+     * @param replaceDomainEntityList
+     * @param otherInfoEntityList
+     * @return
+     */
+    private boolean writeAginUploadData(List<UploadRowResourceEntity> reUploadRows, List<ReplaceDomainEntity> replaceDomainEntityList, List<OtherInfoEntity> otherInfoEntityList) {
         //标题
         String title = "";
         //关键字
@@ -243,40 +294,40 @@ public class Test {
                 int indexTo = keystr_or_to.indexOf("[to]");
                 int indexOr = keystr_or_to.indexOf("[or]");
                 //第一个关键字
-                keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
-                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
                 System.out.println(keystrArray[0]);
                 //第二个关键字
-                keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
                 System.out.println(keystrArray[1]);
                 //第三个关键字
-                keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
                 System.out.println(keystrArray[2]);
-                keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+                keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
                 System.out.println(keystrArray[3]);
-                keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-                keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.indexOf("[or]"));
+                keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+                keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
                 System.out.println(keystrArray[4]);
 
 
-                String needReplaceKeystr=replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" +
-                                         replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" +
-                                         replaceKeys[2] + "[to]" + keystrArray[2] + "[or]" +
-                                         replaceKeys[3] + "[to]" + keystrArray[3] + "[or]" +
-                                         replaceKeys[4] + "[to]" + keystrArray[4] ;
+                String needReplaceKeystr = replaceKeys[0] + "[to]" + keystrArray[0] + "[or]" +
+                        replaceKeys[1] + "[to]" + keystrArray[1] + "[or]" +
+                        replaceKeys[2] + "[to]" + keystrArray[2] + "[or]" +
+                        replaceKeys[3] + "[to]" + keystrArray[3] + "[or]" +
+                        replaceKeys[4] + "[to]" + keystrArray[4];
                 //去掉 手机代理跳转
-                needReplaceKeystr = needReplaceKeystr+"[or]mobile-agent[to]"+keystrArray[0];
+                needReplaceKeystr = needReplaceKeystr + "[or]mobile-agent[to]" + keystrArray[0];
 
                 //头部加个链接
-                needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
-                        "<meta name=\"keywords\"  content=\""+keystrArray[0]+"，"+keystrArray[3]+"，"+keystrArray[4]+"\">"+
-                         "<meta  name=\"Author\" content=\""+keystrArray[0]+"\">"+
+                needReplaceKeystr = needReplaceKeystr + "[or]</head>[to]" +
+                        "<meta name=\"keywords\"  content=\"" + keystrArray[0] + "，" + keystrArray[3] + "，" + keystrArray[4] + "\">" +
+                        "<meta  name=\"Author\" content=\"" + keystrArray[0] + "\">" +
                         //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
-                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
+                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">" +
                         "</head>";
 //                //引入上面和下面
 //                needReplaceKeystr= needReplaceKeystr
@@ -288,15 +339,15 @@ public class Test {
 //                            "</ul>"+
 //                        "</body>";
                 item.setReplaceKeyStr(needReplaceKeystr);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         if (reUploadRows.size() == 0) {
             System.out.println("没有需要重新上传的");
-            return;
+            return true;
         }
-        ExcelWriterHelper.WriteExtralRerouse(reUploadRows, newPath, newFileName);
+        return false;
     }
 
 
@@ -393,20 +444,20 @@ public class Test {
         int indexTo = keystr_or_to.indexOf("[to]");
         int indexOr = keystr_or_to.indexOf("[or]");
         //第一个关键字
-        keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
-        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        keystrArray[0] = keystr_or_to.substring(indexTo + 4, indexOr);
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
         //第二个关键字
-        keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
         //第三个关键字
-        keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
+        keystrArray[2] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
 
-        keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
-        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
-        keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.length());
-        keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4,keystr_or_to.length());
-        keystrArray[5] = keystr_or_to.substring(0,keystr_or_to.length());
+        keystrArray[3] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.indexOf("[or]"));
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[or]") + 4, keystr_or_to.length());
+        keystrArray[4] = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.length());
+        keystr_or_to = keystr_or_to.substring(keystr_or_to.indexOf("[to]") + 4, keystr_or_to.length());
+        keystrArray[5] = keystr_or_to.substring(0, keystr_or_to.length());
         for (String str :
                 keystrArray) {
             System.out.println(str);
@@ -451,13 +502,10 @@ public class Test {
     }
 
 
-
-
-
     /**
      * 使用java.net.HttpURLConnection类的【GET】的方式登录
      */
-    public static String httpURLConGet(ItemEntity itemEntity, UploadRowResourceEntity uploadRow, CallBack callBack ) {
+    public static String httpURLConGet(ItemEntity itemEntity, UploadRowResourceEntity uploadRow, CallBack callBack) {
         HttpURLConnection httpURLConnection = null;
         try {
             URL url = new URL(itemEntity.getHttpStr().replaceAll("\"", "") + "/");//"?"后面的内容都属于请求头中的内容,服务器获取到请求信息后通过"&"分离出数据
@@ -469,16 +517,16 @@ public class Test {
             System.out.println(httpURLConnection.getURL().toString());
             int responseCode = httpURLConnection.getResponseCode();//获取响应码
             System.out.println(httpURLConnection.getURL().toString());
-            if(httpURLConnection.getURL().toString().contains("baidu.com")){
+            if (httpURLConnection.getURL().toString().contains("baidu.com")) {
                 callBack.failedItem(itemEntity);
                 return "";
             }
-            if (responseCode == 302) {
+            if (responseCode == 200) {
                 InputStream is = httpURLConnection.getInputStream();
                 String result;
                 try {
                     result = getStringFromInputStream(is);
-                    System.out.println(result);
+//                    System.out.println(result);
                 } catch (Exception e) {
                     e.printStackTrace();
                     callBack.failedItem(itemEntity);
@@ -486,8 +534,8 @@ public class Test {
                 }
                 if (result.contains("<title>11")) {
                     callBack.failedItem(itemEntity);
-                } else  if (result.contains(uploadRow.getTitle())||result.contains("钱柜")) {
-                        callBack.successItem(itemEntity);
+                } else if (result.contains(uploadRow.getTitle())) {
+                    callBack.successItem(itemEntity);
                     System.out.println(result);
 
                 } else {

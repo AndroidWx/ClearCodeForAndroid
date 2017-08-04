@@ -46,7 +46,7 @@ public class D合并成提交文件 {
     }
     @Test
     public void testBruce() throws Exception {
-        execulteCombineAndTypeSetting("/Users/joye/Search/word/钱柜/create/®_1.钱柜组合.xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-qg.xlsx","/Users/joye/Search/combination/bruce/", MyCrawler.getTime());
     }
 
     @Test
@@ -185,7 +185,7 @@ public class D合并成提交文件 {
             /**
              *
              */
-            uploadRowResourceEntity.setDescription("钱柜娱乐777官网_"+description);
+            uploadRowResourceEntity.setDescription("壹定发娱乐"+description);
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
 
             if(keystr==null){

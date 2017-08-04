@@ -46,6 +46,53 @@ public class ExcelWriterHelper extends ExcelUtils{
     }
 
     /**
+     * DNS检查完毕之后检查失败的上传
+     */
+    public static void WriteAginUploadData(List<UploadRowResourceEntity> mResourceEntities, String excelPath, String fileName, List<String> ips, List<ReplaceDomainEntity> replaceDomainEntities, List<OtherInfoEntity> mOtherInfoEntitys) throws IOException {
+//        String excelPath ="/Users/joye/downloads/";
+//        String fileName="joye";
+        //创建Excel文件
+        Workbook workbook= createWorkBook(excelPath,fileName,EXCEL_TYPE_XLSX);
+        //根据资源,写入内容
+        writeContent(workbook,mResourceEntities);
+        writeTypesetting(workbook,mResourceEntities,ips,true);
+        //写入备用检查对象站
+        writeNeedReplaces(workbook,replaceDomainEntities);
+        //写入其他信息
+        writeOthersReplaces(workbook,mOtherInfoEntitys);
+        excelPath=excelPath+ File.separator+fileName+"."+EXCEL_TYPE_XLSX;
+        //创建文件流
+        OutputStream stream = new FileOutputStream(excelPath);
+        //写入数据
+        workbook.write(stream);
+        //关闭文件流
+        stream.close();
+    }
+
+
+
+
+    /**
+     * 写入外部资源
+     */
+    public static void WriteExtralRerouse(List<UploadRowResourceEntity> mResourceEntities, String excelPath, String fileName,List<String>ips) throws IOException {
+//        String excelPath ="/Users/joye/downloads/";
+//        String fileName="joye";
+        //创建Excel文件
+        Workbook workbook= createWorkBook(excelPath,fileName,EXCEL_TYPE_XLSX);
+        //根据资源,写入内容
+        writeContent(workbook,mResourceEntities);
+
+        excelPath=excelPath+ File.separator+fileName+"."+EXCEL_TYPE_XLSX;
+        //创建文件流
+        OutputStream stream = new FileOutputStream(excelPath);
+        //写入数据
+        workbook.write(stream);
+        //关闭文件流
+        stream.close();
+    }
+
+    /**
      * 写入上传检查
      *
       */
@@ -158,12 +205,7 @@ public class ExcelWriterHelper extends ExcelUtils{
         }
     }
 
-    /**
-     * 写入排版专用
-     * @param oldmains 老域名
-     * @param ips
-     */
-    private static void writeTypesetting(Workbook workbook,List<UploadRowResourceEntity> oldmains,List<String> ips){
+    public static void writeTypesetting(Workbook workbook,List<UploadRowResourceEntity> oldmains,List<String> ips,boolean isReUpload){
         Sheet sheet =workbook.createSheet("排版专用");
         //获取样式
         CellStyle mCellStyle=CreateCellStyle(workbook);
@@ -173,19 +215,19 @@ public class ExcelWriterHelper extends ExcelUtils{
             String oldDomain= oldmains.get(i).getOldDomainNoFrefix();
             row = (Row) sheet.createRow(i);
             row.setHeight((short) 500);
-            row.createCell(0).setCellValue("www."+oldDomain);
+            row.createCell(0).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr():"www."+oldDomain);
             row.createCell(1).setCellValue("#");
             row.createCell(2).setCellValue(ips.get(i));
-            row.createCell(3).setCellValue("www."+oldDomain);
+            row.createCell(3).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr():"www."+oldDomain);
             row.createCell(4).setCellValue("#");
             row.createCell(5).setCellValue(ips.get(i));
-            row.createCell(6).setCellValue(oldDomain);
+            row.createCell(6).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr().substring(4,oldmains.get(i).getOldDomainStr().length()):oldDomain);
             row.createCell(7).setCellValue("");
             row.createCell(8).setCellValue("");
             row.createCell(9).setCellValue("http://");
-            row.createCell(10).setCellValue("http://www."+oldDomain);
+            row.createCell(10).setCellValue(isReUpload?"http://"+oldmains.get(i).getOldDomainStr():"http://www."+oldDomain);
             row.createCell(11).setCellValue("");
-            row.createCell(12).setCellValue(oldDomain);
+            row.createCell(12).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr():oldDomain);
             row.createCell(13).setCellValue("|");
             row.createCell(14).setCellValue("@");
             row.createCell(15).setCellValue("|");
@@ -195,7 +237,7 @@ public class ExcelWriterHelper extends ExcelUtils{
             row.createCell(19).setCellValue("|");
             row.createCell(20).setCellValue("默认");
             row.createCell(21).setCellValue("我就是要分割");
-            row.createCell(22).setCellValue(oldDomain);
+            row.createCell(22).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr():oldDomain);
             row.createCell(23).setCellValue("|");
             row.createCell(24).setCellValue("*");
             row.createCell(25).setCellValue("|");
@@ -205,7 +247,7 @@ public class ExcelWriterHelper extends ExcelUtils{
             row.createCell(29).setCellValue("|");
             row.createCell(30).setCellValue("默认");
             row.createCell(31).setCellValue("你拿我咋滴");
-            row.createCell(32).setCellValue(oldDomain);
+            row.createCell(32).setCellValue(isReUpload?oldmains.get(i).getOldDomainStr():oldDomain);
             row.createCell(33).setCellValue("|");
             row.createCell(34).setCellValue("www");
             row.createCell(35).setCellValue("|");
@@ -219,6 +261,15 @@ public class ExcelWriterHelper extends ExcelUtils{
 //            row.createCell(10).setCellValue(getReplaceKeyStr());
 //            row.createCell(11).setCellValue(getChartsetStr());
         }
+    }
+
+    /**
+     * 写入排版专用
+     * @param oldmains 老域名
+     * @param ips
+     */
+    public static void writeTypesetting(Workbook workbook,List<UploadRowResourceEntity> oldmains,List<String> ips){
+        writeTypesetting(workbook,oldmains,ips,false);
 
     }
 
