@@ -53,9 +53,11 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String filePath = "/Users/joye/Search/combination/bruce/2017-08-04待重新上传列表_待重新上传列表_待重新上传列表.xlsx";
-    String newPath = "/Users/joye/Search/combination/bruce/";//重新提交的excel路径
-    String newFileName = MyCrawler.getTime() + "待重新上传列表_待重新上传列表_待重新上传列表_待重新上传列表";
+    String fileName="2017-09-01_待重新上传_待重新上传_待重新上传";
+
+    String filePath = "/Users/joye/Search/combination/spencer/"+fileName+".xlsx";
+    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
+    String newFileName =fileName+"_待重新上传";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
         //获取上传的列表
@@ -72,7 +74,7 @@ public class Test {
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
 //        int failed[] = new int[]{25,93,143,146,163,188,214,219,229,236,254};
-        int failed[] = new int[]{5};
+        int failed[] = new int[]{5,7,9,16,17,18};
         System.out.println(failed.length);
         List<String> ips = new ArrayList<>();
         for (int index :
@@ -123,11 +125,11 @@ public class Test {
         for (int i = 0; i < upLoadRows.size(); i++) {
             if (!upLoadRows.get(i).getOldDomainStr().equals(result.get(i).getPrefixDomain())) {
                 //上传的老域名
-                System.out.println(upLoadRows.get(i).getOldDomainStr());
+//                System.out.println(upLoadRows.get(i).getOldDomainStr());
 
-                System.out.println(result.get(i).getPrefixDomain());
+//                System.out.println(result.get(i).getPrefixDomain());
 
-                System.out.println(i);
+//                System.out.println(i);
                 Validate.isTrue(false);
             }
         }
@@ -341,6 +343,7 @@ public class Test {
                 item.setReplaceKeyStr(needReplaceKeystr);
             } catch (Exception e) {
                 e.printStackTrace();
+                System.out.println(i+2);
             }
         }
         if (reUploadRows.size() == 0) {

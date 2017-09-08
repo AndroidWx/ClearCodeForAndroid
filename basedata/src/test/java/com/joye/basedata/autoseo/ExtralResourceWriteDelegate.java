@@ -262,6 +262,7 @@ public class ExtralResourceWriteDelegate {
 //            rowData.setDescription(s+description.get(i));
             s=s.replaceAll("_","[or][to]");
             s="[to]"+s;
+            s="[to]"+str_Index_0+"[or]"+"[to]"+str_Index_0+"[or]"+s;
             rowData.setReplaceKeyStr(s);
 
             result.add(rowData);

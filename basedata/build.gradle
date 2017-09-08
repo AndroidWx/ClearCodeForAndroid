@@ -110,4 +110,9 @@ dependencies {
     testCompile 'com.alibaba:dns-cache-manipulator:1.5.1'
     testCompile 'com.google.code.gson:gson:2.3.1'
     testCompile 'org.apache.httpcomponents:httpcore:4.4.6'
+    testCompile 'com.google.api-client:google-api-client:1.22.0'
+    testCompile 'com.google.oauth-client:google-oauth-client-jetty:1.22.0'
+    testCompile 'com.google.apis:google-api-services-gmail:v1-rev70-1.22.0'
+    testCompile 'org.jsoup:jsoup:1.10.2'
+
 }

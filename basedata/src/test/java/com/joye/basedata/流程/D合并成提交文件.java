@@ -20,7 +20,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Created by joye on 2017/4/9.
@@ -34,15 +41,16 @@ public class D合并成提交文件 {
      */
 
     @Test
-    public void testSpencer() throws Exception {
+        public void testSpencer() throws Exception {
 //        execulte("/Users/joye/Downloads/0426对象站.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin-3.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-2.xlsx","/Users/joye/Search/combination/spencer/", MyCrawler.getTime()+"");
     }
 
     @Test
     public void testKevin() throws Exception {
-//        execulte("/Users/joye/Downloads/kevin_wusong_伟德_4.27.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
-        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin (1).xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+//         execulte("/Users/joye/Downloads/待组合的对象站-kevin-8.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+//        execulteCombineAndTypeSetting("/Users/joye/Search/combination/all/待组合的对象站-kevin-7.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
+        execulteCombineAndTypeSetting("/Users/joye/Downloads/待组合的对象站-kevin-6.xlsx","/Users/joye/Search/combination/kevin/", MyCrawler.getTime());
     }
     @Test
     public void testBruce() throws Exception {
@@ -64,6 +72,64 @@ public class D合并成提交文件 {
 
     }
 
+    @Test
+    public void testStatistic() throws Exception {
+        statisticData("/Users/joye/Search/combination/all/9钱柜.xlsx");
+
+    }
+
+    public static void statisticData(String autoKeyCreateFilePath) throws FileNotFoundException {
+        List<UploadRowResourceEntity> mUploadRowResourceEntitys=getUploadRowResourceEntitys(autoKeyCreateFilePath);
+        Map<String,Integer>mainKey=new TreeMap<>();
+        Map<String,Integer>elseKey=new TreeMap<>();
+        String title="";
+        String keys[];
+        for (UploadRowResourceEntity entity:mUploadRowResourceEntitys){
+            title=entity.getTitle();
+            keys=title.split("_");
+            mainKey.put(keys[0],0);
+            elseKey.put(keys[1],0);
+            elseKey.put(keys[2],0);
+        }
+
+        for (UploadRowResourceEntity entity:mUploadRowResourceEntitys){
+            title=entity.getTitle();
+            keys=title.split("_");
+            mainKey.put(keys[0],mainKey.get(keys[0])+1);
+            elseKey.put(keys[1],elseKey.get(keys[1])+1);
+            elseKey.put(keys[2],elseKey.get(keys[2])+1);
+        }
+        List<Map.Entry<String,Integer>> mainKeyList = new ArrayList<Map.Entry<String,Integer>>(mainKey.entrySet());
+        Collections.sort(mainKeyList,new Comparator<Map.Entry<String,Integer>>() {
+            //升序排序
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+
+        });
+
+        List<Map.Entry<String,Integer>> elseKeyList = new ArrayList<Map.Entry<String,Integer>>(elseKey.entrySet());
+        Collections.sort(elseKeyList,new Comparator<Map.Entry<String,Integer>>() {
+            //升序排序
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+
+        });
+
+
+        System.out.println("--------主词数量--------");
+        for (Map.Entry<String,Integer> mainKeyMapping:mainKeyList){
+            System.out.println(mainKeyMapping.getKey()+":"+mainKeyMapping.getValue());
+        }
+        System.out.println("--------主词携带词数量------");
+        for (Map.Entry<String,Integer> mainKeyMapping:elseKeyList){
+            System.out.println(mainKeyMapping.getKey()+":"+mainKeyMapping.getValue());
+        }
+
+    }
 
     /**
      * 生成批量提交文档
@@ -96,7 +162,7 @@ public class D合并成提交文件 {
             //对象站
             uploadRowResourceEntity.setObjectDomain(domainHandleRowEntity.getCombinationDomains());
             //编码
-            uploadRowResourceEntity.setChartsetStr(domainHandleRowEntity.getCharset());
+            uploadRowResourceEntity.setChartsetStr(domainHandleRowEntity.getCharset().toLowerCase());
 
             /**
              *  把描述里面加入关键字
@@ -108,7 +174,12 @@ public class D合并成提交文件 {
             int indexTo = keystr_or_to.indexOf("[to]");
             int indexOr = keystr_or_to.indexOf("[or]");
             //第一个关键字
-            keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+            try {
+                keystrArray[0] = keystr_or_to.substring(indexTo+4, indexOr);
+            }catch (Exception e){
+                System.out.println("出错的行数:"+(i+2));
+            }
+
             keystr_or_to=keystr_or_to.substring(keystr_or_to.indexOf("[or]")+4,keystr_or_to.length());
             //第二个关键字
             keystrArray[1] = keystr_or_to.substring(keystr_or_to.indexOf("[to]")+4, keystr_or_to.indexOf("[or]"));
@@ -160,6 +231,15 @@ public class D合并成提交文件 {
 //                            .replace("官网手机版","")
 //                            .replace("老虎机官网","")
 //                            .replace("官网登录","")
+//                            .replace("下载","")
+//                            .replace("在线","")
+//                            .replace("娱乐场","")
+//                            .replace("网址","")
+//                            .replace("手机","")
+//                            .replace("赌场","")
+//                            .replace("在线","")
+//                            .replace("首页","")
+//                            .replace("娱乐场","")
 //                            .replace("入口","");
 //                    if(keystrArray[j].contains("www.")){
 //                        keystrArray[j]="";
@@ -170,10 +250,42 @@ public class D合并成提交文件 {
 //            }else  {
 //                description=description.replaceAll("，",",");
 //                for (int j = 1; j <array_small.length ; j++) {
-//
 //                    if(j==6){
 //                        break;
 //                    }
+//                    keystrArray[j]=keystrArray[j]
+//                            .replace("网址","")
+//                            .replace("登录","")
+//                            .replace("注册","")
+//                            .replace("下载","")
+//                            .replace("开户","")
+//                            .replace("安装","")
+//                            .replace("登陆","")
+//                            .replace("登录入口","")
+//                            .replace("欢迎您","")
+//                            .replace("【唯一授权官网】","")
+//                            .replace("777官网登录","")
+//                            .replace("老虎机手机版","")
+//                            .replace("手机版官方网","")
+//                            .replace("777手机客户端","")
+//                            .replace("777","")
+//                            .replace("官网手机版","")
+//                            .replace("老虎机官网","")
+//                            .replace("官网登录","")
+//                            .replace("下载","")
+//                            .replace("在线","")
+//                            .replace("娱乐场","")
+//                            .replace("网址","")
+//                            .replace("手机","")
+//                            .replace("赌场","")
+//                            .replace("在线","")
+//                            .replace("首页","")
+//                            .replace("娱乐场","")
+//                            .replace("入口","");
+//                    if(keystrArray[j].contains("www.")){
+//                        keystrArray[j]="";
+//                    }
+//
 //                    description=description.replace(array_small[j],keystrArray[j]+array_small[j]);
 //                }
 //            }
@@ -185,7 +297,12 @@ public class D合并成提交文件 {
             /**
              *
              */
-            uploadRowResourceEntity.setDescription("壹定发娱乐"+description);
+//            if(description.length()>75) {
+                description=description.trim().replaceAll(" ","_");
+                uploadRowResourceEntity.setDescription("钱柜娱乐" + description);
+//            }else{
+//                uploadRowResourceEntity.setDescription("ag环亚集团"+"_"+keystrArray[3]+"_"+"环亚娱乐" + description);
+//            }
             String needReplaceKeystr=uploadRowResourceEntity.getReplaceKeyStr();
 
             if(keystr==null){
@@ -205,7 +322,8 @@ public class D合并成提交文件 {
                 //头部加个链接
                 needReplaceKeystr=  needReplaceKeystr+"[or]</head>[to]" +
                         "<meta name=\"keywords\"  content=\""+key+"\">"+
-                        "<meta  name='Author' content='"+uploadRowResourceEntity.getKey()+"'>"+
+                        "<meta name=\"copyright\" content='"+uploadRowResourceEntity.getKey()+"'/>"+
+                        "<meta  name='Author' content='"+uploadRowResourceEntity.getKey()+"'/>"+
                         //加入手机适配以及Google
                         "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"/>" +
                         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no\">"+
@@ -215,7 +333,7 @@ public class D合并成提交文件 {
                 setTitle(i,uploadRowResourceEntity,keystrArray[0],keystrArray[3],keystrArray[4]);
                 uploadRowResourceEntity.setReplaceKeyStr(needReplaceKeystr);
             }catch (Exception e){
-                System.out.println("出错的地方"+i);
+                System.out.println("出错的地方"+(i+2)+"行");
                 throw new IllegalArgumentException(e);
             }
             combinationEntitys.add(uploadRowResourceEntity);
@@ -239,7 +357,7 @@ public class D合并成提交文件 {
             j= (int) (Math.random() * 12);
             if(j==1){
                 //key-key(唯一)授权娱乐平台-key
-                title=keys1+"-"+keys2+"(唯一)授权娱乐平台-"+keys3;
+                title=keys1+"-"+keys2+"(授权)娱乐平台-"+keys3;
             }else if(j==2||j==3||j==4||j==5||j==11||j==12){
                 title=keys1+"-"+keys2+"-"+keys3;
             }else if(j==6||j==7||j==8){
@@ -250,15 +368,15 @@ public class D合并成提交文件 {
          }else if(i==2||i==3||i==4||i==5||i==6||i==7){
              j=(int) (Math.random() * 25);
              if(j==1){
-                 title=title+">>首页";
+                 title=title+"【官网首页】";
              }else if(j==2 || j==3||j==4||j==5||j==6){
                  title=title+"【唯一授权官网】";
              }else if(j==7||j==8){
-                 title=title+"(唯一)网址";
+                 title=title+"(直营)官网";
              }else if(j==9||j==10||j==11||j==12||j==13||j==14||j==15){
                  title=title+"【欢迎光临】";
              }else if(j==16||j==17||j==18){
-                 title=title+"【全网独家】";
+                 title=title+"【官网独家】";
              }else if(j==19){
                  title=keys1+"_"+keys2+">>>【唯一官网】欢迎您";
              }else if(j==20){
@@ -283,13 +401,13 @@ public class D合并成提交文件 {
          }else if(i==9){
              j=(int) (Math.random() * 13);;
              if(j==1){
-                 title=keys1+"【"+keys2+"(指定)官方网站 - "+keys3+"】";
+                 title=keys1+"【"+keys2+"【官方网站】 - "+keys3+"】";
              }else if(j==2){
                  title=keys1+","+keys2+","+keys3;
              }else if(j==3){
-                 title=keys1+"_"+keys2+"_"+keys3+"【亚洲知名】欢迎您";
+                 title=keys1+"_"+keys2+"_"+keys3+"【直营官网】欢迎您";
              }else if(j==4){
-                 title=keys1+"_"+keys2+"(唯一授权)_"+keys3;
+                 title=keys1+"_"+keys2+"(唯一官网)_"+keys3;
              }else if(j==5){
                  title=keys1+"【"+keys2+"(唯一)官网-"+keys3+"】";
              }else if(j==6){
@@ -297,15 +415,15 @@ public class D合并成提交文件 {
              }else if(j==7){
                  title=keys1+"【"+keys2+"】"+keys3;
              }else if(j==8){
-                 title=keys1+"【"+keys2+"唯一授权网站】"+keys3;
+                 title=keys1+"【"+keys2+"唯一授权官网】"+keys3;
              }else if(j==9){
                  title=keys1+"【"+keys2+"】"+keys3;
              }else if(j==10){
                  title="【"+keys1+"】"+keys2+"_"+keys3;
              }else if(j==11){
-                title="【"+keys1+"】"+keys2+"_"+keys3+"(唯一)官网欢迎您!(亚洲第一品牌)";
+                title="【"+keys1+"】"+keys2+"_"+keys3+"【官网欢迎您】";
              }else if(j==12){
-                 title=keys1+"【唯一授权网站】"+keys2+"_"+keys3;
+                 title=keys1+"【唯一授权官网】"+keys2+"_"+keys3;
              }
          }
         uploadRowResourceEntity.setTitle(title);
@@ -518,5 +636,7 @@ public class D合并成提交文件 {
         }
         return allResult;
     }
+
+
 
 }
