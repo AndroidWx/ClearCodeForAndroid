@@ -1,4 +1,4 @@
-# HK6走势分析 H
+# HK6走势分析 Hello Aking
 [APK DownLoad](http://fir.im/eu9g)
 
 ##screenshots
