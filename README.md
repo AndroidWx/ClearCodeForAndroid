@@ -1,4 +1,4 @@
-# HK6走势分析
+# HK6走势分析 H
 [APK DownLoad](http://fir.im/eu9g)
 
 ##screenshots
