@@ -53,10 +53,10 @@ public class Test {
      * <p>
      * 6.重新生成一份新的可以提交的
      */
-    String fileName="2017-09-01_待重新上传_待重新上传_待重新上传";
+    String fileName="2017-09-14_待重新上传_待重新上传_待重新上传";
 
-    String filePath = "/Users/joye/Search/combination/spencer/"+fileName+".xlsx";
-    String newPath = "/Users/joye/Search/combination/spencer/";//重新提交的excel路径
+    String filePath = "/Users/joye/Search/combination/joye/"+fileName+".xlsx";
+    String newPath = "/Users/joye/Search/combination/joye/";//重新提交的excel路径
     String newFileName =fileName+"_待重新上传";
     @org.junit.Test
     public void testWriteFailedUpload() throws IOException {
@@ -65,7 +65,7 @@ public class Test {
 
         List<ReplaceDomainEntity> replaceDomainEntityList = getReplaceDomainentitys(filePath, 2);
 
-        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
+//        List<OtherInfoEntity> otherInfoEntityList=getOtherInfoEntitys(filePath);
 
         //所有的
         List<ItemEntity> result = getAllItemEntity(filePath, 1);
@@ -74,7 +74,7 @@ public class Test {
         //重新上传的列表
         List<UploadRowResourceEntity> reUploadRows = new ArrayList<>();
 //        int failed[] = new int[]{25,93,143,146,163,188,214,219,229,236,254};
-        int failed[] = new int[]{5,7,9,16,17,18};
+        int failed[] = new int[]{7};
         System.out.println(failed.length);
         List<String> ips = new ArrayList<>();
         for (int index :

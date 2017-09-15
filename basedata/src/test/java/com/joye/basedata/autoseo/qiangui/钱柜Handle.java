@@ -19,7 +19,7 @@ public class 钱柜Handle {
              * AAA+AAAB+Random
              * 龙8娱乐_龙8娱乐客户端城_龙8娱乐手机下载
              */
-            ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/new钱柜/钱柜关键词.xlsx","/Users/joye/search/word/钱柜/create","~~~1.钱柜关键词组合8");
+            ExtralResourceWriteDelegate.handleKeysExcelByName("/Users/joye/search/word/qg_new/钱柜关键词.xlsx","/Users/joye/search/word/qg_new/create","~~~1.钱柜关键词组合3","钱柜娱乐");
             /**
              * 域名词+关键字生成
              * long8520龙8娱乐娱乐_long8520龙8娱乐娱乐下载_long8520龙8娱乐娱乐

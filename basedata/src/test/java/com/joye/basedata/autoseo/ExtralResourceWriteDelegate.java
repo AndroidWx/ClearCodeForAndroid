@@ -15,6 +15,20 @@ import java.util.List;
 
 public class ExtralResourceWriteDelegate {
 
+    /**
+     * 根据关键字搜索次数组合，自动生成外部资源
+     * @param path 搜索次数排名Excel
+     * @param excelWritePath 写入Excel地址
+     * @param fileName 文件名
+     * @throws Exception
+     */
+    public static void handleKeysExcelByName(String path, String excelWritePath, String fileName,String name) throws Exception {
+        //获取所有组合title
+        List<String> results= HandleKey.getAllTitleResultByKeys(getAllKeysByFilePath(path));
+        List<UploadRowResourceEntity> resources=completeDatasByName(results,name);
+        ExcelWriterHelper.WriteExtralRerouse(resources,excelWritePath,fileName);
+    }
+
 
     /**
      * 根据关键字搜索次数组合，自动生成外部资源
@@ -270,4 +284,29 @@ public class ExtralResourceWriteDelegate {
         return result;
     }
 
+    /**
+     * 装配数据
+     * @return
+     */
+    private static List<UploadRowResourceEntity> completeDatasByName(List<String>  allTitles, String name){
+        List<UploadRowResourceEntity> result=new ArrayList<>();
+        UploadRowResourceEntity rowData;
+        String str_Index_0="";
+        String s="";
+        String news="";
+        for (int i = 0; i < allTitles.size(); i++) {
+            rowData=new UploadRowResourceEntity();
+            rowData.setIpStr((i+2)+"");
+
+            s = allTitles.get(i);
+            str_Index_0= s.substring(0, s.indexOf("_"));
+            rowData.setKey(str_Index_0);
+            rowData.setTitle(s);
+            news="[to]"+s+"[or][to]"+name+"[or][to]"+str_Index_0+"[or][to]"+name+"[or][to]"+name;
+            rowData.setReplaceKeyStr(news);
+
+            result.add(rowData);
+        }
+        return result;
+    }
 }
