@@ -19,7 +19,11 @@ public class 凯时Handle {
              * AAA+AAAB+Random
              * 龙8娱乐_龙8娱乐客户端城_龙8娱乐手机下载
              */
-             ExtralResourceWriteDelegate.handleKeysExcel("/Users/joye/search/word/凯时/edf.xlsx","/Users/joye/search/word/凯时/create","1.凯时娱乐关键词组合7");
+            ExtralResourceWriteDelegate.handleKeysExcelByName("/Users/joye/search/word/ag/恒峰娱乐.xlsx",
+                    "/Users/joye/search/word/ag/create",
+                    "1.恒峰娱乐1",
+                    "恒峰娱乐");
+
             /**
              * 域名词+关键字生成
              * long8520龙8娱乐娱乐_long8520龙8娱乐娱乐下载_long8520龙8娱乐娱乐
